@@ -1,0 +1,5 @@
+# 下書き・旧版・バックアップ。公開リポジトリには index.html と privacy.html だけを置く。
+index_old_*.html
+index_v2*.html
+index_backup_*.html
+*.bak_*
