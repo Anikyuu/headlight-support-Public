@@ -184,6 +184,47 @@
     margin-top: 34px;
     font-size: 15.5px;
   }
+  /* ---- 詳しい説明ゾーン ---- */
+  .detail { min-height: unset; padding: 70px 24px; }
+  .detail h2 { margin-bottom: 34px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    width: min(860px, 100%);
+    text-align: left;
+  }
+  .card {
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 16px;
+    padding: 20px 20px 22px;
+    background: rgba(255,255,255,0.03);
+  }
+  .card h3 { font-size: 15.5px; margin-bottom: 8px; font-weight: 600; }
+  .card p { font-size: 13.5px; color: var(--sub); line-height: 1.8; }
+  .chip {
+    display: inline-block;
+    font-size: 11.5px;
+    color: var(--ink);
+    background: rgba(255,255,255,0.12);
+    border-radius: 999px;
+    padding: 3px 12px;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    color: #e8c76a;
+    border: 1px solid rgba(232,199,106,0.5);
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin-left: 8px;
+    vertical-align: 2px;
+  }
+  .price { font-family: var(--serif); font-size: 26px; margin: 6px 0 2px; }
+  .support a { color: var(--ink); }
+
   .closing .name { font-family: var(--serif); font-size: clamp(30px, 7vw, 44px); letter-spacing: 0.06em; margin: 44px 0 8px; }
   footer {
     padding: 46px 20px 60px;
@@ -259,7 +300,94 @@
   <p class="whisper">AIの仕分けも、まず端末の中だけで動きます。</p>
 </section>
 
-<!-- 7. 締め -->
+<!-- 7. できること(詳しい説明) -->
+<section class="reveal detail" id="features">
+  <h2>できること</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>声で放り込む</h3>
+      <p>マイクに向かって話すだけ。言葉はそのまま残り、AIがアイデア・やること・感情に静かに仕分けます。あなたの言葉は一字も書き換えません。</p>
+    </div>
+    <div class="card">
+      <h3>棚に置く</h3>
+      <p>動画や音楽のリンクを貼ると、表紙が付いて棚に並びます。本はバーコードで、音楽はライブラリからまとめて。実物のレコードやCDもバーコードで置けます。</p>
+    </div>
+    <div class="card">
+      <h3>日記が育つ</h3>
+      <p>その日の言葉と写真が、自動で1日1ページの日記になります。書かなきゃ、と思う必要はありません。できない日は空白でいい。</p>
+    </div>
+    <div class="card">
+      <h3>AIに渡す</h3>
+      <p>ためた言葉をまとめてコピーして、ChatGPTやClaudeに貼って相談。返ってきた答えは持ち帰って、自分の知識になります。</p>
+    </div>
+    <div class="card">
+      <h3>3日プランナー</h3>
+      <p>直近3日だけを、30分のコマで組む予定表。できなかったコマは、いまから先へ組み直せます。罪悪感を溜めない作りです。</p>
+    </div>
+    <div class="card">
+      <h3>音を残す</h3>
+      <p>歌や声は、文字にせず音のまま録音。長い会議も端末の中で文字起こしできます。無料で、通信もしません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 触って分かる仕掛け(あとでループ動画が入る) -->
+<section class="reveal detail" id="touch">
+  <h2>触って、はじめて分かる</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="chip">タップ</span>
+      <h3>カードがめくれる</h3>
+      <p>棚のカードをタップすると裏返り、曲順(A面/B面)と自分の感想が書けます。</p>
+    </div>
+    <div class="card">
+      <span class="chip">上にスワイプ</span>
+      <h3>A面を再生</h3>
+      <p>盤を持ち上げるように上へ払うと、その場でA面から鳴ります。</p>
+    </div>
+    <div class="card">
+      <span class="chip">下にスワイプ</span>
+      <h3>B面を再生</h3>
+      <p>下へ引くとB面から。レコードの裏側を聴く、あの感じです。</p>
+    </div>
+    <div class="card">
+      <span class="chip">棚の姿</span>
+      <h3>カセットにもなる</h3>
+      <p>音楽の棚は、透明ケースのカセットの姿に変えられます。ジャケットから色を拾って、殻が染まります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 買い足し -->
+<section class="reveal detail" id="pricing">
+  <h2>必要な分だけ、買い足す</h2>
+  <div class="grid" style="max-width: 620px;">
+    <div class="card">
+      <h3>棚をふやす<span class="badge">買い切り</span></h3>
+      <div class="price">¥500<span style="font-size:13px;">(予定)</span></div>
+      <p>棚が10個ぶん増えます。足りなくなったら、また買い足せます。無料で棚3つまで。</p>
+    </div>
+    <div class="card">
+      <h3>アイデアの瓶と3日プランナー<span class="badge">買い切り</span></h3>
+      <div class="price">¥500<span style="font-size:13px;">(予定)</span></div>
+      <p>思いつきを瓶にためて、直近3日を30分のコマで組めます。一度きりの買い切りです。</p>
+    </div>
+  </div>
+  <p class="whisper" style="max-width: 34em;">入れてから3日間は、全機能を無料で使えます。サブスクはありません。<br>枠があるから、選ばれたものが並びます。</p>
+</section>
+
+<!-- 10. サポート(ストアのサポートURLの行き先) -->
+<section class="reveal detail support" id="support">
+  <h2>困ったときは、気軽にどうぞ</h2>
+  <p>不具合・要望・感想、なんでも。個人で作っているので、返事は本人から届きます。</p>
+  <p style="margin-top: 14px;">
+    メール: <a href="mailto:anikyuu@outlook.jp">anikyuu@outlook.jp</a><br>
+    X: <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">@HeadLight_app</a>
+  </p>
+  <p class="whisper"><a href="privacy.html" style="color: inherit;">プライバシーポリシー</a></p>
+</section>
+
+<!-- 11. 締め -->
 <section class="reveal closing" id="closing">
   <div class="ring" style="width:120px;height:120px;border-width:12px;margin-bottom:0;"></div>
   <div class="name">Headlight</div>
