@@ -81,6 +81,19 @@
     0%, 100% { opacity: 0.85; }
     50%      { opacity: 1.15; }
   }
+  /* LPビジュアル(手・口元)。周りはLPの背景色へ溶けているので、額縁は付けない */
+  .shot {
+    display: block;
+    width: min(430px, 88vw);
+    height: auto;
+    margin: 34px auto 0;
+  }
+  .shot.wide { width: min(620px, 94vw); }
+  @media (max-width: 720px) {
+    .shot { width: min(340px, 84vw); }
+    .shot.wide { width: 94vw; }
+  }
+
   .appicon {
     width: clamp(96px, 16vw, 132px);
     height: auto;
@@ -354,6 +367,8 @@
     <h1><span data-i18n="ja"><span class="nb">あなたを</span><span class="nb">軽くするアプリ</span></span><span data-i18n="en"><span class="nb">The app that</span> <span class="nb">lightens your head.</span></span></h1>
     <p class="tagline"><span data-i18n="ja">好きなものを棚に。日記・予定はAI整理<br>iPhone / iPad / Mac / Apple Watch</span><span data-i18n="en">Put what you love on the shelf. AI sorts your journal and plans.<br>iPhone / iPad / Mac / Apple Watch</span></p>
     <span class="beta-badge"><span data-i18n="ja">いまはTestFlightでベータテスト中 · まもなくApp Storeへ</span><span data-i18n="en">Beta testing on TestFlight now · Coming soon to the App Store</span></span>
+    <img class="shot reveal" src="img/hero-hand.jpg" loading="lazy"
+         data-alt-ja="Headlightのホーム画面を開いたiPhoneを持つ手" data-alt-en="A hand holding an iPhone with the Headlight home screen open.">
   </div>
 </section>
 
@@ -406,6 +421,9 @@
       </div>
     </div>
   </div>
+
+    <img class="shot wide reveal" src="img/hero-voice.jpg" loading="lazy"
+         data-alt-ja="iPhoneに向かって話しかけているところ" data-alt-en="Speaking into an iPhone running Headlight.">
 </section>
 
 <!-- 言葉 -->
