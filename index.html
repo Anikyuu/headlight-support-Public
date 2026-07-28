@@ -161,6 +161,23 @@
     font-weight: 600;
   }
 
+  /* 値段の話は、実演を見終わったあとに、そっと置く(2026-07-29 Kai) */
+  .paid-note {
+    text-align: center;
+    margin: 26px auto 0;
+    max-width: 34em;
+    font-size: 13px;
+    text-wrap: balance;   /* 「で。」だけが次の行に落ちないように */
+  }
+  .paid-note a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .paid-note a:hover { color: var(--light); border-color: var(--light); }
+
   /* ---- 2カラム ---- */
   .cols { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
   .cols .text { flex: 1 1 340px; display: flex; flex-direction: column; gap: 18px; }
@@ -468,7 +485,7 @@
 <!-- 答え -->
 <section>
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">声で放り込む</span><span data-i18n="en">Speak it in</span><span data-i18n="ko">목소리로 던져 넣기</span><span class="paid-badge"><span data-i18n="ja">AI Pro · 月&yen;300 — 最初の1ヶ月は無料</span><span data-i18n="en">AI Pro · &yen;300/mo — first month free</span><span data-i18n="ko">AI Pro · 월 &yen;300 — 첫 달은 무료</span></span></div>
+    <div class="eyebrow"><span data-i18n="ja">声で放り込む</span><span data-i18n="en">Speak it in</span><span data-i18n="ko">목소리로 던져 넣기</span></div>
     <h2><span data-i18n="ja">話して、任せて、<br>軽くなる。</span><span data-i18n="en">Talk. Hand it off.<br>Feel lighter.</span><span data-i18n="ko">말하고, 맡기고,<br>가벼워져요.</span></h2>
     <img class="illust wide" src="img/illust-speak.jpg" data-alt-ja="話した言葉が光の粒になって、カレンダー・瓶・ノートに収まっていく線画" data-alt-en="A line drawing of spoken words turning into grains of light and settling into a calendar, a jar, and a notebook." data-alt-ko="말한 것이 빛의 알갱이가 되어, 캘린더・병・노트로 담기는 선화" alt="話した言葉が光の粒になって、カレンダー・瓶・ノートに収まっていく線画">
     <p class="lead"><span data-i18n="ja">思いついたことを声か文字で放り込むと、AIが自動で仕分けます。たとえば──</span><span data-i18n="en">Drop in a thought by voice or text, and AI sorts it out automatically. For example —</span><span data-i18n="ko">떠오른 것을 목소리나 글자로 던져 넣으면, AI가 자동으로 분류해요. 예를 들면──</span></p>
@@ -487,6 +504,8 @@
       </div>
     </div>
   </div>
+
+    <p class="paid-note"><a href="#pricing"><span data-i18n="ja">最初の1ヶ月は無料。そのあとは AI Pro(月&yen;300)。</span><span data-i18n="en">Free for your first month. Then AI Pro (&yen;300/mo).</span><span data-i18n="ko">첫 한 달은 무료. 그 뒤로는 AI Pro(월 &yen;300).</span></a></p>
 
     <img class="shot wide reveal" src="img/hero-voice.jpg" loading="lazy"
          data-alt-ja="iPhoneに向かって話しかけているところ" data-alt-en="Speaking into an iPhone running Headlight." data-alt-ko="iPhone을 향해 말하고 있는 모습">
@@ -676,7 +695,7 @@
 </section>
 
 <!-- 価格と約束 -->
-<section>
+<section id="pricing">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">価格と約束</span><span data-i18n="en">Pricing &amp; promise</span><span data-i18n="ko">가격과 약속</span></div>
     <h2><span data-i18n="ja">最初の1ヶ月は、AI Proも無料。</span><span data-i18n="en">Your first month: AI Pro included, free.</span><span data-i18n="ko">첫 한 달은, AI Pro도 무료.</span></h2>
