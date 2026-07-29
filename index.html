@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Headlightは、あなたを軽くする手帳アプリ。ネットの動画も、本も、音楽も、レコードのように棚に置けます。思いつきも予定も、声で放り込むだけ。仕分けはAIの仕事。広告なし、サブスクなし。 / A Japanese-style way to keep what you love and let the rest go — journal, plans, and a shelf for everything you can't forget. No ads, no subscription.">
+<meta name="description" content="Headlightは、あなたを軽くする手帳アプリ。ネットの動画も、本も、音楽も、レコードのように棚に置けます。思いつきも予定も、声で放り込むだけ。仕分けはAIの仕事。広告なし。データを売りません。 / A Japanese-style way to keep what you love and let the rest go — journal, plans, and a shelf for everything you can't forget. No ads. We never sell your data.">
 <meta property="og:url" content="https://head-light.app/">
 <meta property="og:title" content="Headlight — Lights your way. Lightens your head.">
-<meta property="og:description" content="Keep what you love, let the rest go — a Japanese-style shelf for music, films, and thoughts you can't forget. 好きなものを棚に、思いつきも予定もAIが整理。広告なし、サブスクなし。">
+<meta property="og:description" content="Keep what you love, let the rest go — a Japanese-style shelf for music, films, and thoughts you can't forget. 好きなものを棚に、思いつきも予定もAIが整理。広告なし。データを売りません。">
 <title data-title-ja="Headlight — あなたを軽くするアプリ" data-title-en="Headlight — the app that lightens your head" data-title-ko="Headlight — 당신을 가볍게 하는 앱">Headlight — あなたを軽くするアプリ</title>
 <style>
   :root {
@@ -177,6 +177,114 @@
     transition: color .2s ease, border-color .2s ease;
   }
   .paid-note a:hover { color: var(--light); border-color: var(--light); }
+
+
+  /* ---- 3つの動詞(撮る・話す・押す) ---- */
+  .verbs {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    margin: 34px 0 26px;
+  }
+  .verb {
+    flex: 1 1 220px;
+    text-align: center;
+    padding: 26px 18px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--bg2);
+  }
+  .verb .vmark { font-size: 34px; display: block; margin-bottom: 10px; }
+  .verb b {
+    display: block;
+    font-family: var(--serif);
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .verb span:not(.vmark) {
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+
+  /* ---- 整理アシスタントの4面 ---- */
+  .quads {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 28px 0 22px;
+  }
+  .quad {
+    padding: 18px 16px;
+    border-radius: 16px;
+    border-left: 3px solid;
+  }
+  .quad b { display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 6px; }
+  .quad span { font-size: 12.5px; line-height: 1.8; color: var(--muted); }
+  /* 日本の色名のインク。アプリの中と同じ色 */
+  .q-now     { border-color: #33a070; background: rgba(51,160,112,.08); }
+  .q-now b   { color: #2b8a60; }
+  .q-later   { border-color: #4f70b8; background: rgba(79,112,184,.08); }
+  .q-later b { color: #4460a0; }
+  .q-grow    { border-color: #c79429; background: rgba(199,148,41,.08); }
+  .q-grow b  { color: #a87c1e; }
+  .q-release { border-color: #8f76b8; background: rgba(143,118,184,.08); }
+  .q-release b { color: #7a63a0; }
+
+  /* ---- 道具の一覧 ---- */
+  .toolgroups {
+    display: flex; flex-wrap: wrap; gap: 22px;
+    margin: 34px 0 24px;
+  }
+  .tgroup {
+    flex: 1 1 300px;
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+  .tgroup h3 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    letter-spacing: 0.04em;
+  }
+  .tgroup ul { list-style: none; padding: 0; margin: 0; }
+  .tgroup li {
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+  .tgroup li:first-child { border-top: 0; }
+  .tgroup li b {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+
+
+  .tgroup li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .tgroup li > div { flex: 1; }
+  .ticon {
+    flex: 0 0 auto;
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    margin-top: 2px;
+  }
+  .ticon img { width: 34px; height: 34px; object-fit: contain; }
+
+  @media (max-width: 560px) {
+    .quads { grid-template-columns: 1fr; }
+    .verb { padding: 20px 16px; }
+  }
 
   /* ---- 2カラム ---- */
   .cols { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
@@ -482,6 +590,36 @@
   </div>
 </section>
 
+
+<!-- 入力しない -->
+<section>
+  <div class="inner reveal">
+    <div class="eyebrow"><span data-i18n="ja">入力しない</span><span data-i18n="en">No typing</span><span data-i18n="ko">입력하지 않기</span></div>
+    <h2><span data-i18n="ja">やることは、3つだけ。</span><span data-i18n="en">There are only three things to do.</span><span data-i18n="ko">할 일은, 세 가지뿐.</span></h2>
+    <p class="lead"><span data-i18n="ja">Headlightは、書かせるためのアプリではありません。<br>頭に乗っているものを、降ろすためのアプリです。</span><span data-i18n="en">Headlight isn&#39;t an app that makes you write.<br>It&#39;s an app for putting down what&#39;s on your head.</span><span data-i18n="ko">Headlight는 쓰게 하는 앱이 아니에요.<br>머리에 얹혀 있는 것을, 내려놓기 위한 앱이에요.</span></p>
+
+    <div class="verbs">
+      <div class="verb">
+        <span class="vmark">📷</span>
+        <b><span data-i18n="ja">撮る</span><span data-i18n="en">Snap</span><span data-i18n="ko">찍기</span></b>
+        <span><span data-i18n="ja">レシート、食事、本のバーコード。撮れば、あとはAIが読みます。</span><span data-i18n="en">A receipt, a meal, a barcode. Snap it and AI reads the rest.</span><span data-i18n="ko">영수증, 식사, 책의 바코드. 찍으면 나머지는 AI가 읽어요.</span></span>
+      </div>
+      <div class="verb">
+        <span class="vmark">🎤</span>
+        <b><span data-i18n="ja">話す</span><span data-i18n="en">Say</span><span data-i18n="ko">말하기</span></b>
+        <span><span data-i18n="ja">順番も、まとまりも、気にしなくていい。切り分けるのはAIの仕事。</span><span data-i18n="en">Order and structure don&#39;t matter. Separating it out is AI&#39;s job.</span><span data-i18n="ko">순서도, 정리도 신경 쓰지 않아도 돼요. 나누는 건 AI의 일.</span></span>
+      </div>
+      <div class="verb">
+        <span class="vmark">👆</span>
+        <b><span data-i18n="ja">押す</span><span data-i18n="en">Tap</span><span data-i18n="ko">누르기</span></b>
+        <span><span data-i18n="ja">薬を飲んだら押す。調子はスライドひとつ。それで残ります。</span><span data-i18n="en">Took your medicine? Press. Feeling? One slider. That&#39;s the record.</span><span data-i18n="ko">약을 먹으면 누르기. 컨디션은 슬라이드 하나. 그걸로 남아요.</span></span>
+      </div>
+    </div>
+
+    <p class="sub" style="text-align:center;"><span data-i18n="ja">キーボードを開く回数を、できるだけ減らす。それがこのアプリの設計です。</span><span data-i18n="en">Open the keyboard as little as possible. That is the design.</span><span data-i18n="ko">키보드를 여는 횟수를 최대한 줄이기. 그것이 이 앱의 설계예요.</span></p>
+  </div>
+</section>
+
 <!-- 答え -->
 <section>
   <div class="inner reveal">
@@ -509,6 +647,41 @@
 
     <img class="shot wide reveal" src="img/hero-voice.jpg" loading="lazy"
          data-alt-ja="iPhoneに向かって話しかけているところ" data-alt-en="Speaking into an iPhone running Headlight." data-alt-ko="iPhone을 향해 말하고 있는 모습">
+</section>
+
+
+<!-- 整理アシスタント -->
+<section>
+  <div class="inner reveal">
+    <div class="eyebrow"><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span></div>
+    <h2><span data-i18n="ja">今日はこれだけで、十分です。</span><span data-i18n="en">This is enough for today.</span><span data-i18n="ko">오늘은 이것만으로, 충분해요.</span></h2>
+    <img class="illust wide" src="img/illust-tidy.jpg" loading="lazy" onerror="this.style.display='none'"
+         data-alt-ja="話した言葉が4つの面へ分かれて置かれていく線画" data-alt-en="A line drawing of spoken words being separated onto four surfaces." data-alt-ko="말한 것이 네 개의 면으로 나뉘어 놓이는 선화" alt="話した言葉が4つの面へ分かれて置かれていく線画">
+    <p class="lead"><span data-i18n="ja">頭にあることを、ぜんぶ話すだけ。<br>AIが切り分けて、<strong>4象限マトリクス</strong>に並べます。</span><span data-i18n="en">Just say everything on your mind.<br>AI separates it and lays it out as a <strong>four-quadrant matrix</strong>.</span><span data-i18n="ko">머릿속에 있는 것을, 전부 말하기만.<br>AI가 나눠서, <strong>4사분면 매트릭스</strong>로 늘어놓아요.</span></p>
+
+    <p class="sub"><span data-i18n="ja">4象限マトリクス(クアドラントチャート)は、ものごとを2つの軸で4つに分けて、一目で全体を見る図です。仕事の優先順位づけでよく使われます。Headlightでは<strong>「急ぎかどうか」</strong>と<strong>「いま答えを出せるかどうか」</strong>で分けます。分ける作業はAIがやるので、あなたは話すだけです。</span><span data-i18n="en">A four-quadrant matrix splits things along two axes so you can take in the whole picture at a glance — the same shape often used for prioritising work. Headlight splits by <strong>how urgent it is</strong> and <strong>whether you can settle it yet</strong>. AI does the splitting; you just talk.</span><span data-i18n="ko">4사분면 매트릭스(쿼드런트 차트)는 두 개의 축으로 넷으로 나눠, 전체를 한눈에 보는 그림이에요. 업무 우선순위를 정할 때 자주 쓰여요. Headlight에서는 <strong>「급한지 아닌지」</strong>와 <strong>「지금 답을 낼 수 있는지」</strong>로 나눠요. 나누는 일은 AI가 하니, 당신은 말하기만 하면 돼요.</span></p>
+
+    <div class="quads">
+      <div class="quad q-now">
+        <b>🌱 <span data-i18n="ja">いま軽くなる</span><span data-i18n="en">Lighter now</span><span data-i18n="ko">지금 가벼워지는 것</span></b>
+        <span data-i18n="ja">今日はこれだけで十分です。</span><span data-i18n="en">This is enough for today.</span><span data-i18n="ko">오늘은 이것만으로 충분해요.</span>
+      </div>
+      <div class="quad q-later">
+        <b>🌙 <span data-i18n="ja">あとで大丈夫</span><span data-i18n="en">Later is fine</span><span data-i18n="ko">나중에도 괜찮은 것</span></b>
+        <span data-i18n="ja">今は急がなくても大丈夫です。</span><span data-i18n="en">No rush right now.</span><span data-i18n="ko">지금은 서두르지 않아도 괜찮아요.</span>
+      </div>
+      <div class="quad q-grow">
+        <b>🌿 <span data-i18n="ja">育てる</span><span data-i18n="en">Growing</span><span data-i18n="ko">키우는 것</span></b>
+        <span data-i18n="ja">まだ決めなくても大丈夫です。</span><span data-i18n="en">You don&#39;t have to decide yet.</span><span data-i18n="ko">아직 정하지 않아도 괜찮아요.</span>
+      </div>
+      <div class="quad q-release">
+        <b>🍃 <span data-i18n="ja">手放していい</span><span data-i18n="en">Can let go</span><span data-i18n="ko">놓아도 되는 것</span></b>
+        <span data-i18n="ja">少しここへ置いておきましょう。</span><span data-i18n="en">Let&#39;s leave it here for a while.</span><span data-i18n="ko">잠시 여기에 두어요.</span>
+      </div>
+    </div>
+
+    <p class="sub"><span data-i18n="ja">やることを増やすためではなく、減らすためのAIです。急かしません。責めません。できなかった日は、空白のままでいい。</span><span data-i18n="en">This AI is here to shorten the list, not lengthen it. No pushing. No blame. A day you couldn&#39;t is just blank.</span><span data-i18n="ko">할 일을 늘리기 위해서가 아니라, 줄이기 위한 AI예요. 재촉하지 않아요. 탓하지 않아요. 못 한 날은 비어 있어도 괜찮아요.</span></p>
+  </div>
 </section>
 
 <!-- 言葉 -->
@@ -678,19 +851,64 @@
   </div>
 </section>
 
-<!-- 小さな道具たち -->
+<!-- 道具たち -->
 <section>
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">小さな道具たち</span><span data-i18n="en">Small tools</span><span data-i18n="ko">작은 도구들</span></div>
-    <h2><span data-i18n="ja">毎日を支える道具も、静かに揃っている。</span><span data-i18n="en">The quiet tools that carry each day.</span><span data-i18n="ko">매일을 지탱하는 도구도, 조용히 갖춰져 있어요.</span></h2>
-    <ul class="points">
-      <li><span data-i18n="ja"><strong>音を残す</strong> — カセット型のRECボタンで、歌や声をそのまま録音。あとから文字にもできる。</span><span data-i18n="en"><strong>Keep the sound</strong> — a cassette-style REC button records your singing or voice as-is. Turn it into text later, too.</span><span data-i18n="ko"><strong>소리 남기기</strong> — 카세트 모양의 REC 버튼으로, 노래나 목소리를 그대로 녹음해요. 나중에 글자로도 만들 수 있어요.</span></li>
-      <li><span data-i18n="ja"><strong>まいにちのチェック</strong> — できたら✓を押すだけの、いちばん簡単な習慣記録。できなかった日は空白のまま。空白はただの空白。</span><span data-i18n="en"><strong>Daily check</strong> — the simplest habit tracker there is: tap &#10003; when you did it. A missed day just stays blank. Blank is just blank.</span><span data-i18n="ko"><strong>매일 체크</strong> — 했으면 ✓를 누르기만 하는, 가장 간단한 습관 기록. 못한 날은 빈칸 그대로. 빈칸은 그냥 빈칸이에요.</span></li>
-      <li><span data-i18n="ja"><strong>サブスク管理</strong> — 話すだけで登録。引き落とし日と金額がひと目でわかる。</span><span data-i18n="en"><strong>Subscription tracking</strong> — register just by saying it. Billing dates and amounts, at a glance.</span><span data-i18n="ko"><strong>구독 관리</strong> — 말하기만 해도 등록. 결제일과 금액이 한눈에 보여요.</span></li>
-      <li><span data-i18n="ja"><strong>ウィジェット</strong> — 締め切りまでの残り時間を秒で刻むカウントダウンと、好きなコレクションをホーム画面に。</span><span data-i18n="en"><strong>Widgets</strong> — a countdown that ticks off the seconds to a deadline, or a favorite collection, right on your home screen.</span><span data-i18n="ko"><strong>위젯</strong> — 마감까지 남은 시간을 초 단위로 새기는 카운트다운과, 좋아하는 컬렉션을 홈 화면에.</span></li>
-      <li><span data-i18n="ja"><strong>Apple Watch</strong> — 手首で話して、預けるだけ。iPhoneに届いて、他の言葉と同じように整う。</span><span data-i18n="en"><strong>Apple Watch</strong> — speak from your wrist and drop it in. It lands on your iPhone and settles in alongside everything else.</span><span data-i18n="ko"><strong>Apple Watch</strong> — 손목에서 말하고, 맡기기만 하면 돼요. iPhone으로 전달되어, 다른 말들과 똑같이 정리돼요.</span></li>
-      <li><span data-i18n="ja"><strong>見た目はあなたの好みで</strong> — シンプル/イラストの切り替え、配色プリセット、アプリアイコンの色替え。夜中は、ホームの顔も眠ります。</span><span data-i18n="en"><strong>Made to your taste</strong> — switch between simple and illustrated looks, color presets, a different app icon. Late at night, even the home screen&#39;s face falls asleep.</span><span data-i18n="ko"><strong>겉모습은 당신 취향대로</strong> — 심플/일러스트 전환, 배색 프리셋, 앱 아이콘 색 바꾸기. 한밤중엔, 홈의 얼굴도 잠들어요.</span></li>
-    </ul>
+    <div class="eyebrow"><span data-i18n="ja">道具</span><span data-i18n="en">Tools</span><span data-i18n="ko">도구</span></div>
+    <h2><span data-i18n="ja">Headlightには、<br class="brmob">こんな道具があります。</span><span data-i18n="en">These are the tools<br class="brmob">inside Headlight.</span><span data-i18n="ko">Headlight에는,<br class="brmob">이런 도구가 있어요.</span></h2>
+    <p class="lead"><span data-i18n="ja">画面の下、タブのすぐ上が道具置き場です。<br>並べる道具は、あなたが選びます。</span><span data-i18n="en">Just above the tab bar is your tool shelf.<br>You choose what sits there.</span><span data-i18n="ko">화면 아래, 탭 바로 위가 도구 자리예요.<br>놓을 도구는 당신이 고릅니다.</span></p>
+
+    <div class="toolgroups">
+      <div class="tgroup">
+        <h3>🧠 <span data-i18n="ja">頭を軽くする</span><span data-i18n="en">Lighten your head</span><span data-i18n="ko">머리를 가볍게</span></h3>
+        <ul>
+          <li><span class="ticon"><img src="img/tools/tidy.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗂'))"></span><div><b><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span></b><span data-i18n="ja">話すと、4つに分かれる</span><span data-i18n="en">Speak, and it splits into four</span><span data-i18n="ko">말하면, 넷으로 나뉘어요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/remember.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🧠'))"></span><div><b><span data-i18n="ja">覚えておく</span><span data-i18n="en">Remember</span><span data-i18n="ko">기억해 두기</span></b><span data-i18n="ja">人・ペット・家ごとの、第二の記憶</span><span data-i18n="en">A second memory, one per person or thing</span><span data-i18n="ko">사람・반려동물・집마다의, 두 번째 기억</span></div></li>
+          <li><span class="ticon"><img src="img/tools/paper.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📄'))"></span><div><b><span data-i18n="ja">白い紙</span><span data-i18n="en">Blank paper</span><span data-i18n="ko">흰 종이</span></b><span data-i18n="ja">仕分けられたくない日のために</span><span data-i18n="en">For days you don&#39;t want sorting</span><span data-i18n="ko">분류되고 싶지 않은 날을 위해</span></div></li>
+          <li><span class="ticon"><img src="img/tools/jar.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('💡'))"></span><div><b><span data-i18n="ja">アイデアの瓶</span><span data-i18n="en">Idea jar</span><span data-i18n="ko">아이디어 병</span></b><span data-i18n="ja">ひらめきが、玉になって溜まる</span><span data-i18n="en">Ideas collect as marbles</span><span data-i18n="ko">번뜩임이, 구슬이 되어 쌓여요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/release.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🌪'))"></span><div><b><span data-i18n="ja">手放す</span><span data-i18n="en">Let go</span><span data-i18n="ko">놓아주기</span></b><span data-i18n="ja">言って、消す。どこにも残らない</span><span data-i18n="en">Say it, and it&#39;s gone. Nothing is kept</span><span data-i18n="ko">말하고, 지우기. 어디에도 남지 않아요</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tgroup">
+        <h3>✅ <span data-i18n="ja">今日を進める</span><span data-i18n="en">Move today along</span><span data-i18n="ko">오늘을 나아가게</span></h3>
+        <ul>
+          <li><span class="ticon"><img src="img/tools/todo.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('✅'))"></span><div><b><span data-i18n="ja">やること</span><span data-i18n="en">To do</span><span data-i18n="ko">할 일</span></b><span data-i18n="ja">話した言葉から、勝手に集まる</span><span data-i18n="en">Gathers itself from what you said</span><span data-i18n="ko">말한 것에서, 저절로 모여요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/planner.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗓'))"></span><div><b><span data-i18n="ja">3日プランナー</span><span data-i18n="en">3-day planner</span><span data-i18n="ko">3일 플래너</span></b><span data-i18n="ja">見るのは3日先まで。それ以上は考えない</span><span data-i18n="en">Only three days ahead. No further</span><span data-i18n="ko">보는 건 3일 앞까지. 그 이상은 생각하지 않아요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/timer.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⏱'))"></span><div><b><span data-i18n="ja">タイマー</span><span data-i18n="en">Timer</span><span data-i18n="ko">타이머</span></b><span data-i18n="ja">「3分タイマー」と話すだけで始まる</span><span data-i18n="en">Just say &ldquo;three-minute timer&rdquo;</span><span data-i18n="ko">「3분 타이머」라고 말하면 시작돼요</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tgroup">
+        <h3>🌿 <span data-i18n="ja">自分を整える</span><span data-i18n="en">Look after yourself</span><span data-i18n="ko">자신을 돌보기</span></h3>
+        <ul>
+          <li><span class="ticon"><img src="img/tools/mood.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📈'))"></span><div><b><span data-i18n="ja">今日の調子</span><span data-i18n="en">How you&#39;re doing</span><span data-i18n="ko">오늘의 컨디션</span></b><span data-i18n="ja">沈む側にも、高ぶる側にも振れる</span><span data-i18n="en">It swings low and high, both ways</span><span data-i18n="ko">가라앉는 쪽에도, 들뜨는 쪽에도 움직여요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/reflect.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🌙'))"></span><div><b><span data-i18n="ja">よかったこと・夜の振り返り</span><span data-i18n="en">Good moments &amp; night notes</span><span data-i18n="ko">좋았던 일・밤의 되돌아보기</span></b><span data-i18n="ja">一日の終わりに、ひとこと</span><span data-i18n="en">A word at the end of the day</span><span data-i18n="ko">하루의 끝에, 한마디</span></div></li>
+          <li><span class="ticon"><img src="img/tools/meditation.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🍃'))"></span><div><b><span data-i18n="ja">瞑想</span><span data-i18n="en">Meditation</span><span data-i18n="ko">명상</span></b><span data-i18n="ja">円がふくらんだら吸う。しぼんだら吐く</span><span data-i18n="en">Breathe in as the circle grows, out as it shrinks</span><span data-i18n="ko">원이 부풀면 들이쉬고, 줄어들면 내쉬어요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/workout.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🏋️'))"></span><div><b><span data-i18n="ja">筋トレ</span><span data-i18n="en">Workout</span><span data-i18n="ko">근력 운동</span></b><span data-i18n="ja">インターバル・TABATA・EMOM。回数は数えない</span><span data-i18n="en">Interval, TABATA, EMOM. Nothing is counted</span><span data-i18n="ko">인터벌・TABATA・EMOM. 횟수는 세지 않아요</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tgroup">
+        <h3>🏠 <span data-i18n="ja">暮らしを支える</span><span data-i18n="en">Support daily life</span><span data-i18n="ko">생활을 뒷받침하기</span></h3>
+        <ul>
+          <li><span class="ticon"><img src="img/tools/medicine.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('💊'))"></span><div><b><span data-i18n="ja">薬</span><span data-i18n="en">Medicine</span><span data-i18n="ko">약</span></b><span data-i18n="ja">飲んだら押すだけ。飲み忘れを責めない</span><span data-i18n="en">Just press when you take it. No nagging</span><span data-i18n="ko">먹으면 누르기만. 빠뜨린 것을 탓하지 않아요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/meal.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🍽'))"></span><div><b><span data-i18n="ja">食事</span><span data-i18n="en">Meals</span><span data-i18n="ko">식사</span></b><span data-i18n="ja">撮るだけ。あと何g、と距離だけ言う</span><span data-i18n="en">Just snap it. It only tells you how far to go</span><span data-i18n="ko">찍기만. 앞으로 몇 g인지, 거리만 말해요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/expense.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🧾'))"></span><div><b><span data-i18n="ja">経費</span><span data-i18n="en">Expenses</span><span data-i18n="ko">경비</span></b><span data-i18n="ja">レシートを撮って、何に使ったか話すだけ</span><span data-i18n="en">Snap the receipt, say what it was for</span><span data-i18n="ko">영수증을 찍고, 무엇에 썼는지 말하기만</span></div></li>
+          <li><span class="ticon"><img src="img/tools/daily.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📼'))"></span><div><b><span data-i18n="ja">音を残す・まいにちのチェック・サブスク管理</span><span data-i18n="en">Voice notes, daily checks, subscriptions</span><span data-i18n="ko">소리 남기기・매일 체크・구독 관리</span></b><span data-i18n="ja">日々の小さなことも、ここに</span><span data-i18n="en">The small daily things live here too</span><span data-i18n="ko">매일의 작은 것들도, 여기에</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tgroup">
+        <h3>📁 <span data-i18n="ja">しまっておく</span><span data-i18n="en">Put away</span><span data-i18n="ko">보관하기</span></h3>
+        <ul>
+          <li><span class="ticon"><img src="img/tools/folder.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📁'))"></span><div><b><span data-i18n="ja">フォルダ</span><span data-i18n="en">Folders</span><span data-i18n="ko">폴더</span></b><span data-i18n="ja">溜まってきたら、AIがまとめ方を提案する</span><span data-i18n="en">Once enough piles up, AI suggests how to file it</span><span data-i18n="ko">쌓이면, AI가 정리 방법을 제안해요</span></div></li>
+          <li><span class="ticon"><img src="img/tools/widget.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⌚️'))"></span><div><b><span data-i18n="ja">ウィジェット・Apple Watch</span><span data-i18n="en">Widgets &amp; Apple Watch</span><span data-i18n="ko">위젯・Apple Watch</span></b><span data-i18n="ja">ホーム画面と手首から、そのまま</span><span data-i18n="en">Straight from your home screen and your wrist</span><span data-i18n="ko">홈 화면과 손목에서, 그대로</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="sub" style="text-align:center;"><span data-i18n="ja">全部を使う必要はありません。いま要るものだけ、置き場に出しておけます。</span><span data-i18n="en">You don&#39;t need all of them. Keep only what you need on the shelf.</span><span data-i18n="ko">전부 쓸 필요는 없어요. 지금 필요한 것만, 자리에 꺼내 둘 수 있어요.</span></p>
   </div>
 </section>
 
