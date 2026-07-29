@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Headlightに入っている道具の一覧と、それぞれの説明。整理アシスタント、覚えておく、タイマー、薬、食事、経費など。 / Every tool inside Headlight, explained.">
+<meta property="og:url" content="https://head-light.app/">
+<meta property="og:title" content="Headlight — Lights your way. Lightens your head.">
+<meta property="og:description" content="Keep what you love, let the rest go — a Japanese-style shelf for music, films, and thoughts you can't forget. 好きなものを棚に、思いつきも予定もAIが整理。広告なし。データを売りません。">
+<title data-title-ja="Headlightの道具 — あなたを軽くするアプリ" data-title-en="The tools of Headlight" data-title-ko="Headlight의 도구">Headlight — あなたを軽くするアプリ</title>
+<style>
+  :root {
+    /* 【2026-07-27 Kai】黒から白へ。「あなたを軽くする」に合う軽い印象にする。 */
+    --bg: #ffffff;              /* 紙のような白 */
+    --bg2: #f6f5f2;             /* ひとつ沈めた面 */
+    --ink: #1c1b19;             /* 墨 */
+    --muted: #6f6c66;           /* 薄い墨 */
+    --light: #b08d57;           /* 灯りの色。白地では金茶にして読めるようにする */
+    --line: rgba(28, 27, 25, 0.10);
+    --sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+    --serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  }
+  html { background: var(--bg); scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.9;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  section {
+    padding: 96px 24px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .inner {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    box-sizing: border-box;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--light);
+    opacity: 0.85;
+    font-weight: 600;
+  }
+  h1, h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h2 { font-size: clamp(26px, 4.6vw, 40px); line-height: 1.5; }
+  p { margin: 0; max-width: 34em; }
+  .lead { font-size: clamp(15px, 2.2vw, 17px); }
+  .sub { color: var(--muted); font-size: 14px; }
+  a { color: var(--light); }
+
+  /* ---- ヒーロー ---- */
+  .hero {
+    min-height: 92svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero .inner { align-items: center; text-align: center; gap: 20px; }
+  .beam {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 75% 52% at 50% 108%, rgba(176,141,87,0.10), rgba(176,141,87,0.03) 55%, transparent 75%);
+    pointer-events: none;
+    animation: beamBreathe 5.2s ease-in-out infinite;   /* 灯りが息をする */
+  }
+  @keyframes beamBreathe {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1.15; }
+  }
+  /* LPビジュアル(手・口元)。周りはLPの背景色へ溶けているので、額縁は付けない */
+  .shot {
+    display: block;
+    width: min(430px, 88vw);
+    height: auto;
+    margin: 34px auto 0;
+  }
+  .shot.wide { width: min(620px, 94vw); }
+  @media (max-width: 720px) {
+    .shot { width: min(340px, 84vw); }
+    .shot.wide { width: 94vw; }
+  }
+
+  .appicon {
+    width: clamp(96px, 16vw, 132px);
+    height: auto;
+    border-radius: 22.5%;
+    border: 1px solid rgba(28,27,25,0.10);
+    box-shadow: 0 16px 38px rgba(28,27,25,0.16);
+    display: block;
+    animation: iconFloat 5.5s ease-in-out infinite;   /* 灯りの前で、静かに浮かぶ */
+  }
+  @keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+  }
+  .latin {
+    font-size: 13px;
+    letter-spacing: 0.55em;
+    text-indent: 0.55em;
+    color: var(--light);
+    font-weight: 600;
+  }
+  .hero h1 { font-size: clamp(34px, 7vw, 62px); line-height: 1.45; }
+  .nb { display: inline-block; }
+  .hero .tagline { color: var(--muted); font-size: clamp(14px, 2.4vw, 17px); letter-spacing: 0.1em; }
+  /* 押せる場所なので、灯りの色(金茶)で立たせる。ここだけが色を持つ */
+  .beta-badge {
+    display: inline-block;
+    border: 1px solid rgba(176, 141, 87, 0.45);
+    border-radius: 16px;
+    padding: 12px 22px;
+    color: var(--light);
+    background: rgba(176, 141, 87, 0.07);
+    text-decoration: none;
+    text-align: center;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .beta-lead {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+  .beta-note {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  a.beta-badge:hover, a.beta-badge:focus-visible {
+    border-color: var(--light);
+    background: rgba(176, 141, 87, 0.14);
+  }
+  .pro-badge {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+    border: 1px solid rgba(196,150,52,0.5);
+    color: var(--light);
+    border-radius: 999px;
+    padding: 1px 8px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  .free-badge {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+    border: 1px solid rgba(28,27,25,0.18);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 1px 8px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .paid-badge {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    border: 1px solid rgba(196,150,52,0.55);
+    color: var(--light);
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  /* 値段の話は、実演を見終わったあとに、そっと置く(2026-07-29 Kai) */
+  .paid-note {
+    text-align: center;
+    margin: 26px auto 0;
+    max-width: 34em;
+    font-size: 13px;
+    text-wrap: balance;   /* 「で。」だけが次の行に落ちないように */
+  }
+  .paid-note a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .paid-note a:hover { color: var(--light); border-color: var(--light); }
+
+
+  /* ---- 3つの動詞(撮る・話す・押す) ---- */
+  .verbs {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    margin: 34px 0 26px;
+  }
+  .verb {
+    flex: 1 1 220px;
+    text-align: center;
+    padding: 26px 18px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--bg2);
+  }
+  .verb .vmark { font-size: 34px; display: block; margin-bottom: 10px; }
+  .verb b {
+    display: block;
+    font-family: var(--serif);
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .verb span:not(.vmark) {
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+
+  /* ---- 整理アシスタントの4面 ---- */
+  .quads {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 28px 0 22px;
+  }
+  .quad {
+    padding: 18px 16px;
+    border-radius: 16px;
+    border-left: 3px solid;
+  }
+  .quad b { display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 6px; }
+  .quad span { font-size: 12.5px; line-height: 1.8; color: var(--muted); }
+  /* 日本の色名のインク。アプリの中と同じ色 */
+  .q-now     { border-color: #33a070; background: rgba(51,160,112,.08); }
+  .q-now b   { color: #2b8a60; }
+  .q-later   { border-color: #4f70b8; background: rgba(79,112,184,.08); }
+  .q-later b { color: #4460a0; }
+  .q-grow    { border-color: #c79429; background: rgba(199,148,41,.08); }
+  .q-grow b  { color: #a87c1e; }
+  .q-release { border-color: #8f76b8; background: rgba(143,118,184,.08); }
+  .q-release b { color: #7a63a0; }
+
+  /* ---- 道具の一覧 ---- */
+  .toolgroups {
+    display: flex; flex-wrap: wrap; gap: 22px;
+    margin: 34px 0 24px;
+  }
+  .tgroup {
+    flex: 1 1 300px;
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+  .tgroup h3 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    letter-spacing: 0.04em;
+  }
+  .tgroup ul { list-style: none; padding: 0; margin: 0; }
+  .tgroup li {
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+  .tgroup li:first-child { border-top: 0; }
+  .tgroup li b {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+
+
+  .tgroup li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .tgroup li > div { flex: 1; }
+  .ticon {
+    flex: 0 0 auto;
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    margin-top: 2px;
+  }
+  .ticon img { width: 34px; height: 34px; object-fit: contain; }
+
+  @media (max-width: 560px) {
+    .quads { grid-template-columns: 1fr; }
+    .verb { padding: 20px 16px; }
+  }
+
+  /* ---- 2カラム ---- */
+  .cols { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+  .cols .text { flex: 1 1 340px; display: flex; flex-direction: column; gap: 18px; }
+  .cols .shots { flex: 0 1 auto; display: flex; gap: 20px; justify-content: center; margin-inline: auto; }
+  .phone {
+    background: #1d1d21;
+    border: 1px solid rgba(28,27,25,0.10);
+    border-radius: 34px;
+    padding: 9px;
+    box-shadow: 0 18px 44px rgba(28,27,25,0.13);
+    width: min(240px, 62vw);
+  }
+  .phone img { display: block; width: 100%; border-radius: 26px; }
+  .phone.small { width: min(200px, 52vw); }
+
+  /* ---- イラスト ---- */
+  .illust {
+    display: block;
+    width: min(440px, 88vw);
+    height: auto;
+    border-radius: 18px;
+    margin-inline: auto;
+  }
+  .illust.wide { width: min(640px, 92vw); }
+
+  /* ---- 具体例(吹き出し → 行き先) ---- */
+  .bubble {
+    background: #fdfbf5;
+    color: #332c22;
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    padding: 16px 18px;
+    font-size: 14.5px;
+    line-height: 1.85;
+    max-width: 30em;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .dests { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+  .dest {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+  .dest .dico { font-size: 17px; }
+  .dest b { display: block; font-size: 14px; color: var(--ink); }
+  .dest span:not(.dico) { display: block; font-size: 12px; color: var(--muted); }
+
+  /* ---- AIの返事のビフォーアフター ---- */
+  .compare { display: flex; gap: 16px; flex-wrap: wrap; }
+  .reply {
+    flex: 1 1 260px;
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .reply .tag {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    opacity: 0.75;
+  }
+  .reply p { max-width: none; margin: 0; }
+  .reply .ans { border-left: 2px solid currentColor; padding-left: 12px; opacity: 0.92; }
+  .reply .verdict { font-size: 12.5px; opacity: 0.7; }
+  .reply.generic {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .reply.knows {
+    background: #fdfbf5;
+    color: #332c22;
+    box-shadow: 0 12px 30px rgba(28,27,25,0.11);
+  }
+  .reply.knows .verdict { font-weight: 600; opacity: 0.85; }
+
+  ul.points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  ul.points li { padding-left: 20px; position: relative; font-size: 15px; }
+  ul.points li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.75em;
+    width: 8px; height: 2px; background: var(--light);
+    opacity: 0.8;
+  }
+  ul.points li strong { color: var(--light); font-weight: 600; }
+  ul.points li .note { color: var(--muted); font-size: 13px; display: block; }
+
+  .steps { display: flex; gap: 16px; flex-wrap: wrap; counter-reset: step; }
+  .step {
+    flex: 1 1 180px;
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 18px;
+    counter-increment: step;
+  }
+  .step::before {
+    content: counter(step);
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--light);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .step b { display: block; font-size: 15px; margin-bottom: 4px; }
+  .step span { color: var(--muted); font-size: 13px; }
+
+  .plans { display: flex; gap: 16px; flex-wrap: wrap; }
+  .plan {
+    flex: 1 1 220px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    background: var(--bg2);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .plan.plus { border-color: rgba(176,141,87,0.55); box-shadow: 0 8px 26px rgba(28,27,25,0.08); }
+  .plan .name { font-family: var(--serif); font-size: 20px; }
+  .plan .price { font-size: 26px; font-weight: 700; color: var(--light); font-variant-numeric: tabular-nums; }
+  .plan .price small { font-size: 13px; color: var(--muted); font-weight: 400; }
+  .plan ul { margin: 0; padding: 0 0 0 1.2em; color: var(--muted); font-size: 13.5px; display: flex; flex-direction: column; gap: 6px; }
+  .promise { color: var(--muted); font-size: 14px; }
+  .promise b { color: var(--ink); }
+
+  /* ---- サポート ---- */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .card p { max-width: none; }
+  .faq b { color: var(--light); font-weight: 600; }
+
+  footer {
+    padding: 44px 24px 60px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .beam, .appicon { animation: none; }
+  }
+  @media (max-width: 720px) {
+    section { padding: 72px 20px; }
+    .cols { gap: 32px; }
+  }
+
+  /* 【2026-07-28 Kai】1個ずつ押して回すボタンだと、韓国語があること自体に
+     気づけない。3つとも常に見える形へ作り替えた。 */
+  .langtabs {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.82);   /* 白地に合わせる(2026-07-27) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 999px;
+    padding: 4px;
+    font-family: var(--sans);
+  }
+  .langtabs button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    border-radius: 999px;
+    padding: 6px 11px;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .langtabs button:hover { color: var(--ink); }
+  .langtabs button[aria-current="true"] {
+    background: var(--ink);
+    color: #fff;
+  }
+  @media (max-width: 480px) {
+    .langtabs { top: 12px; right: 12px; padding: 3px; }
+    .langtabs button { padding: 5px 8px; font-size: 11.5px; }
+  }
+  /* 3言語対応(2026-07-28): 既定で全部隠し、選ばれた言語のspanだけ見せる方式に変更。
+     以前は「英語ならja側を隠す/それ以外ならen側を隠す」の2値だったが、
+     韓国語を足すには「選ばれていないもの全部隠す」形に直す必要があった。 */
+  /* 【2026-07-28】.dest span:not(.dico) のような、他の見た目ルールの方が
+     詳細度で勝ってしまい、隠したはずの言語のspanが表示される事故があった
+     (歯医者カードで日英韓が同時に3行並んでいた)。!important で必ず勝たせる。 */
+  span[data-i18n] { display: none !important; }
+  html[data-lang="ja"] span[data-i18n="ja"],
+  html[data-lang="en"] span[data-i18n="en"],
+  html[data-lang="ko"] span[data-i18n="ko"] { display: inline !important; }
+  /* JS が data-lang を付ける前の一瞬は、静的な lang="ja" に合わせて日本語を出す
+     (無表示のちらつきを防ぐ)。JS 実行後は上のルールに置き換わる。 */
+  html:not([data-lang]) span[data-i18n="ja"] { display: inline !important; }
+</style>
+
+<style>
+  .toolpage { padding: 26px 0; border-top: 1px solid var(--line); }
+  .toolpage:first-of-type { border-top: 0; }
+  .tphead { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+  .tphead .ticon { width: 40px; height: 40px; font-size: 24px; }
+  .tphead .ticon img { width: 40px; height: 40px; }
+  .toolpage h3 {
+    font-family: var(--serif); font-size: 21px; font-weight: 600;
+    margin: 0 0 4px; letter-spacing: 0.02em;
+  }
+  .tpone { color: var(--muted); font-size: 13.5px; margin: 0; }
+  .toolpage p { font-size: 14.5px; line-height: 2; color: var(--ink); margin: 12px 0 0; }
+  .toolpage > p { padding-left: 54px; }
+  @media (max-width: 560px) { .toolpage > p { padding-left: 0; } }
+  .toolpage p.tpone { line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<div class="langtabs" id="langTabs" role="group" aria-label="Switch language / 言語を切り替え / 언어 전환">
+  <button type="button" data-lang-btn="ja">日本語</button>
+  <button type="button" data-lang-btn="en">EN</button>
+  <button type="button" data-lang-btn="ko">한국어</button>
+</div>
+<script>
+  (function () {
+    var KEY = "headlightLang";
+    var LANGS = ["ja", "en", "ko"];
+    var TITLE_KEY = { ja: "titleJa", en: "titleEn", ko: "titleKo" };
+    var html = document.documentElement;
+    var tabs = document.getElementById("langTabs");
+    var buttons = tabs.querySelectorAll("[data-lang-btn]");
+    function apply(lang) {
+      html.setAttribute("lang", lang);
+      html.dataset.lang = lang;
+      buttons.forEach(function (b) {
+        b.setAttribute("aria-current", b.dataset.langBtn === lang ? "true" : "false");
+      });
+      var titleEl = document.querySelector("title");
+      if (titleEl) {
+        titleEl.textContent = titleEl.dataset[TITLE_KEY[lang]];
+      }
+      document.querySelectorAll("img[data-alt-ja]").forEach(function (img) {
+        var key = "alt" + lang.charAt(0).toUpperCase() + lang.slice(1);
+        img.alt = img.dataset[key];
+      });
+    }
+    var saved = localStorage.getItem(KEY);
+    if (LANGS.indexOf(saved) !== -1) {
+      apply(saved);
+    } else {
+      // 初回だけブラウザの言語を見て決める。以降はここを通らない
+      // (保存された選択があるかどうかだけで判定。ここではlocalStorageに書き込まない
+      // ので、端末の言語設定を後で変えれば次回また追従する)。
+      var browserLang = (navigator.language || "ja").toLowerCase();
+      var guess = "en";
+      if (browserLang.indexOf("ja") === 0) guess = "ja";
+      else if (browserLang.indexOf("ko") === 0) guess = "ko";
+      apply(guess);
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var lang = b.dataset.langBtn;
+        localStorage.setItem(KEY, lang);
+        apply(lang);
+      });
+    });
+  })();
+</script>
+
+<section class="hero" style="padding-bottom: 40px;">
+  <div class="inner">
+    <div class="latin">HEADLIGHT</div>
+    <h1><span data-i18n="ja">道具</span><span data-i18n="en">The tools</span><span data-i18n="ko">도구</span></h1>
+    <p class="tagline"><span data-i18n="ja">画面の下、タブのすぐ上が道具置き場です。<br>並べる道具は、あなたが選びます。</span><span data-i18n="en">Just above the tab bar is your tool shelf.<br>You choose what sits there.</span><span data-i18n="ko">화면 아래, 탭 바로 위가 도구 자리예요.<br>놓을 도구는 당신이 고릅니다.</span></p>
+    <a class="beta-badge" href="./"><span data-i18n="ja">&larr; Headlightのことを見る</span><span data-i18n="en">&larr; Back to Headlight</span><span data-i18n="ko">&larr; Headlight 보러 가기</span></a>
+  </div>
+</section>
+<section id="tidy-group">
+  <div class="inner reveal">
+    <div class="eyebrow">🧠 <span data-i18n="ja">頭を軽くする</span><span data-i18n="en">Lighten your head</span><span data-i18n="ko">머리를 가볍게</span></div>
+    <h2><span data-i18n="ja">考えや気持ちを整理する道具</span><span data-i18n="en">Tools for sorting out thoughts and feelings</span><span data-i18n="ko">생각과 마음을 정리하는 도구</span></h2>
+    <article class="toolpage" id="tidy">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/tidy.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗂'))"></span>
+        <div>
+          <h3><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span><span class="pro-badge"><span data-i18n="ja">AI Pro</span><span data-i18n="en">AI Pro</span><span data-i18n="ko">AI Pro</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">話すと、4つに分かれる</span><span data-i18n="en">Speak, and it splits into four</span><span data-i18n="ko">말하면, 넷으로 나뉘어요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">開くと、もうマイクが聞いています。頭にあることを、順番も気にせず話してください。話し終えて「整理する」を押すと、AIが意味のまとまりで切り分けて、4象限マトリクスに並べます。</span><span data-i18n="en">It's already listening when you open it. Say what's on your mind, in any order. Press &ldquo;sort it out&rdquo; and AI separates it into meaningful pieces and lays them out as a four-quadrant matrix.</span><span data-i18n="ko">열면 이미 마이크가 듣고 있어요. 머릿속에 있는 것을 순서 상관없이 말해 주세요. 「정리하기」를 누르면 AI가 의미 단위로 나눠, 4사분면 매트릭스로 늘어놓아요.</span></p>
+      <p><span data-i18n="ja">🌱 いま軽くなる ／ 🌙 あとで大丈夫 ／ 🌿 育てる ／ 🍃 手放していい。「急ぎか」と「いま答えを出せるか」で分けています。つまんで別のところへ動かせて、言葉そのものも直せます。切り出された言葉は日記にも並びます。</span><span data-i18n="en">🌱 Lighter now / 🌙 Later is fine / 🌿 Growing / 🍃 Can let go &mdash; split by how urgent it is and whether you can settle it yet. Drag anything to another quadrant, or edit the words themselves. What's separated out also appears in your journal.</span><span data-i18n="ko">🌱 지금 가벼워지는 것 / 🌙 나중에도 괜찮은 것 / 🌿 키우는 것 / 🍃 놓아도 되는 것. 「급한지」와 「지금 답을 낼 수 있는지」로 나눠요. 집어서 다른 곳으로 옮길 수 있고, 말 자체도 고칠 수 있어요.</span></p>
+      <p><span data-i18n="ja">やることを増やすためではなく、減らすためのAIです。急かしません。責めません。できなかった日は、空白のままでいい。</span><span data-i18n="en">This AI is here to shorten the list, not lengthen it. No pushing, no blame. A day you couldn't is just blank.</span><span data-i18n="ko">할 일을 늘리기 위해서가 아니라, 줄이기 위한 AI예요. 재촉하지 않아요. 탓하지 않아요.</span></p>
+    </article>
+    <article class="toolpage" id="remember">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/remember.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🧠'))"></span>
+        <div>
+          <h3><span data-i18n="ja">覚えておく</span><span data-i18n="en">Remember</span><span data-i18n="ko">기억해 두기</span><span class="pro-badge"><span data-i18n="ja">AI Pro</span><span data-i18n="en">AI Pro</span><span data-i18n="ko">AI Pro</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">人・ペット・家ごとの、第二の記憶</span><span data-i18n="en">A second memory, one per person or thing</span><span data-i18n="ko">사람・반려동물・집마다의, 두 번째 기억</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">メモ帳ではありません。相手ごとの専用ページです。子ども、ペット、パートナー、家、車、仕事。しるし(絵文字)と名前は自由に決められて、一覧は「誰について考えたいか」から選ぶ近道になります。</span><span data-i18n="en">This is not a notepad. Each subject gets its own page &mdash; a child, a pet, a partner, the house, the car, work. Choose any emoji and name; the list becomes a shortcut you enter by <em>who</em>, not by <em>which feature</em>.</span><span data-i18n="ko">메모장이 아니에요. 대상마다의 전용 페이지예요. 아이, 반려동물, 파트너, 집, 차, 일. 표식(이모지)과 이름은 자유롭게 정할 수 있고, 목록은 「누구에 대해 생각하고 싶은가」로 들어가는 지름길이 돼요.</span></p>
+      <p><span data-i18n="ja">📌 大切なこと ／ ✅ やること ／ 📝 最近の記録 ／ 💬 AIに相談。下から書くと、AIが3つのどれかへ置きます。</span><span data-i18n="en">📌 Important / ✅ To do / 📝 Recently / 💬 Ask AI. Write at the bottom and AI files it into one of the three.</span><span data-i18n="ko">📌 중요한 것 / ✅ 할 일 / 📝 최근 기록 / 💬 AI에게 상담. 아래에 쓰면 AI가 셋 중 하나에 놓아요.</span></p>
+      <p><span data-i18n="ja">いちばん大事な作りは、「大切なこと」が増え続けないことです。同じことを言い直すと、AIが古いほうを新しいほうに書き換えます。足すほど長くなるメモは、長くなるほど読まれません。</span><span data-i18n="en">The important part: the &ldquo;Important&rdquo; list never grows forever. Say the same thing differently and AI replaces the old line. A note that only grows is a note nobody reads.</span><span data-i18n="ko">가장 중요한 점은 「중요한 것」이 계속 늘어나지 않는다는 거예요. 같은 것을 다시 말하면, AI가 예전 것을 새것으로 바꿔 써요.</span></p>
+    </article>
+    <article class="toolpage" id="paper">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/paper.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📄'))"></span>
+        <div>
+          <h3><span data-i18n="ja">白い紙</span><span data-i18n="en">Blank paper</span><span data-i18n="ko">흰 종이</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">仕分けられたくない日のために</span><span data-i18n="en">For days you don't want sorting</span><span data-i18n="ko">분류되고 싶지 않은 날을 위해</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">AIが何もしない場所です。ただの白い紙。書いたものは分類されず、どこにも振り分けられません。</span><span data-i18n="en">A place where AI does nothing. Just a blank sheet. What you write is not sorted, not filed anywhere.</span><span data-i18n="ko">AI가 아무것도 하지 않는 곳이에요. 그냥 흰 종이. 쓴 것은 분류되지 않고, 어디로도 나뉘지 않아요.</span></p>
+      <p><span data-i18n="ja">整理されたくない日があります。そのための場所です。</span><span data-i18n="en">Some days you don't want to be organised. This is for those days.</span><span data-i18n="ko">정리되고 싶지 않은 날이 있어요. 그런 날을 위한 곳이에요.</span></p>
+    </article>
+    <article class="toolpage" id="jar">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/jar.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('💡'))"></span>
+        <div>
+          <h3><span data-i18n="ja">アイデアの瓶</span><span data-i18n="en">Idea jar</span><span data-i18n="ko">아이디어 병</span><span class="paid-badge"><span data-i18n="ja">道具ぜんぶ &yen;1,000</span><span data-i18n="en">All tools &yen;1,000</span><span data-i18n="ko">도구 전부 &yen;1,000</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">ひらめきが、玉になって溜まる</span><span data-i18n="en">Ideas collect as marbles</span><span data-i18n="ko">번뜩임이, 구슬이 되어 쌓여요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">思いつきが、瓶の中の玉として溜まっていきます。満タンになった瓶は、そのまま瓶のページに居続けます。</span><span data-i18n="en">Ideas gather as marbles in a jar. A full jar simply stays on the page, full.</span><span data-i18n="ko">떠오른 것이 병 속의 구슬로 쌓여 가요. 가득 찬 병은 그대로 병 페이지에 남아 있어요.</span></p>
+      <p><span data-i18n="ja">実現したものだけが、右上の棚へ移ります。そこは達成の棚です。</span><span data-i18n="en">Only what actually happened moves to the shelf in the corner. That shelf is for things you made real.</span><span data-i18n="ko">실현된 것만이 오른쪽 위의 선반으로 옮겨져요. 그곳은 달성의 선반이에요.</span></p>
+    </article>
+    <article class="toolpage" id="release">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/release.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🌪'))"></span>
+        <div>
+          <h3><span data-i18n="ja">手放す</span><span data-i18n="en">Let go</span><span data-i18n="ko">놓아주기</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">言って、消す。どこにも残らない</span><span data-i18n="en">Say it, and it's gone. Nothing is kept</span><span data-i18n="ko">말하고, 지우기. 어디에도 남지 않아요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">愚痴も、弱音も、言い切ってしまえます。話した言葉はどこにも保存されません。誰にも聞かれず、ただ出して、消せます。</span><span data-i18n="en">Complaints, weakness &mdash; say all of it. Nothing is saved anywhere. No one hears it. You just let it out, and it's gone.</span><span data-i18n="ko">푸념도, 약한 소리도, 다 말해 버릴 수 있어요. 말한 것은 어디에도 저장되지 않아요.</span></p>
+      <p><span data-i18n="ja">残すことが目的ではない言葉のための場所です。</span><span data-i18n="en">A place for words whose purpose is not to be kept.</span><span data-i18n="ko">남기는 것이 목적이 아닌 말을 위한 곳이에요.</span></p>
+    </article>
+  </div>
+</section>
+
+<section id="todo-group">
+  <div class="inner reveal">
+    <div class="eyebrow">✅ <span data-i18n="ja">今日を進める</span><span data-i18n="en">Move today along</span><span data-i18n="ko">오늘을 나아가게</span></div>
+    <h2><span data-i18n="ja">やることや時間を整理する道具</span><span data-i18n="en">Tools for tasks and time</span><span data-i18n="ko">할 일과 시간을 정리하는 도구</span></h2>
+    <article class="toolpage" id="todo">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/todo.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('✅'))"></span>
+        <div>
+          <h3><span data-i18n="ja">やること</span><span data-i18n="en">To do</span><span data-i18n="ko">할 일</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">話した言葉から、勝手に集まる</span><span data-i18n="en">Gathers itself from what you said</span><span data-i18n="ko">말한 것에서, 저절로 모여요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">「電池も買わないと」と話せば、それだけがやることに入ります。自分で打ち直す必要はありません。</span><span data-i18n="en">Say &ldquo;I need to grab batteries&rdquo; and just that lands in your to-dos. Nothing to retype.</span><span data-i18n="ko">「배터리도 사야 해」라고 말하면, 그것만이 할 일에 들어가요. 다시 입력할 필요 없어요.</span></p>
+      <p><span data-i18n="ja">チェックを押すのに、連続日数も達成率も付いてきません。</span><span data-i18n="en">Ticking something off brings no streak and no completion rate.</span><span data-i18n="ko">체크를 눌러도 연속 일수도 달성률도 따라오지 않아요.</span></p>
+    </article>
+    <article class="toolpage" id="planner">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/planner.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗓'))"></span>
+        <div>
+          <h3><span data-i18n="ja">3日プランナー</span><span data-i18n="en">3-day planner</span><span data-i18n="ko">3일 플래너</span><span class="paid-badge"><span data-i18n="ja">道具ぜんぶ &yen;1,000</span><span data-i18n="en">All tools &yen;1,000</span><span data-i18n="ko">도구 전부 &yen;1,000</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">見るのは3日先まで。それ以上は考えない</span><span data-i18n="en">Only three days ahead. No further</span><span data-i18n="ko">보는 건 3일 앞까지. 그 이상은 생각하지 않아요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">今日からの3日を、30分のコマで組みます。1週間や1ヶ月の予定表は作りません。3日なら、頭に入るからです。</span><span data-i18n="en">Lay out the next three days in 30-minute blocks. No weekly or monthly grid &mdash; three days is what fits in a head.</span><span data-i18n="ko">오늘부터 3일을 30분 칸으로 짜요. 일주일이나 한 달 일정표는 만들지 않아요. 3일이면 머리에 들어오니까요.</span></p>
+      <p><span data-i18n="ja">できなかったコマは、いまから先へ自動で組み直せます。罪悪感を溜めないためです。</span><span data-i18n="en">Blocks you missed can be re-laid from now onwards, automatically. So guilt doesn't pile up.</span><span data-i18n="ko">못 한 칸은 지금부터 앞으로 자동으로 다시 짤 수 있어요. 죄책감을 쌓지 않기 위해서예요.</span></p>
+    </article>
+    <article class="toolpage" id="timer">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/timer.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⏱'))"></span>
+        <div>
+          <h3><span data-i18n="ja">タイマー</span><span data-i18n="en">Timer</span><span data-i18n="ko">타이머</span><span class="paid-badge"><span data-i18n="ja">道具ぜんぶ &yen;1,000</span><span data-i18n="en">All tools &yen;1,000</span><span data-i18n="ko">도구 전부 &yen;1,000</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">「3分タイマー」と話すだけで始まる</span><span data-i18n="en">Just say &ldquo;three-minute timer&rdquo;</span><span data-i18n="ko">「3분 타이머」라고 말하면 시작돼요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">10秒から1時間まで、押した瞬間に始まります。自由に決めることもできます。残り時間は色のついた面積で減っていくので、数字を読まなくても体で分かります。</span><span data-i18n="en">From ten seconds to an hour, it starts the moment you press. Or set your own. The remaining time shrinks as a coloured wedge, so you feel it without reading numbers.</span><span data-i18n="ko">10초부터 1시간까지, 누른 순간 시작돼요. 직접 정할 수도 있어요. 남은 시간은 색이 있는 면적으로 줄어들어, 숫자를 읽지 않아도 몸으로 알 수 있어요.</span></p>
+      <p><span data-i18n="ja">ストップウォッチ、ポモドーロ、瞑想、筋トレも、ここから行けます。</span><span data-i18n="en">The stopwatch, pomodoro, meditation and workout timers all live here too.</span><span data-i18n="ko">스톱워치, 포모도로, 명상, 근력 운동도 여기서 갈 수 있어요.</span></p>
+    </article>
+  </div>
+</section>
+
+<section id="mood-group">
+  <div class="inner reveal">
+    <div class="eyebrow">🌿 <span data-i18n="ja">自分を整える</span><span data-i18n="en">Look after yourself</span><span data-i18n="ko">자신을 돌보기</span></div>
+    <h2><span data-i18n="ja">心や体の状態を記録・調整する道具</span><span data-i18n="en">Tools for noting how mind and body are</span><span data-i18n="ko">마음과 몸의 상태를 기록·조절하는 도구</span></h2>
+    <article class="toolpage" id="mood">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/mood.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📈'))"></span>
+        <div>
+          <h3><span data-i18n="ja">今日の調子</span><span data-i18n="en">How you're doing</span><span data-i18n="ko">오늘의 컨디션</span><span class="free-badge"><span data-i18n="ja">ずっと無料</span><span data-i18n="en">Free forever</span><span data-i18n="ko">계속 무료</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">沈む側にも、高ぶる側にも振れる</span><span data-i18n="en">It swings low and high, both ways</span><span data-i18n="ko">가라앉는 쪽에도, 들뜨는 쪽에도 움직여요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">スライドひとつで、その日の調子を残せます。真ん中が「ふつう」で、沈む側と高ぶる側の両方へ伸びます。</span><span data-i18n="en">One slider, and the day is recorded. The centre is &ldquo;steady&rdquo;, and it reaches both down and up.</span><span data-i18n="ko">슬라이드 하나로, 그날의 컨디션을 남길 수 있어요. 가운데가 「보통」이고, 가라앉는 쪽과 들뜨는 쪽 양쪽으로 뻗어요.</span></p>
+      <p><span data-i18n="ja">「悪い←→良い」にしなかったのは、上がりすぎも記録すべき出来事だからです。良いに振り切れた日が、あとから見ると入り口だったということが起きます。</span><span data-i18n="en">It is not a &ldquo;bad to good&rdquo; scale, because swinging high is also worth noticing. A day that felt great can look different in hindsight.</span><span data-i18n="ko">「나쁨←→좋음」으로 하지 않은 것은, 지나치게 올라가는 것도 기록해야 할 일이기 때문이에요.</span></p>
+      <p><span data-i18n="ja">連続日数も平均も出しません。つけなかった日は、空いたままでいい。</span><span data-i18n="en">No streaks, no averages. Days you skipped just stay empty.</span><span data-i18n="ko">연속 일수도 평균도 내지 않아요. 적지 않은 날은 비어 있어도 괜찮아요.</span></p>
+    </article>
+    <article class="toolpage" id="reflect">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/reflect.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🌙'))"></span>
+        <div>
+          <h3><span data-i18n="ja">よかったこと・夜の振り返り</span><span data-i18n="en">Good moments & night notes</span><span data-i18n="ko">좋았던 일・밤의 되돌아보기</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">一日の終わりに、ひとこと</span><span data-i18n="en">A word at the end of the day</span><span data-i18n="ko">하루의 끝에, 한마디</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">その日にあったよかったことと、夜の振り返りを、ひとことずつ残せます。</span><span data-i18n="en">One line for something good that happened, and one for the night's look back.</span><span data-i18n="ko">그날 있었던 좋았던 일과, 밤의 되돌아보기를 한마디씩 남길 수 있어요.</span></p>
+      <p><span data-i18n="ja">書かない日があっても、何も起きません。</span><span data-i18n="en">Skip it and nothing happens.</span><span data-i18n="ko">쓰지 않는 날이 있어도, 아무 일도 일어나지 않아요.</span></p>
+    </article>
+    <article class="toolpage" id="meditation">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/meditation.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🍃'))"></span>
+        <div>
+          <h3><span data-i18n="ja">瞑想</span><span data-i18n="en">Meditation</span><span data-i18n="ko">명상</span><span class="paid-badge"><span data-i18n="ja">道具ぜんぶ &yen;1,000</span><span data-i18n="en">All tools &yen;1,000</span><span data-i18n="ko">도구 전부 &yen;1,000</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">円がふくらんだら吸う。しぼんだら吐く</span><span data-i18n="en">Breathe in as the circle grows, out as it shrinks</span><span data-i18n="ko">원이 부풀면 들이쉬고, 줄어들면 내쉬어요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">1分から10分まで。円が4秒でふくらみ、6秒でしぼみます。文字の指示はありません。始まりと終わりに、金属のベルが鳴ります。</span><span data-i18n="en">One to ten minutes. The circle grows over four seconds and shrinks over six. No written instructions. A metal bell marks the start and the end.</span><span data-i18n="ko">1분에서 10분까지. 원이 4초에 부풀고, 6초에 줄어들어요. 글로 된 지시는 없어요.</span></p>
+      <p><span data-i18n="ja">記録も連続日数もありません。終わったら「おかえりなさい。」とだけ出ます。</span><span data-i18n="en">No records, no streaks. When it ends, it just says &ldquo;welcome back.&rdquo;</span><span data-i18n="ko">기록도 연속 일수도 없어요. 끝나면 「어서 오세요.」라고만 나와요.</span></p>
+    </article>
+    <article class="toolpage" id="workout">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/workout.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🏋️'))"></span>
+        <div>
+          <h3><span data-i18n="ja">筋トレ</span><span data-i18n="en">Workout</span><span data-i18n="ko">근력 운동</span><span class="paid-badge"><span data-i18n="ja">道具ぜんぶ &yen;1,000</span><span data-i18n="en">All tools &yen;1,000</span><span data-i18n="ko">도구 전부 &yen;1,000</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">インターバル・TABATA・EMOM。回数は数えない</span><span data-i18n="en">Interval, TABATA, EMOM. Nothing is counted</span><span data-i18n="ko">인터벌・TABATA・EMOM. 횟수는 세지 않아요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">インターバル、セット休憩、TABATA、EMOM、ラウンドの5つ。準備は黄、運動は赤、休憩は緑。残り3秒は数字が大きく跳ねて、手にも刻みが返ります。</span><span data-i18n="en">Five kinds: interval, set rest, TABATA, EMOM and rounds. Amber to get ready, red to work, green to rest. In the last three seconds the number jumps and your hand feels each beat.</span><span data-i18n="ko">인터벌, 세트 휴식, TABATA, EMOM, 라운드 다섯 가지. 준비는 노랑, 운동은 빨강, 휴식은 초록.</span></p>
+      <p><span data-i18n="ja">ホイッスルが鳴ります。消音モードでも鳴ります。そして回数は記録しません。</span><span data-i18n="en">A whistle sounds &mdash; even on silent. And nothing is recorded.</span><span data-i18n="ko">휘슬이 울려요. 무음 모드에서도 울려요. 그리고 횟수는 기록하지 않아요.</span></p>
+    </article>
+  </div>
+</section>
+
+<section id="medicine-group">
+  <div class="inner reveal">
+    <div class="eyebrow">🏠 <span data-i18n="ja">暮らしを支える</span><span data-i18n="en">Support daily life</span><span data-i18n="ko">생활을 뒷받침하기</span></div>
+    <h2><span data-i18n="ja">日々の生活を記録・管理する道具</span><span data-i18n="en">Tools for keeping track of everyday life</span><span data-i18n="ko">일상생활을 기록·관리하는 도구</span></h2>
+    <article class="toolpage" id="medicine">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/medicine.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('💊'))"></span>
+        <div>
+          <h3><span data-i18n="ja">薬アシスタント</span><span data-i18n="en">Medicine assistant</span><span data-i18n="ko">약 어시스턴트</span><span class="free-badge"><span data-i18n="ja">ずっと無料</span><span data-i18n="en">Free forever</span><span data-i18n="ko">계속 무료</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">飲んだら押すだけ。飲み忘れを責めない</span><span data-i18n="en">Just press when you take it. No nagging</span><span data-i18n="ko">먹으면 누르기만. 빠뜨린 것을 탓하지 않아요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">はじめに一度だけ、薬と時間帯(朝・昼・夜・頓服)を登録します。あとは飲んだら押すだけ。押し間違えたら、もう一度押せば取り消せます。</span><span data-i18n="en">Register your medicines and times once &mdash; morning, midday, night, as needed. After that, just press when you take one. Press again to undo.</span><span data-i18n="ko">처음 한 번만 약과 시간대(아침・점심・저녁・필요할 때)를 등록해요. 그 뒤로는 먹으면 누르기만.</span></p>
+      <p><span data-i18n="ja">「飲み忘れが多いですね」とは絶対に言いません。連続日数も達成率もありません。履歴は押した日だけが並びます。</span><span data-i18n="en">It will never say &ldquo;you've been missing doses.&rdquo; No streaks, no rates. The history shows only the days you pressed.</span><span data-i18n="ko">「빠뜨리는 일이 많네요」라고 절대 말하지 않아요. 연속 일수도 달성률도 없어요.</span></p>
+    </article>
+    <article class="toolpage" id="meal">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/meal.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🍽'))"></span>
+        <div>
+          <h3><span data-i18n="ja">食事アシスタント</span><span data-i18n="en">Meal assistant</span><span data-i18n="ko">식사 어시스턴트</span><span class="pro-badge"><span data-i18n="ja">AI Pro</span><span data-i18n="en">AI Pro</span><span data-i18n="ko">AI Pro</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">撮るだけ。あと何g、と距離だけ言う</span><span data-i18n="en">Just snap it. It only tells you how far to go</span><span data-i18n="ko">찍기만. 앞으로 몇 g인지, 거리만 말해요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">食事を撮ると、AIが料理名・食材・カロリー・たんぱく質・脂質・炭水化物を見立てます。数字は直せます。</span><span data-i18n="en">Photograph a meal and AI estimates the dish, the ingredients, the calories and the protein, fat and carbs. You can change any of it.</span><span data-i18n="ko">식사를 찍으면 AI가 요리 이름・식재료・칼로리・단백질・지방・탄수화물을 추정해요.</span></p>
+      <p><span data-i18n="ja">目標は身長・体重・年齢・活動量から計算しています。AIに毎回違う数字を言わせるより、同じ数字なら必ず同じ答えが出るほうが信用できるからです。</span><span data-i18n="en">Your targets are calculated from height, weight, age and activity &mdash; the same inputs always give the same answer, which we trust more than asking AI each time.</span><span data-i18n="ko">목표는 키・몸무게・나이・활동량으로 계산해요. 같은 숫자를 넣으면 반드시 같은 답이 나오니까요.</span></p>
+      <p><span data-i18n="ja">「食べすぎです」「ヘルシーですね」とは言いません。出すのは、いまどこにいるかと、目標までの距離だけです。</span><span data-i18n="en">It never says &ldquo;too much&rdquo; or &ldquo;how healthy.&rdquo; It shows where you are and how far is left. Nothing else.</span><span data-i18n="ko">「너무 많이 먹었어요」「건강하네요」라고 말하지 않아요.</span></p>
+    </article>
+    <article class="toolpage" id="expense">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/expense.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🧾'))"></span>
+        <div>
+          <h3><span data-i18n="ja">経費アシスタント</span><span data-i18n="en">Expense assistant</span><span data-i18n="ko">경비 어시스턴트</span><span class="pro-badge"><span data-i18n="ja">AI Pro</span><span data-i18n="en">AI Pro</span><span data-i18n="ko">AI Pro</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">レシートを撮って、何に使ったか話すだけ</span><span data-i18n="en">Snap the receipt, say what it was for</span><span data-i18n="ko">영수증을 찍고, 무엇에 썼는지 말하기만</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">レシートを撮ると、AIが店・日付・金額・品目を読みます。そのあと質問はひとつだけ。「これは何に使いましたか?」。いつもの言葉で答えれば、用途・内容・勘定科目の候補が立ちます。</span><span data-i18n="en">Photograph a receipt and AI reads the store, date, amount and items. Then one question: &ldquo;What was this for?&rdquo; Answer in your own words and it works out the purpose, the item and a suggested account.</span><span data-i18n="ko">영수증을 찍으면 AI가 가게・날짜・금액・품목을 읽어요. 그 뒤 질문은 하나뿐. 「이건 무엇에 썼나요?」</span></p>
+      <p><span data-i18n="ja">勘定科目を覚える必要も、カテゴリを選ぶ必要もありません。国と働き方を最初に聞くので、日本以外でも案内が変わります。保管の目安も出ます。</span><span data-i18n="en">No account codes to learn, no categories to pick. It asks your country and how you work, so the guidance changes outside Japan &mdash; including how long to keep things.</span><span data-i18n="ko">계정과목을 외울 필요도, 카테고리를 고를 필요도 없어요. 국가와 근무 형태를 처음에 물어요.</span></p>
+      <p><span data-i18n="ja">「確定申告対応」とは名乗りません。これは申告の準備を楽にする整理で、会計ソフトの代わりではありません。制度は変わります。最後に決めるのは、あなたと税理士さんです。</span><span data-i18n="en">It does not claim to &ldquo;handle your tax return.&rdquo; It makes getting ready easier; it is not accounting software. Rules change, and you and your accountant have the final say.</span><span data-i18n="ko">「세금 신고 대응」이라고 내세우지 않아요. 신고 준비를 편하게 하는 정리이지, 회계 소프트웨어를 대신하지 않아요.</span></p>
+    </article>
+    <article class="toolpage" id="daily">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/daily.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📼'))"></span>
+        <div>
+          <h3><span data-i18n="ja">音を残す・まいにちのチェック・サブスク管理</span><span data-i18n="en">Voice notes, daily checks, subscriptions</span><span data-i18n="ko">소리 남기기・매일 체크・구독 관리</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">日々の小さなことも、ここに</span><span data-i18n="en">The small daily things live here too</span><span data-i18n="ko">매일의 작은 것들도, 여기에</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">カセット型のRECボタンで、歌や声をそのまま録音できます。あとから文字にもできます。まいにちのチェックは、できたら✓を押すだけ。サブスクは話すだけで登録できて、引き落とし日と金額がひと目で分かります。</span><span data-i18n="en">A cassette-shaped record button captures a song or a voice as it is, and can turn it into text later. Daily checks are a single tick. Subscriptions register by voice, with the charge date and amount at a glance.</span><span data-i18n="ko">카세트 모양의 REC 버튼으로 노래나 목소리를 그대로 녹음할 수 있어요. 매일 체크는 되면 ✓를 누르기만.</span></p>
+      <p><span data-i18n="ja">できなかった日は空白のまま。空白は空白のままにしておけます。</span><span data-i18n="en">A day you couldn't stays blank &mdash; and blank is allowed to stay blank.</span><span data-i18n="ko">못 한 날은 비어 있는 그대로. 비어 있어도 괜찮아요.</span></p>
+    </article>
+  </div>
+</section>
+
+<section id="folder-group">
+  <div class="inner reveal">
+    <div class="eyebrow">📁 <span data-i18n="ja">しまっておく</span><span data-i18n="en">Put away</span><span data-i18n="ko">보관하기</span></div>
+    <h2><span data-i18n="ja">言葉を整理して保存する道具</span><span data-i18n="en">Tools for filing your words away</span><span data-i18n="ko">말을 정리해 보관하는 도구</span></h2>
+    <article class="toolpage" id="folder">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/folder.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📁'))"></span>
+        <div>
+          <h3><span data-i18n="ja">フォルダ</span><span data-i18n="en">Folders</span><span data-i18n="ko">폴더</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">溜まってきたら、AIがまとめ方を提案する</span><span data-i18n="en">Once enough piles up, AI suggests how to file it</span><span data-i18n="ko">쌓이면, AI가 정리 방법을 제안해요</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">言葉が溜まってくると、よく出てくる言葉から「このフォルダを作りませんか」と提案が出ます。承認すると、過去の言葉ごと整理されます。</span><span data-i18n="en">As words pile up, frequently repeated ones become a suggestion: &ldquo;shall we make this folder?&rdquo; Accept, and the past words are filed too.</span><span data-i18n="ko">말이 쌓이면, 자주 나오는 말에서 「이 폴더를 만들까요?」라는 제안이 나와요.</span></p>
+      <p><span data-i18n="ja">提案はAIを呼ばずに出しています。だから無料の期間が終わっても出ます。</span><span data-i18n="en">The suggestion is made without calling AI, so it keeps working after the free month.</span><span data-i18n="ko">제안은 AI를 부르지 않고 나와요. 그래서 무료 기간이 끝나도 나와요.</span></p>
+    </article>
+    <article class="toolpage" id="widget">
+      <div class="tphead">
+        <span class="ticon"><img src="img/tools/widget.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⌚️'))"></span>
+        <div>
+          <h3><span data-i18n="ja">ウィジェット・Apple Watch</span><span data-i18n="en">Widgets & Apple Watch</span><span data-i18n="ko">위젯・Apple Watch</span><span class="free-badge"><span data-i18n="ja">最初から</span><span data-i18n="en">Included</span><span data-i18n="ko">기본 제공</span></span></h3>
+          <p class="tpone"><span data-i18n="ja">ホーム画面と手首から、そのまま</span><span data-i18n="en">Straight from your home screen and your wrist</span><span data-i18n="ko">홈 화면과 손목에서, 그대로</span></p>
+        </div>
+      </div>
+      <p><span data-i18n="ja">締め切りまでの残り時間を秒で刻むカウントダウンと、好きなコレクションをホーム画面に置けます。今日の発見ウィジェットは、パブリックドメインの絵を1日3回入れ替えます。</span><span data-i18n="en">A countdown ticking down to a deadline by the second, and any collection you like, on your home screen. The discovery widget swaps in a public-domain image three times a day.</span><span data-i18n="ko">마감까지 남은 시간을 초 단위로 새기는 카운트다운과, 좋아하는 컬렉션을 홈 화면에 둘 수 있어요.</span></p>
+      <p><span data-i18n="ja">Apple Watchは、手首で話して預けるだけ。iPhoneに届いて、他の言葉と同じように整います。</span><span data-i18n="en">On Apple Watch, speak from your wrist and let go. It reaches your iPhone and settles in with everything else.</span><span data-i18n="ko">Apple Watch는 손목에서 말하고 맡기기만. iPhone에 도착해 다른 말과 똑같이 정리돼요.</span></p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="inner reveal">
+    <p class="sub" style="text-align:center;"><span data-i18n="ja"><strong>いままであった道具は、ぜんぶ最初から使えます。</strong>薬と今日の調子も、ずっと無料です。<strong>AI Pro</strong>の札が付いたものは月&yen;300に。<strong>タイマー・3日プランナー・アイデアの瓶</strong>だけが、まとめて&yen;1,000の一度きりです。</span><span data-i18n="en"><strong>Every tool that was already here stays free.</strong> Medicine and mood are free forever too. Anything marked <strong>AI Pro</strong> comes with the &yen;300 a month. Only <strong>the timers, the 3-day planner and the idea jar</strong> come together for &yen;1,000, once.</span><span data-i18n="ko"><strong>지금까지 있던 도구는 전부 처음부터 쓸 수 있어요.</strong> 약과 오늘의 컨디션도 계속 무료예요. <strong>AI Pro</strong> 표시가 붙은 것은 월 &yen;300에. <strong>타이머・3일 플래너・아이디어 병</strong>만이 묶어서 &yen;1,000, 한 번뿐이에요.</span></p>
+    <p style="text-align:center; margin-top: 26px;"><a class="beta-badge" href="./#pricing"><span data-i18n="ja">価格を見る</span><span data-i18n="en">See the pricing</span><span data-i18n="ko">가격 보기</span></a></p>
+  </div>
+</section>
+
+<footer>
+  <a href="./privacy.html"><span data-i18n="ja">プライバシーポリシー</span><span data-i18n="en">Privacy Policy</span><span data-i18n="ko">개인정보 처리방침</span></a> ・ <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">X @HeadLight_app</a> ・ © 2026 Ani-Q
+</footer>
+
+<script>
+  function sweep() {
+    document.querySelectorAll(".reveal:not(.on)").forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.9 && r.bottom > 0) {
+        // 同じセクションの中では、少しずつ遅れて現れる(ろうそくを順に灯すように)
+        const section = el.closest("section") || document.body;
+        const already = section.querySelectorAll(".reveal.on").length;
+        el.style.transitionDelay = Math.min(already * 0.12, 0.36) + "s";
+        el.classList.add("on");
+      }
+    });
+  }
+  addEventListener("scroll", sweep, { passive: true });
+  addEventListener("resize", sweep);
+  setInterval(sweep, 600);
+  sweep();
+</script>
+</body>
+</html>
