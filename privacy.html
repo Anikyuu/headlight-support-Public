@@ -3,43 +3,143 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Headlight プライバシーポリシー</title>
+<meta name="description" content="Headlight privacy policy. Headlight does not sell personal data or use advertising trackers.">
+<title>Headlight Privacy Policy / プライバシーポリシー</title>
 <style>
-  body { margin: 0; background: #0d0d0d; color: #e8e2d5; font-family: -apple-system, "Hiragino Sans", sans-serif; line-height: 1.8; }
-  main { max-width: 640px; margin: 0 auto; padding: 48px 24px 80px; }
-  h1 { font-size: 24px; color: #eecd8f; }
-  h2 { font-size: 17px; color: #eecd8f; margin-top: 36px; }
-  a { color: #eecd8f; }
-  .sub { color: #98917e; font-size: 14px; }
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0d0d0d; color: #e8e2d5; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; line-height: 1.8; }
+  main { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  h1 { margin: 18px 0 4px; font-size: clamp(24px, 6vw, 32px); color: #f3ecdd; line-height: 1.35; }
+  h2 { font-size: 18px; color: #f3ecdd; margin: 38px 0 8px; }
+  p, li { font-size: 15px; }
+  ul { padding-left: 1.25em; }
+  a { color: #eecd8f; text-underline-offset: 3px; }
+  .sub { color: #98917e; font-size: 13px; }
+  .language { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid #393630; border-radius: 999px; }
+  .language button { border: 0; border-radius: 999px; padding: 7px 14px; background: transparent; color: #98917e; font: inherit; cursor: pointer; }
+  .language button[aria-pressed="true"] { background: #f3ecdd; color: #151515; }
+  .note { margin-top: 28px; padding: 16px 18px; border: 1px solid #393630; border-radius: 16px; color: #c9c2b5; }
+  [data-lang="en"] { display: none; }
+  html[lang="en"] [data-lang="ja"] { display: none; }
+  html[lang="en"] [data-lang="en"] { display: block; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Headlight プライバシーポリシー</h1>
-  <p class="sub">最終更新日: 2026年7月14日</p>
+  <nav class="language" aria-label="Language">
+    <button type="button" data-switch="ja" aria-pressed="true">日本語</button>
+    <button type="button" data-switch="en" aria-pressed="false">English</button>
+  </nav>
 
-  <h2>基本方針</h2>
-  <p>Headlight(以下「本アプリ」)は、開発者がユーザーのデータを収集しないことを基本方針としています。本アプリにはアカウント登録がなく、アクセス解析や広告のための計測も行いません。</p>
+  <article data-lang="ja">
+    <h1>Headlight プライバシーポリシー</h1>
+    <p class="sub">最終更新日: 2026年7月30日</p>
 
-  <h2>データの保存場所</h2>
-  <p>入力した言葉、写真、コレクション、チェック記録などのデータは、すべてお使いの端末内に保存されます。開発者のサーバーに送信されることはありません(開発者はサーバーを運用していません)。</p>
+    <h2>基本方針</h2>
+    <p>Headlight（以下「本アプリ」）は、あなたの記録を広告の材料や商品にしません。本アプリにはアカウント登録がなく、第三者広告、広告目的の追跡、個人データの販売を行いません。</p>
 
-  <h2>マイクと音声認識</h2>
-  <p>音声入力には、Appleの音声認識(Speech framework)を使用します。音声は文字への変換のみに使われ、本アプリが録音データを保存・送信することはありません。</p>
+    <h2>記録の保存場所</h2>
+    <p>入力した言葉、写真、録音、コレクション、チェック記録などは、基本的にお使いの端末内に保存されます。開発者がこれらを一覧したり、独自の記録用サーバーへ保存したりすることはありません。</p>
+    <p>ユーザーが「Headlight保管庫」やバックアップを設定した場合に限り、選択したiCloud Drive、NAS、またはファイル保存先へ記録が書き出されます。その保存先におけるデータの取り扱いは、ユーザーが選択したサービスの規約とプライバシーポリシーに従います。</p>
 
-  <h2>AIによる整理機能</h2>
-  <p>言葉の自動整理は、対応端末ではApple Intelligence(端末内AI)により端末の中だけで処理されます。ユーザーが自身のAPIキーを設定した場合に限り、整理対象のテキストがそのAI事業者(Anthropic)へ送信されます。APIキーの設定は任意であり、キーは端末内のキーチェーンにのみ保存されます。</p>
+    <h2>AI機能</h2>
+    <p>対応端末では、言葉の整理などをAppleの端末内AIで処理できます。この処理では記録は端末の外へ送信されません。</p>
+    <p>クラウドAIを使う機能では、その機能の実行に必要なテキスト、画像、関連する文脈が、暗号化された通信でHeadlightの中継サーバー（Cloudflare Workers）を経由してAnthropic APIへ送信されます。中継サーバーはAIへの転送と利用上限の管理だけを行い、送信した本文や画像を保存しません。</p>
+    <p>利用上限の管理には、氏名やメールアドレスと結びつかないランダムな識別子と、月ごとの推定利用額を使用します。推定利用額の記録は最長60日で自動的に削除されます。</p>
+    <p>ユーザー自身のAnthropic APIキーを設定した場合、AIリクエストは中継サーバーを通らずAnthropicへ直接送信されます。APIキーは端末のキーチェーンにのみ保存されます。Anthropic APIに送信されたデータは、Anthropicのデータ保持方針に従って取り扱われます。</p>
 
-  <h2>外部AIサービスとの連携</h2>
-  <p>「AIに渡す」機能は、ユーザー自身の操作でテキストをコピー・共有するものです。共有先のサービス(ChatGPT等)におけるデータの取り扱いは、各サービスのプライバシーポリシーに従います。</p>
+    <h2>アプリ内購入（RevenueCat）</h2>
+    <p>本アプリは、アプリ内購入の提供、購入状態の確認、購入の復元のためにRevenueCatを使用します。RevenueCatへは、ランダムに生成された匿名のユーザー識別子、購入した商品、購入履歴、サブスクリプションの状態などが送信されます。氏名、メールアドレス、アプリ内に保存した言葉・写真・録音はRevenueCatへ送りません。</p>
+    <p>これらの情報は、購入済み機能を正しく利用できるようにすることと、購入機能の運用状況を把握することにのみ使用します。広告への利用や、他社アプリをまたぐ追跡には使用しません。決済そのものはAppleが処理します。</p>
 
-  <h2>写真・ミュージックライブラリ・通知など</h2>
-  <p>カメラ、写真、ミュージックライブラリ、通知、位置情報(天気表示)へのアクセスは、それぞれの機能を使うときにのみ、OSの許可を得て行われます。取得した内容は端末内での表示・保存のみに使用されます。</p>
+    <h2>リンク・書籍などの情報取得</h2>
+    <p>ユーザーがリンク、書籍、音楽などをコレクションへ追加するとき、本アプリは表紙、サムネイル、題名などを取得するため、リンク先のサイトや公開情報サービスへ通信することがあります。送信先では、一般的なウェブアクセスと同様にIPアドレスなどが処理される場合があります。取得した内容はコレクション作成のために使用します。</p>
 
-  <h2>お問い合わせ</h2>
-  <p>本ポリシーに関するご質問は <a href="mailto:headlight.app.jp@gmail.com">headlight.app.jp@gmail.com</a> までご連絡ください。</p>
+    <h2>マイク、写真、カレンダーなど</h2>
+    <p>マイク、音声認識、カメラ、写真、ミュージックライブラリ、カレンダー、通知、位置情報（天気表示）へのアクセスは、該当する機能を使うときにOSの許可を得て行います。許可はiPhoneやiPadの設定からいつでも変更できます。</p>
 
-  <p class="sub"><a href="./index.html">サポートページへ戻る</a> ・ © 2026 Ani-Q</p>
+    <h2>外部サービスへの共有</h2>
+    <p>「AIに渡す」機能や共有ボタンは、ユーザー自身の操作で内容をコピーまたは共有するものです。共有後の取り扱いは、ChatGPT、Claude、Geminiなど、選択したサービスのプライバシーポリシーに従います。</p>
+
+    <h2>削除とお問い合わせ</h2>
+    <p>アプリ内の記録は各画面から削除できます。アプリを削除すると端末内のデータも削除されますが、ユーザーが別途作成したバックアップや外部保管庫のデータは自動では削除されません。</p>
+    <p>プライバシーに関するご質問や、サービス側に保存された情報についてのご相談は、<a href="mailto:headlight.app.jp@gmail.com">headlight.app.jp@gmail.com</a> までご連絡ください。</p>
+
+    <div class="note">Headlightは、あなたの言葉や「好き」を広告のために利用しません。必要な外部通信は、あなたが選んだ機能を動かすために限定します。</div>
+
+    <h2>利用する外部サービスの方針</h2>
+    <ul>
+      <li><a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></li>
+      <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a></li>
+      <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+      <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+    </ul>
+  </article>
+
+  <article data-lang="en">
+    <h1>Headlight Privacy Policy</h1>
+    <p class="sub">Last updated: July 30, 2026</p>
+
+    <h2>Our approach</h2>
+    <p>Headlight (the “App”) does not turn your records into advertising data or a product. The App requires no account, contains no third-party advertising, does not track you for advertising, and does not sell personal data.</p>
+
+    <h2>Where your records are stored</h2>
+    <p>Words, photos, recordings, collections, check-ins, and other records are stored primarily on your device. The developer cannot browse them and does not store them on a proprietary record-storage server.</p>
+    <p>Only when you choose to configure a Headlight Vault or create a backup are records written to your selected iCloud Drive, NAS, or file location. Data stored there is governed by the terms and privacy policy of the service you select.</p>
+
+    <h2>AI features</h2>
+    <p>On supported devices, features such as word organization can run using Apple's on-device AI. On-device processing does not send your records off the device.</p>
+    <p>When you use a cloud AI feature, the text, images, and relevant context required for that feature are sent over an encrypted connection to the Anthropic API through Headlight's relay hosted on Cloudflare Workers. The relay only forwards requests and enforces usage limits; it does not store the submitted text or images.</p>
+    <p>To enforce usage limits, the relay uses a random identifier that is not linked to your name or email address and a monthly estimated usage amount. Usage records expire automatically after no more than 60 days.</p>
+    <p>If you provide your own Anthropic API key, AI requests are sent directly to Anthropic without using Headlight's relay. Your key is stored only in the device Keychain. Data sent to the Anthropic API is handled according to Anthropic's data retention terms.</p>
+
+    <h2>In-app purchases (RevenueCat)</h2>
+    <p>Headlight uses RevenueCat to offer in-app purchases, verify entitlements, and restore purchases. RevenueCat receives a randomly generated anonymous user identifier, purchased products, purchase history, and subscription status. Headlight does not send your name, email address, words, photos, or recordings to RevenueCat.</p>
+    <p>This information is used only to provide purchased features and understand the operation of the purchase system. It is not used for advertising or cross-app tracking. Apple processes the payment itself.</p>
+
+    <h2>Link and catalog metadata</h2>
+    <p>When you add a link, book, music release, or similar item to a Collection, the App may contact the linked website or public metadata services to retrieve artwork, thumbnails, titles, or related details. Those services may process information normally associated with a web request, such as an IP address. Retrieved data is used to create your Collection item.</p>
+
+    <h2>Microphone, photos, calendar, and other permissions</h2>
+    <p>The App requests access to the microphone, speech recognition, camera, photos, music library, calendar, notifications, or location (for weather) only when a feature needs it and only after receiving operating-system permission. You can change permissions at any time in device Settings.</p>
+
+    <h2>Sharing with external services</h2>
+    <p>The “Send to AI” feature and system share buttons copy or share content only when you choose to do so. After sharing, the privacy policy of the selected service—such as ChatGPT, Claude, or Gemini—applies.</p>
+
+    <h2>Deletion and contact</h2>
+    <p>You can delete records from within the App. Deleting the App removes on-device data, but does not automatically delete backups or files you separately stored in an external vault.</p>
+    <p>For privacy questions or requests concerning information held by the services described above, contact <a href="mailto:headlight.app.jp@gmail.com">headlight.app.jp@gmail.com</a>.</p>
+
+    <div class="note">Headlight does not use your words or the things you love for advertising. External communication is limited to operating the features you choose to use.</div>
+
+    <h2>Third-party privacy policies</h2>
+    <ul>
+      <li><a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></li>
+      <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a></li>
+      <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+      <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+    </ul>
+  </article>
+
+  <p class="sub"><a href="./index.html"><span data-lang="ja">サポートページへ戻る</span><span data-lang="en">Back to support</span></a> ・ © 2026 Ani-Q</p>
 </main>
+<script>
+  const buttons = document.querySelectorAll('[data-switch]');
+  const setLanguage = (language) => {
+    document.documentElement.lang = language;
+    buttons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.switch === language));
+    });
+    try { localStorage.setItem('headlight-language', language); } catch (_) {}
+  };
+  buttons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.switch)));
+  let preferred = 'ja';
+  let savedLanguage = null;
+  try { savedLanguage = localStorage.getItem('headlight-language'); } catch (_) {}
+  if (savedLanguage) preferred = savedLanguage;
+  else if (!navigator.language.toLowerCase().startsWith('ja')) preferred = 'en';
+  setLanguage(preferred === 'en' ? 'en' : 'ja');
+</script>
 </body>
 </html>
