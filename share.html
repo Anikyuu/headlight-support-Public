@@ -11,27 +11,37 @@
   <meta property="og:url" content="https://head-light.app/share.html">
   <title>A collection from Headlight</title>
   <style>
-    :root{--bg:#f6f4ef;--paper:#fff;--ink:#1c1b19;--muted:#746f67;--gold:#9b7540;--line:rgba(28,27,25,.11)}
+    :root{--bg:#fff;--paper:#fff;--ink:#111;--muted:#666;--line:rgba(17,17,17,.12);--button:#111;--buttonText:#fff}
     *{box-sizing:border-box} html{background:var(--bg)}
-    body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6}
+    body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
     main{width:min(760px,100%);margin:auto;padding:42px 18px 80px}
-    header{text-align:center;padding:26px 8px 34px}.brand{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.28em}
-    h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(28px,7vw,48px);line-height:1.3;margin:14px 0 8px;text-wrap:balance}
-    .count,.notice{color:var(--muted)}
+    header{text-align:center;padding:26px 8px 34px}.brand{color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.18em}
+    h1{font-size:clamp(28px,7vw,48px);line-height:1.2;margin:14px 0 8px;text-wrap:balance;font-weight:700}
+    .count,.notice,.subcopy{color:var(--muted)}
     .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 0}
-    button,.button{appearance:none;border:1px solid var(--gold);border-radius:999px;padding:12px 18px;background:var(--gold);color:#fff;font:inherit;font-weight:650;text-decoration:none;cursor:pointer}
-    .button.secondary{background:transparent;color:var(--gold)}
-    #playerWrap{display:none;margin:0 auto 26px;aspect-ratio:16/9;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.2)}
+    button,.button{appearance:none;border:1px solid var(--line);border-radius:999px;padding:12px 18px;background:var(--button);color:var(--buttonText);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+    .button.secondary{background:#fff;color:var(--ink)}
+    #playerWrap{display:none;margin:0 auto 12px;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden}
     #player,#player iframe{width:100%;height:100%}
+    .playerMeta{display:none;gap:12px;align-items:flex-start;justify-content:space-between;margin:0 0 24px}
+    .playerText{min-width:0}
+    .playerBadge{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:8px}
+    .playerTitle{font-size:16px;font-weight:700;line-height:1.4}
+    .playerHost{font-size:12px;color:var(--muted);margin-top:4px}
+    .playerButtons{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
     .shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .card{display:block;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(31,25,18,.07);transition:transform .18s ease}
-    .card:hover{transform:translateY(-2px)} .art{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#dedbd3}
-    .placeholder{display:grid;place-items:center;font-size:32px;color:var(--gold)}
-    .body{padding:13px 14px 15px}.number{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em}
+    .card{display:block;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:background .18s ease,border-color .18s ease}
+    .card:hover{background:#fafafa;border-color:rgba(17,17,17,.18)} .art{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#e8e8e8}
+    .placeholder{display:grid;place-items:center;font-size:16px;font-weight:700;letter-spacing:.04em;color:var(--muted)}
+    .body{padding:13px 14px 15px}.number{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.1em}
     .title{font-weight:680;line-height:1.45;margin-top:4px}.artist,.host{font-size:12px;color:var(--muted);margin-top:4px}
+    .cardActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .inlinePlay,.source{appearance:none;border-radius:999px;padding:8px 12px;font:inherit;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer}
+    .inlinePlay{border:1px solid var(--line);background:#111;color:#fff}
+    .source{border:1px solid var(--line);background:#fff;color:var(--ink)}
     .notice{font-size:13px;text-align:center;margin:28px auto 0;max-width:48em}.legal{font-size:11px;text-align:center;margin-top:18px;color:var(--muted)}
-    .legal a{color:inherit}.error{background:#fff4f2;border:1px solid #e7c2ba;border-radius:16px;padding:18px;color:#7c3328}
-    @media(max-width:520px){main{padding-top:24px}.shelf{grid-template-columns:1fr}.card{display:grid;grid-template-columns:42% 1fr}.art{height:100%;min-height:112px}.body{align-self:center}}
+    .legal a{color:inherit}.error{background:#fff;border:1px solid #d8d8d8;border-radius:16px;padding:18px;color:#222}
+    @media(max-width:520px){main{padding-top:24px}.playerMeta{display:block}.playerButtons{justify-content:flex-start;margin-top:12px}.shelf{grid-template-columns:1fr}.card{display:grid;grid-template-columns:42% 1fr}.art{height:100%;min-height:112px}.body{align-self:center}}
   </style>
 </head>
 <body>
@@ -40,23 +50,35 @@
     <div class="brand">HEADLIGHT COLLECTION</div>
     <h1 id="name">Shared collection</h1>
     <div class="count" id="count"></div>
+    <p class="subcopy" id="subcopy" hidden>アプリがなくても、このページでそのまま再生できます。<br>Play this collection right here, even without the app.</p>
     <div class="actions" id="actions" hidden>
-      <button id="play">▶ 最初から再生 / Play all</button>
+      <button id="play">▶ 再生 / Play</button>
       <button id="shuffle" class="button secondary">⇄ シャッフル / Shuffle</button>
       <a class="button secondary" id="openApp">自分の棚に追加 / Add to Headlight</a>
     </div>
   </header>
   <div id="playerWrap"><div id="player"></div></div>
+  <div class="playerMeta" id="playerMeta">
+    <div class="playerText">
+      <div class="playerBadge" id="playerBadge"></div>
+      <div class="playerTitle" id="playerTitle"></div>
+      <div class="playerHost" id="playerHost"></div>
+    </div>
+    <div class="playerButtons">
+      <button id="prevTrack" class="button secondary" hidden>← 前 / Prev</button>
+      <button id="nextTrack" class="button secondary" hidden>次 / Next →</button>
+    </div>
+  </div>
   <div id="content" class="shelf"></div>
   <p class="notice" id="snapshot" hidden>共有された時点のコピーです。元の棚とは同期しません。<br>This is a snapshot and does not sync with the sender.</p>
-  <p class="legal" id="legal" hidden>Playback uses the official YouTube player. <a href="https://www.youtube.com/t/terms">YouTube Terms</a> · <a href="https://policies.google.com/privacy">Google Privacy</a></p>
+  <p class="legal" id="legal" hidden>Playback uses the official embedded player provided by each service when available. Some videos may open best on their original page.</p>
 </main>
 <script>
   const MAX_ENTRIES = 48;
   const content = document.getElementById('content');
-  let videos = [];
-  let pendingVideos = [];
-  let player;
+  let playableItems = [];
+  let currentQueue = [];
+  let currentIndex = 0;
   // Different shared links use the same static page and differ only by their
   // fragment. Browsers do not reload on a fragment-only navigation by default.
   window.addEventListener('hashchange', () => location.reload());
@@ -96,16 +118,84 @@
     } catch { return null; }
   }
 
+  function tiktokID(value) {
+    try {
+      const url = new URL(value), host = url.hostname.toLowerCase();
+      if (!(host === 'tiktok.com' || host.endsWith('.tiktok.com'))) return null;
+      const parts = url.pathname.split('/').filter(Boolean);
+      const marker = parts.findIndex(x => x === 'video');
+      const id = marker >= 0 ? parts[marker + 1] : null;
+      return /^\d{6,}$/.test(id || '') ? id : null;
+    } catch { return null; }
+  }
+
+  function instagramEmbedPath(value) {
+    try {
+      const url = new URL(value), host = url.hostname.toLowerCase();
+      if (!(host === 'instagram.com' || host.endsWith('.instagram.com') || host === 'instagr.am')) return null;
+      const parts = url.pathname.split('/').filter(Boolean);
+      const marker = parts.find(x => ['reel', 'reels', 'p'].includes(x));
+      const markerIndex = parts.findIndex(x => x === marker);
+      const code = markerIndex >= 0 ? parts[markerIndex + 1] : null;
+      if (!marker || !code) return null;
+      const kind = marker === 'p' ? 'p' : 'reel';
+      return `https://www.instagram.com/${kind}/${code}/embed`;
+    } catch { return null; }
+  }
+
+  function playableFor(entry) {
+    const youtube = youtubeID(entry.url);
+    if (youtube) {
+      return {
+        id: entry.id || `${entry.order}-${entry.url}`,
+        entry,
+        provider: 'youtube',
+        badge: 'YouTube',
+        embedURL: `https://www.youtube.com/embed/${youtube}?autoplay=1&playsinline=1&rel=0&modestbranding=1`,
+        thumbnailURL: `https://i.ytimg.com/vi/${youtube}/hqdefault.jpg`
+      };
+    }
+    const tiktok = tiktokID(entry.url);
+    if (tiktok) {
+      return {
+        id: entry.id || `${entry.order}-${entry.url}`,
+        entry,
+        provider: 'tiktok',
+        badge: 'TikTok',
+        embedURL: `https://www.tiktok.com/player/v1/${tiktok}?controls=1&description=1&music_info=1`,
+        thumbnailURL: null
+      };
+    }
+    const instagram = instagramEmbedPath(entry.url);
+    if (instagram) {
+      return {
+        id: entry.id || `${entry.order}-${entry.url}`,
+        entry,
+        provider: 'instagram',
+        badge: 'Instagram',
+        embedURL: instagram,
+        thumbnailURL: null
+      };
+    }
+    return null;
+  }
+
+  function buildQueueFrom(itemID) {
+    const startIndex = playableItems.findIndex(item => item.id === itemID);
+    if (startIndex < 0) return [];
+    return [...playableItems.slice(startIndex), ...playableItems.slice(0, startIndex)];
+  }
+
   function card(entry, index) {
-    const link = document.createElement('a');
-    link.className = 'card'; link.href = entry.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
-    const id = youtubeID(entry.url);
+    const wrapper = document.createElement('article');
+    wrapper.className = 'card';
+    const playable = playableFor(entry);
     let art;
-    if (id) {
+    if (playable?.thumbnailURL) {
       art = document.createElement('img'); art.className = 'art'; art.loading = 'lazy';
-      art.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; art.alt = '';
+      art.src = playable.thumbnailURL; art.alt = '';
     } else {
-      art = document.createElement('div'); art.className = 'art placeholder'; art.textContent = '↗';
+      art = document.createElement('div'); art.className = 'art placeholder'; art.textContent = playable?.badge || 'LINK';
     }
     const body = document.createElement('div'); body.className = 'body';
     const number = document.createElement('div'); number.className = 'number'; number.textContent = `CARD ${index + 1}`;
@@ -113,7 +203,25 @@
     const url = new URL(entry.url); title.textContent = entry.title || url.hostname.replace(/^www\./,'');
     const detail = document.createElement('div'); detail.className = entry.artist ? 'artist' : 'host';
     detail.textContent = entry.artist || url.hostname.replace(/^www\./,'');
-    body.append(number,title,detail); link.append(art,body); return link;
+    const actions = document.createElement('div'); actions.className = 'cardActions';
+    if (playable) {
+      const playHere = document.createElement('button');
+      playHere.className = 'inlinePlay';
+      playHere.type = 'button';
+      playHere.textContent = '▶ ここで再生 / Play here';
+      playHere.addEventListener('click', () => startPlayback(buildQueueFrom(playable.id)));
+      actions.append(playHere);
+    }
+    const openSource = document.createElement('a');
+    openSource.className = 'source';
+    openSource.href = entry.url;
+    openSource.target = '_blank';
+    openSource.rel = 'noopener noreferrer';
+    openSource.textContent = '元のリンクを開く / Open source';
+    actions.append(openSource);
+    body.append(number,title,detail,actions);
+    wrapper.append(art,body);
+    return wrapper;
   }
 
   try {
@@ -123,12 +231,14 @@
     const sorted = [...data.entries].sort((a,b) => a.order - b.order);
     document.getElementById('count').textContent = `${sorted.length} cards`;
     sorted.forEach((entry,index) => content.append(card(entry,index)));
-    videos = sorted.map(entry => youtubeID(entry.url)).filter(Boolean);
+    playableItems = sorted.map(playableFor).filter(Boolean);
     document.getElementById('actions').hidden = false;
+    document.getElementById('subcopy').hidden = playableItems.length === 0;
     document.getElementById('snapshot').hidden = false;
-    document.getElementById('legal').hidden = videos.length === 0;
-    document.getElementById('play').hidden = videos.length < 2;
-    document.getElementById('shuffle').hidden = videos.length < 2;
+    document.getElementById('legal').hidden = playableItems.length === 0;
+    document.getElementById('play').hidden = playableItems.length === 0;
+    document.getElementById('shuffle').hidden = playableItems.length < 2;
+    document.getElementById('play').textContent = playableItems.length > 1 ? '▶ 最初から再生 / Play all' : '▶ 再生 / Play';
     document.getElementById('openApp').href = `headlight://share#collection=${payload}`;
   } catch (error) {
     document.getElementById('name').textContent = 'Collection not found';
@@ -149,31 +259,49 @@
   }
 
   function startPlayback(queue) {
-    pendingVideos = queue;
-    const wrap = document.getElementById('playerWrap'); wrap.style.display = 'block'; wrap.scrollIntoView({behavior:'smooth',block:'center'});
-    if (player) { player.loadPlaylist(pendingVideos,0,0); return; }
-    const start = () => {
-      if (!window.YT || !YT.Player) { setTimeout(start,100); return; }
-      player = new YT.Player('player', {
-        width:'100%',height:'100%',
-        playerVars:{playsinline:1,controls:1,autoplay:1,origin:'https://head-light.app'},
-        events:{
-          onReady:e => e.target.loadPlaylist(pendingVideos,0,0),
-          onError:e => { if ([5,100,101,150].includes(e.data)) setTimeout(() => player.nextVideo(),250); }
-        }
-      });
-    };
-    if (!document.querySelector('script[data-youtube-api]')) {
-      const api = document.createElement('script');
-      api.src = 'https://www.youtube.com/iframe_api';
-      api.dataset.youtubeApi = 'true';
-      document.head.appendChild(api);
-    }
-    start();
+    currentQueue = queue.filter(Boolean);
+    currentIndex = 0;
+    if (!currentQueue.length) return;
+    renderCurrentPlayback(true);
   }
 
-  document.getElementById('play').addEventListener('click', () => startPlayback([...videos]));
-  document.getElementById('shuffle').addEventListener('click', () => startPlayback(shuffledCopy(videos)));
+  function renderCurrentPlayback(scrollIntoView = false) {
+    const current = currentQueue[currentIndex];
+    if (!current) return;
+    const wrap = document.getElementById('playerWrap');
+    const container = document.getElementById('player');
+    wrap.style.display = 'block';
+    document.getElementById('playerMeta').style.display = 'flex';
+    if (scrollIntoView) {
+      wrap.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    container.replaceChildren();
+    const frame = document.createElement('iframe');
+    frame.src = current.embedURL;
+    frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.loading = 'eager';
+    frame.title = current.entry.title || current.badge;
+    container.append(frame);
+
+    document.getElementById('playerBadge').textContent = current.badge;
+    document.getElementById('playerTitle').textContent = current.entry.title || current.badge;
+    document.getElementById('playerHost').textContent = current.entry.artist || new URL(current.entry.url).hostname.replace(/^www\./,'');
+    document.getElementById('prevTrack').hidden = currentQueue.length < 2;
+    document.getElementById('nextTrack').hidden = currentQueue.length < 2;
+  }
+
+  function stepPlayback(direction) {
+    if (currentQueue.length < 2) return;
+    currentIndex = (currentIndex + direction + currentQueue.length) % currentQueue.length;
+    renderCurrentPlayback(false);
+  }
+
+  document.getElementById('play').addEventListener('click', () => startPlayback([...playableItems]));
+  document.getElementById('shuffle').addEventListener('click', () => startPlayback(shuffledCopy(playableItems)));
+  document.getElementById('prevTrack').addEventListener('click', () => stepPlayback(-1));
+  document.getElementById('nextTrack').addEventListener('click', () => stepPlayback(1));
 </script>
 </body>
 </html>
