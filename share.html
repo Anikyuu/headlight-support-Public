@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="誰かの『好き』が詰まったHeadlightコレクション。棚の順番で見て、再生して、自分の棚へ。">
+  <meta property="og:title" content="A collection from Headlight">
+  <meta property="og:description" content="Open a shelf of favorite links and videos. Everyone has a B-side.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://head-light.app/share.html">
+  <title>A collection from Headlight</title>
+  <style>
+    :root{--bg:#f6f4ef;--paper:#fff;--ink:#1c1b19;--muted:#746f67;--gold:#9b7540;--line:rgba(28,27,25,.11)}
+    *{box-sizing:border-box} html{background:var(--bg)}
+    body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6}
+    main{width:min(760px,100%);margin:auto;padding:42px 18px 80px}
+    header{text-align:center;padding:26px 8px 34px}.brand{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.28em}
+    h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(28px,7vw,48px);line-height:1.3;margin:14px 0 8px;text-wrap:balance}
+    .count,.notice{color:var(--muted)}
+    .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 0}
+    button,.button{appearance:none;border:1px solid var(--gold);border-radius:999px;padding:12px 18px;background:var(--gold);color:#fff;font:inherit;font-weight:650;text-decoration:none;cursor:pointer}
+    .button.secondary{background:transparent;color:var(--gold)}
+    #playerWrap{display:none;margin:0 auto 26px;aspect-ratio:16/9;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.2)}
+    #player,#player iframe{width:100%;height:100%}
+    .shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .card{display:block;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(31,25,18,.07);transition:transform .18s ease}
+    .card:hover{transform:translateY(-2px)} .art{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#dedbd3}
+    .placeholder{display:grid;place-items:center;font-size:32px;color:var(--gold)}
+    .body{padding:13px 14px 15px}.number{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em}
+    .title{font-weight:680;line-height:1.45;margin-top:4px}.artist,.host{font-size:12px;color:var(--muted);margin-top:4px}
+    .notice{font-size:13px;text-align:center;margin:28px auto 0;max-width:48em}.legal{font-size:11px;text-align:center;margin-top:18px;color:var(--muted)}
+    .legal a{color:inherit}.error{background:#fff4f2;border:1px solid #e7c2ba;border-radius:16px;padding:18px;color:#7c3328}
+    @media(max-width:520px){main{padding-top:24px}.shelf{grid-template-columns:1fr}.card{display:grid;grid-template-columns:42% 1fr}.art{height:100%;min-height:112px}.body{align-self:center}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand">HEADLIGHT COLLECTION</div>
+    <h1 id="name">Shared collection</h1>
+    <div class="count" id="count"></div>
+    <div class="actions" id="actions" hidden>
+      <button id="play">▶ 最初から再生 / Play all</button>
+      <a class="button secondary" id="openApp">自分の棚に追加 / Add to Headlight</a>
+    </div>
+  </header>
+  <div id="playerWrap"><div id="player"></div></div>
+  <div id="content" class="shelf"></div>
+  <p class="notice" id="snapshot" hidden>共有された時点のコピーです。元の棚とは同期しません。<br>This is a snapshot and does not sync with the sender.</p>
+  <p class="legal" id="legal" hidden>Playback uses the official YouTube player. <a href="https://www.youtube.com/t/terms">YouTube Terms</a> · <a href="https://policies.google.com/privacy">Google Privacy</a></p>
+</main>
+<script>
+  const MAX_ENTRIES = 48;
+  const content = document.getElementById('content');
+  let videos = [];
+  let player;
+  // Different shared links use the same static page and differ only by their
+  // fragment. Browsers do not reload on a fragment-only navigation by default.
+  window.addEventListener('hashchange', () => location.reload());
+
+  function decodePayload() {
+    const params = new URLSearchParams(location.hash.slice(1));
+    const payload = params.get('collection');
+    if (!payload) throw new Error('No collection was found in this link.');
+    let base64 = payload.replace(/-/g,'+').replace(/_/g,'/');
+    base64 += '='.repeat((4 - base64.length % 4) % 4);
+    const bytes = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+    const data = JSON.parse(new TextDecoder().decode(bytes));
+    if (data.version !== 1 || !data.name || !Array.isArray(data.entries) || !data.entries.length || data.entries.length > MAX_ENTRIES) {
+      throw new Error('This collection link is not supported.');
+    }
+    data.entries.forEach(entry => {
+      const url = new URL(entry.url);
+      if (!['http:','https:'].includes(url.protocol)) throw new Error('Unsafe link.');
+    });
+    return {data, payload};
+  }
+
+  function youtubeID(value) {
+    try {
+      const url = new URL(value), host = url.hostname.toLowerCase();
+      let id = null;
+      if (host === 'youtu.be' || host.endsWith('.youtu.be')) id = url.pathname.split('/').filter(Boolean)[0];
+      else if (host === 'youtube.com' || host.endsWith('.youtube.com')) {
+        id = url.searchParams.get('v');
+        if (!id) {
+          const parts = url.pathname.split('/').filter(Boolean);
+          const marker = parts.findIndex(x => ['shorts','embed','live'].includes(x));
+          if (marker >= 0) id = parts[marker + 1];
+        }
+      }
+      return /^[A-Za-z0-9_-]{11}$/.test(id || '') ? id : null;
+    } catch { return null; }
+  }
+
+  function card(entry, index) {
+    const link = document.createElement('a');
+    link.className = 'card'; link.href = entry.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    const id = youtubeID(entry.url);
+    let art;
+    if (id) {
+      art = document.createElement('img'); art.className = 'art'; art.loading = 'lazy';
+      art.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; art.alt = '';
+    } else {
+      art = document.createElement('div'); art.className = 'art placeholder'; art.textContent = '↗';
+    }
+    const body = document.createElement('div'); body.className = 'body';
+    const number = document.createElement('div'); number.className = 'number'; number.textContent = `CARD ${index + 1}`;
+    const title = document.createElement('div'); title.className = 'title';
+    const url = new URL(entry.url); title.textContent = entry.title || url.hostname.replace(/^www\./,'');
+    const detail = document.createElement('div'); detail.className = entry.artist ? 'artist' : 'host';
+    detail.textContent = entry.artist || url.hostname.replace(/^www\./,'');
+    body.append(number,title,detail); link.append(art,body); return link;
+  }
+
+  try {
+    const {data,payload} = decodePayload();
+    document.getElementById('name').textContent = data.name;
+    document.title = `${data.name} — Headlight`;
+    const sorted = [...data.entries].sort((a,b) => a.order - b.order);
+    document.getElementById('count').textContent = `${sorted.length} cards`;
+    sorted.forEach((entry,index) => content.append(card(entry,index)));
+    videos = sorted.map(entry => youtubeID(entry.url)).filter(Boolean);
+    document.getElementById('actions').hidden = false;
+    document.getElementById('snapshot').hidden = false;
+    document.getElementById('legal').hidden = videos.length === 0;
+    document.getElementById('play').hidden = videos.length < 2;
+    document.getElementById('openApp').href = `headlight://share#collection=${payload}`;
+  } catch (error) {
+    document.getElementById('name').textContent = 'Collection not found';
+    content.className = 'error';
+    content.textContent = 'この共有リンクを読み込めませんでした。 / This shared Collection could not be opened.';
+  }
+
+  document.getElementById('play').addEventListener('click', () => {
+    const wrap = document.getElementById('playerWrap'); wrap.style.display = 'block'; wrap.scrollIntoView({behavior:'smooth',block:'center'});
+    if (player) { player.playVideo(); return; }
+    const start = () => {
+      if (!window.YT || !YT.Player) { setTimeout(start,100); return; }
+      player = new YT.Player('player', {
+        width:'100%',height:'100%',
+        playerVars:{playsinline:1,controls:1,autoplay:1,origin:'https://head-light.app'},
+        events:{
+          onReady:e => e.target.loadPlaylist(videos,0,0),
+          onError:e => { if ([5,100,101,150].includes(e.data)) setTimeout(() => player.nextVideo(),250); }
+        }
+      });
+    };
+    if (!document.querySelector('script[data-youtube-api]')) {
+      const api = document.createElement('script');
+      api.src = 'https://www.youtube.com/iframe_api';
+      api.dataset.youtubeApi = 'true';
+      document.head.appendChild(api);
+    }
+    start();
+  });
+</script>
+</body>
+</html>
