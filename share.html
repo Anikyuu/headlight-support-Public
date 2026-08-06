@@ -42,6 +42,7 @@
     <div class="count" id="count"></div>
     <div class="actions" id="actions" hidden>
       <button id="play">▶ 最初から再生 / Play all</button>
+      <button id="shuffle" class="button secondary">⇄ シャッフル / Shuffle</button>
       <a class="button secondary" id="openApp">自分の棚に追加 / Add to Headlight</a>
     </div>
   </header>
@@ -54,6 +55,7 @@
   const MAX_ENTRIES = 48;
   const content = document.getElementById('content');
   let videos = [];
+  let pendingVideos = [];
   let player;
   // Different shared links use the same static page and differ only by their
   // fragment. Browsers do not reload on a fragment-only navigation by default.
@@ -126,6 +128,7 @@
     document.getElementById('snapshot').hidden = false;
     document.getElementById('legal').hidden = videos.length === 0;
     document.getElementById('play').hidden = videos.length < 2;
+    document.getElementById('shuffle').hidden = videos.length < 2;
     document.getElementById('openApp').href = `headlight://share#collection=${payload}`;
   } catch (error) {
     document.getElementById('name').textContent = 'Collection not found';
@@ -133,16 +136,29 @@
     content.textContent = 'この共有リンクを読み込めませんでした。 / This shared Collection could not be opened.';
   }
 
-  document.getElementById('play').addEventListener('click', () => {
+  function shuffledCopy(items) {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    if (result.length > 1 && result.every((value,index) => value === items[index])) {
+      [result[0], result[1]] = [result[1], result[0]];
+    }
+    return result;
+  }
+
+  function startPlayback(queue) {
+    pendingVideos = queue;
     const wrap = document.getElementById('playerWrap'); wrap.style.display = 'block'; wrap.scrollIntoView({behavior:'smooth',block:'center'});
-    if (player) { player.playVideo(); return; }
+    if (player) { player.loadPlaylist(pendingVideos,0,0); return; }
     const start = () => {
       if (!window.YT || !YT.Player) { setTimeout(start,100); return; }
       player = new YT.Player('player', {
         width:'100%',height:'100%',
         playerVars:{playsinline:1,controls:1,autoplay:1,origin:'https://head-light.app'},
         events:{
-          onReady:e => e.target.loadPlaylist(videos,0,0),
+          onReady:e => e.target.loadPlaylist(pendingVideos,0,0),
           onError:e => { if ([5,100,101,150].includes(e.data)) setTimeout(() => player.nextVideo(),250); }
         }
       });
@@ -154,7 +170,10 @@
       document.head.appendChild(api);
     }
     start();
-  });
+  }
+
+  document.getElementById('play').addEventListener('click', () => startPlayback([...videos]));
+  document.getElementById('shuffle').addEventListener('click', () => startPlayback(shuffledCopy(videos)));
 </script>
 </body>
 </html>
