@@ -1,0 +1,8 @@
+name = "headlight-universal-link"
+main = "worker.js"
+compatibility_date = "2026-08-07"
+workers_dev = true
+
+routes = [
+  { pattern = "open.head-light.app", custom_domain = true }
+]
