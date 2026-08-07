@@ -31,7 +31,8 @@
     .playerBadge{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:8px}
     .playerTitle{font-size:16px;font-weight:700;line-height:1.4}
     .playerHost{font-size:12px;color:var(--muted);margin-top:4px}
-    .playerButtons{grid-column:1/-1;width:100%;display:grid;grid-template-columns:repeat(2,60px);gap:18px;justify-content:center;margin-top:8px}
+    .playerButtons{grid-column:1/-1;width:100%;display:grid;grid-template-columns:repeat(3,60px);gap:18px;justify-content:center;margin-top:8px}
+    #prevTrack{grid-column:1}#addTrack{grid-column:2}#nextTrack{grid-column:3}
     .trackButton{display:inline-grid;place-items:center;width:60px;height:60px;padding:0;border-radius:50%}
     .trackButton svg{width:29px;height:29px;display:block}
     .shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -79,6 +80,9 @@
     <div class="playerButtons">
       <button id="prevTrack" class="button secondary trackButton" aria-label="Previous" title="Previous" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 5h2v14H6zm12 1.2v11.6L9.5 12z"/></svg>
+      </button>
+      <button id="addTrack" class="button secondary trackButton" aria-label="Add current track" title="Add current track" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
       </button>
       <button id="nextTrack" class="button secondary trackButton" aria-label="Next" title="Next" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 5h2v14h-2zM6 6.2 14.5 12 6 17.8z"/></svg>
@@ -397,6 +401,7 @@
     document.getElementById('playerBadge').textContent = current.badge;
     document.getElementById('playerTitle').textContent = current.entry.title || current.badge;
     document.getElementById('playerHost').textContent = current.entry.artist || new URL(current.entry.url).hostname.replace(/^www\./,'');
+    document.getElementById('addTrack').hidden = false;
     document.getElementById('prevTrack').hidden = currentQueue.length < 2;
     document.getElementById('nextTrack').hidden = currentQueue.length < 2;
   }
