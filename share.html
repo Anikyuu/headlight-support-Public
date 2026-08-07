@@ -25,7 +25,7 @@
     .iconButton{display:inline-grid;place-items:center;width:54px;height:54px;padding:0;border-radius:50%}
     .iconButton svg{width:23px;height:23px;display:block}
     #playerWrap{display:none;margin:0 auto 12px;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden}
-    #player,#player iframe{width:100%;height:100%}
+    #player,#player iframe,#youtubeMount{width:100%;height:100%}
     .playerMeta{display:none;width:100%;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 28px}
     .playerText{min-width:0}
     .playerBadge{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:8px}
@@ -69,7 +69,7 @@
       </a>
     </div>
   </header>
-  <div id="playerWrap"><div id="player"></div></div>
+  <div id="playerWrap"><div id="player"><div id="youtubeMount"></div></div></div>
   <div class="playerMeta" id="playerMeta">
     <div class="playerText">
       <div class="playerBadge" id="playerBadge"></div>
@@ -95,6 +95,9 @@
   let playableItems = [];
   let currentQueue = [];
   let currentIndex = 0;
+  let youtubePlayer = null;
+  let youtubePlayerReady = false;
+  let pendingYouTubeID = null;
   // Different shared links use the same static page and differ only by their
   // fragment. Browsers do not reload on a fragment-only navigation by default.
   window.addEventListener('hashchange', () => location.reload());
@@ -167,6 +170,7 @@
         entry,
         provider: 'youtube',
         badge: 'YouTube',
+        youtubeID: youtube,
         embedURL: `https://www.youtube.com/embed/${youtube}?autoplay=1&playsinline=1&rel=0&modestbranding=1`,
         thumbnailURL: `https://i.ytimg.com/vi/${youtube}/mqdefault.jpg`
       };
@@ -200,6 +204,82 @@
     const startIndex = playableItems.findIndex(item => item.id === itemID);
     if (startIndex < 0) return [];
     return [...playableItems.slice(startIndex), ...playableItems.slice(0, startIndex)];
+  }
+
+  function loadYouTubePlayerAPI() {
+    if (window.YT?.Player || document.getElementById('youtube-api')) {
+      if (window.YT?.Player) prepareYouTubePlayer();
+      return;
+    }
+    const script = document.createElement('script');
+    script.id = 'youtube-api';
+    script.src = 'https://www.youtube.com/iframe_api';
+    document.head.append(script);
+  }
+
+  window.onYouTubeIframeAPIReady = function() {
+    prepareYouTubePlayer();
+  };
+
+  function prepareYouTubePlayer(seedID = null) {
+    if (youtubePlayer || !window.YT?.Player) return;
+    const first = seedID || playableItems.find(item => item.provider === 'youtube')?.youtubeID;
+    if (!first) return;
+    const container = document.getElementById('player');
+    container.replaceChildren();
+    const mount = document.createElement('div');
+    mount.id = 'youtubeMount';
+    container.append(mount);
+    youtubePlayerReady = false;
+    youtubePlayer = new YT.Player('youtubeMount', {
+      width: '100%',
+      height: '100%',
+      videoId: first,
+      playerVars: {
+        autoplay: 0,
+        controls: 1,
+        playsinline: 1,
+        rel: 0,
+        origin: location.origin
+      },
+      events: {
+        onReady(event) {
+          youtubePlayerReady = true;
+          if (pendingYouTubeID) {
+            const videoID = pendingYouTubeID;
+            pendingYouTubeID = null;
+            event.target.loadVideoById(videoID);
+          }
+        },
+        onStateChange(event) {
+          if (event.data === YT.PlayerState.ENDED && currentQueue.length > 1) {
+            stepPlayback(1);
+          }
+        },
+        onError() {
+          if (currentQueue.length > 1) setTimeout(() => stepPlayback(1), 250);
+        }
+      }
+    });
+  }
+
+  function playYouTube(item) {
+    pendingYouTubeID = item.youtubeID;
+    if (!youtubePlayer) prepareYouTubePlayer(item.youtubeID);
+    if (youtubePlayerReady && youtubePlayer) {
+      const videoID = pendingYouTubeID;
+      pendingYouTubeID = null;
+      youtubePlayer.loadVideoById(videoID);
+    }
+  }
+
+  function discardYouTubePlayer() {
+    if (youtubePlayer) {
+      try { youtubePlayer.destroy(); } catch {}
+    }
+    youtubePlayer = null;
+    youtubePlayerReady = false;
+    pendingYouTubeID = null;
   }
 
   function card(entry, index) {
@@ -255,6 +335,7 @@
     const sorted = [...data.entries].sort((a,b) => a.order - b.order);
     sorted.forEach((entry,index) => content.append(card(entry,index)));
     playableItems = sorted.map(playableFor).filter(Boolean);
+    if (playableItems.some(item => item.provider === 'youtube')) loadYouTubePlayerAPI();
     document.getElementById('actions').hidden = false;
     document.getElementById('snapshot').hidden = false;
     document.getElementById('legal').hidden = playableItems.length === 0;
@@ -298,15 +379,20 @@
     if (scrollIntoView) {
       wrap.scrollIntoView({behavior:'smooth', block:'center'});
     }
-    container.replaceChildren();
-    const frame = document.createElement('iframe');
-    frame.src = current.embedURL;
-    frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
-    frame.allowFullscreen = true;
-    frame.referrerPolicy = 'strict-origin-when-cross-origin';
-    frame.loading = 'eager';
-    frame.title = current.entry.title || current.badge;
-    container.append(frame);
+    if (current.provider === 'youtube') {
+      playYouTube(current);
+    } else {
+      discardYouTubePlayer();
+      container.replaceChildren();
+      const frame = document.createElement('iframe');
+      frame.src = current.embedURL;
+      frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.loading = 'eager';
+      frame.title = current.entry.title || current.badge;
+      container.append(frame);
+    }
 
     document.getElementById('playerBadge').textContent = current.badge;
     document.getElementById('playerTitle').textContent = current.entry.title || current.badge;
