@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "7JA4767MS4.com.aniq.headlight"
+        ],
+        "components": [
+          {
+            "/": "/import/*",
+            "comment": "Open a shared Headlight collection in the app."
+          }
+        ]
+      }
+    ]
+  }
+}

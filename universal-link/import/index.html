@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Headlight</title>
+</head>
+<body>
+  <script>
+    // If Headlight is not installed, preserve the collection payload and return
+    // to the browser player instead of leaving the recipient on a dead page.
+    location.replace(`https://head-light.app/share.html${location.hash}`);
+  </script>
+  <noscript><a href="https://head-light.app/share.html">Open Headlight collection</a></noscript>
+</body>
+</html>

@@ -12,7 +12,7 @@
   <title>A collection from Headlight</title>
   <style>
     :root{--bg:#fff;--paper:#fff;--ink:#111;--muted:#666;--line:rgba(17,17,17,.12);--button:#111;--buttonText:#fff}
-    *{box-sizing:border-box} html{background:var(--bg)}
+    *{box-sizing:border-box} [hidden]{display:none!important} html{background:var(--bg)}
     body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
     main{width:min(760px,100%);margin:auto;padding:42px 18px 80px}
     header{text-align:center;padding:26px 8px 34px}.brand{color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.18em}
@@ -65,7 +65,7 @@
       <button id="play" class="iconButton" aria-label="Play" title="Play">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l10-6.5z"/></svg>
       </button>
-      <a class="button secondary iconButton" id="openApp" aria-label="Add to Headlight" title="Add to Headlight">
+      <a class="button secondary iconButton" id="openApp" aria-label="Add to Headlight" title="Add to Headlight" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
       </a>
     </div>
@@ -347,7 +347,10 @@
     document.getElementById('shuffle').hidden = playableItems.length < 2;
     document.getElementById('play').setAttribute('aria-label', playableItems.length > 1 ? 'Play all' : 'Play');
     document.getElementById('play').title = playableItems.length > 1 ? 'Play all' : 'Play';
-    document.getElementById('openApp').href = `headlight://share#collection=${payload}`;
+    // The old headlight:// URL exposed the entire payload in a browser permission
+    // prompt. Keep this control hidden until the Universal Link host is live and
+    // the receiving app build has shipped; then unhiding it needs no URL-scheme prompt.
+    document.getElementById('openApp').href = `https://open.head-light.app/import/#collection=${payload}`;
   } catch (error) {
     document.getElementById('name').textContent = 'Collection not found';
     content.className = 'error';
