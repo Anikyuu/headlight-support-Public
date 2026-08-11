@@ -127,6 +127,25 @@ function appleStorefrontCountry(entry) {
   }
 }
 
+async function appleMusicPageArtwork(entryURL) {
+  try {
+    const response = await fetch(entryURL, {
+      headers: {
+        Accept: "text/html,application/xhtml+xml",
+        "User-Agent": "Mozilla/5.0 (compatible; HeadlightShare/1.0)",
+      },
+    });
+    if (!response.ok) return null;
+    const html = await response.text();
+    const match = html.match(/<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)["']/i)
+      || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']og:image["']/i);
+    const artwork = match?.[1]?.replaceAll("&amp;", "&") || null;
+    return validAppleArtworkURL(artwork) ? artwork : null;
+  } catch {
+    return null;
+  }
+}
+
 // Apple Musicだけの棚は、黒い代替JPEGではなくAppleの公式CDN画像を
 // OG画像として直接参照する。Headlight側へ画像をコピー・加工・再保存しない。
 async function appleMusicOGImage(collection) {
@@ -139,15 +158,24 @@ async function appleMusicOGImage(collection) {
       lookup.searchParams.set("id", id);
       lookup.searchParams.set("entity", "song");
       lookup.searchParams.set("country", appleStorefrontCountry(entry));
-      const response = await fetch(lookup, { headers: { Accept: "application/json" } });
-      if (!response.ok) continue;
-      const data = await response.json();
-      const artwork = (data.results || []).find((item) => item.artworkUrl100)?.artworkUrl100;
-      if (!validAppleArtworkURL(artwork)) continue;
-      return artwork.replace(/\d+x\d+bb(?=\.(jpg|png))/i, "1200x1200bb");
+      const response = await fetch(lookup, {
+        headers: {
+          Accept: "application/json",
+          "User-Agent": "Mozilla/5.0 (compatible; HeadlightShare/1.0)",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const artwork = (data.results || []).find((item) => item.artworkUrl100)?.artworkUrl100;
+        if (validAppleArtworkURL(artwork)) {
+          return artwork.replace(/\d+x\d+bb(?=\.(jpg|png))/i, "1200x1200bb");
+        }
+      }
     } catch {
       // 次のアルバムを試す。全件失敗した場合だけ保存済みの中立表紙へ戻る。
     }
+    const pageArtwork = await appleMusicPageArtwork(entry.url);
+    if (pageArtwork) return pageArtwork;
   }
   return null;
 }
