@@ -4,5 +4,10 @@ compatibility_date = "2026-08-07"
 workers_dev = true
 
 routes = [
-  { pattern = "open.head-light.app", custom_domain = true }
+  { pattern = "open.head-light.app", custom_domain = true },
+  { pattern = "share.head-light.app", custom_domain = true }
 ]
+
+[[kv_namespaces]]
+binding = "SHARES"
+id = "ca8feb9a5e044faeb8085da00f10b9d8"
