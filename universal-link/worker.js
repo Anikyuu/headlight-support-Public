@@ -244,6 +244,7 @@ async function createShare(request, env) {
     name: collection.name.trim().slice(0, 160),
     count: collection.entries.length,
     coverPolicy: body.coverPolicy,
+    showsCollectionCover: body.showsCollectionCover === true,
     createdAt: new Date().toISOString(),
   });
 
@@ -260,7 +261,10 @@ function shareHTML(id, metadata, resolvedImageURL = null) {
   const title = escapeHTML(metadata.name || "Headlight Collection");
   const shortURL = `${SHARE_ORIGIN}/s/${id}`;
   const imageURL = resolvedImageURL || `${shortURL}/cover.jpg`;
-  const destination = `${COLLECTION_PAGE}#collection=${metadata.payload}`;
+  const coverQuery = metadata.showsCollectionCover
+    ? `?cover=${encodeURIComponent(`${shortURL}/cover.jpg`)}`
+    : "";
+  const destination = `${COLLECTION_PAGE}${coverQuery}#collection=${metadata.payload}`;
   return `<!doctype html>
 <html lang="ja">
 <head>

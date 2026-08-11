@@ -53,6 +53,7 @@
     .miniAction{display:inline-grid;place-items:center;width:34px;height:34px;padding:0;border-radius:50%}
     .miniAction svg{width:16px;height:16px}.albumError{color:var(--muted);font-size:13px;padding:16px}
     .shelf{display:grid;grid-template-columns:1fr;gap:10px}
+    .collectionCover{display:block;width:100%;height:auto;margin:0 0 18px;border-radius:16px;background:#f2f2f2}
     .shelf.appleAlbumShelf{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
     .appleAlbumTile{position:relative;aspect-ratio:1;overflow:hidden;border:0;border-radius:14px;padding:0;background:#f2f2f2;box-shadow:0 8px 24px rgba(0,0,0,.08)}
     .appleAlbumLink{display:block;width:100%;height:100%;color:inherit;text-decoration:none}
@@ -113,6 +114,7 @@
       </button>
     </div>
   </div>
+  <img id="collectionCover" class="collectionCover" alt="" hidden>
   <div id="content" class="shelf"></div>
   <p class="notice" id="snapshot" hidden>共有された時点のコピーです。元の棚とは同期しません。<br>This is a snapshot and does not sync with the sender.</p>
   <p class="legal" id="legal" hidden>Playback uses the official embedded player provided by each service when available. Some videos may open best on their original page.</p>
@@ -131,6 +133,18 @@
   // Different shared links use the same static page and differ only by their
   // fragment. Browsers do not reload on a fragment-only navigation by default.
   window.addEventListener('hashchange', () => location.reload());
+
+  function showCollectionCover() {
+    const value = new URLSearchParams(location.search).get('cover');
+    if (!value) return;
+    try {
+      const url = new URL(value);
+      if (url.protocol !== 'https:' || url.hostname !== 'share.head-light.app' || !/^\/s\/[A-Za-z0-9_-]{12}\/cover\.jpg$/.test(url.pathname)) return;
+      const cover = document.getElementById('collectionCover');
+      cover.src = url.href;
+      cover.hidden = false;
+    } catch {}
+  }
 
   function decodePayload() {
     const params = new URLSearchParams(location.hash.slice(1));
@@ -643,6 +657,7 @@
 
   try {
     const {data,payload} = decodePayload();
+    showCollectionCover();
     document.getElementById('name').textContent = data.name;
     document.title = `${data.name} — Headlight`;
     const sorted = [...data.entries].sort((a,b) => a.order - b.order);
