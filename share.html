@@ -53,6 +53,13 @@
     .miniAction{display:inline-grid;place-items:center;width:34px;height:34px;padding:0;border-radius:50%}
     .miniAction svg{width:16px;height:16px}.albumError{color:var(--muted);font-size:13px;padding:16px}
     .shelf{display:grid;grid-template-columns:1fr;gap:10px}
+    .shelf.appleAlbumShelf{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .appleAlbumTile{position:relative;aspect-ratio:1;overflow:hidden;border:0;border-radius:14px;padding:0;background:#f2f2f2;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .appleAlbumLink{display:block;width:100%;height:100%;color:inherit;text-decoration:none}
+    .appleAlbumImage{display:block;width:100%;height:100%;object-fit:contain;background:#f2f2f2}
+    .appleAlbumPlay{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:46px;height:46px;padding:0;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(17,17,17,.88);color:#fff;box-shadow:0 5px 18px rgba(0,0,0,.25);backdrop-filter:blur(8px)}
+    .appleAlbumPlay svg{width:21px;height:21px}.appleAlbumPlay.isPlaying{background:#fff;color:#111;border-color:rgba(17,17,17,.15)}
+    .appleAlbumFallback{display:grid;place-items:center;width:100%;height:100%;padding:18px;text-align:center;font-size:13px;font-weight:650;color:var(--muted);background:linear-gradient(135deg,#f8f8f8,#e9e9e9)}
     .card{display:grid;grid-template-columns:30px minmax(132px,180px) minmax(0,1fr) 46px;align-items:center;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:background .18s ease,border-color .18s ease}
     .card:hover{background:#fafafa;border-color:rgba(17,17,17,.18)}
     .artWrap{position:relative;width:100%;aspect-ratio:16/9;background:#f2f2f2;overflow:hidden}
@@ -67,7 +74,7 @@
     .source{border:1px solid var(--line);background:#fff;color:var(--ink)}
     .notice{font-size:13px;text-align:center;margin:28px auto 0;max-width:48em}.legal{font-size:11px;text-align:center;margin-top:18px;color:var(--muted)}
     .legal a{color:inherit}.error{background:#fff;border:1px solid #d8d8d8;border-radius:16px;padding:18px;color:#222}
-    @media(max-width:520px){main{padding-top:24px}.card{grid-template-columns:30px 36% minmax(0,1fr) 48px}.albumCard{padding:14px}.albumTop{grid-template-columns:24px 104px minmax(0,1fr);gap:10px}.albumArtwork{width:104px}.albumAction{width:44px;height:44px}}
+    @media(max-width:520px){main{padding-top:24px}.card{grid-template-columns:30px 36% minmax(0,1fr) 48px}.albumCard{padding:14px}.albumTop{grid-template-columns:24px 104px minmax(0,1fr);gap:10px}.albumArtwork{width:104px}.albumAction{width:44px;height:44px}.shelf.appleAlbumShelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.appleAlbumTile{border-radius:10px}.appleAlbumPlay{right:8px;bottom:8px;width:44px;height:44px}}
   </style>
 </head>
 <body>
@@ -119,6 +126,8 @@
   let youtubePlayer = null;
   let youtubePlayerReady = false;
   let pendingYouTubeID = null;
+  const applePreviewAudio = new Audio();
+  let activeApplePreviewButton = null;
   // Different shared links use the same static page and differ only by their
   // fragment. Browsers do not reload on a fragment-only navigation by default.
   window.addEventListener('hashchange', () => location.reload());
@@ -245,6 +254,14 @@
     return /^[A-Za-z]{2}$/.test(region || '') ? region.toUpperCase() : 'US';
   }
 
+  function appleCountry(entryURL) {
+    try {
+      const segment = new URL(entryURL).pathname.split('/').filter(Boolean)[0];
+      if (/^[A-Za-z]{2}$/.test(segment || '')) return segment.toUpperCase();
+    } catch {}
+    return storefrontCountry();
+  }
+
   function numericAppleID(value) {
     try {
       const url = new URL(value);
@@ -273,7 +290,7 @@
   }
 
   async function resolveAppleMusicAlbum(entry) {
-    const country = storefrontCountry();
+    const country = appleCountry(entry.url);
     let lookupID = Array.isArray(entry.storeTrackIDs)
       ? entry.storeTrackIDs.find(value => /^\d+$/.test(value))
       : null;
@@ -359,62 +376,95 @@
 
   async function appleMusicAlbumCard(entry, index) {
     const article = document.createElement('article');
-    article.className = 'albumCard';
+    article.className = 'appleAlbumTile';
     article.setAttribute('aria-busy', 'true');
     const loading = document.createElement('div');
-    loading.className = 'albumError';
-    loading.textContent = entry.title || 'Apple Music';
+    loading.className = 'appleAlbumFallback';
+    loading.textContent = 'Apple Music';
     article.append(loading);
     // 先に同じ位置を確保し、API応答が後から来ても棚順を変えない。
     content.append(article);
 
     try {
       const album = await resolveAppleMusicAlbum(entry);
-      const top = document.createElement('div'); top.className = 'albumTop';
-      const sequence = document.createElement('div'); sequence.className = 'albumSequence'; sequence.textContent = String(index + 1);
-      const artwork = document.createElement('img'); artwork.className = 'albumArtwork'; artwork.alt = '';
-      if (album.artwork) artwork.src = album.artwork;
-      const info = document.createElement('div');
-      const badge = document.createElement('div'); badge.className = 'albumBadge'; badge.textContent = 'Apple Music';
-      const title = document.createElement('a'); title.className = 'albumTitle'; title.textContent = album.title || entry.title;
-      title.href = album.url; title.target = '_blank'; title.rel = 'noopener noreferrer';
-      const artist = document.createElement('div'); artist.className = 'albumArtist'; artist.textContent = album.artist || entry.artist || '';
-      const actions = document.createElement('div'); actions.className = 'albumActions';
-      const albumEntry = {
-        title: album.title || entry.title,
-        artist: album.artist || entry.artist || null,
-        url: album.url,
-        trackTitles: album.tracks.map(track => track.trackName).filter(Boolean),
-        storeTrackIDs: album.tracks[0]?.trackId ? [String(album.tracks[0].trackId)] : entry.storeTrackIDs
-      };
-      actions.append(
-        iconButton('button secondary albumAction', 'Open in Apple Music', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-8 8M11 6H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-5"/>', album.url),
-        // modeは配布済みのビルド18も理解できるsingleEntryを維持。
-        // 新ビルドはtrackTitlesが複数あるApple Music項目をアルバムと判定する。
-        iconButton('button secondary albumAction', 'Add album to Headlight', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/>', () => { location.href = headlightImportURL(albumEntry, 'singleEntry'); })
-      );
-      info.append(badge,title,artist,actions); top.append(sequence,artwork,info);
+      const link = document.createElement('a');
+      link.className = 'appleAlbumLink';
+      link.href = album.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', `Open ${album.title || entry.title || 'album'} in Apple Music`);
+      if (album.artwork) {
+        const artwork = document.createElement('img');
+        artwork.className = 'appleAlbumImage';
+        artwork.src = album.artwork;
+        artwork.alt = album.title || entry.title || '';
+        artwork.loading = 'lazy';
+        link.append(artwork);
+      } else {
+        const fallback = document.createElement('div');
+        fallback.className = 'appleAlbumFallback';
+        fallback.textContent = album.title || entry.title || 'Apple Music';
+        link.append(fallback);
+      }
+      article.replaceChildren(link);
 
-      const list = document.createElement('ol'); list.className = 'trackList';
-      album.tracks.forEach((track,index) => {
-        const row = document.createElement('li'); row.className = 'musicTrack';
-        const number = document.createElement('span'); number.className = 'trackNumber'; number.textContent = String(track.trackNumber || index + 1);
-        const trackURL = track.trackViewUrl || album.url;
-        const name = document.createElement('a'); name.className = 'trackName'; name.textContent = track.trackName || '';
-        name.href = trackURL; name.target = '_blank'; name.rel = 'noopener noreferrer';
-        const trackEntry = {
-          title: track.trackName || '', artist: track.artistName || album.artist || null, url: trackURL,
-          trackTitles: track.trackName ? [track.trackName] : null,
-          storeTrackIDs: track.trackId ? [String(track.trackId)] : null
+      const firstPreview = album.tracks.find(track => typeof track.previewUrl === 'string' && track.previewUrl);
+      if (firstPreview) {
+        const play = document.createElement('button');
+        play.type = 'button';
+        play.className = 'appleAlbumPlay';
+        play.setAttribute('aria-label', `Play preview from ${album.title || entry.title || 'album'}`);
+        play.title = 'Play preview';
+        const showPlay = () => {
+          play.classList.remove('isPlaying');
+          play.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l10-6.5z"/></svg>';
         };
-        const open = iconButton('button secondary miniAction', 'Open in Apple Music', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-8 8M11 6H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-5"/>', trackURL);
-        const add = iconButton('button secondary miniAction', 'Add track to Headlight', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/>', () => { location.href = headlightImportURL(trackEntry, 'singleEntry'); });
-        row.append(number,name,open,add); list.append(row);
-      });
-      article.replaceChildren(top,list);
+        const showPause = () => {
+          play.classList.add('isPlaying');
+          play.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>';
+        };
+        showPlay();
+        play.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          if (activeApplePreviewButton === play && !applePreviewAudio.paused) {
+            applePreviewAudio.pause();
+            showPlay();
+            activeApplePreviewButton = null;
+            return;
+          }
+          if (activeApplePreviewButton && activeApplePreviewButton !== play) {
+            activeApplePreviewButton.classList.remove('isPlaying');
+            activeApplePreviewButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l10-6.5z"/></svg>';
+          }
+          applePreviewAudio.src = firstPreview.previewUrl;
+          activeApplePreviewButton = play;
+          applePreviewAudio.play().then(showPause).catch(() => {
+            showPlay();
+            if (activeApplePreviewButton === play) activeApplePreviewButton = null;
+          });
+        });
+        applePreviewAudio.addEventListener('ended', () => {
+          if (activeApplePreviewButton === play) {
+            showPlay();
+            activeApplePreviewButton = null;
+          }
+        });
+        article.append(play);
+      }
       article.setAttribute('aria-busy', 'false');
     } catch {
-      article.replaceWith(card(entry, index));
+      const link = document.createElement('a');
+      link.className = 'appleAlbumLink';
+      link.href = entry.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      const fallback = document.createElement('div');
+      fallback.className = 'appleAlbumFallback';
+      fallback.textContent = entry.title || 'Apple Music';
+      link.append(fallback);
+      article.replaceChildren(link);
+      article.setAttribute('aria-busy', 'false');
     }
   }
 
@@ -596,6 +646,8 @@
     document.getElementById('name').textContent = data.name;
     document.title = `${data.name} — Headlight`;
     const sorted = [...data.entries].sort((a,b) => a.order - b.order);
+    const appleOnly = sorted.every(isAppleMusicEntry);
+    if (appleOnly) content.classList.add('appleAlbumShelf');
     sorted.forEach((entry,index) => {
       if (isAppleMusicEntry(entry)) {
         appleMusicAlbumCard(entry,index);
@@ -607,7 +659,7 @@
     });
     playableItems = sorted.map(playableFor).filter(Boolean);
     if (playableItems.some(item => item.provider === 'youtube')) loadYouTubePlayerAPI();
-    document.getElementById('actions').hidden = false;
+    document.getElementById('actions').hidden = playableItems.length === 0;
     document.getElementById('snapshot').hidden = false;
     document.getElementById('legal').hidden = playableItems.length === 0;
     document.getElementById('play').hidden = playableItems.length === 0;

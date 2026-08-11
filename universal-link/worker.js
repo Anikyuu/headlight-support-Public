@@ -83,6 +83,75 @@ function decodeCollectionPayload(payload) {
   return collection;
 }
 
+function isAppleMusicEntry(entry) {
+  try {
+    const host = new URL(entry.url).hostname.toLowerCase();
+    return host === "music.apple.com" || host.endsWith(".music.apple.com")
+      || (Array.isArray(entry.storeTrackIDs) && entry.storeTrackIDs.length > 0);
+  } catch {
+    return false;
+  }
+}
+
+function appleCatalogSeedID(entry) {
+  const stored = Array.isArray(entry.storeTrackIDs)
+    ? entry.storeTrackIDs.find((value) => /^\d+$/.test(String(value)))
+    : null;
+  if (stored) return String(stored);
+  try {
+    const url = new URL(entry.url);
+    const trackID = url.searchParams.get("i");
+    if (/^\d+$/.test(trackID || "")) return trackID;
+    return url.pathname.split("/").filter(Boolean).reverse().find((part) => /^\d+$/.test(part)) || null;
+  } catch {
+    return null;
+  }
+}
+
+function validAppleArtworkURL(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:"
+      && (url.hostname === "mzstatic.com" || url.hostname.endsWith(".mzstatic.com"));
+  } catch {
+    return false;
+  }
+}
+
+function appleStorefrontCountry(entry) {
+  try {
+    const segment = new URL(entry.url).pathname.split("/").filter(Boolean)[0];
+    return /^[A-Za-z]{2}$/.test(segment || "") ? segment.toUpperCase() : "US";
+  } catch {
+    return "US";
+  }
+}
+
+// Apple Musicだけの棚は、黒い代替JPEGではなくAppleの公式CDN画像を
+// OG画像として直接参照する。Headlight側へ画像をコピー・加工・再保存しない。
+async function appleMusicOGImage(collection) {
+  if (!collection.entries.length || !collection.entries.every(isAppleMusicEntry)) return null;
+  for (const entry of collection.entries) {
+    const id = appleCatalogSeedID(entry);
+    if (!id) continue;
+    try {
+      const lookup = new URL("https://itunes.apple.com/lookup");
+      lookup.searchParams.set("id", id);
+      lookup.searchParams.set("entity", "song");
+      lookup.searchParams.set("country", appleStorefrontCountry(entry));
+      const response = await fetch(lookup, { headers: { Accept: "application/json" } });
+      if (!response.ok) continue;
+      const data = await response.json();
+      const artwork = (data.results || []).find((item) => item.artworkUrl100)?.artworkUrl100;
+      if (!validAppleArtworkURL(artwork)) continue;
+      return artwork.replace(/\d+x\d+bb(?=\.(jpg|png))/i, "1200x1200bb");
+    } catch {
+      // 次のアルバムを試す。全件失敗した場合だけ保存済みの中立表紙へ戻る。
+    }
+  }
+  return null;
+}
+
 function decodeJPEG(base64) {
   if (typeof base64 !== "string" || !base64) throw new Error("Missing cover image.");
   const binary = atob(base64);
@@ -125,7 +194,7 @@ async function createShare(request, env) {
   let collection;
   let image;
   try {
-    if (body.coverPolicy !== "youtube-and-spotify-albums-source-safe-v1") {
+    if (!["youtube-and-spotify-albums-source-safe-v1", "source-safe-v2-apple-direct-og"].includes(body.coverPolicy)) {
       throw new Error("Unsupported cover policy.");
     }
     collection = decodeCollectionPayload(body.payload);
@@ -159,10 +228,10 @@ async function createShare(request, env) {
   return json({ url: `${SHARE_ORIGIN}/s/${id}` }, 201);
 }
 
-function shareHTML(id, metadata) {
+function shareHTML(id, metadata, resolvedImageURL = null) {
   const title = escapeHTML(metadata.name || "Headlight Collection");
   const shortURL = `${SHARE_ORIGIN}/s/${id}`;
-  const imageURL = `${shortURL}/cover.jpg`;
+  const imageURL = resolvedImageURL || `${shortURL}/cover.jpg`;
   const destination = `${COLLECTION_PAGE}#collection=${metadata.payload}`;
   return `<!doctype html>
 <html lang="ja">
@@ -212,7 +281,13 @@ async function serveShortShare(pathname, env) {
   const raw = await env.SHARES.get(`share:${id}`);
   if (!raw) return new Response("Not found", { status: 404 });
   const metadata = JSON.parse(raw);
-  return new Response(shareHTML(id, metadata), {
+  let resolvedImageURL = null;
+  try {
+    resolvedImageURL = await appleMusicOGImage(decodeCollectionPayload(metadata.payload));
+  } catch {
+    // 旧共有・一時的なApple API失敗時は保存済みJPEGを使う。
+  }
+  return new Response(shareHTML(id, metadata, resolvedImageURL), {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
       "Cache-Control": "public, max-age=3600",
