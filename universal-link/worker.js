@@ -125,7 +125,7 @@ async function createShare(request, env) {
   let collection;
   let image;
   try {
-    if (body.coverPolicy !== "headlight-neutral-v1") {
+    if (body.coverPolicy !== "youtube-and-spotify-albums-source-safe-v1") {
       throw new Error("Unsupported cover policy.");
     }
     collection = decodeCollectionPayload(body.payload);

@@ -45,6 +45,7 @@
     .albumActions{display:flex;gap:10px;margin-top:16px}
     .albumAction{display:inline-grid;place-items:center;width:46px;height:46px;padding:0;border-radius:50%}
     .albumAction svg{width:21px;height:21px}
+    .spotifyEmbed{display:block;width:100%;height:352px;border:0;border-radius:12px;margin-top:14px;background:#121212}
     .trackList{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--line)}
     .musicTrack{display:grid;grid-template-columns:30px minmax(0,1fr) 38px 38px;gap:7px;align-items:center;min-height:48px;border-bottom:1px solid var(--line)}
     .musicTrack:last-child{border-bottom:0}.trackNumber{font-size:12px;color:var(--muted);text-align:center}
@@ -228,6 +229,17 @@
     } catch { return false; }
   }
 
+  function spotifyAlbumID(value) {
+    try {
+      const url = new URL(value);
+      const host = url.hostname.toLowerCase();
+      if (host !== 'open.spotify.com' && !host.endsWith('.spotify.com')) return null;
+      const parts = url.pathname.split('/').filter(Boolean);
+      const index = parts.findIndex(part => part.toLowerCase() === 'album');
+      return index >= 0 && parts[index + 1] ? parts[index + 1] : null;
+    } catch { return null; }
+  }
+
   function storefrontCountry() {
     const region = (navigator.language || '').split('-')[1];
     return /^[A-Za-z]{2}$/.test(region || '') ? region.toUpperCase() : 'US';
@@ -406,6 +418,31 @@
     }
   }
 
+  function spotifyAlbumCard(entry, index) {
+    const albumID = spotifyAlbumID(entry.url);
+    if (!albumID) { content.append(card(entry, index)); return; }
+    const article = document.createElement('article'); article.className = 'albumCard';
+    const top = document.createElement('div'); top.className = 'albumTop';
+    top.style.gridTemplateColumns = '30px minmax(0,1fr)';
+    const sequence = document.createElement('div'); sequence.className = 'albumSequence'; sequence.textContent = String(index + 1);
+    const info = document.createElement('div');
+    const badge = document.createElement('div'); badge.className = 'albumBadge'; badge.textContent = 'Spotify';
+    const title = document.createElement('a'); title.className = 'albumTitle'; title.textContent = entry.title || 'Spotify Album';
+    title.href = entry.url; title.target = '_blank'; title.rel = 'noopener noreferrer';
+    const artist = document.createElement('div'); artist.className = 'albumArtist'; artist.textContent = entry.artist || '';
+    const actions = document.createElement('div'); actions.className = 'albumActions';
+    actions.append(
+      iconButton('button secondary albumAction', 'Open in Spotify', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-8 8M11 6H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-5"/>', entry.url),
+      iconButton('button secondary albumAction', 'Add album to Headlight', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/>', () => { location.href = headlightImportURL(entry, 'singleEntry'); })
+    );
+    info.append(badge,title,artist,actions); top.append(sequence,info);
+    const embed = document.createElement('iframe'); embed.className = 'spotifyEmbed';
+    embed.src = `https://open.spotify.com/embed/album/${encodeURIComponent(albumID)}`;
+    embed.title = entry.title || 'Spotify album'; embed.loading = 'lazy';
+    embed.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    article.append(top,embed); content.append(article);
+  }
+
   function buildQueueFrom(itemID) {
     const startIndex = playableItems.findIndex(item => item.id === itemID);
     if (startIndex < 0) return [];
@@ -562,6 +599,8 @@
     sorted.forEach((entry,index) => {
       if (isAppleMusicEntry(entry)) {
         appleMusicAlbumCard(entry,index);
+      } else if (spotifyAlbumID(entry.url)) {
+        spotifyAlbumCard(entry,index);
       } else {
         content.append(card(entry,index));
       }
