@@ -35,12 +35,12 @@
     #prevTrack{grid-column:1}#addTrack{grid-column:2}#nextTrack{grid-column:3}
     .trackButton{display:inline-grid;place-items:center;width:60px;height:60px;padding:0;border-radius:50%}
     .trackButton svg{width:29px;height:29px;display:block}
-    .musicAlbums{display:grid;gap:18px;margin-bottom:20px}
     .albumCard{border:1px solid var(--line);border-radius:20px;padding:18px;background:#fff}
-    .albumTop{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center}
+    .albumTop{display:grid;grid-template-columns:30px 150px minmax(0,1fr);gap:18px;align-items:center}
+    .albumSequence{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
     .albumArtwork{width:150px;aspect-ratio:1;background:#f2f2f2;border-radius:12px;object-fit:cover;display:block}
     .albumBadge{font-size:11px;font-weight:650;color:var(--muted);letter-spacing:.04em;margin-bottom:5px}
-    .albumTitle{font-size:clamp(23px,5vw,34px);font-weight:760;line-height:1.14;text-wrap:balance}
+    .albumTitle{display:block;color:inherit;text-decoration:none;font-size:clamp(23px,5vw,34px);font-weight:760;line-height:1.14;text-wrap:balance}.albumTitle:hover{text-decoration:underline}
     .albumArtist{color:var(--muted);font-size:14px;margin-top:5px}
     .albumActions{display:flex;gap:10px;margin-top:16px}
     .albumAction{display:inline-grid;place-items:center;width:46px;height:46px;padding:0;border-radius:50%}
@@ -48,17 +48,17 @@
     .trackList{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--line)}
     .musicTrack{display:grid;grid-template-columns:30px minmax(0,1fr) 38px 38px;gap:7px;align-items:center;min-height:48px;border-bottom:1px solid var(--line)}
     .musicTrack:last-child{border-bottom:0}.trackNumber{font-size:12px;color:var(--muted);text-align:center}
-    .trackName{font-size:14px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .trackName{color:inherit;text-decoration:none;font-size:14px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.trackName:hover{text-decoration:underline}
     .miniAction{display:inline-grid;place-items:center;width:34px;height:34px;padding:0;border-radius:50%}
     .miniAction svg{width:16px;height:16px}.albumError{color:var(--muted);font-size:13px;padding:16px}
-    .shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .card{display:grid;grid-template-columns:28px 34% minmax(0,1fr) 46px;align-items:center;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:background .18s ease,border-color .18s ease}
+    .shelf{display:grid;grid-template-columns:1fr;gap:10px}
+    .card{display:grid;grid-template-columns:30px minmax(132px,180px) minmax(0,1fr) 46px;align-items:center;color:inherit;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:background .18s ease,border-color .18s ease}
     .card:hover{background:#fafafa;border-color:rgba(17,17,17,.18)}
     .artWrap{position:relative;width:100%;aspect-ratio:16/9;background:#f2f2f2;overflow:hidden}
     .art{width:100%;height:100%;object-fit:contain;display:block;background:#f2f2f2}
     .placeholder{display:grid;place-items:center;font-size:16px;font-weight:700;letter-spacing:.04em;color:var(--muted)}
-    .body{min-width:0;padding:10px 8px 10px 10px}.number{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
-    .title{font-weight:680;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.artist,.host{font-size:11px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .body{min-width:0;padding:10px 8px 10px 12px}.number{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
+    .title{font-weight:680;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.titleLink{color:inherit;text-decoration:none}.titleLink:hover{text-decoration:underline}.artist,.host{font-size:11px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .cardActions{display:flex;align-items:center;justify-content:center;padding-right:6px}
     .inlinePlay,.source{appearance:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;padding:0;text-decoration:none;cursor:pointer}
     .inlinePlay svg,.source svg{width:19px;height:19px;display:block}
@@ -66,7 +66,7 @@
     .source{border:1px solid var(--line);background:#fff;color:var(--ink)}
     .notice{font-size:13px;text-align:center;margin:28px auto 0;max-width:48em}.legal{font-size:11px;text-align:center;margin-top:18px;color:var(--muted)}
     .legal a{color:inherit}.error{background:#fff;border:1px solid #d8d8d8;border-radius:16px;padding:18px;color:#222}
-    @media(max-width:520px){main{padding-top:24px}.shelf{grid-template-columns:1fr}.card{grid-template-columns:30px 36% minmax(0,1fr) 48px}.albumCard{padding:14px}.albumTop{grid-template-columns:112px minmax(0,1fr);gap:14px}.albumArtwork{width:112px}.albumAction{width:44px;height:44px}}
+    @media(max-width:520px){main{padding-top:24px}.card{grid-template-columns:30px 36% minmax(0,1fr) 48px}.albumCard{padding:14px}.albumTop{grid-template-columns:24px 104px minmax(0,1fr);gap:10px}.albumArtwork{width:104px}.albumAction{width:44px;height:44px}}
   </style>
 </head>
 <body>
@@ -105,7 +105,6 @@
       </button>
     </div>
   </div>
-  <section id="musicAlbums" class="musicAlbums" hidden></section>
   <div id="content" class="shelf"></div>
   <p class="notice" id="snapshot" hidden>共有された時点のコピーです。元の棚とは同期しません。<br>This is a snapshot and does not sync with the sender.</p>
   <p class="legal" id="legal" hidden>Playback uses the official embedded player provided by each service when available. Some videos may open best on their original page.</p>
@@ -113,7 +112,6 @@
 <script>
   const MAX_ENTRIES = 48;
   const content = document.getElementById('content');
-  const musicAlbums = document.getElementById('musicAlbums');
   let playableItems = [];
   let currentQueue = [];
   let currentIndex = 0;
@@ -347,7 +345,7 @@
     return element;
   }
 
-  async function appleMusicAlbumCard(entry) {
+  async function appleMusicAlbumCard(entry, index) {
     const article = document.createElement('article');
     article.className = 'albumCard';
     article.setAttribute('aria-busy', 'true');
@@ -355,17 +353,19 @@
     loading.className = 'albumError';
     loading.textContent = entry.title || 'Apple Music';
     article.append(loading);
-    musicAlbums.append(article);
-    musicAlbums.hidden = false;
+    // 先に同じ位置を確保し、API応答が後から来ても棚順を変えない。
+    content.append(article);
 
     try {
       const album = await resolveAppleMusicAlbum(entry);
       const top = document.createElement('div'); top.className = 'albumTop';
+      const sequence = document.createElement('div'); sequence.className = 'albumSequence'; sequence.textContent = String(index + 1);
       const artwork = document.createElement('img'); artwork.className = 'albumArtwork'; artwork.alt = '';
       if (album.artwork) artwork.src = album.artwork;
       const info = document.createElement('div');
       const badge = document.createElement('div'); badge.className = 'albumBadge'; badge.textContent = 'Apple Music';
-      const title = document.createElement('div'); title.className = 'albumTitle'; title.textContent = album.title || entry.title;
+      const title = document.createElement('a'); title.className = 'albumTitle'; title.textContent = album.title || entry.title;
+      title.href = album.url; title.target = '_blank'; title.rel = 'noopener noreferrer';
       const artist = document.createElement('div'); artist.className = 'albumArtist'; artist.textContent = album.artist || entry.artist || '';
       const actions = document.createElement('div'); actions.className = 'albumActions';
       const albumEntry = {
@@ -381,14 +381,15 @@
         // 新ビルドはtrackTitlesが複数あるApple Music項目をアルバムと判定する。
         iconButton('button secondary albumAction', 'Add album to Headlight', '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/>', () => { location.href = headlightImportURL(albumEntry, 'singleEntry'); })
       );
-      info.append(badge,title,artist,actions); top.append(artwork,info);
+      info.append(badge,title,artist,actions); top.append(sequence,artwork,info);
 
       const list = document.createElement('ol'); list.className = 'trackList';
       album.tracks.forEach((track,index) => {
         const row = document.createElement('li'); row.className = 'musicTrack';
         const number = document.createElement('span'); number.className = 'trackNumber'; number.textContent = String(track.trackNumber || index + 1);
-        const name = document.createElement('span'); name.className = 'trackName'; name.textContent = track.trackName || '';
         const trackURL = track.trackViewUrl || album.url;
+        const name = document.createElement('a'); name.className = 'trackName'; name.textContent = track.trackName || '';
+        name.href = trackURL; name.target = '_blank'; name.rel = 'noopener noreferrer';
         const trackEntry = {
           title: track.trackName || '', artist: track.artistName || album.artist || null, url: trackURL,
           trackTitles: track.trackName ? [track.trackName] : null,
@@ -401,8 +402,7 @@
       article.replaceChildren(top,list);
       article.setAttribute('aria-busy', 'false');
     } catch {
-      article.replaceChildren(card(entry, Number(entry.order) || 0));
-      article.setAttribute('aria-busy', 'false');
+      article.replaceWith(card(entry, index));
     }
   }
 
@@ -488,25 +488,45 @@
     pendingYouTubeID = null;
   }
 
+  function sourceName(value) {
+    try {
+      const host = new URL(value).hostname.toLowerCase().replace(/^www\./,'');
+      if (host.includes('youtube.com') || host === 'youtu.be') return 'YouTube';
+      if (host.includes('tiktok.com')) return 'TikTok';
+      if (host.includes('instagram.com') || host === 'instagr.am') return 'Instagram';
+      if (host.includes('spotify.com') || host === 'spotify.link') return 'Spotify';
+      if (host.includes('netflix.com')) return 'Netflix';
+      if (host.includes('unext.jp')) return 'U-NEXT';
+      if (host.includes('amazon.')) return 'Amazon';
+      if (host.includes('x.com') || host.includes('twitter.com')) return 'X';
+      return host;
+    } catch { return 'LINK'; }
+  }
+
   function card(entry, index) {
     const wrapper = document.createElement('article');
     wrapper.className = 'card';
     const playable = playableFor(entry);
-    const artWrap = document.createElement('div'); artWrap.className = 'artWrap';
+    const artWrap = document.createElement('a'); artWrap.className = 'artWrap';
+    artWrap.href = entry.url; artWrap.target = '_blank'; artWrap.rel = 'noopener noreferrer';
+    artWrap.setAttribute('aria-label', 'Open original link');
     let art;
     if (playable?.thumbnailURL) {
       art = document.createElement('img'); art.className = 'art'; art.loading = 'lazy';
       art.src = playable.thumbnailURL; art.alt = '';
     } else {
-      art = document.createElement('div'); art.className = 'art placeholder'; art.textContent = playable?.badge || 'LINK';
+      art = document.createElement('div'); art.className = 'art placeholder'; art.textContent = playable?.badge || sourceName(entry.url);
     }
     artWrap.append(art);
     const body = document.createElement('div'); body.className = 'body';
     const number = document.createElement('div'); number.className = 'number'; number.textContent = `${index + 1}`;
     const title = document.createElement('div'); title.className = 'title';
-    const url = new URL(entry.url); title.textContent = entry.title || url.hostname.replace(/^www\./,'');
+    const titleLink = document.createElement('a'); titleLink.className = 'titleLink';
+    titleLink.href = entry.url; titleLink.target = '_blank'; titleLink.rel = 'noopener noreferrer';
+    const url = new URL(entry.url); titleLink.textContent = entry.title || url.hostname.replace(/^www\./,'');
+    title.append(titleLink);
     const detail = document.createElement('div'); detail.className = entry.artist ? 'artist' : 'host';
-    detail.textContent = entry.artist || url.hostname.replace(/^www\./,'');
+    detail.textContent = entry.artist || sourceName(entry.url);
     const actions = document.createElement('div'); actions.className = 'cardActions';
     if (playable) {
       const playHere = document.createElement('button');
@@ -541,7 +561,7 @@
     const sorted = [...data.entries].sort((a,b) => a.order - b.order);
     sorted.forEach((entry,index) => {
       if (isAppleMusicEntry(entry)) {
-        appleMusicAlbumCard(entry);
+        appleMusicAlbumCard(entry,index);
       } else {
         content.append(card(entry,index));
       }
