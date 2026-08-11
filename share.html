@@ -604,6 +604,24 @@
     } catch { return 'LINK'; }
   }
 
+  async function loadGenericPreview(entryURL, placeholder) {
+    const shareID = new URLSearchParams(location.search).get('share') || '';
+    if (!/^[A-Za-z0-9_-]{12}$/.test(shareID)) return;
+    try {
+      const endpoint = new URL('https://share.head-light.app/api/link-preview');
+      endpoint.searchParams.set('share', shareID);
+      endpoint.searchParams.set('url', entryURL);
+      const response = await fetch(endpoint, {headers:{Accept:'application/json'}});
+      if (!response.ok) return;
+      const imageURL = (await response.json()).image;
+      if (!imageURL) return;
+      const image = new Image();
+      image.className = 'art'; image.alt = ''; image.loading = 'lazy';
+      image.addEventListener('load', () => placeholder.replaceWith(image), {once:true});
+      image.src = imageURL;
+    } catch {}
+  }
+
   function card(entry, index) {
     const wrapper = document.createElement('article');
     wrapper.className = 'card';
@@ -617,6 +635,7 @@
       art.src = playable.thumbnailURL; art.alt = '';
     } else {
       art = document.createElement('div'); art.className = 'art placeholder'; art.textContent = playable?.badge || sourceName(entry.url);
+      loadGenericPreview(entry.url, art);
     }
     artWrap.append(art);
     const body = document.createElement('div'); body.className = 'body';

@@ -5,6 +5,7 @@ const MAX_POST_BYTES = 7_000_000;
 const MAX_IMAGE_BYTES = 4_750_000;
 const MAX_PAYLOAD_CHARS = 120_000;
 const MAX_SHARES_PER_DAY = 20;
+const MAX_PREVIEW_HTML_BYTES = 600_000;
 
 const AASA = JSON.stringify({
   applinks: {
@@ -53,6 +54,176 @@ function escapeHTML(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function allowedPublicURL(value, requireHTTPS = false) {
+  try {
+    const url = new URL(value);
+    if (requireHTTPS ? url.protocol !== "https:" : !["http:", "https:"].includes(url.protocol)) return null;
+    if (url.username || url.password || (url.port && !["80", "443"].includes(url.port))) return null;
+    const host = url.hostname.toLowerCase();
+    if (!host || host === "localhost" || host.endsWith(".localhost") || host.endsWith(".local")) return null;
+    if (host.includes(":") || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) return null;
+    return url;
+  } catch {
+    return null;
+  }
+}
+
+function decodeHTMLEntities(value) {
+  return String(value || "")
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">");
+}
+
+function metadataImageFromHTML(html, pageURL) {
+  const candidates = [];
+  for (const tag of html.match(/<meta\b[^>]*>/gi) || []) {
+    const attributes = {};
+    for (const match of tag.matchAll(/([:\w-]+)\s*=\s*(["'])(.*?)\2/gi)) {
+      attributes[match[1].toLowerCase()] = decodeHTMLEntities(match[3]);
+    }
+    const key = (attributes.property || attributes.name || "").toLowerCase();
+    if (["og:image", "og:image:url", "og:image:secure_url", "twitter:image", "twitter:image:src"].includes(key)) {
+      candidates.push(attributes.content);
+    }
+  }
+  for (const value of candidates) {
+    try {
+      const resolved = new URL(value, pageURL);
+      if (allowedPublicURL(resolved.href, true)) return resolved.href;
+    } catch {}
+  }
+  return null;
+}
+
+async function readLimitedText(response) {
+  const declared = Number(response.headers.get("Content-Length") || 0);
+  if (declared > MAX_PREVIEW_HTML_BYTES) return null;
+  if (!response.body) return null;
+  const reader = response.body.getReader();
+  const chunks = [];
+  let length = 0;
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    length += value.byteLength;
+    if (length > MAX_PREVIEW_HTML_BYTES) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(length);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
+}
+
+function robloxPlaceID(url) {
+  if (!(url.hostname === "roblox.com" || url.hostname.endsWith(".roblox.com"))) return null;
+  const parts = url.pathname.split("/").filter(Boolean);
+  const marker = parts.findIndex((part) => part.toLowerCase() === "games");
+  const value = marker >= 0 ? parts[marker + 1] : null;
+  return /^\d+$/.test(value || "") ? value : null;
+}
+
+async function robloxGameThumbnail(url) {
+  const placeID = robloxPlaceID(url);
+  if (!placeID) return null;
+  try {
+    const universeResponse = await fetch(`https://apis.roblox.com/universes/v1/places/${placeID}/universe`);
+    if (!universeResponse.ok) return null;
+    const universeID = String((await universeResponse.json()).universeId || "");
+    if (!/^\d+$/.test(universeID)) return null;
+    const thumbnailURL = new URL("https://thumbnails.roblox.com/v1/games/icons");
+    thumbnailURL.searchParams.set("universeIds", universeID);
+    thumbnailURL.searchParams.set("returnPolicy", "PlaceHolder");
+    thumbnailURL.searchParams.set("size", "512x512");
+    thumbnailURL.searchParams.set("format", "Png");
+    thumbnailURL.searchParams.set("isCircular", "false");
+    const thumbnailResponse = await fetch(thumbnailURL);
+    if (!thumbnailResponse.ok) return null;
+    const imageURL = (await thumbnailResponse.json())?.data?.[0]?.imageUrl;
+    return allowedPublicURL(imageURL, true)?.href || null;
+  } catch {
+    return null;
+  }
+}
+
+async function genericMetadataImage(startURL) {
+  const roblox = await robloxGameThumbnail(startURL);
+  if (roblox) return roblox;
+
+  let current = startURL;
+  for (let redirect = 0; redirect < 4; redirect += 1) {
+    const response = await fetch(current, {
+      redirect: "manual",
+      headers: {
+        Accept: "text/html,application/xhtml+xml",
+        Range: `bytes=0-${MAX_PREVIEW_HTML_BYTES - 1}`,
+        "User-Agent": "Mozilla/5.0 (compatible; HeadlightShare/1.0; +https://head-light.app)",
+      },
+    });
+    if ([301, 302, 303, 307, 308].includes(response.status)) {
+      const next = response.headers.get("Location");
+      const resolved = next ? allowedPublicURL(new URL(next, current).href) : null;
+      if (!resolved) return null;
+      current = resolved;
+      continue;
+    }
+    if (!response.ok) return null;
+    const contentType = (response.headers.get("Content-Type") || "").toLowerCase();
+    if (!contentType.includes("text/html") && !contentType.includes("application/xhtml+xml")) return null;
+    const html = await readLimitedText(response);
+    return html ? metadataImageFromHTML(html, current) : null;
+  }
+  return null;
+}
+
+async function serveLinkPreview(request, env) {
+  const requestURL = new URL(request.url);
+  const shareID = requestURL.searchParams.get("share") || "";
+  const requestedURL = allowedPublicURL(requestURL.searchParams.get("url") || "");
+  if (!/^[A-Za-z0-9_-]{12}$/.test(shareID) || !requestedURL) return json({ image: null }, 400);
+
+  const raw = await env.SHARES.get(`share:${shareID}`);
+  if (!raw) return json({ image: null }, 404);
+  let collection;
+  try {
+    collection = decodeCollectionPayload(JSON.parse(raw).payload);
+  } catch {
+    return json({ image: null }, 400);
+  }
+  if (!collection.entries.some((entry) => allowedPublicURL(entry.url)?.href === requestedURL.href)) {
+    return json({ image: null }, 403);
+  }
+
+  const cache = caches.default;
+  const cacheKey = new Request(requestURL.href, { method: "GET" });
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+  const image = await genericMetadataImage(requestedURL);
+  const response = new Response(JSON.stringify({ image }), {
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "public, max-age=86400",
+      "Access-Control-Allow-Origin": "https://head-light.app",
+      "X-Content-Type-Options": "nosniff",
+    },
+  });
+  try {
+    await cache.put(cacheKey, response.clone());
+  } catch {
+    // A cache write must never hide a preview that was already resolved.
+  }
+  return response;
 }
 
 function decodeCollectionPayload(payload) {
@@ -261,10 +432,9 @@ function shareHTML(id, metadata, resolvedImageURL = null) {
   const title = escapeHTML(metadata.name || "Headlight Collection");
   const shortURL = `${SHARE_ORIGIN}/s/${id}`;
   const imageURL = resolvedImageURL || `${shortURL}/cover.jpg`;
-  const coverQuery = metadata.showsCollectionCover
-    ? `?cover=${encodeURIComponent(`${shortURL}/cover.jpg`)}`
-    : "";
-  const destination = `${COLLECTION_PAGE}${coverQuery}#collection=${metadata.payload}`;
+  const destinationQuery = new URLSearchParams({ share: id });
+  if (metadata.showsCollectionCover) destinationQuery.set("cover", `${shortURL}/cover.jpg`);
+  const destination = `${COLLECTION_PAGE}?${destinationQuery}#collection=${metadata.payload}`;
   return `<!doctype html>
 <html lang="ja">
 <head>
@@ -358,6 +528,10 @@ export default {
 
     if (request.method === "POST" && url.pathname === "/api/shares") {
       return createShare(request, env);
+    }
+
+    if (request.method === "GET" && url.pathname === "/api/link-preview") {
+      return serveLinkPreview(request, env);
     }
 
     if (request.method === "GET" || request.method === "HEAD") {
