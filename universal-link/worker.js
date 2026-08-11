@@ -125,6 +125,9 @@ async function createShare(request, env) {
   let collection;
   let image;
   try {
+    if (body.coverPolicy !== "headlight-neutral-v1") {
+      throw new Error("Unsupported cover policy.");
+    }
     collection = decodeCollectionPayload(body.payload);
     image = decodeJPEG(body.imageBase64);
   } catch (error) {
@@ -143,6 +146,7 @@ async function createShare(request, env) {
     payload: body.payload,
     name: collection.name.trim().slice(0, 160),
     count: collection.entries.length,
+    coverPolicy: body.coverPolicy,
     createdAt: new Date().toISOString(),
   });
 
@@ -174,9 +178,11 @@ function shareHTML(id, metadata) {
   <meta property="og:image" content="${imageURL}">
   <meta property="og:image:secure_url" content="${imageURL}">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Headlight collection cover">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:image" content="${imageURL}">
+  <meta name="twitter:image:alt" content="Headlight collection cover">
   <title>${title} — Headlight</title>
 </head>
 <body>

@@ -61,7 +61,7 @@
 
     <h2>外部サービスへの共有</h2>
     <p>「AIに渡す」機能や共有ボタンは、ユーザー自身の操作で内容をコピーまたは共有するものです。共有後の取り扱いは、ChatGPT、Claude、Geminiなど、選択したサービスのプライバシーポリシーに従います。</p>
-    <p>コレクションの短い共有リンクを作成すると、ユーザーが選んだコレクション名、リンクカードの題名・URL・並び順と、共有ページの表紙画像がCloudflare KVに保存されます。個人的なメモ、録音、元の写真ファイル、端末固有のApple Music IDは保存されません。リンクを知る人は内容と表紙を閲覧できます。現時点では、送信後にリンクを無効化できません。</p>
+    <p>コレクションの短い共有リンクを作成すると、ユーザーが選んだコレクション名、リンクカードの題名・URL・並び順と、共有ページの表紙画像がCloudflare KVに保存されます。この表紙にはYouTube、音楽、SNSなど第三者サービスのサムネイルを使わず、題名・サービス名とHeadlightのデザインで構成します。個人的なメモ、録音、元の写真ファイル、端末固有のApple Music IDは保存されません。リンクを知る人は内容と表紙を閲覧できます。現時点では、送信後にリンクを無効化できません。</p>
 
     <h2>YouTubeプレイヤー</h2>
     <p>ユーザーがYouTubeの連続再生を選び、初回の案内に同意した場合、YouTubeの公式埋め込みプレイヤーを読み込みます。動画の表示・再生、再生可否の確認、不正利用の防止などのため、IPアドレス、端末・ブラウザ情報、再生操作などがGoogleおよびYouTubeへ送信される場合があります。HeadlightはYouTube動画をダウンロードせず、音声を分離せず、バックグラウンド再生を提供しません。</p>
@@ -111,7 +111,7 @@
 
     <h2>Sharing with external services</h2>
     <p>The “Send to AI” feature and system share buttons copy or share content only when you choose to do so. After sharing, the privacy policy of the selected service—such as ChatGPT, Claude, or Gemini—applies.</p>
-    <p>When you create a short Collection sharing link, the Collection name, link-card titles, URLs and order that you chose to share, together with the sharing page's cover image, are stored in Cloudflare KV. Personal notes, recordings, original photo files, and device-specific Apple Music IDs are not stored. Anyone who knows the link can view its content and cover. A sent link cannot currently be revoked.</p>
+    <p>When you create a short Collection sharing link, the Collection name, link-card titles, URLs and order that you chose to share, together with the sharing page's cover image, are stored in Cloudflare KV. The cover does not use third-party thumbnails from YouTube, music, or social services; it is composed from titles, service names, and Headlight-owned design. Personal notes, recordings, original photo files, and device-specific Apple Music IDs are not stored. Anyone who knows the link can view its content and cover. A sent link cannot currently be revoked.</p>
 
     <h2>YouTube player</h2>
     <p>When you choose continuous YouTube playback and accept the first-use notice, Headlight loads the official embedded YouTube player. Google and YouTube may receive information such as your IP address, device and browser information, and playback interactions to display and play videos, determine playability, and prevent abuse. Headlight does not download YouTube videos, separate their audio, or provide background playback.</p>
