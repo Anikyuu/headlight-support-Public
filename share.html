@@ -369,6 +369,47 @@
     return result;
   }
 
+  function makeUUID() {
+    if (crypto.randomUUID) return crypto.randomUUID();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, character => {
+      const random = Math.random() * 16 | 0;
+      const value = character === 'x' ? random : (random & 0x3 | 0x8);
+      return value.toString(16);
+    });
+  }
+
+  function encodeCollection(value) {
+    const bytes = new TextEncoder().encode(JSON.stringify(value));
+    let binary = '';
+    bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+    return btoa(binary)
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/g, '');
+  }
+
+  function addCurrentTrackToHeadlight() {
+    const current = currentQueue[currentIndex];
+    if (!current) return;
+    const entry = current.entry;
+    const singleTrackCollection = {
+      version: 1,
+      id: makeUUID(),
+      name: entry.title || current.badge || 'Headlight',
+      skin: 'normal',
+      mode: 'singleEntry',
+      entries: [{
+        title: entry.title || '',
+        url: entry.url,
+        artist: entry.artist || null,
+        order: 0,
+        pinned: false
+      }]
+    };
+    const payload = encodeCollection(singleTrackCollection);
+    location.href = `https://open.head-light.app/import/#collection=${payload}`;
+  }
+
   function startPlayback(queue) {
     currentQueue = queue.filter(Boolean);
     currentIndex = 0;
@@ -418,6 +459,7 @@
   document.getElementById('play').addEventListener('click', () => startPlayback([...playableItems]));
   document.getElementById('shuffle').addEventListener('click', () => startPlayback(shuffledCopy(playableItems)));
   document.getElementById('prevTrack').addEventListener('click', () => stepPlayback(-1));
+  document.getElementById('addTrack').addEventListener('click', addCurrentTrackToHeadlight);
   document.getElementById('nextTrack').addEventListener('click', () => stepPlayback(1));
 </script>
 </body>
