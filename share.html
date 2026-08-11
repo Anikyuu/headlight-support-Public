@@ -693,17 +693,18 @@
     });
     playableItems = sorted.map(playableFor).filter(Boolean);
     if (playableItems.some(item => item.provider === 'youtube')) loadYouTubePlayerAPI();
-    document.getElementById('actions').hidden = playableItems.length === 0;
+    document.getElementById('actions').hidden = false;
     document.getElementById('snapshot').hidden = false;
     document.getElementById('legal').hidden = playableItems.length === 0;
     document.getElementById('play').hidden = playableItems.length === 0;
     document.getElementById('shuffle').hidden = playableItems.length < 2;
     document.getElementById('play').setAttribute('aria-label', playableItems.length > 1 ? 'Play all' : 'Play');
     document.getElementById('play').title = playableItems.length > 1 ? 'Play all' : 'Play';
-    // The old headlight:// URL exposed the entire payload in a browser permission
-    // prompt. Keep this control hidden until the Universal Link host is live and
-    // the receiving app build has shipped; then unhiding it needs no URL-scheme prompt.
-    document.getElementById('openApp').href = `https://open.head-light.app/import/#collection=${payload}`;
+    // Universal Linkで棚全体をHeadlightへ渡す。旧headlight://のように、長いpayloadを
+    // ブラウザの許可ダイアログへ見せない。
+    const openApp = document.getElementById('openApp');
+    openApp.href = `https://open.head-light.app/import/#collection=${payload}`;
+    openApp.hidden = false;
   } catch (error) {
     document.getElementById('name').textContent = 'Collection not found';
     content.className = 'error';
