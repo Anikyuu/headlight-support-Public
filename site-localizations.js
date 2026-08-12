@@ -19,6 +19,11 @@
       it: {0:'Gli strumenti',4:'Strumenti per mettere ordine tra pensieri ed emozioni',23:'Gratis',33:'Strumenti per organizzare attività e tempo',40:'Gratis',45:'Gratis',50:'Strumenti per tenere traccia di mente e corpo',63:'Gratis',68:'Gratis',73:'Strumenti per gestire la vita quotidiana',97:'Strumenti per archiviare e conservare le tue parole',102:'Il suggerimento viene creato senza chiamare l’IA, quindi resta gratuito.',108:'Scopri cosa è gratis e cosa aggiunge AI Pro'}
     }
   };
+  Object.assign(overrides.index.de, {127:'iPhone, iPad, Mac und Apple Watch'});
+  Object.assign(overrides.index['zh-Hant'], {127:'iPhone、iPad、Mac 與 Apple Watch'});
+  Object.assign(overrides.index.fr, {127:'iPhone, iPad, Mac et Apple Watch'});
+  Object.assign(overrides.index.es, {127:'iPhone, iPad, Mac y Apple Watch'});
+  Object.assign(overrides.index.it, {127:'iPhone, iPad, Mac e Apple Watch'});
   const titles = {"index":{"ja":"Headlight — あなたを軽くするアプリ","en":"Headlight — Clear your mind","ko":"Headlight — 당신을 가볍게 하는 앱","de":"Headlight — Mach dir den Kopf frei","zh-Hant":"Headlight — 讓思緒輕盈","fr":"Headlight — Libérez votre esprit","es":"Headlight — Aligera tu mente","it":"Headlight — Libera la mente"},"tools":{"ja":"Headlightの道具 — あなたを軽くするアプリ","en":"The tools of Headlight","ko":"Headlight의 도구","de":"Die Werkzeuge von Headlight","zh-Hant":"Headlight 的工具","fr":"Les outils de Headlight","es":"Las herramientas de Headlight","it":"Gli strumenti di Headlight"}};
   function install(page) {
     const run = function () {
