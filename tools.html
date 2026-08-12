@@ -8,6 +8,7 @@
 <meta property="og:title" content="Headlight — Clear your mind. Keep what you love.">
 <meta property="og:description" content="Keep what you love, let the rest go — a Japanese-style shelf for music, films, and thoughts you can't forget. 好きなものを棚に、思いつきも予定もAIが整理。広告なし。データを売りません。">
 <title data-title-ja="Headlightの道具 — あなたを軽くするアプリ" data-title-en="The tools of Headlight" data-title-ko="Headlight의 도구">Headlight — あなたを軽くするアプリ</title>
+<script src="site-localizations.js"></script>
 <style>
   :root {
     /* 【2026-07-27 Kai】黒から白へ。「あなたを軽くする」に合う軽い印象にする。 */
@@ -466,56 +467,56 @@
     .cols { gap: 32px; }
   }
 
-  /* 【2026-07-28 Kai】1個ずつ押して回すボタンだと、韓国語があること自体に
-     気づけない。3つとも常に見える形へ作り替えた。 */
+  /* 言語は右上の小さな選択メニューにまとめる。 */
   .langtabs {
     position: fixed;
     top: 18px;
     right: 18px;
     z-index: 50;
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
     border: 1px solid var(--line);
     background: rgba(255,255,255,0.82);   /* 白地に合わせる(2026-07-27) */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 999px;
-    padding: 4px;
+    padding: 0;
     font-family: var(--sans);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
   }
-  .langtabs button {
+  .langtabs select {
     appearance: none;
-    border: none;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
     background: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%2374706a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
     border-radius: 999px;
-    padding: 6px 11px;
+    padding: 8px 34px 8px 14px;
     font-size: 12.5px;
     letter-spacing: 0.02em;
-    color: var(--muted);
+    color: var(--ink);
     cursor: pointer;
     font-family: var(--sans);
-    transition: background 0.15s ease, color 0.15s ease;
   }
-  .langtabs button:hover { color: var(--ink); }
-  .langtabs button[aria-current="true"] {
-    background: var(--ink);
-    color: #fff;
-  }
+  .langtabs select:focus-visible { box-shadow: 0 0 0 2px var(--ink); }
   @media (max-width: 480px) {
-    .langtabs { top: 12px; right: 12px; padding: 3px; }
-    .langtabs button { padding: 5px 8px; font-size: 11.5px; }
+    .langtabs { top: 12px; right: 12px; }
+    .langtabs select { padding: 7px 31px 7px 12px; font-size: 12px; }
   }
-  /* 3言語対応(2026-07-28): 既定で全部隠し、選ばれた言語のspanだけ見せる方式に変更。
-     以前は「英語ならja側を隠す/それ以外ならen側を隠す」の2値だったが、
-     韓国語を足すには「選ばれていないもの全部隠す」形に直す必要があった。 */
+  /* 8言語対応: 既定で全部隠し、選ばれた言語のspanだけ見せる。 */
   /* 【2026-07-28】.dest span:not(.dico) のような、他の見た目ルールの方が
      詳細度で勝ってしまい、隠したはずの言語のspanが表示される事故があった
      (歯医者カードで日英韓が同時に3行並んでいた)。!important で必ず勝たせる。 */
   span[data-i18n] { display: none !important; }
   html[data-lang="ja"] span[data-i18n="ja"],
   html[data-lang="en"] span[data-i18n="en"],
-  html[data-lang="ko"] span[data-i18n="ko"] { display: inline !important; }
+  html[data-lang="ko"] span[data-i18n="ko"],
+  html[data-lang="de"] span[data-i18n="de"],
+  html[data-lang="zh-Hant"] span[data-i18n="zh-Hant"],
+  html[data-lang="fr"] span[data-i18n="fr"],
+  html[data-lang="es"] span[data-i18n="es"],
+  html[data-lang="it"] span[data-i18n="it"] { display: inline !important; }
   /* JS が data-lang を付ける前の一瞬は、静的な lang="ja" に合わせて日本語を出す
      (無表示のちらつきを防ぐ)。JS 実行後は上のルールに置き換わる。 */
   html:not([data-lang]) span[data-i18n="ja"] { display: inline !important; }
@@ -540,32 +541,36 @@
 </head>
 <body>
 
-<div class="langtabs" id="langTabs" role="group" aria-label="Switch language / 言語を切り替え / 언어 전환">
-  <button type="button" data-lang-btn="ja">日本語</button>
-  <button type="button" data-lang-btn="en">EN</button>
-  <button type="button" data-lang-btn="ko">한국어</button>
+<div class="langtabs">
+  <select id="languageSelect" aria-label="Language">
+    <option value="ja">日本語</option>
+    <option value="en">English</option>
+    <option value="ko">한국어</option>
+    <option value="de">Deutsch</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="fr">Français</option>
+    <option value="es">Español</option>
+    <option value="it">Italiano</option>
+  </select>
 </div>
 <script>
   (function () {
+    HeadlightSiteLocalizations.install("tools");
     var KEY = "headlightLang";
-    var LANGS = ["ja", "en", "ko"];
-    var TITLE_KEY = { ja: "titleJa", en: "titleEn", ko: "titleKo" };
+    var LANGS = ["ja", "en", "ko", "de", "zh-Hant", "fr", "es", "it"];
     var html = document.documentElement;
-    var tabs = document.getElementById("langTabs");
-    var buttons = tabs.querySelectorAll("[data-lang-btn]");
+    var select = document.getElementById("languageSelect");
     function apply(lang) {
       html.setAttribute("lang", lang);
       html.dataset.lang = lang;
-      buttons.forEach(function (b) {
-        b.setAttribute("aria-current", b.dataset.langBtn === lang ? "true" : "false");
-      });
+      select.value = lang;
       var titleEl = document.querySelector("title");
       if (titleEl) {
-        titleEl.textContent = titleEl.dataset[TITLE_KEY[lang]];
+        titleEl.textContent = HeadlightSiteLocalizations.titles.tools[lang];
       }
       document.querySelectorAll("img[data-alt-ja]").forEach(function (img) {
-        var key = "alt" + lang.charAt(0).toUpperCase() + lang.slice(1);
-        img.alt = img.dataset[key];
+        img.alt = img.getAttribute("data-alt-" + lang.toLowerCase())
+          || img.getAttribute("data-alt-en") || "";
       });
     }
     var saved = localStorage.getItem(KEY);
@@ -579,14 +584,20 @@
       var guess = "en";
       if (browserLang.indexOf("ja") === 0) guess = "ja";
       else if (browserLang.indexOf("ko") === 0) guess = "ko";
+      else if (browserLang.indexOf("de") === 0) guess = "de";
+      else if (browserLang.indexOf("zh") === 0) guess = "zh-Hant";
+      else if (browserLang.indexOf("fr") === 0) guess = "fr";
+      else if (browserLang.indexOf("es") === 0) guess = "es";
+      else if (browserLang.indexOf("it") === 0) guess = "it";
       apply(guess);
     }
-    buttons.forEach(function (b) {
-      b.addEventListener("click", function () {
-        var lang = b.dataset.langBtn;
-        localStorage.setItem(KEY, lang);
-        apply(lang);
-      });
+    select.addEventListener("change", function () {
+      var lang = select.value;
+      localStorage.setItem(KEY, lang);
+      apply(lang);
+    });
+    window.addEventListener("headlight-site-localizations-ready", function () {
+      apply(html.dataset.lang || "en");
     });
   })();
 </script>
