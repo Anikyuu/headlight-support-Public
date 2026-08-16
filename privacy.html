@@ -34,7 +34,7 @@
 
   <article data-lang="ja">
     <h1>Headlight プライバシーポリシー</h1>
-    <p class="sub">最終更新日: 2026年8月11日</p>
+    <p class="sub">最終更新日: 2026年8月12日</p>
 
     <h2>基本方針</h2>
     <p>Headlight（以下「本アプリ」）は、あなたの記録を広告の材料や商品にしません。本アプリにはアカウント登録がなく、第三者広告、広告目的の追跡、個人データの販売を行いません。</p>
@@ -47,7 +47,9 @@
     <p>対応端末では、言葉の整理などをAppleの端末内AIで処理できます。この処理では記録は端末の外へ送信されません。</p>
     <p>クラウドAIを使う機能では、その機能の実行に必要なテキスト、画像、関連する文脈が、暗号化された通信でHeadlightの中継サーバー（Cloudflare Workers）を経由してAnthropic APIへ送信されます。中継サーバーはAIへの転送と利用上限の管理だけを行い、送信した本文や画像を保存しません。</p>
     <p>利用上限の管理には、氏名やメールアドレスと結びつかないランダムな識別子と、月ごとの推定利用額を使用します。推定利用額の記録は最長60日で自動的に削除されます。</p>
-    <p>ユーザー自身のAnthropic APIキーを設定した場合、AIリクエストは中継サーバーを通らずAnthropicへ直接送信されます。APIキーは端末のキーチェーンにのみ保存されます。Anthropic APIに送信されたデータは、Anthropicのデータ保持方針に従って取り扱われます。</p>
+    <p>クラウドAIの送信先はこの経路だけです。ユーザーが自分のAnthropic APIキーを設定して直接送信する機能は提供していません。Anthropic APIに送信されたデータは、Anthropicのデータ保持方針に従って取り扱われます。</p>
+    <p><strong>送信の前に、必ずアプリ内で同意を求めます。</strong>何を送るか、どこへ送るか、何を送らないかを画面で説明し、同意されるまでクラウドAIへは一切送信しません。同意しない場合も、言葉・手帳・予定・道具・棚・保存済みの記録の閲覧といったHeadlightの機能は引き続き利用でき、保存済みの記録は失われません。同意はいつでも設定画面から取り消せます。取り消した後は、次に使うときにあらためて同意を求めます。</p>
+    <p>Anthropicおよび中継サーバーの提供元であるCloudflareは、本ポリシーおよびApp Store Reviewガイドラインが定める水準と同等以上のユーザーデータ保護を提供することを、それぞれの利用規約およびプライバシーポリシーにおいて約束しています。Headlightは、これらの事業者へ送信したデータを広告や第三者への販売、他社アプリをまたぐ追跡に利用しません。</p>
 
     <h2>アプリ内購入（RevenueCat）</h2>
     <p>本アプリは、アプリ内購入の提供、購入状態の確認、購入の復元のためにRevenueCatを使用します。RevenueCatへは、ランダムに生成された匿名のユーザー識別子、購入した商品、購入履歴、サブスクリプションの状態などが送信されます。氏名、メールアドレス、アプリ内に保存した言葉・写真・録音はRevenueCatへ送りません。</p>
@@ -84,7 +86,7 @@
 
   <article data-lang="en">
     <h1>Headlight Privacy Policy</h1>
-    <p class="sub">Last updated: August 11, 2026</p>
+    <p class="sub">Last updated: August 12, 2026</p>
 
     <h2>Our approach</h2>
     <p>Headlight (the “App”) does not turn your records into advertising data or a product. The App requires no account, contains no third-party advertising, does not track you for advertising, and does not sell personal data.</p>
@@ -97,7 +99,9 @@
     <p>On supported devices, features such as word organization can run using Apple's on-device AI. On-device processing does not send your records off the device.</p>
     <p>When you use a cloud AI feature, the text, images, and relevant context required for that feature are sent over an encrypted connection to the Anthropic API through Headlight's relay hosted on Cloudflare Workers. The relay only forwards requests and enforces usage limits; it does not store the submitted text or images.</p>
     <p>To enforce usage limits, the relay uses a random identifier that is not linked to your name or email address and a monthly estimated usage amount. Usage records expire automatically after no more than 60 days.</p>
-    <p>If you provide your own Anthropic API key, AI requests are sent directly to Anthropic without using Headlight's relay. Your key is stored only in the device Keychain. Data sent to the Anthropic API is handled according to Anthropic's data retention terms.</p>
+    <p>This is the only path by which cloud AI requests leave the device. Headlight does not offer a way to supply your own Anthropic API key and send requests directly. Data sent to the Anthropic API is handled according to Anthropic's data retention terms.</p>
+    <p><strong>Headlight asks for your permission in the app before anything is sent.</strong> A screen explains what is sent, who receives it, and what is never sent. Nothing goes to the cloud AI until you agree. If you decline, Headlight keeps working — words, journal, plans, tools, shelves, and reading everything you have saved — and nothing you have saved is removed. You can withdraw your consent at any time in Settings; after that, Headlight asks again the next time a cloud AI feature is used.</p>
+    <p>Anthropic and Cloudflare, which hosts the relay, each commit in their terms of service and privacy policies to providing protection of user data equal to or greater than that described in this policy and required by the App Store Review Guidelines. Headlight does not use data sent to these providers for advertising, does not sell it, and does not use it to track you across other companies' apps.</p>
 
     <h2>In-app purchases (RevenueCat)</h2>
     <p>Headlight uses RevenueCat to offer in-app purchases, verify entitlements, and restore purchases. RevenueCat receives a randomly generated anonymous user identifier, purchased products, purchase history, and subscription status. Headlight does not send your name, email address, words, photos, or recordings to RevenueCat.</p>
