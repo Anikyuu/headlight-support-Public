@@ -150,6 +150,59 @@
     border-color: var(--light);
     background: rgba(176, 141, 87, 0.14);
   }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .store-download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  .store-download-band {
+    padding: 58px 24px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg2);
+  }
+  .app-store-link {
+    display: inline-flex;
+    border-radius: 10px;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .app-store-link:hover,
+  .app-store-link:focus-visible {
+    transform: translateY(-2px);
+    opacity: .86;
+  }
+  .app-store-badge {
+    display: none;
+    width: 168px;
+    height: auto;
+  }
+  html[data-lang="ja"] .app-store-badge[data-store-lang="ja"],
+  html[data-lang="en"] .app-store-badge[data-store-lang="en"],
+  html[data-lang="ko"] .app-store-badge[data-store-lang="ko"],
+  html[data-lang="de"] .app-store-badge[data-store-lang="de"],
+  html[data-lang="zh-Hant"] .app-store-badge[data-store-lang="zh-Hant"],
+  html[data-lang="fr"] .app-store-badge[data-store-lang="fr"],
+  html[data-lang="es"] .app-store-badge[data-store-lang="es"],
+  html[data-lang="it"] .app-store-badge[data-store-lang="it"] {
+    display: block;
+  }
+  .store-download-note {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+  }
   .pro-badge {
     display: inline-block;
     margin-left: 8px;
@@ -600,10 +653,20 @@
     <div class="latin">HEADLIGHT</div>
     <h1><span data-i18n="ja"><span class="nb">あなたを</span><span class="nb">軽くするアプリ</span></span><span data-i18n="en"><span class="nb">The app that</span> <span class="nb">lightens your load.</span></span><span data-i18n="ko"><span class="nb">당신을</span> <span class="nb">가볍게 하는 앱.</span></span></h1>
     <p class="tagline"><span data-i18n="ja">好きなものを棚に。日記・予定はAI整理<br>iPhone / iPad / Mac / Apple Watch</span><span data-i18n="en">Put what you love on the shelf. AI sorts your journal and plans.<br>iPhone / iPad / Mac / Apple Watch</span><span data-i18n="ko">좋아하는 것을 선반에. 일기・일정은 AI가 정리<br>iPhone / iPad / Mac / Apple Watch</span></p>
-    <a class="beta-badge" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
-      <span class="beta-lead"><span data-i18n="ja">App Storeから無料でダウンロード</span><span data-i18n="en">Download free on the App Store</span><span data-i18n="ko">App Store에서 무료로 다운로드</span></span>
-      <span class="beta-note"><span data-i18n="ja">iPhone・iPadで今すぐ始められます。</span><span data-i18n="en">Start now on iPhone and iPad.</span><span data-i18n="ko">iPhone과 iPad에서 지금 시작할 수 있어요.</span></span>
-    </a>
+    <div class="store-download">
+      <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
+        <span class="sr-only"><span data-i18n="ja">App Storeから無料でダウンロード</span><span data-i18n="en">Download free on the App Store</span><span data-i18n="ko">App Store에서 무료로 다운로드</span></span>
+        <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
+        <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
+        <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
+        <img class="app-store-badge" data-store-lang="de" src="img/app-store-badges/de.svg" alt="Laden im App Store">
+        <img class="app-store-badge" data-store-lang="zh-Hant" src="img/app-store-badges/zh-Hant.svg" alt="在 App Store 下載">
+        <img class="app-store-badge" data-store-lang="fr" src="img/app-store-badges/fr.svg" alt="Télécharger dans l’App Store">
+        <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
+        <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
+      </a>
+      <span class="store-download-note"><span data-i18n="ja">iPhone・iPadで今すぐ始められます。</span><span data-i18n="en">Start now on iPhone and iPad.</span><span data-i18n="ko">iPhone과 iPad에서 지금 시작할 수 있어요.</span></span>
+    </div>
     <img class="shot reveal" src="img/hero-hand.jpg" loading="lazy"
          data-alt-ja="Headlightのホーム画面を開いたiPhoneを持つ手" data-alt-en="A hand holding an iPhone with the Headlight home screen open." data-alt-ko="Headlight의 홈 화면을 연 iPhone을 든 손">
   </div>
@@ -744,6 +807,21 @@
     </div>
   </div>
 </section>
+
+<div class="store-download-band reveal">
+  <div class="store-download">
+    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
+      <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
+      <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
+      <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
+      <img class="app-store-badge" data-store-lang="de" src="img/app-store-badges/de.svg" alt="Laden im App Store">
+      <img class="app-store-badge" data-store-lang="zh-Hant" src="img/app-store-badges/zh-Hant.svg" alt="在 App Store 下載">
+      <img class="app-store-badge" data-store-lang="fr" src="img/app-store-badges/fr.svg" alt="Télécharger dans l’App Store">
+      <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
+      <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
+    </a>
+  </div>
+</div>
 
 <!-- カレンダー(日記) -->
 <section>
@@ -907,6 +985,21 @@
     <span class="sub"><span data-i18n="ja">※ AI Proの年額プランは7日間の無料期間後に自動更新されます。更新前にいつでも解約できます。AI Proと棚の追加の正確な価格は、お使いの地域に合わせてアプリ内に表示されます。</span><span data-i18n="en">* The annual AI Pro plan renews automatically after the 7-day free trial. Cancel anytime before renewal. Exact prices for AI Pro and shelf expansion are shown in the app for your region.</span><span data-i18n="ko">※ AI Pro 연간 플랜은 7일 무료 체험 후 자동 갱신됩니다. 갱신 전에 언제든지 해지할 수 있어요. AI Pro와 선반 추가의 정확한 가격은 사용 지역에 맞게 앱 내에 표시됩니다.</span></span></p>
   </div>
 </section>
+
+<div class="store-download-band reveal">
+  <div class="store-download">
+    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
+      <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
+      <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
+      <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
+      <img class="app-store-badge" data-store-lang="de" src="img/app-store-badges/de.svg" alt="Laden im App Store">
+      <img class="app-store-badge" data-store-lang="zh-Hant" src="img/app-store-badges/zh-Hant.svg" alt="在 App Store 下載">
+      <img class="app-store-badge" data-store-lang="fr" src="img/app-store-badges/fr.svg" alt="Télécharger dans l’App Store">
+      <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
+      <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
+    </a>
+  </div>
+</div>
 
 <!-- サポート -->
 <section id="support" style="border-bottom: none;">
