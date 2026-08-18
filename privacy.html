@@ -20,9 +20,11 @@
   .language button { border: 0; border-radius: 999px; padding: 7px 14px; background: transparent; color: #98917e; font: inherit; cursor: pointer; }
   .language button[aria-pressed="true"] { background: #f3ecdd; color: #151515; }
   .note { margin-top: 28px; padding: 16px 18px; border: 1px solid #393630; border-radius: 16px; color: #c9c2b5; }
-  [data-lang="en"] { display: none; }
-  html[lang="en"] [data-lang="ja"] { display: none; }
-  html[lang="en"] [data-lang="en"] { display: block; }
+  .transfer { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .transfer th, .transfer td { padding: 10px 8px; border-top: 1px solid #393630; text-align: left; vertical-align: top; }
+  .transfer th { width: 28%; color: #f3ecdd; }
+  [data-lang] { display: none; }
+  html[lang="ja"] [data-lang="ja"], html[lang="en"] [data-lang="en"], html[lang="ko"] [data-lang="ko"] { display: revert; }
 </style>
 </head>
 <body>
@@ -30,11 +32,12 @@
   <nav class="language" aria-label="Language">
     <button type="button" data-switch="ja" aria-pressed="true">日本語</button>
     <button type="button" data-switch="en" aria-pressed="false">English</button>
+    <button type="button" data-switch="ko" aria-pressed="false">한국어</button>
   </nav>
 
   <article data-lang="ja">
     <h1>Headlight プライバシーポリシー</h1>
-    <p class="sub">最終更新日: 2026年8月12日</p>
+    <p class="sub">最終更新日: 2026年8月18日</p>
 
     <h2>基本方針</h2>
     <p>Headlight（以下「本アプリ」）は、あなたの記録を広告の材料や商品にしません。本アプリにはアカウント登録がなく、第三者広告、広告目的の追跡、個人データの販売を行いません。</p>
@@ -46,8 +49,8 @@
     <h2>AI機能</h2>
     <p>対応端末では、言葉の整理などをAppleの端末内AIで処理できます。この処理では記録は端末の外へ送信されません。</p>
     <p>クラウドAIを使う機能では、その機能の実行に必要なテキスト、画像、関連する文脈が、暗号化された通信でHeadlightの中継サーバー（Cloudflare Workers）を経由してAnthropic APIへ送信されます。中継サーバーはAIへの転送と利用上限の管理だけを行い、送信した本文や画像を保存しません。</p>
-    <p>利用上限の管理には、氏名やメールアドレスと結びつかないランダムな識別子と、月ごとの推定利用額を使用します。推定利用額の記録は最長60日で自動的に削除されます。</p>
-    <p>クラウドAIの送信先はこの経路だけです。ユーザーが自分のAnthropic APIキーを設定して直接送信する機能は提供していません。Anthropic APIに送信されたデータは、Anthropicのデータ保持方針に従って取り扱われます。</p>
+    <p>利用上限の管理には、氏名やメールアドレスと結びつかないランダムな識別子と推定利用額を使用します。購入者の月次利用記録は最長60日、一度きりの無料体験の利用記録は最長365日で自動的に削除されます。</p>
+    <p>クラウドAIの送信先はこの経路だけです。ユーザーが自分のAnthropic APIキーを設定して直接送信する機能は提供していません。Anthropic APIの入力・出力は通常30日以内に削除されます。ただし、安全対策や法令遵守のためAnthropicが定める例外があります。データは米国で保存され、米国、欧州、アジア、オーストラリアのAnthropic運用地域で処理される場合があります。</p>
     <p><strong>送信の前に、必ずアプリ内で同意を求めます。</strong>何を送るか、どこへ送るか、何を送らないかを画面で説明し、同意されるまでクラウドAIへは一切送信しません。同意しない場合も、言葉・手帳・予定・道具・棚・保存済みの記録の閲覧といったHeadlightの機能は引き続き利用でき、保存済みの記録は失われません。同意はいつでも設定画面から取り消せます。取り消した後は、次に使うときにあらためて同意を求めます。</p>
     <p>Anthropicおよび中継サーバーの提供元であるCloudflareは、本ポリシーおよびApp Store Reviewガイドラインが定める水準と同等以上のユーザーデータ保護を提供することを、それぞれの利用規約およびプライバシーポリシーにおいて約束しています。Headlightは、これらの事業者へ送信したデータを広告や第三者への販売、他社アプリをまたぐ追跡に利用しません。</p>
 
@@ -86,7 +89,7 @@
 
   <article data-lang="en">
     <h1>Headlight Privacy Policy</h1>
-    <p class="sub">Last updated: August 12, 2026</p>
+    <p class="sub">Last updated: August 18, 2026</p>
 
     <h2>Our approach</h2>
     <p>Headlight (the “App”) does not turn your records into advertising data or a product. The App requires no account, contains no third-party advertising, does not track you for advertising, and does not sell personal data.</p>
@@ -98,8 +101,8 @@
     <h2>AI features</h2>
     <p>On supported devices, features such as word organization can run using Apple's on-device AI. On-device processing does not send your records off the device.</p>
     <p>When you use a cloud AI feature, the text, images, and relevant context required for that feature are sent over an encrypted connection to the Anthropic API through Headlight's relay hosted on Cloudflare Workers. The relay only forwards requests and enforces usage limits; it does not store the submitted text or images.</p>
-    <p>To enforce usage limits, the relay uses a random identifier that is not linked to your name or email address and a monthly estimated usage amount. Usage records expire automatically after no more than 60 days.</p>
-    <p>This is the only path by which cloud AI requests leave the device. Headlight does not offer a way to supply your own Anthropic API key and send requests directly. Data sent to the Anthropic API is handled according to Anthropic's data retention terms.</p>
+    <p>To enforce usage limits, the relay uses a random identifier that is not linked to your name or email address and an estimated usage amount. Monthly usage records for subscribers expire after no more than 60 days. The one-time free-taste usage record expires after no more than 365 days.</p>
+    <p>This is the only path by which cloud AI requests leave the device. Headlight does not offer a way to supply your own Anthropic API key and send requests directly. Anthropic normally deletes API inputs and outputs within 30 days, subject to its safety and legal-retention exceptions. Data is stored in the United States and may be processed in Anthropic operating regions in the United States, Europe, Asia, and Australia.</p>
     <p><strong>Headlight asks for your permission in the app before anything is sent.</strong> A screen explains what is sent, who receives it, and what is never sent. Nothing goes to the cloud AI until you agree. If you decline, Headlight keeps working — words, journal, plans, tools, shelves, and reading everything you have saved — and nothing you have saved is removed. You can withdraw your consent at any time in Settings; after that, Headlight asks again the next time a cloud AI feature is used.</p>
     <p>Anthropic and Cloudflare, which hosts the relay, each commit in their terms of service and privacy policies to providing protection of user data equal to or greater than that described in this policy and required by the App Store Review Guidelines. Headlight does not use data sent to these providers for advertising, does not sell it, and does not use it to track you across other companies' apps.</p>
 
@@ -136,7 +139,56 @@
     </ul>
   </article>
 
-  <p class="sub"><a href="./index.html"><span data-lang="ja">サポートページへ戻る</span><span data-lang="en">Back to support</span></a> ・ <a href="./terms.html"><span data-lang="ja">利用規約</span><span data-lang="en">Terms</span></a> ・ © 2026 Ani-Q</p>
+  <article data-lang="ko">
+    <h1>Headlight 개인정보 처리방침</h1>
+    <p class="sub">최종 업데이트: 2026년 8월 18일</p>
+
+    <h2>기본 방침</h2>
+    <p>Headlight(이하 “앱”)는 이용자의 기록을 광고 데이터나 판매 상품으로 사용하지 않습니다. 계정 가입이 필요 없으며, 제3자 광고, 광고 목적 추적 및 개인정보 판매를 하지 않습니다.</p>
+
+    <h2>기록의 저장 위치</h2>
+    <p>입력한 글, 사진, 녹음, 컬렉션 및 체크 기록은 원칙적으로 이용자의 기기에 저장됩니다. 개발자는 이를 열람하거나 자체 기록 서버에 저장하지 않습니다. 이용자가 직접 공유 링크를 만들거나 Headlight 보관함·백업을 설정한 경우에만 선택한 정보가 Cloudflare KV, iCloud Drive, NAS 또는 지정한 파일 위치에 저장될 수 있습니다.</p>
+
+    <h2>AI 기능</h2>
+    <p>지원되는 기기에서는 Apple의 온디바이스 AI로 일부 정리 기능을 처리할 수 있으며, 이 경우 기록은 기기 밖으로 전송되지 않습니다.</p>
+    <p>클라우드 AI 기능을 사용하면 해당 기능에 필요한 글, 사진 및 관련 문맥이 암호화된 통신으로 Headlight의 Cloudflare Workers 중계 서버를 거쳐 Anthropic API로 전송됩니다. 중계 서버는 요청 전달과 이용 한도 관리만 하며 전송된 본문이나 사진을 의도적으로 저장하지 않습니다.</p>
+    <p>이용 한도 관리를 위해 이름·이메일과 연결되지 않은 무작위 식별자와 추정 이용량을 사용합니다. 구독자의 월별 이용 기록은 최대 60일, 일회성 무료 체험 이용 기록은 최대 365일 후 자동 삭제됩니다.</p>
+    <p><strong>앱은 클라우드 AI로 정보를 보내기 전에 별도 동의를 받습니다.</strong> 동의하지 않아도 글, 수첩, 일정, 도구, 컬렉션 및 저장한 기록을 계속 이용할 수 있습니다. 동의는 설정에서 언제든 철회할 수 있으며, 철회 후에는 클라우드 AI 전송이 중단됩니다.</p>
+
+    <h2 id="korea-cross-border">개인정보 국외 이전</h2>
+    <p>개인정보 보호법 제28조의8 제1항 제1호에 따라 아래 국외 이전에 대한 별도 동의를 받습니다.</p>
+    <table class="transfer">
+      <tbody>
+        <tr><th>이전 시기·방법</th><td>이용자가 동의한 뒤 클라우드 AI 기능을 사용할 때마다 암호화된 HTTPS 통신으로 이전</td></tr>
+        <tr><th>이전 항목</th><td>이용자가 해당 AI 기능에 사용한 글, 선택한 사진, 필요한 관련 문맥, 무작위 사용자 식별자, 구독 권한·추정 이용량, 요청 처리에 필요한 일반 통신 메타데이터</td></tr>
+        <tr><th>Cloudflare</th><td><strong>받는 자:</strong> Cloudflare, Inc.<br><strong>국가:</strong> 미국 및 유럽경제지역을 포함한 Cloudflare 운영 지역<br><strong>목적:</strong> 암호화 중계, 보안, 남용 방지, 이용 한도 관리<br><strong>보유 기간:</strong> AI 본문·사진은 Headlight가 중계 서버에 저장하지 않음. 구독 이용 기록은 최대 60일, 무료 체험 이용 기록은 최대 365일<br><strong>연락처:</strong> <a href="mailto:dpo@cloudflare.com">dpo@cloudflare.com</a></td></tr>
+        <tr><th>Anthropic</th><td><strong>받는 자:</strong> Anthropic, PBC<br><strong>국가:</strong> 미국에 저장되며 미국·유럽·아시아·오스트레일리아의 운영 지역에서 처리될 수 있음<br><strong>목적:</strong> 이용자가 요청한 AI 응답 생성, 안전 및 부정 이용 방지<br><strong>보유 기간:</strong> API 입력·출력은 원칙적으로 30일 이내 삭제. 안전 또는 법적 의무에 따른 예외가 있을 수 있음<br><strong>연락처:</strong> <a href="https://privacy.anthropic.com/en/" target="_blank" rel="noopener">Anthropic Privacy Center</a></td></tr>
+        <tr><th>동의 거부·철회</th><td>동의를 거부하거나 설정에서 철회할 수 있습니다. 이 경우 클라우드 AI 기능은 이용할 수 없지만, 기기에 저장된 기록과 클라우드 AI가 필요하지 않은 기능은 유지됩니다.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>앱 내 구입</h2>
+    <p>앱 내 구입 제공, 권한 확인 및 복원을 위해 RevenueCat을 사용합니다. RevenueCat에는 무작위 익명 식별자, 구입 상품, 구입 이력 및 구독 상태가 전송됩니다. 이름, 이메일, 앱에 저장한 글·사진·녹음은 전송하지 않으며 결제는 Apple이 처리합니다.</p>
+
+    <h2>권한 및 외부 서비스</h2>
+    <p>마이크, 음성 인식, 카메라, 사진, 음악 보관함, 캘린더, 알림 및 위치(날씨)에 대한 접근은 해당 기능을 사용할 때 운영체제의 허가를 받은 뒤 이루어집니다. 링크·도서·음악의 제목과 이미지를 가져오거나 YouTube 공식 플레이어를 사용할 때에는 해당 사이트와 서비스가 일반적인 웹 요청 정보(IP 주소 등)를 처리할 수 있습니다.</p>
+    <p>“AI로 보내기”와 공유 버튼은 이용자가 직접 선택한 경우에만 내용을 복사하거나 외부 서비스로 보냅니다. 전송 후에는 이용자가 선택한 서비스의 개인정보 처리방침이 적용됩니다.</p>
+
+    <h2>삭제 및 문의</h2>
+    <p>앱 안의 기록은 각 화면에서 삭제할 수 있습니다. 앱 삭제 시 기기 내 데이터도 삭제되지만, 별도로 만든 백업·외부 보관함·공유 링크의 데이터는 자동 삭제되지 않을 수 있습니다.</p>
+    <p>개인정보 문의, 동의 철회 지원 또는 서비스에 저장된 정보의 삭제 요청은 <a href="mailto:headlight.app.jp@gmail.com">headlight.app.jp@gmail.com</a>으로 연락해 주세요.</p>
+
+    <h2>외부 서비스 개인정보 처리방침</h2>
+    <ul>
+      <li><a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></li>
+      <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a></li>
+      <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+      <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> / <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a></li>
+    </ul>
+  </article>
+
+  <p class="sub"><a href="./index.html"><span data-lang="ja">サポートページへ戻る</span><span data-lang="en">Back to support</span><span data-lang="ko">지원 페이지로 돌아가기</span></a> ・ <a href="./terms.html"><span data-lang="ja">利用規約</span><span data-lang="en">Terms</span><span data-lang="ko">이용약관</span></a> ・ © 2026 Ani-Q</p>
 </main>
 <script>
   const buttons = document.querySelectorAll('[data-switch]');
@@ -151,9 +203,11 @@
   let preferred = 'ja';
   let savedLanguage = null;
   try { savedLanguage = localStorage.getItem('headlight-language'); } catch (_) {}
-  if (savedLanguage) preferred = savedLanguage;
+  if (location.hash === '#korea-cross-border') preferred = 'ko';
+  else if (savedLanguage) preferred = savedLanguage;
+  else if (navigator.language.toLowerCase().startsWith('ko')) preferred = 'ko';
   else if (!navigator.language.toLowerCase().startsWith('ja')) preferred = 'en';
-  setLanguage(preferred === 'en' ? 'en' : 'ja');
+  setLanguage(['ja', 'en', 'ko'].includes(preferred) ? preferred : 'en');
 </script>
 </body>
 </html>
