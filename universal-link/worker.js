@@ -15,7 +15,7 @@ const AASA = JSON.stringify({
         components: [
           {
             "/": "/import/*",
-            comment: "Open a shared Headlight collection in the app.",
+            comment: "Open a shared Head-Light collection in the app.",
           },
         ],
       },
@@ -28,11 +28,11 @@ const fallbackHTML = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Headlight</title>
+  <title>Head-Light</title>
 </head>
 <body>
   <script>location.replace("${COLLECTION_PAGE}" + location.hash);<\/script>
-  <noscript><a href="${COLLECTION_PAGE}">Open Headlight collection</a></noscript>
+  <noscript><a href="${COLLECTION_PAGE}">Open Head-Light collection</a></noscript>
 </body>
 </html>`;
 
@@ -168,7 +168,7 @@ async function genericMetadataImage(startURL) {
       headers: {
         Accept: "text/html,application/xhtml+xml",
         Range: `bytes=0-${MAX_PREVIEW_HTML_BYTES - 1}`,
-        "User-Agent": "Mozilla/5.0 (compatible; HeadlightShare/1.0; +https://head-light.app)",
+        "User-Agent": "Mozilla/5.0 (compatible; Head-LightShare/1.0; +https://head-light.app)",
       },
     });
     if ([301, 302, 303, 307, 308].includes(response.status)) {
@@ -303,7 +303,7 @@ async function appleMusicPageArtwork(entryURL) {
     const response = await fetch(entryURL, {
       headers: {
         Accept: "text/html,application/xhtml+xml",
-        "User-Agent": "Mozilla/5.0 (compatible; HeadlightShare/1.0)",
+        "User-Agent": "Mozilla/5.0 (compatible; Head-LightShare/1.0)",
       },
     });
     if (!response.ok) return null;
@@ -318,7 +318,7 @@ async function appleMusicPageArtwork(entryURL) {
 }
 
 // Apple Musicだけの棚は、黒い代替JPEGではなくAppleの公式CDN画像を
-// OG画像として直接参照する。Headlight側へ画像をコピー・加工・再保存しない。
+// OG画像として直接参照する。Head-Light側へ画像をコピー・加工・再保存しない。
 async function appleMusicOGImage(collection) {
   if (!collection.entries.length || !collection.entries.every(isAppleMusicEntry)) return null;
   for (const entry of collection.entries) {
@@ -332,7 +332,7 @@ async function appleMusicOGImage(collection) {
       const response = await fetch(lookup, {
         headers: {
           Accept: "application/json",
-          "User-Agent": "Mozilla/5.0 (compatible; HeadlightShare/1.0)",
+          "User-Agent": "Mozilla/5.0 (compatible; Head-LightShare/1.0)",
         },
       });
       if (response.ok) {
@@ -429,7 +429,7 @@ async function createShare(request, env) {
 }
 
 function shareHTML(id, metadata, resolvedImageURL = null) {
-  const title = escapeHTML(metadata.name || "Headlight Collection");
+  const title = escapeHTML(metadata.name || "Head-Light Collection");
   const shortURL = `${SHARE_ORIGIN}/s/${id}`;
   const imageURL = resolvedImageURL || `${shortURL}/cover.jpg`;
   const destinationQuery = new URLSearchParams({ share: id });
@@ -442,19 +442,19 @@ function shareHTML(id, metadata, resolvedImageURL = null) {
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Headlight">
+  <meta property="og:site_name" content="Head-Light">
   <meta property="og:title" content="${title}">
-  <meta property="og:description" content="A collection shared from Headlight">
+  <meta property="og:description" content="A collection shared from Head-Light">
   <meta property="og:url" content="${shortURL}">
   <meta property="og:image" content="${imageURL}">
   <meta property="og:image:secure_url" content="${imageURL}">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Headlight collection cover">
+  <meta property="og:image:alt" content="Head-Light collection cover">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:image" content="${imageURL}">
-  <meta name="twitter:image:alt" content="Headlight collection cover">
-  <title>${title} — Headlight</title>
+  <meta name="twitter:image:alt" content="Head-Light collection cover">
+  <title>${title} — Head-Light</title>
 </head>
 <body>
   <script>location.replace(${JSON.stringify(destination)});<\/script>
