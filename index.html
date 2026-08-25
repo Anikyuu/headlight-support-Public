@@ -411,6 +411,42 @@
   .phone img { display: block; width: 100%; border-radius: 26px; }
   .phone.small { width: min(200px, 52vw); }
 
+  /* コレクションは、映画とレコードの棚を同時に大きく見せる。
+     PNGの透過をそのまま使い、余計な黒い額縁は足さない。 */
+  .collection-showcase {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(14px, 3vw, 34px);
+    width: min(860px, 100%);
+    margin: 18px auto 10px;
+    align-items: start;
+  }
+  .collection-showcase figure {
+    margin: 0;
+    min-width: 0;
+  }
+  .collection-showcase img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 22px 30px rgba(28,27,25,0.12));
+  }
+  .collection-copy {
+    width: min(720px, 100%);
+    margin-inline: auto;
+  }
+  @media (max-width: 560px) {
+    .collection-showcase {
+      width: calc(100vw - 24px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+      gap: 8px;
+    }
+    .collection-showcase img {
+      filter: drop-shadow(0 12px 18px rgba(28,27,25,0.10));
+    }
+  }
+
   /* ---- イラスト ---- */
   .illust {
     display: block;
@@ -742,7 +778,7 @@
           <div class="dest"><span class="dico">✓</span><div><b><span data-i18n="ja">電池を買う</span><span data-i18n="en">Buy batteries</span><span data-i18n="ko">배터리 사기</span></b><span><span data-i18n="ja">やることへ</span><span data-i18n="en">Goes to your to-dos</span><span data-i18n="ko">할 일로</span></span></div></div>
           <div class="dest"><span class="dico">💡</span><div><b><span data-i18n="ja">新曲のサビを転調してみる</span><span data-i18n="en">Try modulating the new song's chorus</span><span data-i18n="ko">새 곡 후렴구 전조해보기</span></b><span><span data-i18n="ja">アイデアの瓶へ、玉になって溜まる</span><span data-i18n="en">Goes to the Ideas Jar, as a little bead</span><span data-i18n="ko">아이디어의 병으로, 구슬이 되어 쌓여요</span></span></div></div>
         </div>
-        <p class="sub"><span data-i18n="ja">ぐちゃぐちゃに話して大丈夫。仕分けはAIの仕事です。</span><span data-i18n="en">Ramble all you want. Sorting it out is AI's job.</span><span data-i18n="ko">두서없이 말해도 괜찮아요. 분류는 AI의 일이에요.</span></p>
+        <p class="sub"><span data-i18n="ja">思いつくまま話して大丈夫。仕分けはAIの仕事です。</span><span data-i18n="en">Speak as thoughts come. Sorting them is AI's job.</span><span data-i18n="ko">생각나는 대로 말해도 괜찮아요. 분류는 AI의 일이에요.</span></p>
       </div>
       <div class="shots">
         <div class="phone"><img src="img/shots/01_home_en.jpg?v=20260817c" loading="lazy" decoding="async" data-alt-ja="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン" data-alt-en="The latest home screen in English, with a clean white background, larger eyes, and a large voice button." data-alt-ko="깔끔한 흰색 배경에 더 크고 굵어진 눈과 큰 음성 버튼이 있는 최신 영어 홈 화면" alt="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン"></div>
@@ -804,7 +840,7 @@
       <div class="text">
         <ul class="points">
           <li><span data-i18n="ja">預けた言葉は、<strong>白い紙のカード</strong>になって時系列に残る。写真つきの言葉も。</span><span data-i18n="en">Words you drop in become <strong>white paper cards</strong>, kept in order over time — even ones with a photo attached.</span><span data-i18n="ko">맡긴 말은, <strong>흰 종이 카드</strong>가 되어 시간순으로 남아요. 사진이 붙은 말도요.</span></li>
-          <li><span data-i18n="ja">開いた瞬間から聞いている「しゃべり散らかす」モード。話し終えたら、AIが<strong>何の話をしていたか</strong>を整理して要点を残す。</span><span data-i18n="en">A &ldquo;ramble&rdquo; mode starts listening the moment you open it. When you&#39;re done, AI works out <strong>what you were talking about</strong> and keeps the gist.</span><span data-i18n="ko">여는 순간부터 듣고 있는 「두서없이 말하기」모드. 말을 마치면, AI가 <strong>무슨 이야기를 했는지</strong> 정리해서 요점을 남겨요.</span></li>
+          <li><span data-i18n="ja">開いた瞬間から聞いている「思いつくまま話す」モード。話し終えたら、AIが<strong>何の話をしていたか</strong>を整理して要点を残す。</span><span data-i18n="en">It starts listening the moment you open it, so you can speak as thoughts come. When you&#39;re done, AI works out <strong>what you were talking about</strong> and keeps the gist.</span><span data-i18n="ko">여는 순간부터 듣고 있어서, 생각나는 대로 말하면 돼요. 말을 마치면, AI가 <strong>무슨 이야기를 했는지</strong> 정리해서 요점을 남겨요.</span></li>
           <li><span data-i18n="ja"><strong>フォルダ</strong>で自分の手でも整理できる。キーワードを決めれば、その言葉を含むものが自動で集まる。</span><span data-i18n="en">You can also organize by hand with <strong>folders</strong>. Set a keyword, and matching words gather there automatically.</span><span data-i18n="ko"><strong>폴더</strong>로 직접 손으로도 정리할 수 있어요. 키워드를 정하면, 그 말이 포함된 것이 자동으로 모여요.</span></li>
           <li><span data-i18n="ja">言葉は普段しまわれていて、見たいときだけ開ける。<span class="note">書いたものの山に圧倒されない設計です。間違えて消してもゴミ箱から30日間もどせます。</span></span><span data-i18n="en">Your words stay tucked away, opened only when you want to look. <span class="note">Designed so a mountain of writing never feels overwhelming. Delete something by mistake, and you have 30 days to bring it back from the trash.</span></span><span data-i18n="ko">말은 평소에는 접혀 있고, 보고 싶을 때만 펼쳐요. <span class="note">쓴 것이 산더미처럼 쌓여 압도되지 않도록 설계했어요. 실수로 지워도 휴지통에서 30일 동안 되돌릴 수 있어요.</span></span></li>
         </ul>
@@ -819,7 +855,23 @@
     <div class="eyebrow"><span data-i18n="ja">コレクション</span><span data-i18n="en">Collection</span><span data-i18n="ko">컬렉션</span></div>
     <h2><span data-i18n="ja">好きなものだけ、ここに置く。</span><span data-i18n="en">Keep only what you love.</span><span data-i18n="ko">좋아하는 것만, 여기에 놓아요.</span></h2>
     <p class="lead"><span data-i18n="ja">心に残った音楽も、映画も、ネットの動画も、レコードのように棚へ。</span><span data-i18n="en">Music, films, videos you can't forget — onto the shelf, like records. A Japanese-style way to keep what you love, and let the rest go.</span><span data-i18n="ko">마음에 남은 음악도, 영화도, 인터넷 영상도, 레코드처럼 선반으로.</span></p>
-    <div class="cols">
+    <div class="collection-showcase" aria-label="Head-Lightの映画とレコードのコレクション画面">
+      <figure>
+        <img src="img/shots/collection-films-hp.webp" loading="lazy" decoding="async"
+             data-alt-ja="映画とドラマのリンクが、縦長のポスターカードとして並ぶコレクション画面"
+             data-alt-en="A film collection where movie and series links appear as tall poster cards."
+             data-alt-ko="영화와 드라마 링크가 세로로 긴 포스터 카드로 나열된 컬렉션 화면"
+             alt="映画とドラマのリンクが、縦長のポスターカードとして並ぶコレクション画面">
+      </figure>
+      <figure>
+        <img src="img/shots/collection-records-hp.webp" loading="lazy" decoding="async"
+             data-alt-ja="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面"
+             data-alt-en="A record collection where music links appear as square album sleeves."
+             data-alt-ko="음악 링크가 정사각형 레코드 재킷으로 나열된 컬렉션 화면"
+             alt="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面">
+      </figure>
+    </div>
+    <div class="collection-copy">
       <div class="text">
         <ul class="points">
           <li><span data-i18n="ja">リンクを貼るだけで、サムネイルが自動で取れて、<strong>カードになって棚に並ぶ</strong>。</span><span data-i18n="en">Paste a link and the thumbnail appears on its own — <strong>it becomes a card on your shelf</strong>.</span><span data-i18n="ko">링크를 붙여넣기만 하면, 썸네일이 자동으로 붙어서, <strong>카드가 되어 선반에 놓여요</strong>.</span></li>
@@ -830,10 +882,6 @@
           <li><span data-i18n="ja">棚は1枚の画像にして、SNSに貼れる。</span><span data-i18n="en">Turn your shelf into a single image and share it.</span><span data-i18n="ko">선반은 이미지 한 장으로 만들어서, SNS에 올릴 수 있어요.</span></li>
         </ul>
         <p class="sub"><span data-i18n="ja">言葉にならない「好き」も、あなたの一部です。</span><span data-i18n="en">Even the 'likes' you can't put into words are part of you.</span><span data-i18n="ko">말로 표현되지 않는 「좋아함」도, 당신의 일부예요.</span></p>
-      </div>
-      <div class="shots">
-        <div class="phone small"><img src="img/shots/03_collections_ja.jpg" data-shot="03_collections" loading="lazy" decoding="async" data-alt-ja="コレクションの棚。自分の名前を付けたボードが並ぶ" data-alt-en="The collection shelf, with boards you have named lined up." data-alt-ko="컬렉션 선반. 직접 이름 붙인 보드가 늘어서 있다" alt="コレクションの棚。自分の名前を付けたボードが並ぶ"></div>
-        <div class="phone small"><img src="img/shots/04_board_ja.jpg" data-shot="04_board" loading="lazy" decoding="async" data-alt-ja="レコードの棚。架空のレーベルのジャケットが並んでいる" data-alt-en="A shelf of records, lined with sleeves from a label of your own." data-alt-ko="레코드 선반. 가상 레이블의 재킷이 늘어서 있어요." alt="アートワークが並んだコレクションのグリッド画面"></div>
       </div>
     </div>
   </div>
