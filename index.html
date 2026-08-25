@@ -411,51 +411,20 @@
   .phone img { display: block; width: 100%; border-radius: 26px; }
   .phone.small { width: min(200px, 52vw); }
 
-  /* コレクションは、映画とレコードの棚を同時に大きく見せる。
-     他の画面と同じ黒い端末フレームで、実際のスマホ画面として見せる。 */
-  .collection-showcase {
+  /* コレクション一覧は残し、古いレコード画面だけを
+     新しい映画・レコード画面へ差し替える。3枚とも同じ端末サイズ。 */
+  .cols .shots.collection-shots {
+    flex: 1 1 100%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(14px, 3vw, 34px);
-    width: min(860px, 100%);
-    margin: 18px auto 10px;
+    grid-template-columns: repeat(3, minmax(0, 200px));
+    justify-content: center;
     align-items: start;
   }
-  .collection-showcase figure {
-    position: relative;
-    margin: 0;
-    min-width: 0;
-    padding: clamp(6px, 1vw, 10px);
-    box-sizing: border-box;
-    background: #050506;
-    border: 1px solid rgba(28,27,25,0.24);
-    border-radius: clamp(25px, 3.5vw, 38px);
-    box-shadow: 0 22px 44px rgba(28,27,25,0.18);
-  }
-  .collection-showcase img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: clamp(19px, 2.8vw, 29px);
-  }
-  .collection-copy {
-    width: min(720px, 100%);
-    margin-inline: auto;
-  }
+  .collection-shots .phone.small { width: auto; }
   @media (max-width: 560px) {
-    .collection-showcase {
-      width: calc(100vw - 24px);
-      margin-left: 50%;
-      transform: translateX(-50%);
-      gap: 8px;
-    }
-    .collection-showcase figure {
-      padding: 5px;
-      border-radius: 22px;
-      box-shadow: 0 12px 24px rgba(28,27,25,0.16);
-    }
-    .collection-showcase img {
-      border-radius: 17px;
+    .cols .shots.collection-shots {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
   }
 
@@ -867,23 +836,7 @@
     <div class="eyebrow"><span data-i18n="ja">コレクション</span><span data-i18n="en">Collection</span><span data-i18n="ko">컬렉션</span></div>
     <h2><span data-i18n="ja">好きなものだけ、ここに置く。</span><span data-i18n="en">Keep only what you love.</span><span data-i18n="ko">좋아하는 것만, 여기에 놓아요.</span></h2>
     <p class="lead"><span data-i18n="ja">心に残った音楽も、映画も、ネットの動画も、レコードのように棚へ。</span><span data-i18n="en">Music, films, videos you can't forget — onto the shelf, like records. A Japanese-style way to keep what you love, and let the rest go.</span><span data-i18n="ko">마음에 남은 음악도, 영화도, 인터넷 영상도, 레코드처럼 선반으로.</span></p>
-    <div class="collection-showcase" aria-label="Head-Lightの映画とレコードのコレクション画面">
-      <figure>
-        <img src="img/shots/collection-films-hp.webp" loading="lazy" decoding="async"
-             data-alt-ja="映画とドラマのリンクが、縦長のポスターカードとして並ぶコレクション画面"
-             data-alt-en="A film collection where movie and series links appear as tall poster cards."
-             data-alt-ko="영화와 드라마 링크가 세로로 긴 포스터 카드로 나열된 컬렉션 화면"
-             alt="映画とドラマのリンクが、縦長のポスターカードとして並ぶコレクション画面">
-      </figure>
-      <figure>
-        <img src="img/shots/collection-records-hp.webp" loading="lazy" decoding="async"
-             data-alt-ja="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面"
-             data-alt-en="A record collection where music links appear as square album sleeves."
-             data-alt-ko="음악 링크가 정사각형 레코드 재킷으로 나열된 컬렉션 화면"
-             alt="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面">
-      </figure>
-    </div>
-    <div class="collection-copy">
+    <div class="cols">
       <div class="text">
         <ul class="points">
           <li><span data-i18n="ja">リンクを貼るだけで、サムネイルが自動で取れて、<strong>カードになって棚に並ぶ</strong>。</span><span data-i18n="en">Paste a link and the thumbnail appears on its own — <strong>it becomes a card on your shelf</strong>.</span><span data-i18n="ko">링크를 붙여넣기만 하면, 썸네일이 자동으로 붙어서, <strong>카드가 되어 선반에 놓여요</strong>.</span></li>
@@ -894,6 +847,11 @@
           <li><span data-i18n="ja">棚は1枚の画像にして、SNSに貼れる。</span><span data-i18n="en">Turn your shelf into a single image and share it.</span><span data-i18n="ko">선반은 이미지 한 장으로 만들어서, SNS에 올릴 수 있어요.</span></li>
         </ul>
         <p class="sub"><span data-i18n="ja">言葉にならない「好き」も、あなたの一部です。</span><span data-i18n="en">Even the 'likes' you can't put into words are part of you.</span><span data-i18n="ko">말로 표현되지 않는 「좋아함」도, 당신의 일부예요.</span></p>
+      </div>
+      <div class="shots collection-shots">
+        <div class="phone small"><img src="img/shots/03_collections_ja.jpg" data-shot="03_collections" loading="lazy" decoding="async" data-alt-ja="コレクションの棚。自分の名前を付けたボードが並ぶ" data-alt-en="The collection shelf, with boards you have named lined up." data-alt-ko="컬렉션 선반. 직접 이름 붙인 보드가 늘어서 있다" alt="コレクションの棚。自分の名前を付けたボードが並ぶ"></div>
+        <div class="phone small"><img src="img/shots/collection-films-hp.webp" loading="lazy" decoding="async" alt="映画とドラマのリンクが、縦長のポスターカードとして並ぶコレクション画面"></div>
+        <div class="phone small"><img src="img/shots/collection-records-hp.webp" loading="lazy" decoding="async" data-alt-ja="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面" data-alt-en="A record collection where music links appear as square album sleeves." data-alt-ko="음악 링크가 정사각형 레코드 재킷으로 나열된 컬렉션 화면" alt="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面"></div>
       </div>
     </div>
   </div>
