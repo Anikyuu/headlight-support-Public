@@ -412,7 +412,7 @@
   .phone.small { width: min(200px, 52vw); }
 
   /* コレクションは、映画とレコードの棚を同時に大きく見せる。
-     PNGの透過をそのまま使い、余計な黒い額縁は足さない。 */
+     他の画面と同じ黒い端末フレームで、実際のスマホ画面として見せる。 */
   .collection-showcase {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -422,14 +422,21 @@
     align-items: start;
   }
   .collection-showcase figure {
+    position: relative;
     margin: 0;
     min-width: 0;
+    padding: clamp(6px, 1vw, 10px);
+    box-sizing: border-box;
+    background: #050506;
+    border: 1px solid rgba(28,27,25,0.24);
+    border-radius: clamp(25px, 3.5vw, 38px);
+    box-shadow: 0 22px 44px rgba(28,27,25,0.18);
   }
   .collection-showcase img {
     display: block;
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 22px 30px rgba(28,27,25,0.12));
+    border-radius: clamp(19px, 2.8vw, 29px);
   }
   .collection-copy {
     width: min(720px, 100%);
@@ -442,8 +449,13 @@
       transform: translateX(-50%);
       gap: 8px;
     }
+    .collection-showcase figure {
+      padding: 5px;
+      border-radius: 22px;
+      box-shadow: 0 12px 24px rgba(28,27,25,0.16);
+    }
     .collection-showcase img {
-      filter: drop-shadow(0 12px 18px rgba(28,27,25,0.10));
+      border-radius: 17px;
     }
   }
 
@@ -778,7 +790,7 @@
           <div class="dest"><span class="dico">✓</span><div><b><span data-i18n="ja">電池を買う</span><span data-i18n="en">Buy batteries</span><span data-i18n="ko">배터리 사기</span></b><span><span data-i18n="ja">やることへ</span><span data-i18n="en">Goes to your to-dos</span><span data-i18n="ko">할 일로</span></span></div></div>
           <div class="dest"><span class="dico">💡</span><div><b><span data-i18n="ja">新曲のサビを転調してみる</span><span data-i18n="en">Try modulating the new song's chorus</span><span data-i18n="ko">새 곡 후렴구 전조해보기</span></b><span><span data-i18n="ja">アイデアの瓶へ、玉になって溜まる</span><span data-i18n="en">Goes to the Ideas Jar, as a little bead</span><span data-i18n="ko">아이디어의 병으로, 구슬이 되어 쌓여요</span></span></div></div>
         </div>
-        <p class="sub"><span data-i18n="ja">思いつくまま話して大丈夫。仕分けはAIの仕事です。</span><span data-i18n="en">Speak as thoughts come. Sorting them is AI's job.</span><span data-i18n="ko">생각나는 대로 말해도 괜찮아요. 분류는 AI의 일이에요.</span></p>
+        <p class="sub"><span data-i18n="ja">ぐちゃぐちゃに話して大丈夫。仕分けはAIの仕事です。</span><span data-i18n="en">Ramble all you want. Sorting it out is AI's job.</span><span data-i18n="ko">두서없이 말해도 괜찮아요. 분류는 AI의 일이에요.</span></p>
       </div>
       <div class="shots">
         <div class="phone"><img src="img/shots/01_home_en.jpg?v=20260817c" loading="lazy" decoding="async" data-alt-ja="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン" data-alt-en="The latest home screen in English, with a clean white background, larger eyes, and a large voice button." data-alt-ko="깔끔한 흰색 배경에 더 크고 굵어진 눈과 큰 음성 버튼이 있는 최신 영어 홈 화면" alt="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン"></div>
@@ -840,7 +852,7 @@
       <div class="text">
         <ul class="points">
           <li><span data-i18n="ja">預けた言葉は、<strong>白い紙のカード</strong>になって時系列に残る。写真つきの言葉も。</span><span data-i18n="en">Words you drop in become <strong>white paper cards</strong>, kept in order over time — even ones with a photo attached.</span><span data-i18n="ko">맡긴 말은, <strong>흰 종이 카드</strong>가 되어 시간순으로 남아요. 사진이 붙은 말도요.</span></li>
-          <li><span data-i18n="ja">開いた瞬間から聞いている「思いつくまま話す」モード。話し終えたら、AIが<strong>何の話をしていたか</strong>を整理して要点を残す。</span><span data-i18n="en">It starts listening the moment you open it, so you can speak as thoughts come. When you&#39;re done, AI works out <strong>what you were talking about</strong> and keeps the gist.</span><span data-i18n="ko">여는 순간부터 듣고 있어서, 생각나는 대로 말하면 돼요. 말을 마치면, AI가 <strong>무슨 이야기를 했는지</strong> 정리해서 요점을 남겨요.</span></li>
+          <li><span data-i18n="ja">ホームで話した言葉も、整理アシスタントで切り分けた言葉も、<strong>ここに集まる</strong>。</span><span data-i18n="en">Words captured from Home and words separated by the Tidy Assistant <strong>all gather here</strong>.</span><span data-i18n="ko">홈에서 말한 내용과 정리 어시스턴트가 나눈 말이 <strong>모두 여기에 모여요</strong>.</span></li>
           <li><span data-i18n="ja"><strong>フォルダ</strong>で自分の手でも整理できる。キーワードを決めれば、その言葉を含むものが自動で集まる。</span><span data-i18n="en">You can also organize by hand with <strong>folders</strong>. Set a keyword, and matching words gather there automatically.</span><span data-i18n="ko"><strong>폴더</strong>로 직접 손으로도 정리할 수 있어요. 키워드를 정하면, 그 말이 포함된 것이 자동으로 모여요.</span></li>
           <li><span data-i18n="ja">言葉は普段しまわれていて、見たいときだけ開ける。<span class="note">書いたものの山に圧倒されない設計です。間違えて消してもゴミ箱から30日間もどせます。</span></span><span data-i18n="en">Your words stay tucked away, opened only when you want to look. <span class="note">Designed so a mountain of writing never feels overwhelming. Delete something by mistake, and you have 30 days to bring it back from the trash.</span></span><span data-i18n="ko">말은 평소에는 접혀 있고, 보고 싶을 때만 펼쳐요. <span class="note">쓴 것이 산더미처럼 쌓여 압도되지 않도록 설계했어요. 실수로 지워도 휴지통에서 30일 동안 되돌릴 수 있어요.</span></span></li>
         </ul>
