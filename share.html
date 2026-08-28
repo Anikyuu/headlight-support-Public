@@ -79,6 +79,17 @@
     .source{border:1px solid var(--line);background:#fff;color:var(--ink)}
     .notice{font-size:13px;text-align:center;margin:28px auto 0;max-width:48em}.legal{font-size:11px;text-align:center;margin-top:18px;color:var(--muted)}
     .legal a{color:inherit}.error{background:#fff;border:1px solid #d8d8d8;border-radius:16px;padding:18px;color:#222}
+    .madeWith{margin:54px auto 0;padding:34px 24px 28px;border-top:1px solid var(--line);text-align:center;max-width:620px}
+    .madeWithBrand{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.17em}
+    .madeWithMark{position:relative;width:24px;height:24px;border-radius:7px;background:#080808;box-shadow:0 5px 18px rgba(0,0,0,.14)}
+    .madeWithMark::before{content:"";position:absolute;inset:6px;border:2px solid #f4c453;border-radius:50%;box-shadow:0 0 8px rgba(244,196,83,.55)}
+    .madeWith h2{margin:17px auto 8px;font-size:clamp(25px,6vw,36px);line-height:1.18;letter-spacing:-.025em;text-wrap:balance}
+    .madeWithCopy{margin:0 auto 20px;max-width:31em;color:var(--muted);font-size:14px;line-height:1.65;text-wrap:balance}
+    .appStoreLink{display:inline-block;line-height:0;border-radius:9px;transition:opacity .18s ease,transform .18s ease}
+    .appStoreLink:hover{opacity:.82;transform:translateY(-1px)}
+    .appStoreLink:focus-visible{outline:3px solid rgba(244,196,83,.6);outline-offset:4px}
+    .appStoreBadge{display:block;width:auto;height:40px}
+    .independence{margin:20px auto 0;max-width:48em;color:var(--muted);font-size:10px;line-height:1.55;text-wrap:balance}
     @media(max-width:520px){main{padding-top:24px}.card{grid-template-columns:30px 36% minmax(0,1fr) 48px}.albumCard{padding:14px}.albumTop{grid-template-columns:24px 104px minmax(0,1fr);gap:10px}.albumArtwork{width:104px}.albumAction{width:44px;height:44px}.shelf.appleAlbumShelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.appleAlbumTile{border-radius:10px}.appleAlbumPlay{right:8px;bottom:8px;width:44px;height:44px}}
   </style>
 </head>
@@ -122,6 +133,15 @@
   <div id="content" class="shelf"></div>
   <p class="notice" id="snapshot" hidden>共有された時点のコピーです。元の棚とは同期しません。<br>This is a snapshot and does not sync with the sender.</p>
   <p class="legal" id="legal" hidden>Playback uses the official embedded player provided by each service when available. Some videos may open best on their original page.</p>
+  <section class="madeWith" id="madeWith" aria-labelledby="madeWithTitle" hidden>
+    <div class="madeWithBrand"><span class="madeWithMark" aria-hidden="true"></span><span id="madeWithLabel">SHARED WITH HEAD-LIGHT</span></div>
+    <h2 id="madeWithTitle">Keep what you love close.</h2>
+    <p class="madeWithCopy" id="madeWithCopy">Turn links and videos into beautiful cards on your own shelf.</p>
+    <a class="appStoreLink" id="appStoreLink" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener noreferrer">
+      <img class="appStoreBadge" id="appStoreBadge" src="img/app-store-badges/en.svg" alt="Download on the App Store">
+    </a>
+    <p class="independence" id="independence">Head-Light is independent of the services and creators linked above. This identifies the app used to create this shared page.</p>
+  </section>
 </main>
 <script>
   const MAX_ENTRIES = 48;
@@ -137,6 +157,67 @@
   // Different shared links use the same static page and differ only by their
   // fragment. Browsers do not reload on a fragment-only navigation by default.
   window.addEventListener('hashchange', () => location.reload());
+
+  function shareLocale() {
+    const value = (navigator.language || 'en').toLowerCase();
+    if (value.startsWith('ja')) return 'ja';
+    if (value.startsWith('ko')) return 'ko';
+    if (value.startsWith('de')) return 'de';
+    if (value.startsWith('fr')) return 'fr';
+    if (value.startsWith('es')) return 'es';
+    if (value.startsWith('it')) return 'it';
+    if (value.startsWith('zh')) return 'zh-Hant';
+    return 'en';
+  }
+
+  function localizeMadeWith() {
+    const locale = shareLocale();
+    const copy = {
+      ja: {
+        label:'HEAD-LIGHTで共有', title:'「好き」を、ひとつの場所に。', body:'リンクや動画を美しいカードにして、あなたの棚へ。',
+        badge:'App Storeからダウンロード', independence:'上のリンクや作品は、各サービスと投稿者に帰属します。この表示は共有ページを作成したアプリを示すもので、各サービスや投稿者による広告・推薦ではありません。'
+      },
+      ko: {
+        label:'HEAD-LIGHT로 공유됨', title:'좋아하는 것을 한곳에.', body:'링크와 동영상을 아름다운 카드로 만들어 나만의 선반에 보관하세요.',
+        badge:'App Store에서 다운로드하기', independence:'위 링크와 콘텐츠는 각 서비스와 제작자에게 귀속됩니다. 이 표시는 공유 페이지를 만든 앱을 나타내며, 해당 서비스나 제작자의 광고 또는 추천이 아닙니다.'
+      },
+      de: {
+        label:'MIT HEAD-LIGHT GETEILT', title:'Alles, was du liebst, an einem Ort.', body:'Verwandle Links und Videos in schöne Karten für dein eigenes Regal.',
+        badge:'Im App Store laden', independence:'Die oben verlinkten Inhalte gehören den jeweiligen Diensten und Urhebern. Dieser Hinweis nennt nur die App, mit der die Seite erstellt wurde, und ist keine Werbung oder Empfehlung durch diese Dienste oder Urheber.'
+      },
+      fr: {
+        label:'PARTAGÉ AVEC HEAD-LIGHT', title:'Tout ce que vous aimez, réuni ici.', body:'Transformez liens et vidéos en belles cartes sur votre propre étagère.',
+        badge:'Télécharger dans l’App Store', independence:'Les liens et contenus ci-dessus appartiennent à leurs services et créateurs respectifs. Cette mention indique uniquement l’app utilisée pour créer la page et ne constitue ni une publicité ni une recommandation de leur part.'
+      },
+      es: {
+        label:'COMPARTIDO CON HEAD-LIGHT', title:'Todo lo que te gusta, en un solo lugar.', body:'Convierte enlaces y vídeos en bonitas tarjetas para tu propia estantería.',
+        badge:'Descargar en el App Store', independence:'Los enlaces y contenidos anteriores pertenecen a sus respectivos servicios y creadores. Este aviso solo identifica la app utilizada para crear la página y no es publicidad ni una recomendación por su parte.'
+      },
+      it: {
+        label:'CONDIVISO CON HEAD-LIGHT', title:'Tutto ciò che ami, in un solo posto.', body:'Trasforma link e video in splendide schede sul tuo scaffale.',
+        badge:'Scarica dall’App Store', independence:'I link e i contenuti qui sopra appartengono ai rispettivi servizi e autori. Questa dicitura indica soltanto l’app usata per creare la pagina e non rappresenta pubblicità o approvazione da parte loro.'
+      },
+      'zh-Hant': {
+        label:'透過 HEAD-LIGHT 分享', title:'把所有喜歡的，放在同一個地方。', body:'將連結與影片變成精美卡片，收進自己的收藏架。',
+        badge:'在 App Store 下載', independence:'上方連結與內容屬於各自的服務及創作者。此標示僅說明製作此分享頁面的 App，並非相關服務或創作者的廣告或推薦。'
+      },
+      en: {
+        label:'SHARED WITH HEAD-LIGHT', title:'Keep what you love close.', body:'Turn links and videos into beautiful cards on your own shelf.',
+        badge:'Download on the App Store', independence:'The links and content above belong to their respective services and creators. This identifies the app used to create the shared page and is not an advertisement or endorsement by them.'
+      }
+    }[locale];
+    document.documentElement.lang = locale === 'zh-Hant' ? 'zh-Hant' : locale;
+    document.getElementById('madeWithLabel').textContent = copy.label;
+    document.getElementById('madeWithTitle').textContent = copy.title;
+    document.getElementById('madeWithCopy').textContent = copy.body;
+    const badge = document.getElementById('appStoreBadge');
+    badge.src = `img/app-store-badges/${locale}.svg`;
+    badge.alt = copy.badge;
+    document.getElementById('appStoreLink').setAttribute('aria-label', copy.badge);
+    document.getElementById('independence').textContent = copy.independence;
+  }
+
+  localizeMadeWith();
 
   function showCollectionCover() {
     const value = new URLSearchParams(location.search).get('cover');
@@ -749,6 +830,7 @@
     const openApp = document.getElementById('openApp');
     openApp.href = `https://open.head-light.app/import/#collection=${payload}`;
     openApp.hidden = false;
+    document.getElementById('madeWith').hidden = false;
   } catch (error) {
     document.getElementById('name').textContent = 'Collection not found';
     content.className = 'error';
