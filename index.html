@@ -110,6 +110,21 @@
   }
   .free-intro .lead { max-width: 42em; }
 
+  /* 話すだけで使えることを、序盤でひと目で伝える写真。 */
+  .voice-photo-section {
+    padding-block: 52px 68px;
+  }
+  .voice-photo-section .inner { align-items: center; }
+  .voice-photo {
+    display: block;
+    width: min(780px, 100%);
+    height: auto;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) {
+    .voice-photo-section { padding-block: 32px 44px; }
+  }
+
   /* ---- ヒーロー ---- */
   .hero {
     min-height: 92svh;
@@ -825,6 +840,14 @@
   </div>
 </section>
 
+<!-- 声で言葉を預ける体験を、序盤で見せる -->
+<section class="voice-photo-section" id="voice-photo">
+  <div class="inner reveal">
+    <img class="voice-photo" src="img/hero-voice.jpg" loading="lazy"
+         data-alt-ja="iPhoneを手に持ち、Head-Lightへ話しかけているところ" data-alt-en="Holding an iPhone and speaking into Head-Light." data-alt-ko="iPhone을 손에 들고 Head-Light에 말하고 있는 모습">
+  </div>
+</section>
+
 
 <!-- 答え -->
 <section id="ai-sorting">
@@ -851,8 +874,6 @@
 
     <p class="paid-note" hidden><a href="#pricing"><span data-i18n="ja">20を超える道具は無料。AI Proの年額プランは7日間無料。</span><span data-i18n="en">More than 20 tools are free. Try the annual AI Pro plan free for 7 days.</span><span data-i18n="ko">20개가 넘는 도구는 무료. AI Pro 연간 플랜은 7일 무료.</span></a></p>
 
-    <img class="shot wide reveal" src="img/hero-voice.jpg" loading="lazy"
-         data-alt-ja="iPhoneに向かって話しかけているところ" data-alt-en="Speaking into an iPhone running Head-Light." data-alt-ko="iPhone을 향해 말하고 있는 모습">
 </section>
 
 
@@ -1261,6 +1282,7 @@
       [
         "problem",
         "free-intro",
+        "voice-photo",
         "words",
         "journal",
         "routines",
