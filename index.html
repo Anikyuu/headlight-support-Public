@@ -692,7 +692,8 @@
       document.querySelectorAll("img[data-shot]").forEach(function (img) {
         var suffix = lang === "ja" ? "ja" : "en";
         var extension = img.dataset.shotExt || "jpg";
-        img.src = "img/shots/" + img.dataset.shot + "_" + suffix + "." + extension;
+        var separator = img.dataset.shot.includes("-") ? "-" : "_";
+        img.src = "img/shots/" + img.dataset.shot + separator + suffix + "." + extension;
       });
     }
     var saved = localStorage.getItem(KEY);
