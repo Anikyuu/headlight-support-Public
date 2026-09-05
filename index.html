@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Head-Lightは、あなたを軽くする手帳アプリ。ネットの動画も、本も、音楽も、レコードのように棚に置けます。思いつきも予定も、声で放り込むだけ。仕分けはAIの仕事。広告なし。データを売りません。 / A Japanese-style way to keep what you love and let the rest go — journal, plans, and a shelf for everything you can't forget. No ads. We never sell your data.">
+<meta name="description" content="Head-Lightは、あなたを軽くする手帳アプリ。プレイリストのようにルーティーンを組み、できたことはその時刻で手帳へ。動画・本・音楽はレコードのように棚へ置き、思いつきや予定はAIが整理します。広告なし。データを売りません。 / Build routines like playlists, keep completed moments in your journal, and put everything you love on a shelf. No ads. We never sell your data.">
 <meta name="apple-itunes-app" content="app-id=6790623376">
 <link rel="canonical" href="https://head-light.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Head-Light">
 <meta property="og:url" content="https://head-light.app/">
 <meta property="og:title" content="Head-Light: Lighten your load">
-<meta property="og:description" content="Keep what you love, let the rest go — a Japanese-style shelf for music, films, and thoughts you can't forget. 好きなものを棚に、思いつきも予定もAIが整理。広告なし。データを売りません。">
+<meta property="og:description" content="Build routines like playlists. Completed moments land in your journal at the time they happened. 好きなものを棚に、ルーティーンと手帳で今日を進める。">
 <meta property="og:image" content="https://head-light.app/img/hero-voice.jpg">
 <meta property="og:image:width" content="1300">
 <meta property="og:image:height" content="975">
 <meta property="og:image:alt" content="Head-Lightに向かって話すと、思いつきや予定が手帳に残る">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Head-Light: Lighten your load">
-<meta name="twitter:description" content="好きなものだけ、ここに置く。リンクをカードにしてコレクションできる手帳アプリ。">
+<meta name="twitter:description" content="プレイリストのようにルーティーンを組む。できたことが、その時刻で手帳に育つ。">
 <meta name="twitter:image" content="https://head-light.app/img/hero-voice.jpg">
 <meta name="twitter:image:alt" content="Head-Lightに向かって話すと、思いつきや予定が手帳に残る">
 <title data-title-ja="Head-Light: あなたを軽くする手帳" data-title-en="Head-Light: Lighten your load" data-title-ko="Head-Light: 마음이 가벼워지는 다이어리">Head-Light: あなたを軽くする手帳</title>
@@ -31,7 +31,7 @@
   "downloadUrl": "https://apps.apple.com/app/id6790623376",
   "operatingSystem": "iOS, iPadOS, macOS, watchOS",
   "applicationCategory": "LifestyleApplication",
-  "description": "A journal app that turns links into cards, keeps music, films, books, photos, and thoughts on personal shelves, and uses AI to organize journals and plans.",
+  "description": "A journal app that builds routines like playlists, records completed moments at the time they happened, keeps music, films, books, photos and thoughts on personal shelves, and uses AI to organize journals and plans.",
   "inLanguage": ["en", "ja", "ko", "de", "zh-Hant", "fr", "es", "it"],
   "offers": {
     "@type": "Offer",
@@ -411,6 +411,24 @@
   .phone img { display: block; width: 100%; border-radius: 26px; }
   .phone.small { width: min(200px, 52vw); }
 
+  /* 1.0.5のルーティーン。レコード棚の青だけを、紙の上へごく薄く引く。 */
+  .routine-section {
+    background: linear-gradient(180deg, #f4fbff 0%, #ffffff 72%);
+  }
+  .routine-section .eyebrow { color: #277eb2; }
+  .routine-section ul.points li::before { background: #45a9dc; }
+  .cols .shots.routine-shots {
+    flex: 1 1 420px;
+    align-items: flex-start;
+  }
+  .routine-shots .phone:first-child { margin-top: 34px; }
+  .routine-note {
+    max-width: 62em;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+
   /* コレクション一覧は残し、古いレコード画面だけを
      新しい映画・レコード画面へ差し替える。3枚とも同じ端末サイズ。 */
   .cols .shots.collection-shots {
@@ -426,6 +444,18 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
+    .cols .shots.routine-shots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .routine-shots .phone.small {
+      width: auto;
+      padding: 6px;
+      border-radius: 24px;
+    }
+    .routine-shots .phone img { border-radius: 18px; }
+    .routine-shots .phone:first-child { margin-top: 24px; }
   }
 
   /* ---- イラスト ---- */
@@ -661,7 +691,8 @@
       // 韓国語は当面 英語の画面を使う(韓国語のストア展開はまだ先のため)。
       document.querySelectorAll("img[data-shot]").forEach(function (img) {
         var suffix = lang === "ja" ? "ja" : "en";
-        img.src = "img/shots/" + img.dataset.shot + "_" + suffix + ".jpg";
+        var extension = img.dataset.shotExt || "jpg";
+        img.src = "img/shots/" + img.dataset.shot + "_" + suffix + "." + extension;
       });
     }
     var saved = localStorage.getItem(KEY);
@@ -872,6 +903,112 @@
   </div>
 </div>
 
+<!-- ルーティーン（1.0.5） -->
+<section class="routine-section" id="routines">
+  <div class="inner reveal">
+    <div class="eyebrow">
+      <span data-i18n="ja">新機能・ルーティーン</span>
+      <span data-i18n="en" data-static-localized>New · Routines</span>
+      <span data-i18n="ko">새 기능 · 루틴</span>
+      <span data-i18n="de">Neu · Routinen</span>
+      <span data-i18n="zh-Hant">新功能・例行流程</span>
+      <span data-i18n="fr">Nouveau · Routines</span>
+      <span data-i18n="es">Novedad · Rutinas</span>
+      <span data-i18n="it">Novità · Routine</span>
+    </div>
+    <h2>
+      <span data-i18n="ja">プレイリストを作るように、<br>ルーティーンを組む。</span>
+      <span data-i18n="en" data-static-localized>Build a routine<br>like a playlist.</span>
+      <span data-i18n="ko">플레이리스트를 만들 듯,<br>루틴을 짜 보세요.</span>
+      <span data-i18n="de">Stell deine Routine zusammen<br>wie eine Playlist.</span>
+      <span data-i18n="zh-Hant">像製作播放清單一樣，<br>編排你的例行流程。</span>
+      <span data-i18n="fr">Composez votre routine<br>comme une playlist.</span>
+      <span data-i18n="es">Crea tu rutina<br>como una playlist.</span>
+      <span data-i18n="it">Componi la tua routine<br>come una playlist.</span>
+    </h2>
+    <p class="lead">
+      <span data-i18n="ja">朝の支度も、集中のスイッチも。やることを好きな順に並べ、ひとつずつ再生します。</span>
+      <span data-i18n="en" data-static-localized>For getting ready or finding your focus: put each action in the order that suits you, then play them one by one.</span>
+      <span data-i18n="ko">아침 준비도, 집중을 켜는 시간도. 할 일을 원하는 순서로 늘어놓고 하나씩 재생해요.</span>
+      <span data-i18n="de">Ob Morgenroutine oder Fokus-Start: Ordne die einzelnen Schritte so, wie sie zu dir passen, und spiele sie nacheinander ab.</span>
+      <span data-i18n="zh-Hant">無論晨間準備或進入專注狀態，把要做的事依喜歡的順序排好，再逐項播放。</span>
+      <span data-i18n="fr">Préparation du matin ou mise au point : placez chaque geste dans l’ordre qui vous convient, puis lancez-les un à un.</span>
+      <span data-i18n="es">Para prepararte por la mañana o entrar en modo concentración: ordena cada paso a tu manera y reprodúcelos uno a uno.</span>
+      <span data-i18n="it">Per prepararti al mattino o trovare la concentrazione: metti ogni gesto nell’ordine che preferisci e riproducili uno alla volta.</span>
+    </p>
+    <div class="cols">
+      <div class="text">
+        <ul class="points">
+          <li>
+            <span data-i18n="ja">絵文字・名前・分数を決め、やる順に並べる。始まりは<strong>7秒の「ひと呼吸」</strong>か、すぐ始めるかを選べる。</span>
+            <span data-i18n="en" data-static-localized>Give each step an emoji, a name and a duration, then arrange the order. Begin with <strong>one seven-second breath</strong>, or start right away.</span>
+            <span data-i18n="ko">각 단계에 이모지·이름·분을 정해 순서대로 놓아요. 시작은 <strong>7초의 한 호흡</strong> 또는 바로 시작하기 중에서 골라요.</span>
+            <span data-i18n="de">Gib jedem Schritt Emoji, Namen und Dauer und lege die Reihenfolge fest. Beginne wahlweise mit <strong>einem sieben Sekunden langen Atemzug</strong> oder sofort.</span>
+            <span data-i18n="zh-Hant">為每個步驟設定表情符號、名稱與分鐘數，再依執行順序排列。開始時可選擇<strong>七秒鐘的「深呼吸」</strong>，或直接開始。</span>
+            <span data-i18n="fr">Donnez à chaque étape un emoji, un nom et une durée, puis choisissez l’ordre. Commencez par <strong>une respiration de sept secondes</strong>, ou tout de suite.</span>
+            <span data-i18n="es">Pon un emoji, un nombre y una duración a cada paso y ordénalos. Empieza con <strong>una respiración de siete segundos</strong> o directamente.</span>
+            <span data-i18n="it">Dai a ogni passaggio un’emoji, un nome e una durata, poi scegli l’ordine. Inizia con <strong>un respiro di sette secondi</strong> oppure subito.</span>
+          </li>
+          <li>
+            <span data-i18n="ja">端末の声と円形タイマーで、ひとつずつ案内。時間で自動的に進むか、大きな✓で進むかもルーティーンごとに選べる。</span>
+            <span data-i18n="en" data-static-localized>On-device voice guidance and a circular timer take you through each step. Choose whether time moves you on automatically or the large ✓ does.</span>
+            <span data-i18n="ko">기기 안의 음성과 원형 타이머가 하나씩 안내해요. 시간이 되면 자동으로 넘어갈지, 큰 ✓를 눌러 넘어갈지도 루틴마다 선택할 수 있어요.</span>
+            <span data-i18n="de">Die Stimme des Geräts und ein Kreis-Timer führen dich Schritt für Schritt. Je Routine entscheidest du, ob es automatisch oder erst mit dem großen ✓ weitergeht.</span>
+            <span data-i18n="zh-Hant">裝置端語音與圓形計時器會逐步引導。每個流程都能選擇時間到後自動前進，或按下大大的 ✓ 再繼續。</span>
+            <span data-i18n="fr">La voix intégrée et un minuteur circulaire vous guident étape par étape. Choisissez le passage automatique ou le grand ✓ pour continuer.</span>
+            <span data-i18n="es">La voz del dispositivo y un temporizador circular te guían paso a paso. Elige si avanzar automáticamente o al pulsar el gran ✓.</span>
+            <span data-i18n="it">La voce del dispositivo e un timer circolare ti guidano passo dopo passo. Scegli se avanzare automaticamente o con il grande ✓.</span>
+          </li>
+          <li>
+            <span data-i18n="ja">文章・写真・端末の曲・Apple Musicのプレイリスト／ステーション・YouTubeを、各タスクのインスピレーションにできる。</span>
+            <span data-i18n="en" data-static-localized>Add a note, photo, a song from your library, an Apple Music playlist or station, or YouTube as inspiration for any step.</span>
+            <span data-i18n="ko">글·사진·기기 안의 음악·Apple Music 플레이리스트/스테이션·YouTube를 각 단계의 영감으로 붙일 수 있어요.</span>
+            <span data-i18n="de">Hinterlege zu jedem Schritt einen Text, ein Foto, einen Titel aus deiner Mediathek, eine Apple Music-Playlist oder -Station oder YouTube.</span>
+            <span data-i18n="zh-Hant">每個步驟都能加入文字、照片、裝置裡的歌曲、Apple Music 播放清單／電台或 YouTube，作為靈感。</span>
+            <span data-i18n="fr">Ajoutez à chaque étape un texte, une photo, un morceau de votre bibliothèque, une playlist ou station Apple Music, ou YouTube.</span>
+            <span data-i18n="es">Añade a cada paso un texto, una foto, una canción de tu biblioteca, una playlist o emisora de Apple Music, o YouTube.</span>
+            <span data-i18n="it">Aggiungi a ogni passaggio un testo, una foto, un brano della libreria, una playlist o stazione Apple Music oppure YouTube.</span>
+          </li>
+          <li>
+            <span data-i18n="ja">毎日・毎週・毎月。通知やアラームを設定し、ホーム画面のウィジェットやApple Watchから選んだ流れをすぐ再生できる。</span>
+            <span data-i18n="en" data-static-localized>Repeat daily, weekly or monthly, with a notification or alarm. Start the routine you chose straight from a Home Screen widget or Apple Watch.</span>
+            <span data-i18n="ko">매일·매주·매월 반복과 알림/알람을 정해요. 홈 화면 위젯이나 Apple Watch에서 선택한 흐름을 바로 재생할 수도 있어요.</span>
+            <span data-i18n="de">Täglich, wöchentlich oder monatlich – mit Mitteilung oder Wecker. Starte die gewählte Routine direkt per Home-Bildschirm-Widget oder Apple Watch.</span>
+            <span data-i18n="zh-Hant">可設定每日、每週或每月重複，以及通知或鬧鐘。也能從主畫面小工具或 Apple Watch 立即播放選定的流程。</span>
+            <span data-i18n="fr">Répétez chaque jour, semaine ou mois, avec notification ou alarme. Lancez la routine choisie depuis un widget d’accueil ou l’Apple Watch.</span>
+            <span data-i18n="es">Repítela cada día, semana o mes, con notificación o alarma. Inicia la rutina elegida desde un widget de inicio o el Apple Watch.</span>
+            <span data-i18n="it">Ripetila ogni giorno, settimana o mese, con notifica o sveglia. Avvia la routine scelta da un widget Home o da Apple Watch.</span>
+          </li>
+          <li>
+            <span data-i18n="ja">最後までできたら、正確な時刻で手帳に残る。今の継続・最長・達成回数と、10段階で育つ植物も見返せる。</span>
+            <span data-i18n="en" data-static-localized>Finish the whole routine and it lands in your journal at the exact time. See your current and best streaks, completions and a plant that grows through ten stages.</span>
+            <span data-i18n="ko">마지막까지 마치면 정확한 시각으로 수첩에 남아요. 현재 연속·최장·달성 횟수와 10단계로 자라는 식물도 볼 수 있어요.</span>
+            <span data-i18n="de">Nach dem letzten Schritt erscheint der Abschluss zur genauen Uhrzeit im Tagebuch. Sieh aktuelle und beste Serie, Erfolge und eine Pflanze mit zehn Wachstumsstufen.</span>
+            <span data-i18n="zh-Hant">全部完成後，會以精確時間留在手帳中。也能查看目前連續、最長連續、達成次數，以及十階段成長的植物。</span>
+            <span data-i18n="fr">Une fois terminée, la routine rejoint le journal à l’heure exacte. Retrouvez série actuelle, record, réussites et une plante qui grandit en dix étapes.</span>
+            <span data-i18n="es">Al terminar, queda en el diario con la hora exacta. Consulta tu racha actual, récord, logros y una planta que crece en diez etapas.</span>
+            <span data-i18n="it">Una volta terminata, resta nel diario con l’ora esatta. Rivedi serie attuale, record, traguardi e una pianta che cresce in dieci fasi.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="shots routine-shots">
+        <div class="phone small"><img src="img/shots/routine-list-ja.webp" data-shot="routine-list" data-shot-ext="webp" data-static-localized loading="lazy" decoding="async" data-alt-ja="透明な色付きレコードが覗く、小さなジャケットが並ぶルーティーン一覧" data-alt-en="A routine shelf with small sleeves and translucent records peeking out." data-alt-ko="작은 재킷 옆으로 투명한 컬러 레코드가 보이는 루틴 목록" data-alt-de="Eine Routinenliste mit kleinen Hüllen und hervorlugenden transparenten Schallplatten." data-alt-zh-hant="小型封套排列成列，旁邊露出透明彩色唱片的例行流程清單。" data-alt-fr="Une liste de routines avec de petites pochettes et des disques translucides qui dépassent." data-alt-es="Una lista de rutinas con pequeñas carátulas y discos translúcidos asomando." data-alt-it="Un elenco di routine con piccole copertine e dischi traslucidi che spuntano di lato." alt="透明な色付きレコードが覗く、小さなジャケットが並ぶルーティーン一覧"></div>
+        <div class="phone small"><img src="img/shots/routine-timer-ja.webp" data-shot="routine-timer" data-shot-ext="webp" data-static-localized loading="lazy" decoding="async" data-alt-ja="グラデーションの円形タイマーと、大きなチェックボタンがあるルーティーン再生画面" data-alt-en="A routine player with a gradient circular timer and a large check button." data-alt-ko="그라데이션 원형 타이머와 큰 체크 버튼이 있는 루틴 재생 화면" data-alt-de="Der Routinenplayer mit Kreis-Timer im Farbverlauf und großer Häkchentaste." data-alt-zh-hant="帶有漸層圓形計時器與大型勾選按鈕的例行流程播放畫面。" data-alt-fr="L’écran de lecture d’une routine avec minuteur circulaire en dégradé et grand bouton de validation." data-alt-es="El reproductor de rutinas con temporizador circular degradado y un gran botón de confirmación." data-alt-it="Il player della routine con timer circolare sfumato e un grande pulsante di conferma." alt="グラデーションの円形タイマーと、大きなチェックボタンがあるルーティーン再生画面"></div>
+      </div>
+    </div>
+    <p class="routine-note">
+      <span data-i18n="ja">※ Apple Musicのリンク再生には、通信・MusicKitの許可・有効なApple Musicサブスクリプションが必要です。アラームはiOS 26以降に対応し、それ以外では音付き通知になります。毎月の繰り返しは音付き通知です。</span>
+      <span data-i18n="en" data-static-localized>* Apple Music links require an internet connection, MusicKit permission and an active Apple Music subscription. Alarms require iOS 26; other systems use a sound notification. Monthly repeats use a sound notification.</span>
+      <span data-i18n="ko">※ Apple Music 링크 재생에는 인터넷 연결, MusicKit 권한, 유효한 Apple Music 구독이 필요해요. 알람은 iOS 26 이상에서 지원하며, 그 외에는 소리 알림을 사용해요. 매월 반복도 소리 알림이에요.</span>
+      <span data-i18n="de">* Apple Music-Links benötigen Internet, MusicKit-Zugriff und ein aktives Apple Music-Abo. Wecker erfordern iOS 26; sonst wird eine Mitteilung mit Ton verwendet. Monatliche Wiederholungen nutzen ebenfalls eine Mitteilung mit Ton.</span>
+      <span data-i18n="zh-Hant">※ 播放 Apple Music 連結需要網路、MusicKit 權限與有效的 Apple Music 訂閱。鬧鐘需 iOS 26；其他系統會改用有聲通知。每月重複也使用有聲通知。</span>
+      <span data-i18n="fr">* Les liens Apple Music nécessitent une connexion, l’autorisation MusicKit et un abonnement Apple Music actif. Les alarmes demandent iOS 26 ; ailleurs, une notification sonore est utilisée. Les répétitions mensuelles utilisent aussi une notification sonore.</span>
+      <span data-i18n="es">* Los enlaces de Apple Music requieren conexión, permiso de MusicKit y una suscripción activa. Las alarmas necesitan iOS 26; en otros sistemas se usa una notificación con sonido. Las repeticiones mensuales también usan una notificación con sonido.</span>
+      <span data-i18n="it">* I link Apple Music richiedono connessione, autorizzazione MusicKit e un abbonamento attivo. Le sveglie richiedono iOS 26; sugli altri sistemi si usa una notifica sonora. Anche le ripetizioni mensili usano una notifica sonora.</span>
+    </p>
+  </div>
+</section>
+
 <!-- カレンダー(日記) -->
 <section>
   <div class="inner reveal">
@@ -885,6 +1022,16 @@
       <div class="text">
         <ul class="points">
           <li><span data-i18n="ja">カレンダーの日をタップすると、<strong>その日に話した言葉と撮った写真</strong>が並ぶ。</span><span data-i18n="en">Tap a day on the calendar, and <strong>the words you spoke and the photos you took that day</strong> line up.</span><span data-i18n="ko">캘린더의 날짜를 탭하면, <strong>그날 말한 것과 찍은 사진</strong>이 늘어서요.</span></li>
+          <li>
+            <span data-i18n="ja">完了したルーティーンや、できた「やること」も、作った時刻ではなく<strong>実際にできた時刻</strong>で手帳に残る。</span>
+            <span data-i18n="en" data-static-localized>Finished routines and completed to-dos stay in your journal at <strong>the time you actually did them</strong>, not when you created them.</span>
+            <span data-i18n="ko">완료한 루틴과 끝낸 할 일도 만든 시각이 아니라 <strong>실제로 해낸 시각</strong>으로 수첩에 남아요.</span>
+            <span data-i18n="de">Abgeschlossene Routinen und erledigte Aufgaben erscheinen im Tagebuch zu <strong>dem Zeitpunkt, an dem du sie wirklich geschafft hast</strong> – nicht zur Erstellzeit.</span>
+            <span data-i18n="zh-Hant">完成的例行流程與待辦事項，會以<strong>實際做到的時間</strong>留在手帳中，而不是建立時間。</span>
+            <span data-i18n="fr">Les routines et tâches terminées restent dans le journal à <strong>l’heure où vous les avez réellement accomplies</strong>, et non à leur création.</span>
+            <span data-i18n="es">Las rutinas y tareas terminadas quedan en el diario a <strong>la hora en que realmente las hiciste</strong>, no cuando las creaste.</span>
+            <span data-i18n="it">Le routine e le attività completate restano nel diario all’<strong>ora in cui le hai svolte davvero</strong>, non quando le hai create.</span>
+          </li>
           <li><span data-i18n="ja">つまり、使っているだけで<strong>日記が勝手に育っていく</strong>。書こうと頑張らなくていい。</span><span data-i18n="en">Which means a <strong>journal grows on its own</strong>, just from using the app. No need to force yourself to write.</span><span data-i18n="ko">즉, 쓰기만 해도 <strong>일기가 저절로 자라나요</strong>. 애써 쓰려고 하지 않아도 돼요.</span></li>
           <li><span data-i18n="ja">先の日には予定やメモを書けて、リマインダーも付けられる。</span><span data-i18n="en">Write plans or notes on a future day, and set a reminder for them.</span><span data-i18n="ko">앞으로의 날짜에는 일정이나 메모를 적을 수 있고, 알림도 붙일 수 있어요.</span></li>
           <li><span data-i18n="ja">「来週水曜3時に歯医者」と話せば、iPhoneのカレンダーへの登録も一度だけ誘ってくれる。<span class="note">勝手には登録しません。あなたの予定を読む権限も持ちません。</span></span><span data-i18n="en">Say &ldquo;dentist next Wednesday at 3&rdquo; and it offers, once, to add it to your iPhone calendar. <span class="note">It never adds anything on its own, and it never reads your existing plans.</span></span><span data-i18n="ko">「다음 주 수요일 3시에 치과」라고 말하면, iPhone 캘린더 등록도 한 번만 물어봐요. <span class="note">멋대로 등록하지 않아요. 당신의 일정을 읽을 권한도 갖지 않아요.</span></span></li>
@@ -954,6 +1101,7 @@
         <h3>✅ <span data-i18n="ja">今日を進める</span><span data-i18n="en">Move today along</span><span data-i18n="ko">오늘을 나아가게</span></h3>
         <ul>
           <li><span class="ticon"><img src="img/tools/todo.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('✅'))"></span><div><b><span data-i18n="ja">やること</span><span data-i18n="en">To do</span><span data-i18n="ko">할 일</span></b><span data-i18n="ja">話した言葉からAIが抜き出して、チェックリストにする</span><span data-i18n="en">AI pulls tasks out of what you said into a checklist</span><span data-i18n="ko">말한 것에서 AI가 뽑아내, 체크리스트로 만들어요</span></div></li>
+          <li><span class="ticon" aria-hidden="true">☀️</span><div><b><span data-i18n="ja">ルーティーン</span><span data-i18n="en" data-static-localized>Routines</span><span data-i18n="ko">루틴</span><span data-i18n="de">Routinen</span><span data-i18n="zh-Hant">例行流程</span><span data-i18n="fr">Routines</span><span data-i18n="es">Rutinas</span><span data-i18n="it">Routine</span></b><span data-i18n="ja">やることをプレイリストのように並べ、声とタイマーでひとつずつ再生</span><span data-i18n="en" data-static-localized>Arrange actions like a playlist, then play them one by one with voice and a timer</span><span data-i18n="ko">할 일을 플레이리스트처럼 놓고, 음성과 타이머로 하나씩 재생</span><span data-i18n="de">Schritte wie eine Playlist ordnen und mit Stimme und Timer abspielen</span><span data-i18n="zh-Hant">像播放清單一樣排列步驟，再由語音與計時器逐項播放</span><span data-i18n="fr">Ordonnez les gestes comme une playlist, puis lancez-les avec la voix et le minuteur</span><span data-i18n="es">Ordena los pasos como una playlist y reprodúcelos con voz y temporizador</span><span data-i18n="it">Ordina i passaggi come una playlist e riproducili con voce e timer</span></div></li>
           <li><span class="ticon"><img src="img/tools/planner.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗓'))"></span><div><b><span data-i18n="ja">3日プランナー</span><span data-i18n="en">3-day planner</span><span data-i18n="ko">3일 플래너</span></b><span data-i18n="ja">今日からの3日を、30分単位で組み立てる</span><span data-i18n="en">Lay out the next three days in 30-minute blocks</span><span data-i18n="ko">오늘부터 3일을, 30분 단위로 짜요</span></div></li>
           <li><span class="ticon"><img src="img/tools/timer.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⏱'))"></span><div><b><span data-i18n="ja">タイマー</span><span data-i18n="en">Timer</span><span data-i18n="ko">타이머</span></b><span data-i18n="ja">10秒〜1時間。ストップウォッチ・ポモドーロ・瞑想・筋トレも</span><span data-i18n="en">10 seconds to an hour, plus stopwatch, pomodoro, meditation and workouts</span><span data-i18n="ko">10초~1시간. 스톱워치・포모도로・명상・근력 운동도</span></div></li>
         </ul>
@@ -983,7 +1131,7 @@
         <h3>📁 <span data-i18n="ja">しまっておく</span><span data-i18n="en">Put away</span><span data-i18n="ko">보관하기</span></h3>
         <ul>
           <li><span class="ticon"><img src="img/tools/folder.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📁'))"></span><div><b><span data-i18n="ja">フォルダ</span><span data-i18n="en">Folders</span><span data-i18n="ko">폴더</span></b><span data-i18n="ja">言葉をフォルダに分けて保存。分け方はAIが提案する</span><span data-i18n="en">File your words into folders; AI suggests how to split them</span><span data-i18n="ko">말을 폴더로 나눠 저장. 나누는 방법은 AI가 제안해요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/widget.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⌚️'))"></span><div><b><span data-i18n="ja">ウィジェット・Apple Watch</span><span data-i18n="en">Widgets &amp; Apple Watch</span><span data-i18n="ko">위젯・Apple Watch</span></b><span data-i18n="ja">ホーム画面のウィジェットと、Apple Watchからの音声入力</span><span data-i18n="en">Home screen widgets, and voice capture from Apple Watch</span><span data-i18n="ko">홈 화면 위젯과, Apple Watch에서의 음성 입력</span></div></li>
+          <li><span class="ticon"><img src="img/tools/widget.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⌚️'))"></span><div><b><span data-i18n="ja">ウィジェット・Apple Watch</span><span data-i18n="en">Widgets &amp; Apple Watch</span><span data-i18n="ko">위젯・Apple Watch</span></b><span data-i18n="ja">ホーム画面のウィジェットと、Apple Watchからの音声入力</span><span data-i18n="en">Home screen widgets, and voice capture from Apple Watch</span><span data-i18n="ko">홈 화면 위젯과, Apple Watch에서의 음성 입력</span><br><span data-i18n="ja">選んだルーティーンを、ホーム画面や手首からすぐ再生</span><span data-i18n="en" data-static-localized>Start a chosen routine straight from your Home Screen or wrist</span><span data-i18n="ko">선택한 루틴을 홈 화면이나 손목에서 바로 재생</span><span data-i18n="de">Eine gewählte Routine direkt vom Home-Bildschirm oder Handgelenk starten</span><span data-i18n="zh-Hant">從主畫面或手腕立即播放選定的例行流程</span><span data-i18n="fr">Lancez une routine choisie depuis l’écran d’accueil ou votre poignet</span><span data-i18n="es">Inicia una rutina elegida desde la pantalla de inicio o tu muñeca</span><span data-i18n="it">Avvia una routine scelta dalla schermata Home o dal polso</span></div></li>
         </ul>
       </div>
     </div>
@@ -1032,7 +1180,7 @@
     </div>
     <p class="promise"><b><span data-i18n="ja">広告なし。データを売らない。</span><span data-i18n="en">No ads. We never sell your data.</span><span data-i18n="ko">광고 없음. 데이터를 팔지 않아요.</span></b> <span data-i18n="ja">記録と20を超える道具は無料のまま。棚は3枚まで含まれ、必要な人だけ一度きりの購入で買い足せます。AI機能はAI Proです。</span><span data-i18n="en">Your records and more than 20 tools stay free. Three shelves are included, and you can add more with a one-time purchase only if you need them. AI features are part of AI Pro.</span><span data-i18n="ko">기록과 20개가 넘는 도구는 계속 무료예요. 선반은 3개까지 포함되며, 필요한 사람만 한 번 구매해 늘릴 수 있어요. AI 기능은 AI Pro에 포함됩니다.</span><br>
     <span class="sub"><span data-i18n="ja">※ AI Proの年額プランは7日間の無料期間後に自動更新されます。更新前にいつでも解約できます。AI Proと棚の追加の正確な価格は、お使いの地域に合わせてアプリ内に表示されます。</span><span data-i18n="en">* The annual AI Pro plan renews automatically after the 7-day free trial. Cancel anytime before renewal. Exact prices for AI Pro and shelf expansion are shown in the app for your region.</span><span data-i18n="ko">※ AI Pro 연간 플랜은 7일 무료 체험 후 자동 갱신됩니다. 갱신 전에 언제든지 해지할 수 있어요. AI Pro와 선반 추가의 정확한 가격은 사용 지역에 맞게 앱 내에 표시됩니다.</span></span><br>
-    <a class="sub" href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en">Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a></p>
+    <a class="sub" href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en" data-static-localized>Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a></p>
   </div>
 </section>
 
@@ -1078,7 +1226,7 @@
 </section>
 
 <footer>
-  <a href="./privacy.html"><span data-i18n="ja">プライバシーポリシー</span><span data-i18n="en">Privacy Policy</span><span data-i18n="ko">개인정보 처리방침</span></a> ・ <a href="./terms.html"><span data-i18n="ja">利用規約</span><span data-i18n="en">Terms</span><span data-i18n="ko">이용약관</span></a> ・ <a href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en">Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a> ・ <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">X @HeadLight_app</a> ・ © 2026 Ani-Q
+  <a href="./privacy.html"><span data-i18n="ja">プライバシーポリシー</span><span data-i18n="en">Privacy Policy</span><span data-i18n="ko">개인정보 처리방침</span></a> ・ <a href="./terms.html"><span data-i18n="ja">利用規約</span><span data-i18n="en">Terms</span><span data-i18n="ko">이용약관</span></a> ・ <a href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en" data-static-localized>Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a> ・ <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">X @HeadLight_app</a> ・ © 2026 Ani-Q
 </footer>
 
 <script>

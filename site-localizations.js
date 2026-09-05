@@ -34,7 +34,7 @@
     const run = function () {
       const pageData = payload[page];
       if (!pageData || document.documentElement.dataset.siteI18nInstalled === page) return;
-      const english = Array.from(document.querySelectorAll('span[data-i18n="en"]'));
+      const english = Array.from(document.querySelectorAll('span[data-i18n="en"]:not([data-static-localized])'));
       Object.keys(pageData).forEach(function (lang) {
         const values = pageData[lang].spans;
         if (values.length !== english.length) throw new Error('Head-Light site localization count mismatch: ' + page + '/' + lang);
@@ -44,7 +44,7 @@
           translated.innerHTML = overrides[page]?.[lang]?.[index] || values[index];
           source.parentNode.insertBefore(translated, source.nextSibling);
         });
-        const images = Array.from(document.querySelectorAll('img[data-alt-en]'));
+        const images = Array.from(document.querySelectorAll('img[data-alt-en]:not([data-static-localized])'));
         const alts = pageData[lang].alts;
         if (alts.length !== images.length) throw new Error('Head-Light site alt count mismatch: ' + page + '/' + lang);
         images.forEach(function (image, index) { image.setAttribute('data-alt-' + lang.toLowerCase(), alts[index]); });
