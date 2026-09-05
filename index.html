@@ -487,6 +487,67 @@
     .routine-shots .phone:first-child { margin-top: 24px; }
   }
 
+  /* 好きなものと自分に沿う目標の研究を、静かな読み物として置く。 */
+  .strong-light-section { background: var(--bg); }
+  .strong-light-section .inner { max-width: 1040px; }
+  .strong-light-layout {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.78fr) minmax(460px, 1.22fr);
+    gap: clamp(44px, 6vw, 76px);
+    align-items: start;
+  }
+  .strong-light-figure {
+    margin: 0;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .strong-light-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .strong-light-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .strong-light-copy h2 { margin-bottom: 4px; }
+  .strong-light-copy p {
+    max-width: none;
+    text-wrap: pretty;
+  }
+  .strong-light-copy .research {
+    border-left: 1px solid rgba(28, 27, 25, 0.22);
+    padding-left: 18px;
+  }
+  .strong-light-copy .citation {
+    white-space: nowrap;
+    text-underline-offset: 0.18em;
+  }
+  .strong-light-copy .closing-copy {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.4vw, 24px);
+    line-height: 1.8;
+  }
+  .strong-light-copy .research-note {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  @media (max-width: 760px) {
+    .strong-light-layout { grid-template-columns: 1fr; gap: 38px; }
+    .strong-light-figure { width: min(330px, 82vw); margin-inline: auto; }
+  }
+  /* この原稿は今回指定された日英のみ。ほかの言語では空の面を残さない。 */
+  html[data-lang="ko"] .strong-light-section,
+  html[data-lang="de"] .strong-light-section,
+  html[data-lang="zh-Hant"] .strong-light-section,
+  html[data-lang="fr"] .strong-light-section,
+  html[data-lang="es"] .strong-light-section,
+  html[data-lang="it"] .strong-light-section { display: none; }
+
   /* ---- イラスト ---- */
   .illust {
     display: block;
@@ -960,6 +1021,77 @@
   </div>
 </section>
 
+<!-- 好きなものと、自分に沿う目標についての研究紹介 -->
+<section class="strong-light-section" id="strong-light">
+  <div class="inner reveal">
+    <div class="strong-light-layout">
+      <figure class="strong-light-figure">
+        <img src="img/illust-strong-light.jpg" loading="lazy" decoding="async"
+             data-static-localized
+             data-alt-ja="スマホを手に歩く人物と、その人の好きな音楽・写真・本を描いた線画"
+             data-alt-en="A line drawing of a person walking with a smartphone, surrounded by music, a cherished image, and a book"
+             alt="スマホを手に歩く人物と、その人の好きな音楽・写真・本を描いた線画">
+      </figure>
+      <div class="strong-light-copy">
+        <h2>
+          <span data-i18n="ja" data-static-localized>好きがそばにあると、人は強い。<br>強いから、軽い。</span>
+          <span data-i18n="en" data-static-localized>When what you love is close, you are stronger.<br>Stronger—and lighter.</span>
+        </h2>
+
+        <p>
+          <span data-i18n="ja" data-static-localized>好きな音楽。心に残った映画。何度も読み返したい言葉。<br>そこには、自分が何に心を動かされ、何を大切にしているかが表れています。</span>
+          <span data-i18n="en" data-static-localized>Music you love. A film that stayed with you. Words you want to return to again and again.<br>They reveal what moves you and what matters to you.</span>
+        </p>
+
+        <p>
+          <span data-i18n="ja" data-static-localized>Head-Lightは、その「好き」を、日々の自分を支えるものとして大切にしています。</span>
+          <span data-i18n="en" data-static-localized>Head-Light treats the things you love as something important—something that can support you in everyday life.</span>
+        </p>
+
+        <p class="research">
+          <span data-i18n="ja" data-static-localized>心理学には、自分の興味や価値観に合った目標を追う人ほど、取り組みを続け、達成しやすいという研究があります。SheldonとElliotは、3つの縦断データを通じて、この関係を報告しました。<a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/10101878/" target="_blank" rel="noopener noreferrer">Sheldon &amp; Elliot, 1999</a></span>
+          <span data-i18n="en" data-static-localized>Psychology research suggests that people who pursue goals aligned with their own interests and values are more likely to sustain their efforts and attain those goals. Across three longitudinal data sets, Sheldon and Elliot reported this relationship. <a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/10101878/" target="_blank" rel="noopener noreferrer">Sheldon &amp; Elliot, 1999</a></span>
+        </p>
+
+        <p class="research">
+          <span data-i18n="ja" data-static-localized>さらに、Milyavskayaらの4つの研究では、「自分がやりたい」という動機が強い目標について、達成を妨げる誘惑への引かれにくさや、障害を少なく感じることが報告されています。<a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/25984785/" target="_blank" rel="noopener noreferrer">Milyavskaya et al., 2015</a></span>
+          <span data-i18n="en" data-static-localized>In four further studies, Milyavskaya and colleagues reported that goals driven more strongly by “want-to” motivation were associated with being less drawn to goal-disrupting temptations and with experiencing fewer obstacles. <a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/25984785/" target="_blank" rel="noopener noreferrer">Milyavskaya et al., 2015</a></span>
+        </p>
+
+        <p>
+          <span data-i18n="ja" data-static-localized>自分の大切なものへ、力が向く。<br>そのことが、前へ進む力にも、余計なことに振り回されない力にもなる。</span>
+          <span data-i18n="en" data-static-localized>Your energy turns toward what matters to you.<br>That can become both the strength to move forward and the strength not to be pulled around by what does not matter.</span>
+        </p>
+
+        <p>
+          <span data-i18n="ja" data-static-localized>私たちは、この感覚を「強いから、軽い」という言葉に込めています。</span>
+          <span data-i18n="en" data-static-localized>We express this feeling in the words “Stronger—and lighter.”</span>
+        </p>
+
+        <p>
+          <span data-i18n="ja" data-static-localized>Head-Lightでは、好きな音楽や動画、本を、自分だけの棚に置けます。心に浮かんだ言葉も、これからの予定も、同じ手帳へ。</span>
+          <span data-i18n="en" data-static-localized>With Head-Light, you can place the music, videos and books you love on a shelf that is yours alone. The words that come to mind and the plans ahead can live in the same journal.</span>
+        </p>
+
+        <p>
+          <span data-i18n="ja" data-static-localized>自分の好きなものを見失わずに、日々を進めていけるように。</span>
+          <span data-i18n="en" data-static-localized>So you can keep moving through each day without losing sight of what you love.</span>
+        </p>
+
+        <p class="closing-copy">
+          <span data-i18n="ja" data-static-localized>Head-Light。あなたを軽くする手帳。</span>
+          <span data-i18n="en" data-static-localized>Head-Light. Lighten your load.</span>
+        </p>
+
+        <p class="research-note">
+          <span data-i18n="ja" data-static-localized>※研究結果は要約して紹介しています。上記の研究は目標への動機を扱ったもので、好きなものを表示することや、Head-Lightの利用による効果を検証したものではありません。</span>
+          <span data-i18n="en" data-static-localized>* These research findings are summarized here. The studies above examined motivation toward goals; they did not test the effects of displaying things people love or of using Head-Light.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="store-download-band reveal" id="free-download">
   <div class="store-download">
     <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
@@ -1287,6 +1419,7 @@
         "journal",
         "routines",
         "collection",
+        "strong-light",
         "ai-handoff",
         "tools",
         "free-download",
