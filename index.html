@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Head-Lightは、あなたを軽くする手帳アプリ。プレイリストのようにルーティーンを組み、できたことはその時刻で手帳へ。動画・本・音楽はレコードのように棚へ置き、思いつきや予定はAIが整理します。広告なし。データを売りません。 / Build routines like playlists, keep completed moments in your journal, and put everything you love on a shelf. No ads. We never sell your data.">
+<meta name="description" content="Head-Lightは、あなたを軽くする手帳アプリ。言葉やできたことは手帳へ、動画・本・音楽は棚へ。ルーティーンを含む20を超える道具は無料で、AIが必要なときだけAI Proを選べます。広告なし。データを売りません。 / Keep words and completed moments in your journal, and everything you love on a shelf. More than 20 tools are free; choose AI Pro only when you need AI. No ads. We never sell your data.">
 <meta name="apple-itunes-app" content="app-id=6790623376">
 <link rel="canonical" href="https://head-light.app/">
 <meta property="og:type" content="website">
@@ -97,6 +97,18 @@
   .lead { font-size: clamp(18px, 2.2vw, 20px); }
   .sub { color: var(--muted); font-size: 16px; }
   a { color: var(--light); }
+
+  /* 最初に、課金ではなく無料で使える中心価値を伝える。 */
+  .free-intro {
+    padding-block: 72px;
+    background: var(--bg2);
+  }
+  .free-intro .inner {
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+  .free-intro .lead { max-width: 42em; }
 
   /* ---- ヒーロー ---- */
   .hero {
@@ -747,7 +759,7 @@
         <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
         <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
       </a>
-      <span class="store-download-note"><span data-i18n="ja">iPhone・iPadで今すぐ始められます。</span><span data-i18n="en">Start now on iPhone and iPad.</span><span data-i18n="ko">iPhone과 iPad에서 지금 시작할 수 있어요.</span></span>
+      <span class="store-download-note"><span data-i18n="ja">iPhone・iPadで無料ではじめられます。</span><span data-i18n="en">Start free now on iPhone and iPad.</span><span data-i18n="ko">iPhone과 iPad에서 지금 무료로 시작할 수 있어요.</span></span>
     </div>
     <img class="shot reveal" src="img/hero-hand.jpg" loading="lazy"
          data-alt-ja="Head-Lightのホーム画面を開いたiPhoneを持つ手" data-alt-en="A hand holding an iPhone with the Head-Light home screen open." data-alt-ko="Head-Light의 홈 화면을 연 iPhone을 든 손">
@@ -755,7 +767,7 @@
 </section>
 
 <!-- 共感 -->
-<section>
+<section id="problem">
   <div class="inner reveal">
     <h2><span data-i18n="ja">頭の中は、<br>いつもいっぱい。</span><span data-i18n="en">Your head is<br>always full.</span><span data-i18n="ko">머릿속은,<br>언제나 가득해요.</span></h2>
     <div class="cols">
@@ -777,12 +789,48 @@
   </div>
 </section>
 
+<!-- 無料で使える中心価値 -->
+<section class="free-intro" id="free-intro">
+  <div class="inner reveal">
+    <div class="eyebrow">
+      <span data-i18n="ja" data-static-localized>ずっと無料</span>
+      <span data-i18n="en" data-static-localized>Free to keep using</span>
+      <span data-i18n="ko" data-static-localized>계속 무료</span>
+      <span data-i18n="de" data-static-localized>Dauerhaft kostenlos</span>
+      <span data-i18n="zh-Hant" data-static-localized>持續免費</span>
+      <span data-i18n="fr" data-static-localized>Toujours gratuit</span>
+      <span data-i18n="es" data-static-localized>Gratis para siempre</span>
+      <span data-i18n="it" data-static-localized>Gratis, per sempre</span>
+    </div>
+    <h2>
+      <span data-i18n="ja" data-static-localized>書く。残す。振り返る。<br>今日を進める。</span>
+      <span data-i18n="en" data-static-localized>Write. Keep it. Look back.<br>Move today forward.</span>
+      <span data-i18n="ko" data-static-localized>쓰고, 남기고, 돌아보고.<br>오늘을 앞으로.</span>
+      <span data-i18n="de" data-static-localized>Schreiben. Bewahren. Zurückblicken.<br>Heute weiterkommen.</span>
+      <span data-i18n="zh-Hant" data-static-localized>寫下、留下、回望。<br>讓今天繼續向前。</span>
+      <span data-i18n="fr" data-static-localized>Écrire. Garder. Regarder en arrière.<br>Faire avancer aujourd’hui.</span>
+      <span data-i18n="es" data-static-localized>Escribe. Guarda. Mira atrás.<br>Haz avanzar el día.</span>
+      <span data-i18n="it" data-static-localized>Scrivi. Conserva. Riguarda.<br>Fai avanzare la giornata.</span>
+    </h2>
+    <p class="lead">
+      <span data-i18n="ja" data-static-localized>言葉・手帳・カレンダー・コレクション・ルーティーンと、20を超える道具。広告なしで使えます。</span>
+      <span data-i18n="en" data-static-localized>Words, journal, calendar, collections, routines and more than 20 tools. Free to use, without ads.</span>
+      <span data-i18n="ko" data-static-localized>말·수첩·캘린더·컬렉션·루틴과 20개가 넘는 도구. 광고 없이 무료로 쓸 수 있어요.</span>
+      <span data-i18n="de" data-static-localized>Wörter, Tagebuch, Kalender, Sammlungen, Routinen und mehr als 20 Werkzeuge. Kostenlos und ohne Werbung.</span>
+      <span data-i18n="zh-Hant" data-static-localized>文字、手帳、行事曆、收藏、例行流程與 20 多種工具，都能免費使用，沒有廣告。</span>
+      <span data-i18n="fr" data-static-localized>Mots, journal, calendrier, collections, routines et plus de 20 outils. Gratuits et sans publicité.</span>
+      <span data-i18n="es" data-static-localized>Palabras, diario, calendario, colecciones, rutinas y más de 20 herramientas. Gratis y sin anuncios.</span>
+      <span data-i18n="it" data-static-localized>Parole, diario, calendario, raccolte, routine e più di 20 strumenti. Gratis e senza pubblicità.</span>
+    </p>
+  </div>
+</section>
+
 
 <!-- 答え -->
-<section>
+<section id="ai-sorting">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">声で放り込む</span><span data-i18n="en">Speak it in</span><span data-i18n="ko">목소리로 던져 넣기</span></div>
-    <h2><span data-i18n="ja">話して、任せて、<br>軽くなる。</span><span data-i18n="en">Talk. Hand it off.<br>Feel lighter.</span><span data-i18n="ko">말하고, 맡기고,<br>가벼워져요.</span></h2>
+    <div class="eyebrow"><span data-i18n="ja">AI Proでできること</span><span data-i18n="en">With AI Pro</span><span data-i18n="ko">AI Pro로 할 수 있는 것</span></div>
+    <h2><span data-i18n="ja">話したまま、<br>整理まで任せられる。</span><span data-i18n="en">Speak freely.<br>Let AI sort the rest.</span><span data-i18n="ko">말한 그대로,<br>정리까지 맡길 수 있어요.</span></h2>
     <img class="illust wide" src="img/illust-speak.jpg" data-alt-ja="話した言葉が光の粒になって、カレンダー・瓶・ノートに収まっていく線画" data-alt-en="A line drawing of spoken words turning into grains of light and settling into a calendar, a jar, and a notebook." data-alt-ko="말한 것이 빛의 알갱이가 되어, 캘린더・병・노트로 담기는 선화" alt="話した言葉が光の粒になって、カレンダー・瓶・ノートに収まっていく線画">
     <p class="lead"><span data-i18n="ja">声でも文字でも。思いついたまま入れると、AIが予定・やること・アイデアに分けます。</span><span data-i18n="en">Speak or type as thoughts come. AI separates them into plans, to-dos and ideas.</span><span data-i18n="ko">말로도 글로도. 떠오르는 대로 넣으면 AI가 일정·할 일·아이디어로 나눠요.</span></p>
     <div class="cols">
@@ -801,7 +849,7 @@
     </div>
   </div>
 
-    <p class="paid-note"><a href="#pricing"><span data-i18n="ja">20を超える道具は無料。AI Proの年額プランは7日間無料。</span><span data-i18n="en">More than 20 tools are free. Try the annual AI Pro plan free for 7 days.</span><span data-i18n="ko">20개가 넘는 도구는 무료. AI Pro 연간 플랜은 7일 무료.</span></a></p>
+    <p class="paid-note" hidden><a href="#pricing"><span data-i18n="ja">20を超える道具は無料。AI Proの年額プランは7日間無料。</span><span data-i18n="en">More than 20 tools are free. Try the annual AI Pro plan free for 7 days.</span><span data-i18n="ko">20개가 넘는 도구는 무료. AI Pro 연간 플랜은 7일 무료.</span></a></p>
 
     <img class="shot wide reveal" src="img/hero-voice.jpg" loading="lazy"
          data-alt-ja="iPhoneに向かって話しかけているところ" data-alt-en="Speaking into an iPhone running Head-Light." data-alt-ko="iPhone을 향해 말하고 있는 모습">
@@ -809,9 +857,9 @@
 
 
 <!-- 整理アシスタント -->
-<section>
+<section id="tidy-assistant">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span></div>
+    <div class="eyebrow"><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span><span class="pro-badge">AI Pro</span></div>
     <h2><span data-i18n="ja">今日はこれだけで、十分です。</span><span data-i18n="en">This is enough for today.</span><span data-i18n="ko">오늘은 이것만으로, 충분해요.</span></h2>
     <img class="illust wide" src="img/illust-tidy.jpg" loading="lazy" onerror="this.style.display='none'"
          data-alt-ja="話した言葉が4つの面へ分かれて置かれていく線画" data-alt-en="A line drawing of spoken words being separated onto four surfaces." data-alt-ko="말한 것이 네 개의 면으로 나뉘어 놓이는 선화" alt="話した言葉が4つの面へ分かれて置かれていく線画">
@@ -843,7 +891,7 @@
 </section>
 
 <!-- 言葉 -->
-<section>
+<section id="words">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">言葉のタブ</span><span data-i18n="en">Words tab</span><span data-i18n="ko">말 탭</span></div>
     <h2><span data-i18n="ja">自分だけの、タイムライン。</span><span data-i18n="en">A timeline that is only yours.</span><span data-i18n="ko">나만의, 타임라인.</span></h2>
@@ -865,7 +913,7 @@
 </section>
 
 <!-- コレクション -->
-<section>
+<section id="collection">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">コレクション</span><span data-i18n="en">Collection</span><span data-i18n="ko">컬렉션</span></div>
     <h2><span data-i18n="ja">好きなものだけ、ここに置く。</span><span data-i18n="en">Keep only what you love.</span><span data-i18n="ko">좋아하는 것만, 여기에 놓아요.</span></h2>
@@ -891,7 +939,7 @@
   </div>
 </section>
 
-<div class="store-download-band reveal">
+<div class="store-download-band reveal" id="free-download">
   <div class="store-download">
     <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
       <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
@@ -983,7 +1031,7 @@
 </section>
 
 <!-- カレンダー(日記) -->
-<section>
+<section id="journal">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">カレンダー</span><span data-i18n="en">Calendar</span><span data-i18n="ko">캘린더</span></div>
     <h2><span data-i18n="ja">その日の言葉と写真が、<br>自動で日記になる。</span><span data-i18n="en">The day's words and photos<br>become a journal on their own.</span><span data-i18n="ko">그날의 말과 사진이,<br>저절로 일기가 돼요.</span></h2>
@@ -1015,9 +1063,9 @@
 </section>
 
 <!-- AIに渡す -->
-<section>
+<section id="ai-handoff">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">AIに渡す</span><span data-i18n="en">Hand to AI</span><span data-i18n="ko">AI로 보내기</span></div>
+    <div class="eyebrow"><span data-i18n="ja">AIに渡す</span><span data-i18n="en">Hand to AI</span><span data-i18n="ko">AI로 보내기</span><span class="free-badge"><span data-i18n="ja" data-static-localized>無料</span><span data-i18n="en" data-static-localized>Free</span><span data-i18n="ko" data-static-localized>무료</span><span data-i18n="de" data-static-localized>Kostenlos</span><span data-i18n="zh-Hant" data-static-localized>免費</span><span data-i18n="fr" data-static-localized>Gratuit</span><span data-i18n="es" data-static-localized>Gratis</span><span data-i18n="it" data-static-localized>Gratis</span></span></div>
     <h2><span data-i18n="ja">ためた言葉を、AIに渡す。</span><span data-i18n="en">Hand your words to AI.</span><span data-i18n="ko">모아둔 말을, AI에게.</span></h2>
     <p class="lead" hidden><span data-i18n="ja">ChatGPTに悩みを相談したことがあれば、わかるはずです。返ってくるのは、誰にでも当てはまる正論。あなたの今週を知らないのだから、当然です。</span><span data-i18n="en">If you've ever asked ChatGPT for advice, you know the feeling. What comes back is generic — advice that fits anyone. Of course it does. It doesn't know your week.</span><span data-i18n="ko">ChatGPT에게 고민을 상담해본 적이 있다면, 아실 거예요. 돌아오는 건 누구에게나 맞는 뻔한 답. 당신의 이번 주를 모르니, 당연하죠.</span></p>
     <p class="lead"><span data-i18n="ja">今週の言葉をまとめて、いつものAIへ。あなたの状況を知った答えに変わります。</span><span data-i18n="en">Bring this week’s words to the AI you already use, and get an answer grounded in your life.</span><span data-i18n="ko">이번 주의 말을 모아 평소 쓰는 AI로. 내 상황을 아는 답으로 달라져요.</span></p>
@@ -1052,11 +1100,11 @@
 </section>
 
 <!-- 道具たち -->
-<section>
+<section id="tools">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">道具</span><span data-i18n="en">Tools</span><span data-i18n="ko">도구</span></div>
-    <h2><span data-i18n="ja">Head-Lightには、<br class="brmob">こんな道具があります。</span><span data-i18n="en">These are the tools<br class="brmob">inside Head-Light.</span><span data-i18n="ko">Head-Light에는,<br class="brmob">이런 도구가 있어요.</span></h2>
-    <p class="lead"><span data-i18n="ja">ホーム下の棚に、今使う道具だけ置けます。</span><span data-i18n="en">Keep only the tools you use on the shelf above the tab bar.</span><span data-i18n="ko">홈 아래 선반에 지금 쓰는 도구만 둘 수 있어요.</span></p>
+    <h2><span data-i18n="ja">20を超える道具は、<br class="brmob">すべて無料。</span><span data-i18n="en">More than 20 tools,<br class="brmob">all free.</span><span data-i18n="ko">20개가 넘는 도구는,<br class="brmob">모두 무료예요.</span></h2>
+    <p class="lead"><span data-i18n="ja">書く、読む、手帳、カレンダー、ルーティーン、タイマー。道具そのものは無料で使えます。仕分けやAIチャットなど、AIが働く機能だけAI Proです。</span><span data-i18n="en">Writing, reading, journal, calendar, routines and timers are free to use. AI Pro is only for features where AI does the work, such as sorting and AI chat.</span><span data-i18n="ko">쓰기, 읽기, 수첩, 캘린더, 루틴, 타이머. 도구 자체는 무료로 쓸 수 있어요. 분류나 AI 채팅처럼 AI가 일하는 기능만 AI Pro예요.</span></p>
 
     <div class="toolgroups">
       <div class="tgroup">
@@ -1157,7 +1205,7 @@
   </div>
 </section>
 
-<div class="store-download-band reveal">
+<div class="store-download-band reveal" id="final-download">
   <div class="store-download">
     <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
       <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
@@ -1201,6 +1249,48 @@
 <footer>
   <a href="./privacy.html"><span data-i18n="ja">プライバシーポリシー</span><span data-i18n="en">Privacy Policy</span><span data-i18n="ko">개인정보 처리방침</span></a> ・ <a href="./terms.html"><span data-i18n="ja">利用規約</span><span data-i18n="en">Terms</span><span data-i18n="ko">이용약관</span></a> ・ <a href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en" data-static-localized>Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a> ・ <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">X @HeadLight_app</a> ・ © 2026 Ani-Q
 </footer>
+
+<script>
+  /* 翻訳を入れ終えてから、無料の中心価値→任意のAI機能の順に並べる。 */
+  (function () {
+    var arranged = false;
+    function arrangeHomepage() {
+      if (arranged) return;
+      var footer = document.querySelector("footer");
+      if (!footer) return;
+      [
+        "problem",
+        "free-intro",
+        "words",
+        "journal",
+        "routines",
+        "collection",
+        "ai-handoff",
+        "tools",
+        "free-download",
+        "ai-sorting",
+        "tidy-assistant",
+        "pricing",
+        "final-download",
+        "support"
+      ].forEach(function (id) {
+        var section = document.getElementById(id);
+        if (section) footer.before(section);
+      });
+      arranged = true;
+      if (window.location.hash) {
+        var target = document.querySelector(window.location.hash);
+        if (target) {
+          var restoreHashPosition = function () { target.scrollIntoView(); };
+          requestAnimationFrame(restoreHashPosition);
+          window.addEventListener("load", restoreHashPosition, { once: true });
+        }
+      }
+    }
+    window.addEventListener("headlight-site-localizations-ready", arrangeHomepage, { once: true });
+    document.addEventListener("DOMContentLoaded", arrangeHomepage, { once: true });
+  })();
+</script>
 
 <script>
   function sweep() {
