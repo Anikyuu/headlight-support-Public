@@ -210,6 +210,30 @@
     border-color: var(--light);
     background: rgba(176, 141, 87, 0.14);
   }
+
+  /* デザインページへの入口。スクリーンショットを添えて、押した先をひと目で伝える。 */
+  .design-cta-wrap { padding: 0 24px 52px; text-align: center; }
+  .design-cta {
+    display: inline-flex; align-items: center; gap: 16px; width: min(520px, 100%); box-sizing: border-box;
+    padding: 12px 18px 12px 12px; border: 1px solid rgba(176, 141, 87, 0.36); border-radius: 22px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(246,245,242,0.96)); color: var(--ink);
+    text-align: left; text-decoration: none; box-shadow: 0 12px 32px rgba(28,27,25,0.09);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .design-cta:hover, .design-cta:focus-visible { border-color: var(--light); box-shadow: 0 16px 38px rgba(28,27,25,0.14); transform: translateY(-3px); }
+  .design-cta:focus-visible { outline: 3px solid rgba(176,141,87,0.32); outline-offset: 4px; }
+  .design-cta-thumb-pair { width: 104px; height: 76px; flex: 0 0 104px; display: flex; overflow: hidden; border-radius: 15px; border: 1px solid rgba(28,27,25,0.10); box-shadow: 0 5px 14px rgba(28,27,25,0.12); background: #f3f3f5; }
+  .design-cta-thumb-pair img { width: 50%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .design-cta-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .design-cta-kicker { color: var(--light); font-size: 13px; letter-spacing: .16em; font-weight: 700; }
+  .design-cta-title { font-family: var(--serif); font-size: 20px; line-height: 1.45; font-weight: 600; }
+  .design-cta-note { color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .design-cta-arrow { margin-left: auto; color: var(--light); font-size: 27px; line-height: 1; }
+  @media (max-width: 520px) {
+    .design-cta { gap: 12px; padding-right: 14px; }
+    .design-cta-thumb-pair { width: 92px; height: 66px; flex-basis: 92px; border-radius: 13px; }
+    .design-cta-title { font-size: 18px; } .design-cta-note { font-size: 13px; }
+  }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -915,7 +939,6 @@
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">AI Proでできること</span><span data-i18n="en">With AI Pro</span><span data-i18n="ko">AI Pro로 할 수 있는 것</span></div>
     <h2><span data-i18n="ja">話したまま、<br>整理まで任せられる。</span><span data-i18n="en">Speak freely.<br>Let AI sort the rest.</span><span data-i18n="ko">말한 그대로,<br>정리까지 맡길 수 있어요.</span></h2>
-    <img class="illust wide" src="img/illust-speak.jpg" data-alt-ja="話した言葉が光の粒になって、カレンダー・瓶・ノートに収まっていく線画" data-alt-en="A line drawing of spoken words turning into grains of light and settling into a calendar, a jar, and a notebook." data-alt-ko="말한 것이 빛의 알갱이가 되어, 캘린더・병・노트로 담기는 선화" alt="話した言葉が光の粒になって、カレンダー・瓶・ノートに収まっていく線画">
     <p class="lead"><span data-i18n="ja">声でも文字でも。思いついたまま入れると、AIが予定・やること・アイデアに分けます。</span><span data-i18n="en">Speak or type as thoughts come. AI separates them into plans, to-dos and ideas.</span><span data-i18n="ko">말로도 글로도. 떠오르는 대로 넣으면 AI가 일정·할 일·아이디어로 나눠요.</span></p>
     <div class="cols">
       <div class="text">
@@ -928,7 +951,7 @@
         <p class="sub"><span data-i18n="ja">まとまっていなくて大丈夫。整理はAIに任せられます。</span><span data-i18n="en">It doesn’t have to be tidy. Leave the organizing to AI.</span><span data-i18n="ko">정리되지 않은 채로 말해도 괜찮아요. 정리는 AI에게 맡길 수 있어요.</span></p>
       </div>
       <div class="shots">
-        <div class="phone"><img src="img/shots/01_home_en.jpg?v=20260906-white" loading="lazy" decoding="async" data-alt-ja="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン" data-alt-en="The latest home screen in English, with a clean white background, larger eyes, and a large voice button." data-alt-ko="깔끔한 흰색 배경에 더 크고 굵어진 눈과 큰 음성 버튼이 있는 최신 영어 홈 화면" alt="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン"></div>
+        <div class="phone"><img src="img/shots/smile-black-20260907.png" loading="lazy" decoding="async" data-alt-ja="にっこりしたイラストの顔が表示されたホーム画面" data-alt-en="The Home screen with a smiling illustrated face" data-alt-ko="환하게 웃는 일러스트 얼굴이 표시된 홈 화면" alt="にっこりしたイラストの顔が表示されたホーム画面"></div>
       </div>
     </div>
   </div>
@@ -972,14 +995,11 @@
   </div>
 </section>
 
-<!-- Interactive design preview -->
-<div class="wrap" style="text-align:center;padding:0 24px 40px"><a class="beta-badge" href="./design.html"><span data-i18n="ja" data-static-localized>デザインを、ここで試す</span><span data-i18n="en" data-static-localized>Try the designs here</span><span data-i18n="ko" data-static-localized>디자인 체험하기</span><span data-i18n="de" data-static-localized>Designs ausprobieren</span><span data-i18n="zh-Hant" data-static-localized>在這裡試試設計</span><span data-i18n="fr" data-static-localized>Essayer les designs</span><span data-i18n="es" data-static-localized>Probar los diseños</span><span data-i18n="it" data-static-localized>Prova i design</span> <span aria-hidden="true">↗</span></a></div>
-
 <!-- 言葉 -->
 <section id="words">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">言葉の手帳</span><span data-i18n="en">Your words</span><span data-i18n="ko">나의 말</span></div>
-    <h2><span data-i18n="ja">話すだけで、<br>今日が手帳になる。</span><span data-i18n="en">Speak, and today<br>becomes a journal.</span><span data-i18n="ko">말하는 것만으로,<br>오늘이 수첩이 됩니다.</span></h2>
+    <h2><span data-i18n="ja">話すだけで、<br>今日を残せる。</span><span data-i18n="en">Speak, and keep today.</span><span data-i18n="ko">말하는 것만으로,<br>오늘을 남길 수 있어요.</span></h2>
     <p class="lead"><span data-i18n="ja">ふと思ったことを、その場で話すか書くだけ。言葉と写真が日付と時刻に沿って残り、あとから一日をそのままたどれます。いいねもフォロワーもない、自分のためだけの場所です。</span><span data-i18n="en">Say or write down a thought as it comes. Your words and photos stay with their date and time, so you can return to the day as it happened. No likes, no followers—just a place of your own.</span><span data-i18n="ko">문득 떠오른 생각을 그 자리에서 말하거나 적기만 하세요. 말과 사진이 날짜와 시간에 따라 남아, 나중에 그날을 그대로 되짚어 볼 수 있습니다. 좋아요도 팔로워도 없는, 오직 나를 위한 공간입니다.</span></p>
     <div class="cols">
       <div class="shots">
@@ -1190,7 +1210,7 @@
 <section id="journal">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">カレンダー</span><span data-i18n="en">Calendar</span><span data-i18n="ko">캘린더</span></div>
-    <h2><span data-i18n="ja">その日の言葉と写真が、<br>自動で日記になる。</span><span data-i18n="en">The day's words and photos<br>become a journal on their own.</span><span data-i18n="ko">그날의 말과 사진이,<br>저절로 일기가 돼요.</span></h2>
+    <h2><span data-i18n="ja">自分だけのタイムライン。</span><span data-i18n="en">Your own timeline.</span><span data-i18n="ko">나만의 타임라인.</span></h2>
     <div class="cols">
       <div class="shots">
         <div class="phone small"><img src="img/shots/05_calendar_ja.jpg" data-shot="05_calendar" loading="lazy" decoding="async" data-alt-ja="白い紙のカレンダー。記録のある日に印がついている" data-alt-en="A paper calendar. Days with a record carry a small mark." data-alt-ko="종이 같은 캘린더. 기록이 있는 날에 표시가 있어요." alt="白い紙のカレンダー。記録のある日に印がついている"></div>
@@ -1317,13 +1337,23 @@
   </div>
 </section>
 
+<!-- 自分で選べるデザイン。アプリの価値を理解した後に、体験への入口を置く。 -->
+<section id="design-customization">
+  <div class="inner reveal">
+    <div class="eyebrow"><span data-i18n="ja" data-static-localized>自分で選べるデザイン</span><span data-i18n="en" data-static-localized>Make it feel like yours</span><span data-i18n="ko" data-static-localized>내 취향대로 고르는 디자인</span><span data-i18n="de" data-static-localized>Gestalte es nach deinem Geschmack</span><span data-i18n="zh-Hant" data-static-localized>打造屬於自己的樣子</span><span data-i18n="fr" data-static-localized>Une apparence qui vous ressemble</span><span data-i18n="es" data-static-localized>Haz que se sienta tuya</span><span data-i18n="it" data-static-localized>Falla sentire davvero tua</span></div>
+    <h2><span data-i18n="ja" data-static-localized>シンプルにも、遊び心いっぱいにも。</span><span data-i18n="en" data-static-localized>Keep it simple—or make it playful.</span><span data-i18n="ko" data-static-localized>심플하게도, 개성 넘치게도.</span><span data-i18n="de" data-static-localized>Schlicht oder voller Persönlichkeit.</span><span data-i18n="zh-Hant" data-static-localized>可以簡約，也可以充滿個性。</span><span data-i18n="fr" data-static-localized>Minimaliste ou pleine de fantaisie.</span><span data-i18n="es" data-static-localized>Minimalista o llena de personalidad.</span><span data-i18n="it" data-static-localized>Semplice oppure piena di personalità.</span></h2>
+    <p class="lead"><span data-i18n="ja" data-static-localized>イラストをなくした静かなSimpleモードも選べます。ボディ、配色、背景、アクセント、アプリアイコン、レトロな表現まで組み合わせて、毎日開きたくなる居心地に。</span><span data-i18n="en" data-static-localized>Choose the calm Simple mode, or build a more expressive look. Mix the body, colors, background, accent, app icon and retro styling into a place you will want to open every day.</span><span data-i18n="ko" data-static-localized>차분한 심플 모드를 고르거나 더 풍부한 분위기를 만들 수 있어요. 바디, 색 조합, 배경, 포인트 색, 앱 아이콘과 레트로 표현을 조합해 매일 열고 싶은 공간으로 꾸며 보세요.</span><span data-i18n="de" data-static-localized>Wähle den ruhigen Simple-Modus oder einen ausdrucksstärkeren Look. Kombiniere Gehäuse, Farben, Hintergrund, Akzent, App-Symbol und Retro-Stil zu einem Ort, den du jeden Tag gern öffnest.</span><span data-i18n="zh-Hant" data-static-localized>可選擇安靜的 Simple 模式，也能打造更有個性的外觀。自由組合機身、配色、背景、強調色、App 圖示與復古風格，變成每天都想打開的空間。</span><span data-i18n="fr" data-static-localized>Choisissez le calme du mode Simple ou une apparence plus expressive. Combinez le boîtier, les couleurs, l’arrière-plan, l’accent, l’icône et le style rétro pour créer un espace que vous aurez envie d’ouvrir chaque jour.</span><span data-i18n="es" data-static-localized>Elige la calma del modo Simple o crea un aspecto más expresivo. Combina el cuerpo, los colores, el fondo, el acento, el icono y el estilo retro para crear un espacio que quieras abrir cada día.</span><span data-i18n="it" data-static-localized>Scegli la calma della modalità Simple oppure crea un aspetto più espressivo. Combina corpo, colori, sfondo, accento, icona e stile rétro in uno spazio che vorrai aprire ogni giorno.</span></p>
+    <div class="cols"><div class="shots"><div class="phone small"><img src="img/shots/playful-black-20260907.png" loading="lazy" decoding="async" data-alt-ja="きらきらした目のイラストモードのホーム画面" data-alt-en="The Home screen with sparkling illustrated eyes" alt="きらきらした目のイラストモードのホーム画面"></div><div class="phone small"><img src="img/shots/simple-mode-ja.jpg?v=20260907" loading="lazy" decoding="async" data-alt-ja="顔のイラストがないSimpleモードのホーム画面" data-alt-en="The Home screen in calm Simple mode, without the illustrated face" alt="顔のイラストがないSimpleモードのホーム画面"></div></div><div class="text"><ul class="points"><li><span data-i18n="ja" data-static-localized>基本は静かなSimpleモード。顔のイラストもいつでも選べる。</span><span data-i18n="en" data-static-localized>Simple mode stays calm by default, with the illustrated face ready whenever you want it.</span><span data-i18n="ko" data-static-localized>기본은 차분한 심플 모드지만, 원할 때 언제든 얼굴 일러스트를 고를 수 있어요.</span></li><li><span data-i18n="ja" data-static-localized>ボディ、背景、色を別々に選んで組み合わせられる。</span><span data-i18n="en" data-static-localized>Choose and combine the body, background and colors separately.</span><span data-i18n="ko" data-static-localized>바디, 배경과 색을 각각 골라 조합할 수 있어요.</span></li><li><span data-i18n="ja" data-static-localized>ホーム画面のアプリアイコンや、レトロな文字・質感も選べる。</span><span data-i18n="en" data-static-localized>Pick a Home Screen icon, retro type and texture too.</span><span data-i18n="ko" data-static-localized>홈 화면 앱 아이콘과 레트로 글꼴·질감도 고를 수 있어요.</span></li></ul></div></div>
+  </div>
+</section>
+<div class="design-cta-wrap" id="design-preview"><a class="design-cta" href="./design.html"><span class="design-cta-thumb-pair" aria-hidden="true"><img src="img/shots/playful-black-20260907.png" alt="" loading="lazy" decoding="async"><img src="img/shots/simple-mode-ja.jpg?v=20260907" alt="" loading="lazy" decoding="async"></span><span class="design-cta-copy"><span class="design-cta-kicker"><span data-i18n="ja" data-static-localized>デザイン画面</span><span data-i18n="en" data-static-localized>DESIGN STUDIO</span><span data-i18n="ko" data-static-localized>디자인 스튜디오</span></span><span class="design-cta-title"><span data-i18n="ja" data-static-localized>デザインを、ここで試す</span><span data-i18n="en" data-static-localized>Try your own look</span><span data-i18n="ko" data-static-localized>나만의 디자인을 골라 보세요</span></span><span class="design-cta-note"><span data-i18n="ja" data-static-localized>ボディ・色・背景を組み合わせる</span><span data-i18n="en" data-static-localized>Mix the body, colors and background</span><span data-i18n="ko" data-static-localized>바디·색·배경을 조합해 보세요</span></span></span><span class="design-cta-arrow" aria-hidden="true">↗</span></a></div>
+
 <!-- 無料とAI Pro -->
 <section id="pricing">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">無料でできることと、AI Pro</span><span data-i18n="en">What&rsquo;s free &amp; AI Pro</span><span data-i18n="ko">무료로 할 수 있는 것과 AI Pro</span></div>
-    <h2><span data-i18n="ja">20を超える道具は、すべて無料。</span><span data-i18n="en">More than 20 tools are free.</span><span data-i18n="ko">20개가 넘는 도구는 모두 무료예요.</span></h2>
-    <p class="lead" hidden><span data-i18n="ja">広告はありません。あなたの行動を解析して売ることもありません。</span><span data-i18n="en">No ads. We never analyze your behavior to sell it.</span><span data-i18n="ko">광고는 없어요. 당신의 행동을 분석해서 파는 일도 없어요.</span></p>
-    <p class="lead"><span data-i18n="ja">記録と20を超える道具は無料。AI Proで、仕分けなどのAI機能が使えます。広告はなく、データを販売しません。</span><span data-i18n="en">Your records and more than 20 tools are free. AI Pro adds sorting and other AI features. No ads, and we never sell your data.</span><span data-i18n="ko">기록과 20개가 넘는 도구는 무료예요. AI Pro에서는 분류 등 AI 기능을 쓸 수 있어요. 광고도 없고 데이터를 판매하지 않아요.</span></p>
+    <div class="eyebrow"><span data-i18n="ja" data-static-localized>AI Proで、もっと軽く</span><span data-i18n="en" data-static-localized>Lighten your load with AI Pro</span><span data-i18n="ko" data-static-localized>AI Pro로 더 가볍게</span><span data-i18n="de" data-static-localized>Mehr Leichtigkeit mit AI Pro</span><span data-i18n="zh-Hant" data-static-localized>用 AI Pro，輕鬆一點</span><span data-i18n="fr" data-static-localized>Plus de légèreté avec AI Pro</span><span data-i18n="es" data-static-localized>Más ligereza con AI Pro</span><span data-i18n="it" data-static-localized>Più leggerezza con AI Pro</span></div>
+    <h2><span data-i18n="ja" data-static-localized>整理する手間を、AIに。</span><span data-i18n="en" data-static-localized>Let AI do the organizing.</span><span data-i18n="ko" data-static-localized>정리하는 수고는 AI에게.</span><span data-i18n="de" data-static-localized>Überlass das Ordnen der KI.</span><span data-i18n="zh-Hant" data-static-localized>把整理交給 AI。</span><span data-i18n="fr" data-static-localized>Confiez le tri à l’IA.</span><span data-i18n="es" data-static-localized>Deja que la IA organice.</span><span data-i18n="it" data-static-localized>Lascia organizzare all’IA.</span></h2>
+    <p class="lead"><span data-i18n="ja" data-static-localized>話した言葉を予定ややることに仕分ける。レシートから経費を、食事の写真から栄養の目安を読み取る。AI Proが、毎日の整理や入力を手伝います。</span><span data-i18n="en" data-static-localized>Turn spoken thoughts into plans and to-dos. Read expenses from receipts and estimate nutrition from meal photos. AI Pro helps with everyday organizing and data entry.</span><span data-i18n="ko" data-static-localized>말한 내용을 일정과 할 일로 분류하고, 영수증에서 경비를 읽고, 식사 사진으로 영양을 추정해요. AI Pro가 매일의 정리와 입력을 도와줘요.</span><span data-i18n="de" data-static-localized>Gesprochene Gedanken in Pläne und Aufgaben sortieren, Ausgaben aus Belegen lesen und Nährwerte aus Essensfotos schätzen. AI Pro hilft beim täglichen Ordnen und Erfassen.</span><span data-i18n="zh-Hant" data-static-localized>將說出的想法分成行程與待辦，從收據讀取支出，從餐點照片估算營養。AI Pro 協助每天的整理與輸入。</span><span data-i18n="fr" data-static-localized>Triez vos paroles en projets et tâches, lisez les dépenses sur les reçus et estimez les apports des repas en photo. AI Pro vous aide à organiser et à saisir au quotidien.</span><span data-i18n="es" data-static-localized>Clasifica tus palabras en planes y tareas, lee gastos de recibos y estima nutrientes con fotos de comidas. AI Pro te ayuda a organizar e introducir información cada día.</span><span data-i18n="it" data-static-localized>Ordina i pensieri detti a voce in programmi e attività, leggi le spese dagli scontrini e stima i nutrienti dalle foto dei pasti. AI Pro aiuta a organizzare e inserire informazioni ogni giorno.</span></p>
     <div class="plans">
       <div class="plan">
         <div class="name">Head-Light</div>
@@ -1342,6 +1372,7 @@
         <ul>
           <li><span data-i18n="ja">話した言葉のAI仕分け</span><span data-i18n="en">AI sorting for the words you speak</span><span data-i18n="ko">말한 내용을 AI로 분류</span></li>
           <li><span data-i18n="ja">AIチャット・写真の言語化</span><span data-i18n="en">AI chat and photo-to-words</span><span data-i18n="ko">AI 채팅・사진 언어화</span></li>
+          <li><span data-i18n="ja" data-static-localized>Xの投稿を、投稿した日の手帳へ</span><span data-i18n="en" data-static-localized>Import your X posts into the journal for the day you posted</span><span data-i18n="ko" data-static-localized>X 게시물을 게시한 날의 다이어리로 가져오기</span><span data-i18n="de" data-static-localized>X-Posts ins Tagebuch des Veröffentlichungstags übernehmen</span><span data-i18n="zh-Hant" data-static-localized>將 X 貼文匯入發文當天的手帳</span><span data-i18n="fr" data-static-localized>Importer vos posts X dans le journal du jour de publication</span><span data-i18n="es" data-static-localized>Importar tus posts de X al diario del día en que publicaste</span><span data-i18n="it" data-static-localized>Importare i post X nel diario del giorno di pubblicazione</span></li>
           <li><span data-i18n="ja">整理・覚えておく・経費・食事・夜の振り返りなど</span><span data-i18n="en">Tidy, remember, expenses, meals, night reflection, and more</span><span data-i18n="ko">정리・기억해 두기・경비・식사・밤의 되돌아보기 등</span></li>
         </ul>
       </div>
@@ -1420,7 +1451,6 @@
         "voice-photo",
         "words",
         "journal",
-        "routines",
         "collection",
         "strong-light",
         "ai-handoff",
@@ -1428,6 +1458,9 @@
         "free-download",
         "ai-sorting",
         "tidy-assistant",
+        "routines",
+        "design-customization",
+        "design-preview",
         "pricing",
         "final-download",
         "support"
