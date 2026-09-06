@@ -782,7 +782,8 @@
         var suffix = lang === "ja" ? "ja" : "en";
         var extension = img.dataset.shotExt || "jpg";
         var separator = img.dataset.shot.includes("-") ? "-" : "_";
-        img.src = "img/shots/" + img.dataset.shot + separator + suffix + "." + extension;
+        img.src = "img/shots/" + img.dataset.shot + separator + suffix + "." + extension
+          + "?v=20260906-white";
       });
     }
     var saved = localStorage.getItem(KEY);
@@ -927,7 +928,7 @@
         <p class="sub"><span data-i18n="ja">まとまっていなくて大丈夫。整理はAIに任せられます。</span><span data-i18n="en">It doesn’t have to be tidy. Leave the organizing to AI.</span><span data-i18n="ko">정리되지 않은 채로 말해도 괜찮아요. 정리는 AI에게 맡길 수 있어요.</span></p>
       </div>
       <div class="shots">
-        <div class="phone"><img src="img/shots/01_home_en.jpg?v=20260817c" loading="lazy" decoding="async" data-alt-ja="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン" data-alt-en="The latest home screen in English, with a clean white background, larger eyes, and a large voice button." data-alt-ko="깔끔한 흰색 배경에 더 크고 굵어진 눈과 큰 음성 버튼이 있는 최신 영어 홈 화면" alt="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン"></div>
+        <div class="phone"><img src="img/shots/01_home_en.jpg?v=20260906-white" loading="lazy" decoding="async" data-alt-ja="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン" data-alt-en="The latest home screen in English, with a clean white background, larger eyes, and a large voice button." data-alt-ko="깔끔한 흰색 배경에 더 크고 굵어진 눈과 큰 음성 버튼이 있는 최신 영어 홈 화면" alt="最新版の英語ホーム画面。白い背景に、大きく太くした目と音声ボタン"></div>
       </div>
     </div>
   </div>
@@ -1190,7 +1191,7 @@
     <div class="cols">
       <div class="shots">
         <div class="phone small"><img src="img/shots/05_calendar_ja.jpg" data-shot="05_calendar" loading="lazy" decoding="async" data-alt-ja="白い紙のカレンダー。記録のある日に印がついている" data-alt-en="A paper calendar. Days with a record carry a small mark." data-alt-ko="종이 같은 캘린더. 기록이 있는 날에 표시가 있어요." alt="白い紙のカレンダー。記録のある日に印がついている"></div>
-        <div class="phone small"><img src="img/shots/06_journal_ja.jpg" data-shot="06_journal" loading="lazy" decoding="async" data-alt-ja="手帳の1日のページ。話した言葉と、猫の写真が並んでいる" data-alt-en="A day's page in the journal — the words you said, and a photo of the cat." data-alt-ko="저널의 하루 페이지. 말한 것과 고양이 사진이 나란히 있어요." alt="日をタップして開いた画面。その日の写真と言葉が並ぶ"></div>
+        <div class="phone small"><img src="img/shots/06_journal_ja.jpg" data-shot="06_journal" loading="lazy" decoding="async" data-alt-ja="手帳の1日のページ。声や文字で残した5つの言葉が時間順に並んでいる" data-alt-en="A day's page in the journal, with five captured words arranged in time order." data-alt-ko="저널의 하루 페이지. 남겨 둔 다섯 개의 말이 시간순으로 늘어서 있어요." alt="手帳の1日のページ。残した言葉が時間順に並んでいる"></div>
       </div>
       <div class="text">
         <ul class="points">
