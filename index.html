@@ -277,31 +277,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    min-width: 230px;
-    max-width: min(380px, calc(100vw - 64px));
-    box-sizing: border-box;
-    padding: 16px 26px 12px;
-    border: 1px solid #d6ad45;
-    border-radius: 18px;
-    background: #f6d87c;
-    color: #211b10;
-    box-shadow: 0 6px 18px rgba(125, 90, 20, .18);
+    gap: 10px;
+    max-width: min(360px, calc(100vw - 64px));
+    padding: 0 8px;
+    color: var(--ink);
     text-align: center;
-    font-size: clamp(20px, 3.2vw, 24px);
-    font-weight: 800;
-    line-height: 1.4;
-    letter-spacing: .02em;
+    font-size: clamp(18px, 2.8vw, 21px);
+    font-weight: 650;
+    line-height: 1.5;
+    letter-spacing: .06em;
   }
   .store-download-arrow {
     display: block;
-    width: 32px;
-    height: 32px;
-    animation: store-arrow-blink 1.5s ease-in-out infinite;
+    width: 26px;
+    height: 26px;
+    animation: store-arrow-blink 1.8s ease-in-out infinite;
   }
   @keyframes store-arrow-blink {
     0%, 100% { opacity: 1; }
-    50% { opacity: .18; }
+    50% { opacity: .28; }
   }
   .app-store-link:hover .store-download-arrow,
   .app-store-link:focus-visible .store-download-arrow {
@@ -317,7 +311,7 @@
   }
   .app-store-badge {
     display: none;
-    width: 168px;
+    width: 190px;
     height: auto;
   }
   html[data-lang="ja"] .app-store-badge[data-store-lang="ja"],
