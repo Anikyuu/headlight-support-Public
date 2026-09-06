@@ -1,14 +1,16 @@
-import {bodies,retros,faces,defaults,rgb,palette,randomDesign} from './model.js?v=20260906-cute-random';
+import {bodies,retros,faces,defaults,defaultFaceSettings,rgb,palette,randomDesign} from './model.js?v=20260906-face-settings';
 import {pixels} from './pixels.js';
-import {copies} from './copy.js?v=20260906-cute-random';
+import {copies} from './copy.js?v=20260906-face-settings';
 import {mangaEye,bodyArtwork,mouthArtwork} from './artwork.js';
-import {setupDevice} from './device.js?v=20260906-cute-random';
+import {setupDevice} from './device.js?v=20260906-face-settings';
 const $=id=>document.getElementById(id);
 const languages=['ja','en','ko','de','zh-Hant','fr','es','it'];
 const guess=navigator.language.startsWith('zh')?'zh-Hant':navigator.language.split('-')[0];
 let saved;try{saved=localStorage.getItem('headlightLang');}catch{}
 let lang=languages.includes(saved)?saved:languages.includes(guess)?guess:'en';
 let state={...defaults};
+let faceSettings=structuredClone(defaultFaceSettings);
+const restoreFaceSettings=()=>Object.assign(state,faceSettings[state.face]);
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
 const deviceView=setupDevice($('device'),$('view-angle'),reduceMotion);
 const text=key=>(copies[lang]||copies.en)[key]||copies.en[key]||key;
@@ -70,7 +72,7 @@ function buttons(id,values,key,swatches=false){
 function renderControls(){
  buttons('style-choices',['illustration','simple'],'style');buttons('retro-choices',retros,'retroPalette',true);
  $('body-choices').innerHTML=bodies.map(body=>`<button class="body-choice" type="button" data-key="body" data-value="${body[0]}" aria-pressed="${state.body===body[0]&&!state.retro}"><span class="body-sample ${body[0]}" aria-hidden="true" style="--body-color:${rgb(body[1])};--body-ink:${rgb(body[2])}"><i></i></span><span>${escape(text(body[0]))}</span></button>`).join('');
- $('face-choices').innerHTML=faces.map(face=>`<button class="face-choice" type="button" data-key="face" data-value="${face}" aria-pressed="${state.face===face}"><svg viewBox="0 -70 420 170" aria-hidden="true">${faceSVG(face,1.25,78,false)}</svg><span>${escape(text(face))}</span></button>`).join('');
+ $('face-choices').innerHTML=faces.map(face=>`<button class="face-choice" type="button" data-key="face" data-value="${face}" data-size="${faceSettings[face].size}" data-spacing="${faceSettings[face].spacing}" data-height="${faceSettings[face].height}" aria-pressed="${state.face===face}"><svg viewBox="0 -70 420 170" aria-hidden="true">${faceSVG(face,1.25,78,false)}</svg><span>${escape(text(face))}</span></button>`).join('');
  for(const name of ['size','spacing','height'])$(name).value=state[name];
  $('retro').checked=state.retro;$('motion').checked=state.motion;
  $('face-field').hidden=state.style==='simple';$('retro-options').hidden=!state.retro;
@@ -88,14 +90,19 @@ function localize(){
 document.querySelector('.controls').addEventListener('click',event=>{
  const button=event.target.closest('button[data-key]');if(!button)return;
  state[button.dataset.key]=button.dataset.value;if(button.dataset.key==='body')state.retro=false;
+ if(button.dataset.key==='face')restoreFaceSettings();
  // Update selection without replacing the focused button.
  const focusKey=button.dataset.key,focusValue=button.dataset.value;
  refresh();document.querySelector(`[data-key="${focusKey}"][data-value="${focusValue}"]`).focus({preventScroll:true});
 });
-for(const key of ['size','spacing','height'])$(key).addEventListener('input',event=>{state[key]=Number(event.target.value);renderPhone();});
+for(const key of ['size','spacing','height'])$(key).addEventListener('input',event=>{
+ state[key]=Number(event.target.value);faceSettings[state.face][key]=state[key];
+ document.querySelector(`[data-key="face"][data-value="${state.face}"]`).dataset[key]=state[key];
+ renderPhone();
+});
 for(const key of ['retro','motion'])$(key).addEventListener('change',event=>{state[key]=event.target.checked;refresh();});
-$('shuffle').addEventListener('click',()=>{state=randomDesign(state);refresh();});
-$('reset').addEventListener('click',()=>{state={...defaults};refresh();});
+$('shuffle').addEventListener('click',()=>{state=randomDesign(state);restoreFaceSettings();refresh();});
+$('reset').addEventListener('click',()=>{state={...defaults};faceSettings=structuredClone(defaultFaceSettings);refresh();});
 $('language').addEventListener('change',event=>{lang=event.target.value;try{localStorage.setItem('headlightLang',lang);}catch{}localize();});
 // One light timer, paused in background tabs and for reduced-motion users.
 setInterval(()=>{if(document.hidden||reduceMotion.matches||!state.motion||state.style!=='illustration'||state.face==='asleep')return;renderPhone(true);setTimeout(()=>renderPhone(false),150);},4200);

@@ -31,7 +31,24 @@ export const bodies = [
  ['vividGreen',[.04,.67,.28],[1,1,1],false],
  ['vividYellow',[1,.80,.02],[0,0,0],true]
 ];
-export const defaults = Object.freeze({style:'illustration',body:'classic',background:'white',accent:'mono',face:'smile',size:1.26,spacing:78,height:41,motion:true,retro:false,retroPalette:'lcdGreen'});
+export const defaults = Object.freeze({style:'illustration',body:'classic',background:'white',accent:'mono',face:'smile',size:1.32,spacing:78,height:49,motion:true,retro:false,retroPalette:'lcdGreen'});
+const faceSettingsOverrides = {
+ smile:{size:1.32,spacing:78,height:49},
+ kira:{size:1.7,spacing:53,height:55},
+ tare:{size:1.24,spacing:80,height:47},
+ sleepy:{size:1.24,spacing:80,height:47},
+ tojime:{size:1.24,spacing:80,height:47},
+ ring:{size:1.24,spacing:80,height:47},
+ asleep:{size:1.24,spacing:80,height:47},
+ round:{size:0.9,spacing:110,height:55},
+ cuteGlossy:{size:1.7,spacing:61,height:55},
+ glossy:{size:1.7,spacing:61,height:55},
+ retroEye:{size:1.7,spacing:61,height:55},
+ mellow:{size:1.7,spacing:61,height:55},
+ curious:{size:1.7,spacing:61,height:55},
+ starry:{size:1.7,spacing:61,height:55}
+};
+export const defaultFaceSettings = Object.freeze(Object.fromEntries(faces.map(face=>[face,Object.freeze(faceSettingsOverrides[face]||{size:1.26,spacing:78,height:41})])));
 export const rgb = values => `rgb(${values.map(v=>Math.round(v*255)).join(',')})`;
 export function adjustedAccent(values, light) {
   const lum = .299*values[0]+.587*values[1]+.114*values[2];

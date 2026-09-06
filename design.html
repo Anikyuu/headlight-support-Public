@@ -6,9 +6,9 @@
   <title>デザインを試す | Head-Light</title>
   <meta name="description" content="Head-Lightの新しいデザインを、ここで少しお試し。ボディーや顔を選んで、自分好みのホーム画面に。">
   <link rel="canonical" href="https://head-light.app/design.html">
-  <link rel="stylesheet" href="design-assets/design.css?v=20260906-cute-random">
-  <link rel="stylesheet" href="design-assets/device.css?v=20260906-cute-random">
-  <script type="module" src="design-assets/design.js?v=20260906-cute-random"></script>
+  <link rel="stylesheet" href="design-assets/design.css?v=20260906-face-settings">
+  <link rel="stylesheet" href="design-assets/device.css?v=20260906-face-settings">
+  <script type="module" src="design-assets/design.js?v=20260906-face-settings"></script>
 </head>
 <body>
   <header class="site-header">
@@ -34,7 +34,7 @@
       <section class="controls" aria-label="デザイン" id="controls-region">
         <div class="quick-actions"><button class="shuffle" id="shuffle" type="button"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1" fill="currentColor"/><circle cx="16" cy="16" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg><span data-copy="shuffle">ランダム</span></button><button class="reset" id="reset" type="button" data-copy="reset">最初に戻す</button></div>
         <fieldset><legend data-copy="body">ボディー</legend><div class="body-choices" id="body-choices"></div></fieldset>
-        <fieldset id="face-field"><legend data-copy="face">顔あそび</legend><div class="face-choices" id="face-choices"></div><details class="fine-settings"><summary data-copy="adjust">大きさ・間隔を調整</summary><div class="sliders"><label for="size"><span data-copy="size">大きさ</span><input id="size" type="range" min="0.6" max="1.7" step="0.01" value="1.26"></label><label for="spacing"><span data-copy="spacing">間隔</span><input id="spacing" type="range" min="10" max="110" step="1" value="78"></label><label for="height"><span data-copy="height">高さ</span><input id="height" type="range" min="0" max="55" step="1" value="41"></label></div><label class="toggle-label"><span data-copy="motion">まばたき</span><input id="motion" type="checkbox" role="switch" checked><span class="switch" aria-hidden="true"></span></label></details></fieldset>
+        <fieldset id="face-field"><legend data-copy="face">顔あそび</legend><div class="face-choices" id="face-choices"></div><details class="fine-settings"><summary data-copy="adjust">大きさ・間隔を調整</summary><div class="sliders"><label for="size"><span data-copy="size">大きさ</span><input id="size" type="range" min="0.6" max="1.7" step="0.01" value="1.32"></label><label for="spacing"><span data-copy="spacing">間隔</span><input id="spacing" type="range" min="10" max="110" step="1" value="78"></label><label for="height"><span data-copy="height">高さ</span><input id="height" type="range" min="0" max="110" step="1" value="49"></label></div><label class="toggle-label"><span data-copy="motion">まばたき</span><input id="motion" type="checkbox" role="switch" checked><span class="switch" aria-hidden="true"></span></label></details></fieldset>
         <fieldset class="style-field"><legend class="sr-only" data-copy="style">スタイル</legend><div class="segmented" id="style-choices"></div></fieldset>
         <fieldset class="retro-field"><legend class="sr-only" data-copy="retro">レトロモード</legend><label class="toggle-label"><span data-copy="retro">レトロモード</span><input id="retro" type="checkbox" role="switch"><span class="switch" aria-hidden="true"></span></label><div id="retro-options" hidden><p class="choice-value" id="retro-value"></p><div class="swatches" id="retro-choices"></div></div></fieldset>
         <p class="fine-print" data-copy="note">デザインの一部を試せる体験版です。入力・録音などはできません。</p>
