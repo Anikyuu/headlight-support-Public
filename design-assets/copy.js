@@ -519,3 +519,6 @@ Object.entries(extra).forEach(([lang,values])=>Object.assign(copies[lang],values
 
 const viewCopy = {"ja": ["正面から見る", "立体で見る"], "en": ["Front view", "3D view"], "ko": ["정면 보기", "입체로 보기"], "de": ["Frontalansicht", "3D-Ansicht"], "zh-Hant": ["從正面看", "立體檢視"], "fr": ["Vue de face", "Vue 3D"], "es": ["Vista frontal", "Vista 3D"], "it": ["Vista frontale", "Vista 3D"]};
 Object.entries(viewCopy).forEach(([lang,[frontView,threeDView]])=>Object.assign(copies[lang],{frontView,threeDView}));
+
+const rotationCopy = {"ja": ["ドラッグして動かせます", "スマートフォンをドラッグして向きを変える。矢印キーでも操作できます。"], "en": ["Drag to turn", "Drag the phone to turn it. Arrow keys also work."], "ko": ["드래그해서 돌려 보세요", "스마트폰을 드래그해 방향을 바꿔 보세요. 방향키로도 조작할 수 있어요."], "de": ["Zum Drehen ziehen", "Ziehe das Smartphone zum Drehen. Auch die Pfeiltasten funktionieren."], "zh-Hant": ["拖曳即可轉動", "拖曳手機以調整方向，也可以使用方向鍵。"], "fr": ["Faites glisser pour tourner", "Faites glisser le téléphone pour le tourner. Les touches fléchées fonctionnent aussi."], "es": ["Arrastra para girar", "Arrastra el teléfono para girarlo. También puedes usar las flechas."], "it": ["Trascina per ruotare", "Trascina il telefono per ruotarlo. Puoi anche usare i tasti freccia."]};
+Object.entries(rotationCopy).forEach(([lang,[rotateHint,rotateDevice]])=>Object.assign(copies[lang],{rotateHint,rotateDevice}));

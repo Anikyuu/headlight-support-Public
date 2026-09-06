@@ -1,8 +1,8 @@
 import {bodies,retros,faces,defaults,rgb,palette,randomDesign} from './model.js';
 import {pixels} from './pixels.js';
-import {copies} from './copy.js?v=20260906-3d';
+import {copies} from './copy.js?v=20260906-drag';
 import {mangaEye,bodyArtwork,mouthArtwork} from './artwork.js';
-import {setupDevice} from './device.js?v=20260906-3d';
+import {setupDevice} from './device.js?v=20260906-drag';
 const $=id=>document.getElementById(id);
 const languages=['ja','en','ko','de','zh-Hant','fr','es','it'];
 const guess=navigator.language.startsWith('zh')?'zh-Hant':navigator.language.split('-')[0];
