@@ -72,6 +72,10 @@
     <p>ユーザーがThreadsの公式認証画面で許可した場合、本アプリはThreads APIから、そのユーザーのプロフィール情報（ユーザーID、ユーザー名、表示名、プロフィール画像）と本人の投稿（本文、投稿時刻、投稿ID、投稿URL）を取得します。取得した情報とアクセストークンは端末内に保存され、投稿はユーザーが選んだ機能として手帳と専用フォルダへ追加されます。Head-Lightは投稿、プロフィール、アクセストークンを独自のサーバーへ保存しません。</p>
     <p>認証コードはアクセストークンへ交換するために限り、暗号化された通信でHead-LightのCloudflare Workers中継サーバーを通過します。Threads App Secretは中継サーバー内だけで使用されます。連携は設定からいつでも停止または解除でき、解除すると端末内のアクセストークンと連携アカウント情報を削除します。すでに手帳へ取り込んだ投稿は通常の記録として残り、ユーザーがアプリ内で削除できます。</p>
 
+    <h2>Xの投稿取り込み</h2>
+    <p>ユーザーがXの公式認証画面で許可した場合、本アプリはX APIから、そのユーザーのプロフィール情報（ユーザーID、ユーザー名、表示名、プロフィール画像）と本人の投稿（本文、投稿時刻、投稿ID、投稿URL）を取得します。返信とリポストは取得しません。取得した情報とアクセストークンは端末内に保存され、投稿はユーザーが選んだ機能として手帳と専用フォルダへ追加されます。Head-Lightは投稿、プロフィール、アクセストークンを独自のサーバーへ保存しません。</p>
+    <p>認証にはOAuth 2.0 PKCEを使います。認証コードは暗号化された通信でHead-LightのCloudflare Workersを経由してアプリへ転送され、アクセストークンへの交換はアプリからXへ直接行います。中継サーバーは認証コードやアクセストークンを保存しません。連携は設定からいつでも停止または解除でき、解除すると端末内のアクセストークンと連携アカウント情報を削除します。すでに手帳へ取り込んだ投稿は通常の記録として残り、ユーザーがアプリ内で削除できます。</p>
+
     <h2>YouTubeプレイヤー</h2>
     <p>ユーザーがYouTubeの連続再生を選び、初回の案内に同意した場合、YouTubeの公式埋め込みプレイヤーを読み込みます。動画の表示・再生、再生可否の確認、不正利用の防止などのため、IPアドレス、端末・ブラウザ情報、再生操作などがGoogleおよびYouTubeへ送信される場合があります。Head-LightはYouTube動画をダウンロードせず、音声を分離せず、バックグラウンド再生を提供しません。</p>
 
@@ -87,6 +91,7 @@
       <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a></li>
       <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
       <li><a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">Meta Privacy Policy (Threads)</a></li>
+      <li><a href="https://x.com/en/privacy" target="_blank" rel="noopener">X Privacy Policy</a></li>
       <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
       <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> / <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a></li>
     </ul>
@@ -129,6 +134,10 @@
     <p>If you grant access on the official Threads authorization screen, the App retrieves your Threads profile information (user ID, username, display name, and profile image) and your own posts (text, posting time, post ID, and permalink) from the Threads API. The retrieved information and access token are stored on your device, and posts are added to your journal and a dedicated folder as a feature you chose to use. Head-Light does not store posts, profile information, or access tokens on its own server.</p>
     <p>The authorization code passes over an encrypted connection through Head-Light’s Cloudflare Workers relay only to exchange it for an access token. The Threads App Secret is used only inside the relay. You can pause or disconnect the integration from Settings at any time. Disconnecting deletes the on-device access token and linked-account information. Posts already imported remain as ordinary records until you delete them in the App.</p>
 
+    <h2>Importing X posts</h2>
+    <p>If you grant access on the official X authorization screen, the App retrieves your X profile information (user ID, username, display name, and profile image) and your own posts (text, posting time, post ID, and permalink) from the X API. Replies and reposts are excluded. The retrieved information and access token are stored on your device, and posts are added to your journal and a dedicated folder as a feature you chose to use. Head-Light does not store posts, profile information, or access tokens on its own server.</p>
+    <p>Authorization uses OAuth 2.0 with PKCE. The authorization code is forwarded to the App over an encrypted connection through Head-Light’s Cloudflare Workers relay, and the App exchanges it directly with X for an access token. The relay does not store authorization codes or access tokens. You can pause or disconnect the integration from Settings at any time. Disconnecting deletes the on-device access token and linked-account information. Posts already imported remain as ordinary records until you delete them in the App.</p>
+
     <h2>YouTube player</h2>
     <p>When you choose continuous YouTube playback and accept the first-use notice, Head-Light loads the official embedded YouTube player. Google and YouTube may receive information such as your IP address, device and browser information, and playback interactions to display and play videos, determine playability, and prevent abuse. Head-Light does not download YouTube videos, separate their audio, or provide background playback.</p>
 
@@ -144,6 +153,7 @@
       <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a></li>
       <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
       <li><a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">Meta Privacy Policy (Threads)</a></li>
+      <li><a href="https://x.com/en/privacy" target="_blank" rel="noopener">X Privacy Policy</a></li>
       <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
       <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> / <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a></li>
     </ul>
@@ -188,6 +198,10 @@
     <p>이용자가 Threads 공식 인증 화면에서 허용하면 앱은 Threads API에서 이용자의 프로필 정보(사용자 ID, 사용자 이름, 표시 이름, 프로필 이미지)와 본인 게시물(본문, 게시 시각, 게시물 ID, 게시물 링크)을 가져옵니다. 가져온 정보와 액세스 토큰은 기기에 저장되며, 게시물은 이용자가 선택한 기능에 따라 수첩과 전용 폴더에 추가됩니다. Head-Light는 게시물, 프로필 정보 또는 액세스 토큰을 자체 서버에 저장하지 않습니다.</p>
     <p>인증 코드는 액세스 토큰으로 교환하기 위한 경우에만 암호화된 통신으로 Head-Light의 Cloudflare Workers 중계 서버를 통과합니다. Threads App Secret은 중계 서버 안에서만 사용됩니다. 설정에서 언제든 연동을 일시 중지하거나 해제할 수 있습니다. 연동을 해제하면 기기의 액세스 토큰과 연결 계정 정보가 삭제됩니다. 이미 가져온 게시물은 일반 기록으로 남으며 앱 안에서 삭제할 수 있습니다.</p>
 
+    <h2>X 게시물 가져오기</h2>
+    <p>이용자가 X 공식 인증 화면에서 허용하면 앱은 X API에서 이용자의 프로필 정보(사용자 ID, 사용자 이름, 표시 이름, 프로필 이미지)와 본인 게시물(본문, 게시 시각, 게시물 ID, 게시물 링크)을 가져옵니다. 답글과 재게시물은 제외합니다. 가져온 정보와 액세스 토큰은 기기에 저장되며, 게시물은 이용자가 선택한 기능에 따라 수첩과 전용 폴더에 추가됩니다. Head-Light는 게시물, 프로필 정보 또는 액세스 토큰을 자체 서버에 저장하지 않습니다.</p>
+    <p>인증에는 OAuth 2.0 PKCE를 사용합니다. 인증 코드는 암호화된 통신으로 Head-Light의 Cloudflare Workers 중계 서버를 거쳐 앱으로 전달되며, 앱이 X와 직접 액세스 토큰으로 교환합니다. 중계 서버는 인증 코드나 액세스 토큰을 저장하지 않습니다. 설정에서 언제든 연동을 일시 중지하거나 해제할 수 있습니다. 연동을 해제하면 기기의 액세스 토큰과 연결 계정 정보가 삭제됩니다. 이미 가져온 게시물은 일반 기록으로 남으며 앱 안에서 삭제할 수 있습니다.</p>
+
     <h2>삭제 및 문의</h2>
     <p>앱 안의 기록은 각 화면에서 삭제할 수 있습니다. 앱 삭제 시 기기 내 데이터도 삭제되지만, 별도로 만든 백업·외부 보관함·공유 링크의 데이터는 자동 삭제되지 않을 수 있습니다.</p>
     <p>개인정보 문의, 동의 철회 지원 또는 서비스에 저장된 정보의 삭제 요청은 <a href="mailto:headlight.app.jp@gmail.com">headlight.app.jp@gmail.com</a>으로 연락해 주세요.</p>
@@ -198,6 +212,7 @@
       <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a></li>
       <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
       <li><a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">Meta Privacy Policy (Threads)</a></li>
+      <li><a href="https://x.com/en/privacy" target="_blank" rel="noopener">X Privacy Policy</a></li>
       <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
       <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> / <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a></li>
     </ul>
