@@ -1,7 +1,8 @@
 /* A fixed photographic set, with a layered titanium / glass device in front. */
 .preview {
   isolation: isolate;
-  overflow: hidden;
+  /* Clip the backdrop without creating a scroll container that moves on focus. */
+  overflow: clip;
   padding: 30px 14px 42px;
   border-radius: 28px;
   background: #edf0f2;

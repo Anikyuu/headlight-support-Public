@@ -1,8 +1,8 @@
-import {bodies,retros,faces,defaults,defaultFaceSettings,rgb,palette,randomDesign} from './model.js?v=20260906-random-pose';
+import {bodies,retros,faces,defaults,defaultFaceSettings,rgb,palette,randomDesign} from './model.js?v=20260906-centered-device';
 import {pixels} from './pixels.js';
-import {copies} from './copy.js?v=20260906-random-pose';
+import {copies} from './copy.js?v=20260906-centered-device';
 import {mangaEye,bodyArtwork,mouthArtwork} from './artwork.js';
-import {setupDevice} from './device.js?v=20260906-random-pose';
+import {setupDevice} from './device.js?v=20260906-centered-device';
 const $=id=>document.getElementById(id);
 const languages=['ja','en','ko','de','zh-Hant','fr','es','it'];
 const guess=navigator.language.startsWith('zh')?'zh-Hant':navigator.language.split('-')[0];
