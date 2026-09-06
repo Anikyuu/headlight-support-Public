@@ -516,3 +516,6 @@ const extra = {
   }
 };
 Object.entries(extra).forEach(([lang,values])=>Object.assign(copies[lang],values));
+
+const viewCopy = {"ja": ["正面から見る", "立体で見る"], "en": ["Front view", "3D view"], "ko": ["정면 보기", "입체로 보기"], "de": ["Frontalansicht", "3D-Ansicht"], "zh-Hant": ["從正面看", "立體檢視"], "fr": ["Vue de face", "Vue 3D"], "es": ["Vista frontal", "Vista 3D"], "it": ["Vista frontale", "Vista 3D"]};
+Object.entries(viewCopy).forEach(([lang,[frontView,threeDView]])=>Object.assign(copies[lang],{frontView,threeDView}));

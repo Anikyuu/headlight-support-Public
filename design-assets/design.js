@@ -1,7 +1,8 @@
 import {bodies,retros,faces,defaults,rgb,palette,randomDesign} from './model.js';
 import {pixels} from './pixels.js';
-import {copies} from './copy.js';
+import {copies} from './copy.js?v=20260906-3d';
 import {mangaEye,bodyArtwork,mouthArtwork} from './artwork.js';
+import {setupDevice} from './device.js?v=20260906-3d';
 const $=id=>document.getElementById(id);
 const languages=['ja','en','ko','de','zh-Hant','fr','es','it'];
 const guess=navigator.language.startsWith('zh')?'zh-Hant':navigator.language.split('-')[0];
@@ -9,6 +10,7 @@ let saved;try{saved=localStorage.getItem('headlightLang');}catch{}
 let lang=languages.includes(saved)?saved:languages.includes(guess)?guess:'en';
 let state={...defaults};
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const deviceView=setupDevice($('device'),$('view-angle'),reduceMotion);
 const text=key=>(copies[lang]||copies.en)[key]||copies.en[key]||key;
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iconPaths={
@@ -51,7 +53,7 @@ function renderPhone(closed=false){
  const now=new Date(),day=now.getDate(),month=now.toLocaleDateString('en',{month:'short'}).toUpperCase(),weekday=now.toLocaleDateString(lang,{weekday:'short'});
  const family=retro?(lang==='ko'?'HeadlightPixelKR, monospace':lang==='zh-Hant'?'HeadlightPixelTC, monospace':'HeadlightPixel, monospace'):"-apple-system, BlinkMacSystemFont, sans-serif";
  document.querySelector('.phone-holder').style.background=p.bg;
- const inputY=illustrated?360:166,inputHeight=illustrated?88:288;
+ const inputY=illustrated?336:166,inputHeight=illustrated?88:288;
  const panel=retro?`<path d="M28 ${inputY}H392V${inputY+8}H400V${inputY+inputHeight-8}H392V${inputY+inputHeight}H28V${inputY+inputHeight-8}H20V${inputY+8}H28Z" fill="${p.bg}" stroke="${p.ink}" stroke-width="2"/>`:`<rect x="17" y="${inputY}" width="386" height="${inputHeight}" rx="26" fill="${p.panel}" fill-opacity="${illustrated?.055:.028}"/>`;
  const tabKeys=['home','words','collection','journal','ai'],tabIcons=['home','words','grid','book','ai'];
  $('phone').innerHTML=`<title id="preview-title">${escape(text('preview')+' — '+text(state.style)+(retro?', '+text('retro'):''))}</title><defs><pattern id="lcd" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="1" height="1" fill="${p.ink}" opacity=".055"/></pattern></defs><g font-family="${family}" fill="${p.ink}" color="${p.accent}"><rect width="420" height="913" fill="${p.bg}"/>${retro?'<rect width="420" height="913" fill="url(#lcd)"/>':bodyArtwork(state.body)}<text x="40" y="37" font-size="18" font-weight="600">9:41</text><rect x="146" y="13" width="128" height="38" rx="22" fill="#000"/><rect x="359" y="25" width="25" height="12" rx="3" fill="none" stroke="${p.ink}" stroke-width="1.5"/><rect x="362" y="28" width="19" height="6" rx="1"/><text x="18" y="138" font-family="${retro?'monospace':'Georgia, serif'}" font-size="66">${day}</text><text x="83" y="116" font-size="16" opacity=".55">${escape(weekday)}</text><text x="83" y="138" font-family="Georgia, serif" font-size="17" font-weight="600" letter-spacing="2" opacity=".55">${month}</text><g opacity=".5">${icon('calendar',302,99,27,p.ink)}${icon('settings',361,97,32,p.ink)}</g>${illustrated?`<g id="preview-eyes" transform="translate(0 ${306-state.height})" color="${p.accent}">${faceSVG(state.face,state.size,state.spacing,retro,closed,p.light)}</g>`:''}${panel}${illustrated&&!retro?mouthArtwork(state.body,inputY,inputHeight,p.accent):''}${icon('plus',37,inputY+inputHeight-40,24,p.ink)}<circle cx="374" cy="${inputY+inputHeight-31}" r="17" fill="${p.accent}"/>${icon('arrow',363,inputY+inputHeight-42,22,p.light?'#fff':p.bg,2.7)}<circle cx="210" cy="609" r="60" fill="${retro?p.bg:p.accent}" fill-opacity="${retro?1:.08}" stroke="${p.accent}" stroke-opacity=".28"/>${icon('mic',186,583,48,p.ink,2.4)}<g opacity=".65">${icon('wave',70,598,26,p.ink)}${icon('words',323,598,26,p.ink)}</g><rect x="183" y="719" width="54" height="38" rx="10" fill="${p.accent}" fill-opacity=".08" stroke="${p.accent}" stroke-opacity=".22"/>${icon('tape',195,728,30,p.ink)}<g opacity=".25">${icon('plus',203,795,14,p.ink)}</g><rect x="16" y="827" width="388" height="67" rx="32" fill="${p.bg}" fill-opacity=".65"/><rect x="20" y="831" width="76" height="58" rx="28" fill="${p.accent}" fill-opacity=".11"/>${tabKeys.map((key,i)=>`${icon(tabIcons[i],42+i*75,837,29,i===0?p.accent:p.ink)}<text x="${57+i*75}" y="878" text-anchor="middle" font-size="${lang==='ja'?11:10}" fill="${i===0?p.accent:p.ink}">${escape(text(key))}</text>`).join('')}<rect x="143" y="902" width="134" height="4" rx="2" fill="${p.ink}" opacity=".7"/></g>`;
@@ -72,6 +74,7 @@ function refresh(){renderControls();renderPhone();}
 function localize(){
  document.documentElement.lang=lang;$('language').value=lang;
  document.querySelectorAll('[data-copy]').forEach(el=>el.textContent=text(el.dataset.copy));
+ deviceView.localize(text);
  document.title=text('title')+' | Head-Light';document.querySelector('meta[name=description]').content=text('intro');
  $('preview-region').setAttribute('aria-label',text('preview'));$('controls-region').setAttribute('aria-label',text('choose'));$('language').setAttribute('aria-label',text('language'));
  refresh();

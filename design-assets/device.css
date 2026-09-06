@@ -1,0 +1,153 @@
+/* A fixed photographic set, with a layered titanium / glass device in front. */
+.preview {
+  isolation: isolate;
+  overflow: hidden;
+  padding: 30px 14px 42px;
+  border-radius: 28px;
+  background: #f5f5f3;
+}
+.preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url('studio-backdrop.png') center 54% / cover no-repeat;
+}
+.preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(155deg, #ffffff16, transparent 60%, #161e2a0b);
+  pointer-events: none;
+}
+.device-stage {
+  width: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 1300px;
+  perspective-origin: 50% 42%;
+  padding: 15px 0 24px;
+}
+.device {
+  --device-width: 278px;
+  --device-radius: 43px;
+  --rotate-x: 5deg;
+  --rotate-y: -15deg;
+  --rotate-z: -2deg;
+  width: var(--device-width);
+  aspect-ratio: 444 / 937;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) rotateZ(var(--rotate-z));
+  transition: transform 650ms cubic-bezier(.2,.75,.2,1);
+  flex-shrink: 0;
+}
+.device-depth { position: absolute; inset: 0; transform-style: preserve-3d; }
+.device-depth i {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--device-radius);
+  transform: translateZ(calc(var(--layer) * -1px));
+  background: linear-gradient(115deg, #b9bdc2, #666a6e 11%, #d8dadd 26%, #80858a 49%, #c6c8cb 72%, #484d52);
+  border: 1px solid #858a8e;
+  box-shadow: inset 0 0 1px #ffffff8a;
+}
+.device-depth i:last-child { box-shadow: 12px 18px 28px #17233229; }
+.device-rim {
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: var(--device-radius);
+  background: linear-gradient(135deg, #f0f2f4, #7d8287 14%, #d3d6d8 26%, #5c6166 51%, #c0c3c6 76%, #e9ebed 88%, #767c82);
+  box-shadow: inset 0 0 1px 1px #ffffffad, 0 0 0 .5px #4c5156;
+  transform: translateZ(1px);
+}
+.device-bezel {
+  position: relative;
+  height: 100%;
+  padding: 5px;
+  border-radius: calc(var(--device-radius) - 3px);
+  background: #08090b;
+  box-shadow: inset 0 0 0 1px #323438;
+}
+.device .phone-holder {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: calc(var(--device-radius) - 8px);
+  overflow: hidden;
+  box-shadow: 0 0 0 .5px #000;
+  aspect-ratio: auto;
+}
+.device #phone { width: 100%; height: 100%; }
+.screen-glass {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(112deg, #ffffff13 0%, #ffffff05 21%, transparent 22% 70%, #fff0 78%, #ffffff0a 100%);
+  box-shadow: inset 1px 0 1px #ffffff3b, inset -1px 0 1px #ffffff18;
+  pointer-events: none;
+}
+.device-key {
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  transform: translateZ(-5px);
+  background: linear-gradient(90deg, #5d6369, #cdd0d3 65%, #62686c);
+  box-shadow: 0 0 0 .5px #555a60;
+}
+.key-action { left: -1px; top: 17%; height: 3%; }
+.key-up { left: -1px; top: 24%; height: 7%; }
+.key-down { left: -1px; top: 33%; height: 7%; }
+.key-power { right: -2px; top: 28%; height: 10%; }
+.device-shadow {
+  position: absolute;
+  width: 58%;
+  height: 24px;
+  bottom: 0;
+  border-radius: 50%;
+  background: #25344347;
+  filter: blur(16px);
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+.view-angle {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 7px 12px;
+  color: #333942;
+  background: #ffffffc7;
+  border: 1px solid #fff9;
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  font-size: 12px;
+  box-shadow: 0 2px 10px #2334410b;
+}
+.view-angle:hover { background: #fff; }
+@media(min-width:761px) and (max-height:900px) {
+  .device { --device-width: 246px; --device-radius: 38px; }
+  .preview { padding-top: 24px; }
+}
+@media(max-width:760px) {
+  .preview { padding: 17px 20px 29px; border-radius: 0; }
+  .device-stage { padding: 5px 0 14px; }
+  .device { --device-width: min(19.908svh, 192px); --device-radius: 29px; }
+  .device-rim { padding: 2px; }
+  .device-bezel { padding: 3px; }
+  .device .phone-holder { border-radius: calc(var(--device-radius) - 5px); }
+  .device-shadow { width: 32%; height: 15px; bottom: -4px; filter: blur(12px); }
+  .view-angle { min-height: 34px; right: 10px; bottom: 8px; padding: 6px 10px; font-size: 12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .device { transition: none; }
+}
