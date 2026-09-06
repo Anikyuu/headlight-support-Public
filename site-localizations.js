@@ -49,12 +49,6 @@
   Object.assign(overrides.index.fr, {1:'Une idée vous vient ? Dites-la, tout simplement.<br>iPhone / iPad / Mac / Apple Watch'});
   Object.assign(overrides.index.es, {1:'Cuando se te ocurra algo, solo dilo.<br>iPhone / iPad / Mac / Apple Watch'});
   Object.assign(overrides.index.it, {1:'Quando ti viene in mente qualcosa, basta dirlo.<br>iPhone / iPad / Mac / Apple Watch'});
-  // Voice capture: one tap to start, spoken keyword to save.
-  Object.assign(overrides.index["de"], {"1": "Einmal auf das Mikrofon tippen, sprechen und mit „absenden“ abschließen: Ihre Worte bleiben im Tagebuch.<br>iPhone / iPad / Mac / Apple Watch"});
-  Object.assign(overrides.index["zh-Hant"], {"1": "按一下麥克風開始說話，最後說「傳送」，就會留在手帳裡。<br>iPhone / iPad / Mac / Apple Watch"});
-  Object.assign(overrides.index["fr"], {"1": "Touchez une fois le micro, parlez et terminez par « envoi » pour garder vos mots dans votre journal.<br>iPhone / iPad / Mac / Apple Watch"});
-  Object.assign(overrides.index["es"], {"1": "Toca el micrófono una vez, habla y termina con «envíalo» para guardar tus palabras en el diario.<br>iPhone / iPad / Mac / Apple Watch"});
-  Object.assign(overrides.index["it"], {"1": "Tocca una volta il microfono, parla e concludi con «invia» per conservare le tue parole nel diario.<br>iPhone / iPad / Mac / Apple Watch"});
   const titles = {"index":{"ja":"Head-Light: あなたを軽くする手帳","en":"Head-Light: Lighten your load","ko":"Head-Light: 마음이 가벼워지는 다이어리","de":"Head-Light: Leichter leben","zh-Hant":"Head-Light: 讓心變輕的手帳","fr":"Head-Light: Vivre plus léger","es":"Head-Light: Vive más ligero","it":"Head-Light: Vivi più leggero"},"tools":{"ja":"Head-Lightの道具 — あなたを軽くするアプリ","en":"The tools of Head-Light","ko":"Head-Light의 도구","de":"Die Werkzeuge von Head-Light","zh-Hant":"Head-Light 的工具","fr":"Les outils de Head-Light","es":"Las herramientas de Head-Light","it":"Gli strumenti di Head-Light"}};
   function install(page) {
     const run = function () {
