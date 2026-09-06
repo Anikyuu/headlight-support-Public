@@ -413,29 +413,33 @@
     color: var(--muted);
   }
 
-  /* ---- 整理アシスタントの4面 ---- */
-  .quads {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin: 28px 0 22px;
+  /* ---- 整理アシスタントの実画面 ---- */
+  .tidy-real-visuals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 34px 0 26px;
   }
-  .quad {
-    padding: 18px 16px;
-    border-radius: 16px;
-    border-left: 3px solid;
+  .tidy-real-visuals figure { margin: 0; }
+  .tidy-detail {
+    width: min(450px, 90vw);
   }
-  .quad b { display: block; font-family: var(--serif); font-size: 17px; margin-bottom: 6px; }
-  .quad span { font-size: 15px; line-height: 1.8; color: var(--muted); }
-  /* 日本の色名のインク。アプリの中と同じ色 */
-  .q-now     { border-color: #33a070; background: rgba(51,160,112,.08); }
-  .q-now b   { color: #2b8a60; }
-  .q-later   { border-color: #4f70b8; background: rgba(79,112,184,.08); }
-  .q-later b { color: #4460a0; }
-  .q-grow    { border-color: #c79429; background: rgba(199,148,41,.08); }
-  .q-grow b  { color: #a87c1e; }
-  .q-release { border-color: #8f76b8; background: rgba(143,118,184,.08); }
-  .q-release b { color: #7a63a0; }
+  .tidy-detail img {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(28,27,25,0.10);
+    border-radius: 24px;
+    box-shadow: 0 18px 44px rgba(28,27,25,0.11);
+  }
+  .tidy-real-visuals figcaption {
+    margin-top: 11px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+  }
 
   /* ---- 道具の一覧 ---- */
   .toolgroups {
@@ -489,7 +493,6 @@
   .ticon img { width: 34px; height: 34px; object-fit: contain; }
 
   @media (max-width: 560px) {
-    .quads { grid-template-columns: 1fr; }
     .verb { padding: 20px 16px; }
   }
 
@@ -1000,29 +1003,21 @@
            alt="頭の中に線が渦を巻き、そのまわりをカレンダー・買い物・ひらめき・時計・音楽が取り囲む線画">
     </div>
     <h2><span data-i18n="ja">今日はこれだけで、十分です。</span><span data-i18n="en">This is enough for today.</span><span data-i18n="ko">오늘은 이것만으로, 충분해요.</span></h2>
-    <img class="illust wide" src="img/illust-tidy.jpg" loading="lazy" onerror="this.style.display='none'"
-         data-alt-ja="話した言葉が4つの面へ分かれて置かれていく線画" data-alt-en="A line drawing of spoken words being separated onto four surfaces." data-alt-ko="말한 것이 네 개의 면으로 나뉘어 놓이는 선화" alt="話した言葉が4つの面へ分かれて置かれていく線画">
     <p class="lead"><span data-i18n="ja">頭にあることを話すだけ。AIが「いま」「あとで」「育てる」「手放す」に分けます。</span><span data-i18n="en">Say what’s on your mind. AI sorts it into now, later, grow and let go.</span><span data-i18n="ko">머릿속에 있는 것을 말하기만 하면 돼요. AI가 ‘지금’, ‘나중’, ‘키우기’, ‘놓기’로 나눠요.</span></p>
 
     <p class="sub" hidden><span data-i18n="ja">4象限マトリクス(クアドラントチャート)は、ものごとを2つの軸で4つに分けて、一目で全体を見る図です。仕事の優先順位づけでよく使われます。Head-Lightでは<strong>「急ぎかどうか」</strong>と<strong>「いま答えを出せるかどうか」</strong>で分けます。分ける作業はAIがやるので、あなたは話すだけです。</span><span data-i18n="en">A four-quadrant matrix splits things along two axes so you can take in the whole picture at a glance — the same shape often used for prioritising work. Head-Light splits by <strong>how urgent it is</strong> and <strong>whether you can settle it yet</strong>. AI does the splitting; you just talk.</span><span data-i18n="ko">4사분면 매트릭스(쿼드런트 차트)는 두 개의 축으로 넷으로 나눠, 전체를 한눈에 보는 그림이에요. 업무 우선순위를 정할 때 자주 쓰여요. Head-Light에서는 <strong>「급한지 아닌지」</strong>와 <strong>「지금 답을 낼 수 있는지」</strong>로 나눠요. 나누는 일은 AI가 하니, 당신은 말하기만 하면 돼요.</span></p>
 
-    <div class="quads">
-      <div class="quad q-now">
-        <b>🌱 <span data-i18n="ja">いま軽くなる</span><span data-i18n="en">Lighter now</span><span data-i18n="ko">지금 가벼워지는 것</span></b>
-        <span data-i18n="ja">今日はこれだけで十分です。</span><span data-i18n="en">This is enough for today.</span><span data-i18n="ko">오늘은 이것만으로 충분해요.</span>
-      </div>
-      <div class="quad q-later">
-        <b>🌙 <span data-i18n="ja">あとで大丈夫</span><span data-i18n="en">Later is fine</span><span data-i18n="ko">나중에도 괜찮은 것</span></b>
-        <span data-i18n="ja">今は急がなくても大丈夫です。</span><span data-i18n="en">No rush right now.</span><span data-i18n="ko">지금은 서두르지 않아도 괜찮아요.</span>
-      </div>
-      <div class="quad q-grow">
-        <b>🌿 <span data-i18n="ja">育てる</span><span data-i18n="en">Growing</span><span data-i18n="ko">키우는 것</span></b>
-        <span data-i18n="ja">まだ決めなくても大丈夫です。</span><span data-i18n="en">You don&#39;t have to decide yet.</span><span data-i18n="ko">아직 정하지 않아도 괜찮아요.</span>
-      </div>
-      <div class="quad q-release">
-        <b>🍃 <span data-i18n="ja">手放していい</span><span data-i18n="en">Can let go</span><span data-i18n="ko">놓아도 되는 것</span></b>
-        <span data-i18n="ja">少しここへ置いておきましょう。</span><span data-i18n="en">Let&#39;s leave it here for a while.</span><span data-i18n="ko">잠시 여기에 두어요.</span>
-      </div>
+    <div class="tidy-real-visuals" id="tidy-real-visuals">
+      <figure class="tidy-detail">
+        <img src="img/shots/tidy-assistant-detail-ja.jpg" data-shot="tidy-assistant-detail" loading="lazy" decoding="async"
+             data-alt-ja="整理アシスタントが実際に分けた4枚の拡大表示" data-alt-en="A close-up of the four actual cards sorted by Tidy Assistant" data-alt-ko="정리 어시스턴트가 실제로 나눈 네 장의 확대 화면" data-alt-de="Nahaufnahme der vier tatsächlich vom Sortierassistenten sortierten Karten" data-alt-zh-hant="整理助手實際分出的四張卡片放大畫面" data-alt-fr="Gros plan sur les quatre cartes réellement triées par l’assistant de rangement" data-alt-es="Primer plano de las cuatro tarjetas realmente ordenadas por el asistente" data-alt-it="Primo piano delle quattro schede realmente ordinate dall’assistente" alt="整理アシスタントが実際に分けた4枚の拡大表示">
+        <figcaption><span data-i18n="ja" data-static-localized>実際に分けられた4枚</span><span data-i18n="en" data-static-localized>The four actual sorted cards</span><span data-i18n="ko" data-static-localized>실제로 나뉜 네 장</span><span data-i18n="de" data-static-localized>Die vier tatsächlich sortierten Karten</span><span data-i18n="zh-Hant" data-static-localized>實際分出的四張卡片</span><span data-i18n="fr" data-static-localized>Les quatre cartes réellement triées</span><span data-i18n="es" data-static-localized>Las cuatro tarjetas realmente ordenadas</span><span data-i18n="it" data-static-localized>Le quattro schede realmente ordinate</span></figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="img/shots/tidy-assistant-ja.jpg" data-shot="tidy-assistant" loading="lazy" decoding="async"
+             data-alt-ja="整理アシスタントの実際の全画面" data-alt-en="The actual full Tidy Assistant screen" data-alt-ko="정리 어시스턴트의 실제 전체 화면" data-alt-de="Der tatsächliche vollständige Bildschirm des Sortierassistenten" data-alt-zh-hant="整理助手的實際完整畫面" data-alt-fr="L’écran complet réel de l’assistant de rangement" data-alt-es="La pantalla completa real del asistente" data-alt-it="La schermata completa reale dell’assistente" alt="整理アシスタントの実際の全画面"></div>
+        <figcaption><span data-i18n="ja" data-static-localized>実際のアプリ画面</span><span data-i18n="en" data-static-localized>The actual app screen</span><span data-i18n="ko" data-static-localized>실제 앱 화면</span><span data-i18n="de" data-static-localized>Der tatsächliche App-Bildschirm</span><span data-i18n="zh-Hant" data-static-localized>實際的 App 畫面</span><span data-i18n="fr" data-static-localized>L’écran réel de l’app</span><span data-i18n="es" data-static-localized>La pantalla real de la app</span><span data-i18n="it" data-static-localized>La schermata reale dell’app</span></figcaption>
+      </figure>
     </div>
 
     <p class="sub"><span data-i18n="ja">やることを増やすためではなく、減らすためのAIです。</span><span data-i18n="en">AI that helps shorten the list, not lengthen it.</span><span data-i18n="ko">할 일을 늘리는 것이 아니라, 줄여 주는 AI예요.</span></p>
