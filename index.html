@@ -259,6 +259,12 @@
   }
   .app-store-link {
     display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 8px;
+    color: var(--ink);
+    text-decoration: none;
     border-radius: 10px;
     transition: transform .2s ease, opacity .2s ease;
   }
@@ -266,6 +272,36 @@
   .app-store-link:focus-visible {
     transform: translateY(-2px);
     opacity: .86;
+  }
+  .store-download-cue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: .03em;
+  }
+  .store-download-arrow {
+    display: block;
+    animation: store-arrow-blink 1.5s ease-in-out infinite;
+  }
+  @keyframes store-arrow-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .18; }
+  }
+  .app-store-link:hover .store-download-arrow,
+  .app-store-link:focus-visible .store-download-arrow {
+    animation: none;
+    opacity: 1;
+  }
+  .app-store-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 5px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .store-download-arrow { animation: none; }
   }
   .app-store-badge {
     display: none;
@@ -849,6 +885,7 @@
     <p class="tagline"><span data-i18n="ja">忘れたくないを、すぐ残せる。<br>iPhone / iPad / Mac / Apple Watch</span><span data-i18n="en">Save what you don’t want to forget, right away.<br>iPhone / iPad / Mac / Apple Watch</span><span data-i18n="ko">잊고 싶지 않은 것을, 바로 남기세요.<br>iPhone / iPad / Mac / Apple Watch</span></p>
     <div class="store-download">
       <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
+      <span class="store-download-cue"><span data-i18n="ja" data-static-localized>ここからダウンロード</span><span data-i18n="en" data-static-localized>Download here</span><span data-i18n="ko" data-static-localized>여기에서 다운로드</span><span data-i18n="de" data-static-localized>Hier herunterladen</span><span data-i18n="zh-Hant" data-static-localized>從這裡下載</span><span data-i18n="fr" data-static-localized>Télécharger ici</span><span data-i18n="es" data-static-localized>Descarga aquí</span><span data-i18n="it" data-static-localized>Scarica qui</span><svg class="store-download-arrow" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v17M5 13l7 7 7-7"/></svg></span>
         <span class="sr-only"><span data-i18n="ja">App Storeから無料でダウンロード</span><span data-i18n="en">Download free on the App Store</span><span data-i18n="ko">App Store에서 무료로 다운로드</span></span>
         <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
         <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
@@ -1117,7 +1154,8 @@
 
 <div class="store-download-band reveal" id="free-download">
   <div class="store-download">
-    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
+    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
+      <span class="store-download-cue"><span data-i18n="ja" data-static-localized>ここからダウンロード</span><span data-i18n="en" data-static-localized>Download here</span><span data-i18n="ko" data-static-localized>여기에서 다운로드</span><span data-i18n="de" data-static-localized>Hier herunterladen</span><span data-i18n="zh-Hant" data-static-localized>從這裡下載</span><span data-i18n="fr" data-static-localized>Télécharger ici</span><span data-i18n="es" data-static-localized>Descarga aquí</span><span data-i18n="it" data-static-localized>Scarica qui</span><svg class="store-download-arrow" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v17M5 13l7 7 7-7"/></svg></span>
       <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
       <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
       <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
@@ -1394,7 +1432,8 @@
 
 <div class="store-download-band reveal" id="final-download">
   <div class="store-download">
-    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener" aria-label="App Store">
+    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
+      <span class="store-download-cue"><span data-i18n="ja" data-static-localized>ここからダウンロード</span><span data-i18n="en" data-static-localized>Download here</span><span data-i18n="ko" data-static-localized>여기에서 다운로드</span><span data-i18n="de" data-static-localized>Hier herunterladen</span><span data-i18n="zh-Hant" data-static-localized>從這裡下載</span><span data-i18n="fr" data-static-localized>Télécharger ici</span><span data-i18n="es" data-static-localized>Descarga aquí</span><span data-i18n="it" data-static-localized>Scarica qui</span><svg class="store-download-arrow" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v17M5 13l7 7 7-7"/></svg></span>
       <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
       <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
       <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
