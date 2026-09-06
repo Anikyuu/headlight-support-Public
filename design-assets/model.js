@@ -47,5 +47,13 @@ export function palette(state) {
 
 export function randomDesign(previous, random=Math.random) {
  const pickDifferent=(items,current)=>{const options=items.filter(item=>item!==current);return options[Math.floor(random()*options.length)];};
- return {...previous,style:"illustration",retro:false,body:pickDifferent(bodies.map(b=>b[0]),previous.body),face:pickDifferent(faces,previous.face)};
+ const faceWeights={smile:7,cuteGlossy:7,asleep:6,kira:3,round:2,tare:2};
+ const cuteFaces=faces.flatMap(face=>Array(faceWeights[face]||1).fill(face));
+ return {...previous,
+  style:random()<.25?'simple':'illustration',
+  retro:random()<.30,
+  retroPalette:pickDifferent(retros.map(p=>p[0]),previous.retroPalette),
+  body:pickDifferent(bodies.map(b=>b[0]),previous.body),
+  face:pickDifferent(cuteFaces,previous.face)
+ };
 }

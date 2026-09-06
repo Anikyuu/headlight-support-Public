@@ -51,3 +51,8 @@ main{max-width:1120px;margin:0 auto;padding:20px 36px 55px}.intro{margin-bottom:
 .shuffle { flex: 0 0 auto; min-height: 38px; gap: 7px; padding: 8px 12px; border: 1px solid #dededb; border-radius: 9px; background: #fff; color: #42423e; font-size: 14px; font-weight: 500; }
 .shuffle svg { width: 18px; height: 18px; }
 .shuffle:hover { background: #f3f3f1; }
+
+/* The app's three sleepy letters gently rise at staggered intervals. */
+.sleep-animated .sleep-letter { animation: sleep-rise 3.2s ease-in-out var(--sleep-delay) infinite; }
+@keyframes sleep-rise { 0%,100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(var(--sleep-lift)); opacity: .4; } }
+@media(prefers-reduced-motion:reduce) { .sleep-animated .sleep-letter { animation: none; } }
