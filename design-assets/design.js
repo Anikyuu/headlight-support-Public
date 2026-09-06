@@ -1,8 +1,8 @@
-import {bodies,retros,faces,defaults,defaultFaceSettings,rgb,palette,randomDesign} from './model.js?v=20260906-face-settings';
+import {bodies,retros,faces,defaults,defaultFaceSettings,rgb,palette,randomDesign} from './model.js?v=20260906-random-pose';
 import {pixels} from './pixels.js';
-import {copies} from './copy.js?v=20260906-face-settings';
+import {copies} from './copy.js?v=20260906-random-pose';
 import {mangaEye,bodyArtwork,mouthArtwork} from './artwork.js';
-import {setupDevice} from './device.js?v=20260906-face-settings';
+import {setupDevice} from './device.js?v=20260906-random-pose';
 const $=id=>document.getElementById(id);
 const languages=['ja','en','ko','de','zh-Hant','fr','es','it'];
 const guess=navigator.language.startsWith('zh')?'zh-Hant':navigator.language.split('-')[0];
@@ -101,8 +101,8 @@ for(const key of ['size','spacing','height'])$(key).addEventListener('input',eve
  renderPhone();
 });
 for(const key of ['retro','motion'])$(key).addEventListener('change',event=>{state[key]=event.target.checked;refresh();});
-$('shuffle').addEventListener('click',()=>{state=randomDesign(state);restoreFaceSettings();refresh();});
-$('reset').addEventListener('click',()=>{state={...defaults};faceSettings=structuredClone(defaultFaceSettings);refresh();});
+$('shuffle').addEventListener('click',()=>{state=randomDesign(state);restoreFaceSettings();deviceView.shuffle();refresh();});
+$('reset').addEventListener('click',()=>{state={...defaults};faceSettings=structuredClone(defaultFaceSettings);deviceView.reset();refresh();});
 $('language').addEventListener('change',event=>{lang=event.target.value;try{localStorage.setItem('headlightLang',lang);}catch{}localize();});
 // One light timer, paused in background tabs and for reduced-motion users.
 setInterval(()=>{if(document.hidden||reduceMotion.matches||!state.motion||state.style!=='illustration'||state.face==='asleep')return;renderPhone(true);setTimeout(()=>renderPhone(false),150);},4200);
