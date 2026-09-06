@@ -49,6 +49,12 @@
   Object.assign(overrides.index.fr, {1:'Une idée vous vient ? Dites-la, tout simplement.<br>iPhone / iPad / Mac / Apple Watch'});
   Object.assign(overrides.index.es, {1:'Cuando se te ocurra algo, solo dilo.<br>iPhone / iPad / Mac / Apple Watch'});
   Object.assign(overrides.index.it, {1:'Quando ti viene in mente qualcosa, basta dirlo.<br>iPhone / iPad / Mac / Apple Watch'});
+  // Supporting tagline chosen by Kai; keep the primary brand headline unchanged.
+  Object.assign(overrides.index["de"], {"1": "Was du nicht vergessen willst, sofort festhalten.<br>iPhone / iPad / Mac / Apple Watch"});
+  Object.assign(overrides.index["zh-Hant"], {"1": "不想忘記的，隨時記下。<br>iPhone / iPad / Mac / Apple Watch"});
+  Object.assign(overrides.index["fr"], {"1": "Gardez tout de suite ce que vous ne voulez pas oublier.<br>iPhone / iPad / Mac / Apple Watch"});
+  Object.assign(overrides.index["es"], {"1": "Guarda al instante lo que no quieres olvidar.<br>iPhone / iPad / Mac / Apple Watch"});
+  Object.assign(overrides.index["it"], {"1": "Salva subito ciò che non vuoi dimenticare.<br>iPhone / iPad / Mac / Apple Watch"});
   const titles = {"index":{"ja":"Head-Light: あなたを軽くする手帳","en":"Head-Light: Lighten your load","ko":"Head-Light: 마음이 가벼워지는 다이어리","de":"Head-Light: Leichter leben","zh-Hant":"Head-Light: 讓心變輕的手帳","fr":"Head-Light: Vivre plus léger","es":"Head-Light: Vive más ligero","it":"Head-Light: Vivi più leggero"},"tools":{"ja":"Head-Lightの道具 — あなたを軽くするアプリ","en":"The tools of Head-Light","ko":"Head-Light의 도구","de":"Die Werkzeuge von Head-Light","zh-Hant":"Head-Light 的工具","fr":"Les outils de Head-Light","es":"Las herramientas de Head-Light","it":"Gli strumenti di Head-Light"}};
   function install(page) {
     const run = function () {
