@@ -31,7 +31,7 @@ export const bodies = [
  ['vividGreen',[.04,.67,.28],[1,1,1],false],
  ['vividYellow',[1,.80,.02],[0,0,0],true]
 ];
-export const defaults = Object.freeze({style:'illustration',body:'classic',background:'white',accent:'mono',face:'smile',size:1.256889033317566,spacing:78,height:25.74490642547607,motion:true,retro:false,retroPalette:'lcdGreen'});
+export const defaults = Object.freeze({style:'illustration',body:'classic',background:'white',accent:'mono',face:'smile',size:1.26,spacing:78,height:41,motion:true,retro:false,retroPalette:'lcdGreen'});
 export const rgb = values => `rgb(${values.map(v=>Math.round(v*255)).join(',')})`;
 export function adjustedAccent(values, light) {
   const lum = .299*values[0]+.587*values[1]+.114*values[2];

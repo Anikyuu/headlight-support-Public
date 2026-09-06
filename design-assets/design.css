@@ -45,3 +45,9 @@ main{max-width:1120px;margin:0 auto;padding:20px 36px 55px}.intro{margin-bottom:
  .face-choice{min-height:65px}.face-choice svg{width:46px}
 }
 @media(max-width:370px){.body-choices{grid-template-columns:repeat(3,minmax(0,1fr))}.body-choice{flex-direction:column;text-align:center}.face-choices{grid-template-columns:repeat(4,minmax(0,1fr))}.quick-actions{gap:10px}.shuffle{padding:12px 8px}}
+
+/* A small optional shuffle action; body and face choices remain the main controls. */
+.quick-actions { justify-content: space-between; gap: 12px; }
+.shuffle { flex: 0 0 auto; min-height: 38px; gap: 7px; padding: 8px 12px; border: 1px solid #dededb; border-radius: 9px; background: #fff; color: #42423e; font-size: 14px; font-weight: 500; }
+.shuffle svg { width: 18px; height: 18px; }
+.shuffle:hover { background: #f3f3f1; }

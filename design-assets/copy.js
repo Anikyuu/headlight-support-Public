@@ -522,3 +522,6 @@ Object.entries(viewCopy).forEach(([lang,[frontView,threeDView]])=>Object.assign(
 
 const rotationCopy = {"ja": ["ドラッグして動かせます", "スマートフォンをドラッグして向きを変える。矢印キーでも操作できます。"], "en": ["Drag to turn", "Drag the phone to turn it. Arrow keys also work."], "ko": ["드래그해서 돌려 보세요", "스마트폰을 드래그해 방향을 바꿔 보세요. 방향키로도 조작할 수 있어요."], "de": ["Zum Drehen ziehen", "Ziehe das Smartphone zum Drehen. Auch die Pfeiltasten funktionieren."], "zh-Hant": ["拖曳即可轉動", "拖曳手機以調整方向，也可以使用方向鍵。"], "fr": ["Faites glisser pour tourner", "Faites glisser le téléphone pour le tourner. Les touches fléchées fonctionnent aussi."], "es": ["Arrastra para girar", "Arrastra el teléfono para girarlo. También puedes usar las flechas."], "it": ["Trascina per ruotare", "Trascina il telefono per ruotarlo. Puoi anche usare i tasti freccia."]};
 Object.entries(rotationCopy).forEach(([lang,[rotateHint,rotateDevice]])=>Object.assign(copies[lang],{rotateHint,rotateDevice}));
+
+const randomLabels = {"ja": "ランダム", "en": "Random", "ko": "랜덤", "de": "Zufall", "zh-Hant": "隨機", "fr": "Aléatoire", "es": "Al azar", "it": "Casuale"};
+Object.entries(randomLabels).forEach(([lang,shuffle])=>Object.assign(copies[lang],{shuffle}));
