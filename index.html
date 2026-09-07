@@ -826,6 +826,8 @@
 <script type="module" src="design-assets/hero-gallery.js?v=20260907-live-queue"></script>
 <link rel="stylesheet" href="design-assets/device.css?v=20260907-product">
 <link rel="stylesheet" href="design-assets/home-product.css?v=20260907-quiet-hero">
+<link rel="stylesheet" href="design-assets/voice-entry-demo.css?v=20260907-intro">
+<script type="module" src="design-assets/voice-entry-demo.js?v=20260907-intro"></script>
 <script type="module" src="design-assets/home-product.js?v=20260907-white-dice"></script>
 <link rel="stylesheet" href="design-assets/site-nav.css?v=20260907-direct">
 <script type="module" src="design-assets/site-nav.js?v=20260907-direct"></script>
@@ -969,6 +971,23 @@
       <span data-i18n="es" data-static-localized>Tomar notas, sin complicaciones.</span>
       <span data-i18n="it" data-static-localized>Prendere appunti, con semplicità.</span>
     </h2>
+    <figure class="voice-entry-demo" aria-label="大きなマイクを一度押し、話して送信と言うと、言葉がメモに残る流れ。">
+      <div class="voice-demo-art" aria-hidden="true">
+        <div class="voice-demo-source">
+          <div class="voice-demo-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="voice-demo-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3M6 11v2a6 6 0 0 0 12 0v-2M12 19v3M8 22h8"/></svg></div>
+          <svg class="voice-demo-hand" viewBox="0 0 96 130" fill="#fff" stroke="#66666e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M34 67V18a8 8 0 0 1 16 0v39-8a8 8 0 0 1 16 0v9-2a8 8 0 0 1 16 0v10a7 7 0 0 1 12 5v24c0 17-10 25-10 25H45c-4-10-12-18-18-26L14 78c-6-9 4-18 11-12l9 9"/><path d="M50 53v19M66 57v18M82 66v14"/></svg>
+          <span class="voice-demo-send">送信</span>
+        </div>
+        <svg class="voice-demo-connector" viewBox="0 0 44 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15h38M31 6l9 9-9 9"/></svg>
+        <div class="voice-demo-result">
+          <div class="voice-demo-speech"><span class="voice-demo-speech-text">牛乳を買う。</span></div>
+          <div class="voice-demo-note"><span class="voice-demo-paper-title">メモ</span><span class="voice-demo-note-text">牛乳を買う。</span><div class="voice-demo-saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m7.5 12 3 3 6-6"/></svg><span class="voice-demo-saved-label">残せました</span></div></div>
+        </div>
+      </div>
+      <figcaption class="voice-demo-steps"><div class="voice-demo-step" data-active="true"><b>1</b><span>一度押す</span></div><div class="voice-demo-step" data-active="true"><b>2</b><span>話して「送信」</span></div><div class="voice-demo-step" data-active="true"><b>3</b><span>メモに残る</span></div></figcaption>
+      <button class="voice-demo-control" type="button" aria-label="アニメーションを止める" hidden><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g class="demo-pause"><path d="M7 4v12M13 4v12"/></g><g class="demo-play"><path d="m6 3 10 7-10 7z"/></g><g class="demo-replay"><path d="M4 6a7 7 0 1 1-1 6M4 2v4h4"/></g></svg></button>
+    </figure>
     <p class="lead">
       <span data-i18n="ja" data-static-localized>大きなマイクを一度押して話し、最後に「送信」と言えば、メモが残ります。買うものや忘れたくない用事、ふと思いついたことを、声でも文字でも気軽に残せる手帳です。</span>
       <span data-i18n="en" data-static-localized>Tap the large microphone once, speak, and say “send it” to save your note. Shopping lists, things to remember, or a passing thought — capture them easily by voice or text.</span>
