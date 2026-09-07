@@ -1,5 +1,20 @@
 # Heavy to light
 
+Current website asset: `heavy-to-light-color-v2.png`. Kai requested a redraw because the original illustration had small anatomical inconsistencies. The replacement preserves the selected colors, character and three-scene story, with simplified hands, natural grips and clearer limb connections. The original PNG remains as a versioned reference. No page copy changed.
+
+## Redraw prompt (built-in image generation)
+
+Redraw the attached three-panel comic with cleaner anatomy and coherent objects. This is a correction of the selected illustration, not a change of direction. Preserve the white background, three equal vertical scenes arranged horizontally, the same expressive adult character with tousled dark hair, pale sky-blue shirt, charcoal trousers and shoes, humorous hand-drawn ink and restrained watercolor colors. Preserve the exaggerated HEAVY → SPEAK → LIGHT narrative and all full bodies. Wide 2:1 composition, no borders, no text or captions.
+
+Correct all malformed anatomy: each character has exactly two arms, two legs, two hands; each hand has five plausible fingers with a clearly placed thumb, natural wrists and grip. Simplify poses and hands if necessary for clarity rather than adding extra joints. Ensure shoes connect naturally to ankles, fingers never merge with phones or papers, and faces remain expressive but coherent. Keep the character visibly an adult and consistent between panels.
+
+LEFT: Huge tangled thought bundle with a few coherent blank calendar sheets and crumpled papers presses down on head and shoulders. Knees bent under weight, funny strained face, one sweat drop. One hand supports the burden, the other naturally grips one phone at waist height. Exactly one phone. Clear silhouette and limbs. Avoid excessive black scribbling obscuring the supporting hand.
+MIDDLE: Character recovering upright, talking into one phone held naturally near mouth, screen at three-quarter angle toward viewer showing only a simple microphone symbol. A clean flowing strand of papers connects the shrinking burden to the phone, clearly being collected inside the phone. Simplify paper shapes and tangled strand so nothing looks like a third arm, wires attached to the character, or deformed objects. Free arm relaxed with a simple clear hand pose. Mouth and phone placement must visibly read as speaking.
+RIGHT: Burden gone, joyful relaxed face, both feet gently floating above ground, shadow separated. One hand naturally holds the SAME phone, simple screen with a small check and note lines. Free arm extends loosely to the side, five natural fingers; no doubled fingers or broken wrist. Keep pleasant comic buoyancy.
+
+Clean readable contour drawing, lightly colored as reference, moderately simplified details. White gutters separate the three scenes. No text, letters, numbers, logos, watermarks, decorative backgrounds, extra people, extra devices, or extra limbs. Do not switch to monochrome. Preserve humor and the expressive contrast of burden and relief.
+
+
 Selected by Kai: the colored, exaggerated comic showing thoughts as a heavy burden, speaking into a phone, then floating with relief. Created with the built-in image generation tool; the later line-only variation was not selected. The source PNG is copied unchanged into this folder.
 
 ## Generation prompt
