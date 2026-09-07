@@ -179,3 +179,15 @@ footer { background:#f5f5f7; }
 /* The voice-entry photograph belongs beside the words feature it explains. */
 #words .words-speaking-photo { width:100%; max-width:720px; margin:8px auto 24px; }
 #words .words-speaking-photo img { display:block; width:100%; height:auto; }
+
+/* Connect the philosophy to the app identity people see on their Home Screen. */
+#strong-light .brand-signature { display:flex; flex-direction:column; align-items:center; gap:12px; margin:0 auto 30px; text-align:center; }
+#strong-light .brand-signature img { width:96px; height:96px; border-radius:23px; }
+#strong-light .brand-signature-name { font-size:clamp(38px,5vw,52px); line-height:1.1; font-weight:750; letter-spacing:-1.6px; color:#1d1d1f; }
+#strong-light .brand-signature-reading { font-size:15px; line-height:1.4; letter-spacing:.12em; color:#737378; }
+html:not([lang="ja"]) #strong-light .brand-signature-reading { display:none; }
+#strong-light .strong-light-copy>h2 { margin-top:0; }
+@media(max-width:760px) {
+ #strong-light .brand-signature { gap:10px; margin-bottom:28px; }
+ #strong-light .brand-signature img { width:80px; height:80px; border-radius:19px; }
+}
