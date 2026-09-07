@@ -36,7 +36,7 @@ section { border:0; padding:112px 32px; scroll-margin-top:68px; }
 .hero[data-motion-idle="true"] .hero-device-float { animation-play-state:paused; }
 .free-intro { padding:100px 32px; background:#fff; }
 .free-intro .lead { max-width:42em; }
-.free-intro-illustration, #free-download { display:none; }
+.free-intro-illustration { display:none; }
 #collection { background:#f5f5f7; overflow:hidden; }
 #collection > .inner { align-items:center; text-align:center; }
 #collection .cols { display:flex; flex-direction:column-reverse; gap:40px; width:100%; margin-top:26px; }
