@@ -1,0 +1,8 @@
+/* Two quiet, inward-facing cues make the App Store badge unmistakable. */
+.app-store-link,.about-download { position:relative; }
+.store-download-side { position:absolute; top:50%; width:30px; height:30px; color:#1d1d1f; pointer-events:none; animation:storeSidePulse 1.6s ease-in-out infinite; }
+.store-download-side.side-left { left:-43px; transform:translateY(-50%); }
+.store-download-side.side-right { right:-43px; transform:translateY(-50%) scaleX(-1); }
+@keyframes storeSidePulse { 0%,100% { opacity:1; } 50% { opacity:.18; } }
+@media(max-width:760px){.store-download-side{width:26px;height:26px}.store-download-side.side-left{left:-36px}.store-download-side.side-right{right:-36px}}
+@media(prefers-reduced-motion:reduce){.store-download-side{animation:none;opacity:1}}

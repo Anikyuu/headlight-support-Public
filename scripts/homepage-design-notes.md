@@ -23,7 +23,7 @@ The original hidden hand image remains only to preserve the source-image invento
 - Shared renderer: 952 combinations match the previous design studio output exactly.
 - 138 unique source assets. The shared live queue shows every design over time; simultaneous duplicate designs are excluded. Four simulated viewport widths verified, including 390px mobile and 3840px wide desktop.
 - Browser: Japanese desktop and 390px mobile layouts, all eight language selections without horizontal overflow, look selection, arrow-key device rotation, pause/resume of all three lanes, image loading.
-- Local preview only. No production deployment performed for this revision.
+- The initial verification was performed in local preview before publication.
 - Follow-up after Kai’s screenshot: replaced the fixed repeated strips with offscreen slot replacement. Browser samples confirmed different first/last designs over time, 42 mounted designs / 42 unique designs at the preview width, and no repeated photo/paper families.
 
 ## Direct navigation and About page
@@ -32,6 +32,10 @@ The top menu links directly to `about.html`, `design.html`, and `tools.html`. `s
 
 `about.html` introduces the existing approved copy through the collection, words, journal and the thinking behind Head-Light, reusing actual screenshots and the existing introduction illustration. `about.js` uses the same keyed translations and saved language as the homepage. The app icon was moved unchanged from the inline base64 image to `img/app-icon.png` so both pages can share it.
 
-Browser verification: two mode controls, Simple removes the illustrated eyes, 112/96px icon CSS, direct navigation to the existing design and tools pages, About page in all eight languages at 390px without horizontal overflow, all three mobile menu links visible. This follow-up is still a local preview.
+Browser verification: two mode controls, Simple removes the illustrated eyes, 112/96px icon CSS, direct navigation to the existing design and tools pages, About page in all eight languages at 390px without horizontal overflow, all three mobile menu links visible. This follow-up was verified in local preview before publication.
 
 The homepage device is deliberately smaller: 220px normally, 190px on mobile, and 250px on large desktops. Kai requested removal of the visible rotation hint and front-view button. Direct dragging and keyboard rotation remain, along with the two mode buttons and prominent app icon. `setupDevice` therefore accepts a missing angle button; the full studio still supplies its existing button.
+
+## Download guidance and publication
+
+Every App Store download badge on the homepage and About page has two inward-facing arrows, pulsing together. Reduced Motion keeps them static. Kai requested publication after this adjustment; delivery uses the existing GitHub Pages main branch.
