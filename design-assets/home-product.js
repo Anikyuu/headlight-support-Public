@@ -1,4 +1,4 @@
-import {createPhoneArtwork} from './phone-artwork.js?v=20260907-gallery';
+import {createPhoneArtwork} from './phone-artwork.js?v=20260907-clean-screen';
 import {defaults,defaultFaceSettings} from './model.js?v=20260906-centered-device';
 import {copies} from './copy.js?v=20260906-centered-device';
 import {setupDevice} from './device.js?v=20260907-optional-control';
@@ -32,7 +32,7 @@ function localize(){
 }
 function render(){
  const state={...defaults,...defaultFaceSettings.smile,motion:false,...presets[selected]};
- phone.innerHTML=createPhoneArtwork(state,{appText:key=>copies.en[key]||key,text:key=>copies.en[key]||key}).render();
+ phone.innerHTML=createPhoneArtwork(state,{showDeviceIndicators:false,appText:key=>copies.en[key]||key,text:key=>copies.en[key]||key}).render();
  document.querySelectorAll('.hero-presets button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===selected)));
 }
 presets.forEach((preset,i)=>{
