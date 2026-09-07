@@ -43,3 +43,7 @@ Every App Store download badge on the homepage and About page has two inward-fac
 The hero frame uses scoped border-box sizing and derives its outer height from the SVG screen ratio plus rim/bezel insets (8px desktop, 5px mobile). The SVG fills the matching viewport with `xMidYMid slice` to avoid black letterbox gaps from fractional rounding.
 
 Kai clarified that the upper black island was not the unwanted line. The hero keeps both original device indicators; only the physical frame/screen fit correction remains. The former two-mode control was replaced by the die at Kai’s request. The die gives a short roll response, and illustrated faces blink while the hero is visible. Reduced Motion removes automatic blinking and interpolated movement. Keyboard and eight-language labels were verified in the browser.
+
+## Brand name and supported devices
+
+The hero shows the full hyphenated `HEAD-LIGHT` above the icon. Kai explicitly preferred the original quiet gold typography over a large bold name: 14px, weight 600, .55em tracking, #b08d57. Preserve this treatment rather than enlarging it. The approved supporting tagline is unchanged in all eight languages. The supported devices form a separate small line below the download badge, with middle-dot separators.
