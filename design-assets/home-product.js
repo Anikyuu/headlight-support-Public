@@ -1,53 +1,59 @@
 import {createPhoneArtwork} from './phone-artwork.js?v=20260907-clean-screen';
-import {defaults,defaultFaceSettings} from './model.js?v=20260906-centered-device';
+import {defaults,defaultFaceSettings,randomDesign,palette} from './model.js?v=20260906-centered-device';
 import {copies} from './copy.js?v=20260906-centered-device';
 import {setupDevice} from './device.js?v=20260907-optional-control';
 const device=document.querySelector('#hero-device');
 const phone=document.querySelector('#hero-phone');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const deviceView=setupDevice(device,null,reduced);
+const dice=document.querySelector('.hero-dice');
 const labels={
- ja:['表示モード','シンプル','イラスト'],
- en:['Display mode','Simple','Illustrated'],
- ko:['표시 모드','심플','일러스트'],
- de:['Anzeigemodus','Schlicht','Illustriert'],
- 'zh-Hant':['顯示模式','簡約','插畫'],
- fr:['Mode d’affichage','Simple','Illustré'],
- es:['Modo de visualización','Simple','Ilustrado'],
- it:['Modalità di visualizzazione','Semplice','Illustrato']
+ ja:'サイコロでデザインを変える',en:'Roll the dice for a new design',
+ ko:'주사위로 디자인 바꾸기',de:'Ein neues Design würfeln',
+ 'zh-Hant':'擲骰子換個設計',fr:'Lancer le dé pour changer de design',
+ es:'Lanzar el dado para cambiar el diseño',it:'Lancia il dado per cambiare design'
 };
-const presets=[
- {body:'classic',face:'smile',style:'simple'},
- {body:'classic',face:'smile',style:'illustration'}
-];
-let selected=1;
+let state={...defaults,...defaultFaceSettings.smile};
+let blinkTimeout;
+let diceAnimation;
 function localize(){
  const lang=document.documentElement.lang;
- const words=labels[lang]||labels.en;
+ const label=labels[lang]||labels.en;
  const t=key=>(copies[lang]||copies.en)[key]||copies.en[key]||key;
  deviceView.localize(t);
- document.querySelector('.hero-presets').setAttribute('aria-label',words[0]);
- document.querySelectorAll('.hero-presets button').forEach((button,i)=>{button.textContent=words[i+1];button.setAttribute('aria-label',words[i+1]);});
+ dice.setAttribute('aria-label',label);dice.title=label;
  render();
 }
-function render(){
- const state={...defaults,...defaultFaceSettings.smile,motion:false,...presets[selected]};
- phone.innerHTML=createPhoneArtwork(state,{showDeviceIndicators:false,appText:key=>copies.en[key]||key,text:key=>copies.en[key]||key}).render();
- document.querySelectorAll('.hero-presets button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===selected)));
+function render(closed=false){
+ phone.closest('.phone-holder').style.background=palette(state).bg;
+ phone.innerHTML=createPhoneArtwork({...state,motion:!reduced.matches},{appText:key=>copies.en[key]||key,text:key=>copies.en[key]||key}).render(closed);
 }
-presets.forEach((preset,i)=>{
- const button=document.createElement('button');button.type='button';
- button.addEventListener('click',()=>{selected=i;render();});
- document.querySelector('.hero-presets').append(button);
+dice.addEventListener('click',()=>{
+ clearTimeout(blinkTimeout);
+ state=randomDesign(state);
+ Object.assign(state,defaultFaceSettings[state.face]);
+ render();deviceView.shuffle();
+ diceAnimation?.cancel();
+ if(!reduced.matches) diceAnimation=dice.querySelector('svg').animate([
+  {transform:'rotate(0deg) scale(1)'},
+  {transform:'rotate(-24deg) scale(.8)',offset:.2},
+  {transform:'rotate(195deg) scale(1.12)',offset:.75},
+  {transform:'rotate(180deg) scale(1)'}
+ ],{duration:480,easing:'cubic-bezier(.2,.7,.3,1)'});
 });
-document.querySelector('.hero-presets').hidden=false;
+dice.hidden=false;
 new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+reduced.addEventListener('change',()=>{diceAnimation?.cancel();clearTimeout(blinkTimeout);render();});
 localize();
 let visible=true;
 const hero=document.querySelector('.hero');
 const idle=()=>{hero.dataset.motionIdle=String(document.hidden||!visible);};
 document.addEventListener('visibilitychange',idle);
 new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;idle();}).observe(hero);
+setInterval(()=>{
+ if(document.hidden||!visible||reduced.matches||state.style!=='illustration'||state.face==='asleep')return;
+ render(true);blinkTimeout=setTimeout(()=>render(),150);
+},4200);
 // The language installer uses the source order. Build disclosure panels only
 // after it has cloned the translations, without changing that source contract.
 function refineDetails(){

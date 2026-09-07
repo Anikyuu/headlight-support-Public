@@ -1,6 +1,6 @@
 # Homepage product presentation
 
-The homepage uses the same `phone-artwork.js` renderer and `device.js` rotation controls as the existing design studio. It does not execute the app itself. The homepage offers only Simple and Illustrated modes, both with the white body. The full studio remains at `design.html`. The app icon is prominently displayed at 112px on desktop and 96px on mobile.
+The homepage uses the same `phone-artwork.js` renderer and `device.js` rotation controls as the existing design studio. It does not execute the app itself. The homepage starts with the white smiling design and offers a die below the phone. Each press uses the studio’s shared `randomDesign` function to change the style, face, body/retro palette and device pose. The full studio remains at `design.html`. The app icon is prominently displayed at 112px on desktop and 96px on mobile.
 
 ## Gallery
 
@@ -34,7 +34,7 @@ The top menu links directly to `about.html`, `design.html`, and `tools.html`. `s
 
 Browser verification: two mode controls, Simple removes the illustrated eyes, 112/96px icon CSS, direct navigation to the existing design and tools pages, About page in all eight languages at 390px without horizontal overflow, all three mobile menu links visible. This follow-up was verified in local preview before publication.
 
-The homepage device is deliberately smaller: 220px normally, 190px on mobile, and 250px on large desktops. Kai requested removal of the visible rotation hint and front-view button. Direct dragging and keyboard rotation remain, along with the two mode buttons and prominent app icon. `setupDevice` therefore accepts a missing angle button; the full studio still supplies its existing button.
+The homepage device is deliberately smaller: 220px normally, 190px on mobile, and 250px on large desktops. Kai requested removal of the visible rotation hint and front-view button. Direct dragging and keyboard rotation remain, along with the die and prominent app icon. `setupDevice` therefore accepts a missing angle button; the full studio still supplies its existing button.
 
 ## Download guidance and publication
 
@@ -42,4 +42,4 @@ Every App Store download badge on the homepage and About page has two inward-fac
 
 The hero frame uses scoped border-box sizing and derives its outer height from the SVG screen ratio plus rim/bezel insets (8px desktop, 5px mobile). The SVG fills the matching viewport with `xMidYMid slice` to avoid black letterbox gaps from fractional rounding.
 
-The hero also omits the decorative black island and home indicator at the top/bottom of the model screen (`showDeviceIndicators:false`). The studio and gallery keep their existing default rendering.
+Kai clarified that the upper black island was not the unwanted line. The hero keeps both original device indicators; only the physical frame/screen fit correction remains. The former two-mode control was replaced by the die at Kai’s request. The die gives a short roll response, and illustrated faces blink while the hero is visible. Reduced Motion removes automatic blinking and interpolated movement. Keyboard and eight-language labels were verified in the browser.

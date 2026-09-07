@@ -32,9 +32,6 @@ section { border:0; padding:112px 32px; scroll-margin-top:68px; }
 .hero-product .device-stage { padding:0 0 24px; }
 .hero-product .device-shadow { width:170px; height:16px; bottom:0; filter:blur(14px); opacity:.4; }
 #hero-phone { display:block; width:100%; height:100%; }
-.hero-presets { display:flex; gap:12px; padding:8px 14px; border:1px solid #0000000a; background:#fff; border-radius:30px; }
-.hero-presets button { appearance:none; width:23px; height:23px; border:1px solid #00000018; border-radius:50%; background:var(--swatch); cursor:pointer; padding:0; position:relative; }
-.hero-presets button[aria-pressed="true"]::after { content:""; position:absolute; inset:-5px; border:1.5px solid #737378; border-radius:50%; }
 @keyframes productFloat { 0%,100% { transform:translateY(0) rotate(-.5deg); } 50% { transform:translateY(-7px) rotate(.5deg); } }
 .hero[data-motion-idle="true"] .hero-device-float { animation-play-state:paused; }
 .free-intro { padding:100px 32px; background:#fff; }
@@ -146,15 +143,10 @@ footer { background:#f5f5f7; }
 .research-details { margin-top:30px; }
 .research-details p { margin-top:20px; }
 @media(max-width:760px) { .strong-light-layout { grid-template-columns:1fr; gap:26px; } .strong-light-layout>img { width:180px; margin:auto; } }
-/* Kai: keep the app icon prominent and offer only the two main modes here. */
+/* Keep the app icon prominent; the die below the phone invites exploration. */
 .hero .appicon { width:112px; border-radius:25%; box-shadow:0 12px 28px #00000020; }
 .hero .inner { gap:22px; }
-.hero-presets { width:max-content; max-width:100%; box-sizing:border-box; margin:0 auto 30px; gap:3px; padding:5px; background:#eaeaec; border:0; border-radius:30px; }
-.hero-presets button { width:auto; height:auto; min-height:42px; padding:8px 24px; border:0; border-radius:24px; background:transparent; color:#616168; font:inherit; font-size:14px; font-weight:600; cursor:pointer; }
-.hero-presets button[aria-pressed="true"] { background:#fff; color:#1d1d1f; box-shadow:0 2px 7px #00000012; }
-.hero-presets button[aria-pressed="true"]::after { display:none; }
-.hero-presets button:focus-visible { outline:2px solid #886b40; outline-offset:2px; }
-@media(max-width:760px){.hero .appicon{width:96px}.hero .inner{gap:20px}.hero-presets button{padding-inline:22px}.hero{padding-top:32px}}
+@media(max-width:760px){.hero .appicon{width:96px}.hero .inner{gap:20px}.hero{padding-top:32px}}
 /* Match the screen to the SVG ratio after subtracting the physical frame. */
 .hero-product .device,.hero-product .device * { box-sizing:border-box; }
 .hero-product .device {
@@ -164,3 +156,11 @@ footer { background:#f5f5f7; }
 }
 .hero-product .phone-holder { background:#fff; line-height:0; }
 @media(max-width:760px){.hero-product .device{--hero-frame-inset:5px}}
+
+.hero-dice { display:grid; place-items:center; width:66px; height:66px; padding:12px; margin:22px auto 0; color:#28282d; background:linear-gradient(#fff,#f4f4f6); border:1px solid #00000010; border-radius:20px; box-shadow:0 5px 0 #dedee3,0 10px 20px #00000012,inset 0 1px 0 #fff; cursor:pointer; transition:transform .18s ease,box-shadow .18s ease; -webkit-tap-highlight-color:transparent; }
+.hero-dice[hidden] { display:none; }
+.hero-dice svg { width:40px; height:40px; }
+@media(hover:hover) { .hero-dice:hover { transform:translateY(-3px) rotate(-4deg); box-shadow:0 8px 0 #dedee3,0 15px 26px #00000016; } }
+.hero-dice:active { transform:translateY(4px) scale(.96); box-shadow:0 1px 0 #dedee3,0 4px 10px #00000010; }
+.hero-dice:focus-visible { outline:3px solid #886b40; outline-offset:6px; }
+@media(prefers-reduced-motion:reduce) { .hero-dice { transition:none; } .hero-dice:hover,.hero-dice:active { transform:none; } }
