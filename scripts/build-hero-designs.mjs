@@ -60,6 +60,7 @@ while(pool.length) {
 await mkdir(new URL('img/hero-designs/',root),{recursive:true});
 const names=[];
 const artworkBackgrounds=new Map();
+const designTraits=new Map();
 for (const [body,face,retroPalette,style='illustration',background] of variants) {
   const name=background?`art-${background}-${body}-${style==='simple'?'simple':face}`:style==='simple'?`simple-${retroPalette?'retro-'+retroPalette:body}`:retroPalette?`retro-${retroPalette}-${face}`:`${body}-${face}`;
   const state={...defaults,...defaultFaceSettings[face],body,face,style,motion:false,
@@ -70,6 +71,10 @@ for (const [body,face,retroPalette,style='illustration',background] of variants)
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="420" height="913" viewBox="0 0 420 913" preserveAspectRatio="xMidYMid slice">${artwork}</svg>\n`;
   await writeFile(new URL(`img/hero-designs/${name}.svg`,root),svg);
   names.push(name);
+  const paper=['paint','watercolor','terrazzo','linen','washi'].includes(background);
+  const family=background?(paper?'paper':background):retroPalette?'retro-'+retroPalette:body;
+  const color=background?(paper?'cream':({'paper-cut':'coral','alpine-lake':'blue','flower-art':'floral',ocean:'aqua',geometric:'multicolor',meadow:'sky'}[background])):retroPalette||body;
+  designTraits.set(name,{family,color,background:!!background});
   if(background)artworkBackgrounds.set(name,background);
 }
 for(const file of await readdir(new URL('img/hero-designs/',root))) {
@@ -78,18 +83,18 @@ for(const file of await readdir(new URL('img/hero-designs/',root))) {
 const card=name=>{
   const background=artworkBackgrounds.get(name);
   const style=background?` style="background-image:linear-gradient(#ffffff${['paper-cut','alpine-lake','flower-art','ocean','geometric','meadow'].includes(background)?'2e':'24'},#ffffff${['paper-cut','alpine-lake','flower-art','ocean','geometric','meadow'].includes(background)?'2e':'24'}),url('img/hero-backgrounds/${background}.jpg')"`:'';
-  return `<span class="hero-design-card"><span class="hero-design-screen"${style}><img src="img/hero-designs/${name}.svg" alt="" width="420" height="913" decoding="async" loading="lazy"></span></span>`;
+  const {family,color,background:hasBackground}=designTraits.get(name);
+  return `<span class="hero-design-card" data-design="${name}" data-family="${family}" data-color="${color}" data-background="${hasBackground}"><span class="hero-design-screen"${style}><img src="img/hero-designs/${name}.svg" alt="" width="420" height="913" decoding="async" loading="lazy"></span></span>`;
 };
-// Every lane has the entire wardrobe, with an independently shuffled order.
+// A compact static fallback. The inert template is the shared live queue.
 const rows=Array.from({length:3},(_,i)=>{
-  const lane=[...names];
-  for(let j=lane.length-1;j>0;j--) { const k=Math.floor(random()*(j+1)); [lane[j],lane[k]]=[lane[k],lane[j]]; }
-  const items=lane.map(card).join('');
-  return `    <div class="hero-design-row"><div class="hero-design-track"><div class="hero-design-set">${items}</div><div class="hero-design-set">${items}</div></div></div>`;
+ const items=names.slice(i*18,(i+1)*18).map(card).join('');
+ return `    <div class="hero-design-row"><div class="hero-design-track">${items}</div></div>`;
 }).join('\n');
+const catalog=`<template id="gallery-design-catalog">${names.map(card).join('')}</template>`;
 const path=new URL('index.html',root);
 const html=await readFile(path,'utf8');
 const start='<!-- hero-designs:start -->',end='<!-- hero-designs:end -->';
 if(!html.includes(start)||!html.includes(end))throw Error('Missing hero gallery markers');
-await writeFile(path,html.replace(new RegExp(`${start}[\\s\\S]*?${end}`),`${start}\n  <div class="hero-design-wall" aria-hidden="true">\n${rows}\n  </div>\n  ${end}`));
-console.log(`Generated ${names.length} designs and three seamless rows in ${fileURLToPath(root)}`);
+await writeFile(path,html.replace(new RegExp(`${start}[\\s\\S]*?${end}`),`${start}\n  ${catalog}\n  <div class="hero-design-wall" aria-hidden="true">\n${rows}\n  </div>\n  ${end}`));
+console.log(`Generated ${names.length} designs and three live gallery lanes in ${fileURLToPath(root)}`);
