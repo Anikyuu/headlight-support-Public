@@ -157,17 +157,17 @@ footer { background:#f5f5f7; }
 .hero-product .phone-holder { background:#fff; line-height:0; }
 @media(max-width:760px){.hero-product .device{--hero-frame-inset:5px}}
 
-.hero-dice { display:grid; place-items:center; position:relative; width:82px; height:82px; box-sizing:border-box; padding:12px; margin:16px auto 0; color:#fff; background:linear-gradient(145deg,#3c3c40,#18181b); border:1px solid #151518; border-radius:24px; box-shadow:0 5px 0 #09090b,0 12px 24px #00000020,inset 0 1px 0 #ffffff25; cursor:pointer; transition:transform .18s ease,box-shadow .18s ease; -webkit-tap-highlight-color:transparent; }
+.hero-dice { display:grid; place-items:center; position:relative; width:82px; height:82px; box-sizing:border-box; padding:12px; margin:16px auto 0; color:#36363b; background:linear-gradient(145deg,#fff,#f0f0f3); border:1px solid #dddde2; border-radius:24px; box-shadow:0 5px 0 #d6d6dc,0 12px 24px #00000020,inset 0 1px 0 #fff; cursor:pointer; transition:transform .18s ease,box-shadow .18s ease; -webkit-tap-highlight-color:transparent; }
 .hero-dice[hidden] { display:none; }
 .hero-dice-icon { display:grid; place-items:center; width:54px; height:54px; }
 .hero-dice svg { width:48px; height:48px; }
 .hero-dice:not(.has-been-tried) .hero-dice-icon { animation:tryDiceNudge 4.6s ease-in-out infinite; }
-.hero-dice:not(.has-been-tried)::after { content:""; position:absolute; inset:-1px; border:1.5px solid #626269; border-radius:24px; pointer-events:none; animation:tryDiceGlow 4.6s ease-out infinite; }
+.hero-dice:not(.has-been-tried)::after { content:""; position:absolute; inset:-1px; border:1.5px solid #b8b8c0; border-radius:24px; pointer-events:none; animation:tryDiceGlow 4.6s ease-out infinite; }
 .hero-dice[data-in-view="false"] .hero-dice-icon,.hero[data-motion-idle="true"] .hero-dice-icon,.hero-dice[data-in-view="false"]::after,.hero[data-motion-idle="true"] .hero-dice::after { animation-play-state:paused; }
 @keyframes tryDiceNudge { 0%,24%,100% { transform:rotate(0deg) translateY(0); } 6% { transform:rotate(-13deg) translateY(-5px); } 12% { transform:rotate(12deg) translateY(-3px); } 18% { transform:rotate(-5deg) translateY(0); } }
 @keyframes tryDiceGlow { 0% { transform:scale(1); opacity:0; } 6% { opacity:.6; } 34%,100% { transform:scale(1.32); opacity:0; } }
-@media(hover:hover) { .hero-dice:hover { transform:translateY(-3px) rotate(-4deg); box-shadow:0 8px 0 #09090b,0 16px 26px #00000025; } }
-.hero-dice:active { transform:translateY(4px) scale(.96); box-shadow:0 1px 0 #09090b,0 4px 10px #00000013; }
+@media(hover:hover) { .hero-dice:hover { transform:translateY(-3px) rotate(-4deg); box-shadow:0 8px 0 #d6d6dc,0 16px 26px #00000025; } }
+.hero-dice:active { transform:translateY(4px) scale(.96); box-shadow:0 1px 0 #d6d6dc,0 4px 10px #00000013; }
 .hero-dice:focus-visible { outline:3px solid #777780; outline-offset:6px; }
 @media(prefers-reduced-motion:reduce) { .hero-dice { transition:none; } .hero-dice:not(.has-been-tried) .hero-dice-icon,.hero-dice:not(.has-been-tried)::after { animation:none; } .hero-dice::after { display:none; } .hero-dice:hover,.hero-dice:active { transform:none; } }
 
