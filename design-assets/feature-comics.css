@@ -1,4 +1,4 @@
-/* Feature sections focus on the real app screens; the comic appears only in the introduction. */
+/* Feature sections focus on the real app screens; comics support the introduction and AI sorting example. */
 #words .inner,#journal .inner,#routines .inner { display:flex; flex-direction:column; align-items:center; text-align:center; }
 #words .inner>.eyebrow,#journal .inner>.eyebrow,#routines .inner>.eyebrow { margin-top:0; }
 #words .inner>.lead,#journal .inner>.lead,#routines .inner>.lead { max-width:760px; }
@@ -12,3 +12,7 @@
  #words .cols,#journal .cols,#routines .cols { grid-template-columns:1fr; gap:24px; }
  #words .shots,#journal .shots,#routines .shots { padding:28px 16px; }
 }
+
+/* A single feature story illustrates the change without replacing the spoken example. */
+#ai-sorting .feature-comic { width:100%; max-width:760px; margin:24px auto 32px; }
+#ai-sorting .feature-comic img { display:block; width:100%; height:auto; mix-blend-mode:multiply; }
