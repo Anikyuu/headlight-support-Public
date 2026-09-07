@@ -33,3 +33,5 @@ The top menu links directly to `about.html`, `design.html`, and `tools.html`. `s
 `about.html` introduces the existing approved copy through the collection, words, journal and the thinking behind Head-Light, reusing actual screenshots and the existing introduction illustration. `about.js` uses the same keyed translations and saved language as the homepage. The app icon was moved unchanged from the inline base64 image to `img/app-icon.png` so both pages can share it.
 
 Browser verification: two mode controls, Simple removes the illustrated eyes, 112/96px icon CSS, direct navigation to the existing design and tools pages, About page in all eight languages at 390px without horizontal overflow, all three mobile menu links visible. This follow-up is still a local preview.
+
+The homepage device is deliberately smaller: 220px normally, 190px on mobile, and 250px on large desktops. Kai requested removal of the visible rotation hint and front-view button. Direct dragging and keyboard rotation remain, along with the two mode buttons and prominent app icon. `setupDevice` therefore accepts a missing angle button; the full studio still supplies its existing button.

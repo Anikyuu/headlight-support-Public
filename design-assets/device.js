@@ -15,11 +15,11 @@ export function setupDevice(device, button, reduceMotion) {
     device.style.setProperty('--reflection-x', `${30 + angle.y * .8}%`);
   }
   function label() {
-    button.setAttribute('aria-pressed', String(front));
-    button.querySelector('span').textContent = translate(front ? 'threeDView' : 'frontView');
+    button?.setAttribute('aria-pressed', String(front));
+    if (button) button.querySelector('span').textContent = translate(front ? 'threeDView' : 'frontView');
     device.setAttribute('aria-label', translate('rotateDevice'));
   }
-  button.addEventListener('click', () => {
+  button?.addEventListener('click', () => {
     front = !front;
     if (front) { remembered = { ...angle }; angle = { x: 0, y: 0, z: 0 }; }
     else angle = { ...remembered };

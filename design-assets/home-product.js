@@ -1,20 +1,20 @@
 import {createPhoneArtwork} from './phone-artwork.js?v=20260907-gallery';
 import {defaults,defaultFaceSettings} from './model.js?v=20260906-centered-device';
 import {copies} from './copy.js?v=20260906-centered-device';
-import {setupDevice} from './device.js?v=20260906-centered-device';
+import {setupDevice} from './device.js?v=20260907-optional-control';
 const device=document.querySelector('#hero-device');
 const phone=document.querySelector('#hero-phone');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const deviceView=setupDevice(device,document.querySelector('.hero-view-angle'),reduced);
+const deviceView=setupDevice(device,null,reduced);
 const labels={
- ja:['表示モード','ドラッグして回せます','シンプル','イラスト'],
- en:['Display mode','Drag to rotate','Simple','Illustrated'],
- ko:['표시 모드','드래그하여 돌려 보세요','심플','일러스트'],
- de:['Anzeigemodus','Zum Drehen ziehen','Schlicht','Illustriert'],
- 'zh-Hant':['顯示模式','拖曳即可旋轉','簡約','插畫'],
- fr:['Mode d’affichage','Glissez pour tourner','Simple','Illustré'],
- es:['Modo de visualización','Arrastra para girar','Simple','Ilustrado'],
- it:['Modalità di visualizzazione','Trascina per ruotare','Semplice','Illustrato']
+ ja:['表示モード','シンプル','イラスト'],
+ en:['Display mode','Simple','Illustrated'],
+ ko:['표시 모드','심플','일러스트'],
+ de:['Anzeigemodus','Schlicht','Illustriert'],
+ 'zh-Hant':['顯示模式','簡約','插畫'],
+ fr:['Mode d’affichage','Simple','Illustré'],
+ es:['Modo de visualización','Simple','Ilustrado'],
+ it:['Modalità di visualizzazione','Semplice','Illustrato']
 };
 const presets=[
  {body:'classic',face:'smile',style:'simple'},
@@ -26,9 +26,8 @@ function localize(){
  const words=labels[lang]||labels.en;
  const t=key=>(copies[lang]||copies.en)[key]||copies.en[key]||key;
  deviceView.localize(t);
- document.querySelector('.hero-interaction-hint').textContent=words[1];
  document.querySelector('.hero-presets').setAttribute('aria-label',words[0]);
- document.querySelectorAll('.hero-presets button').forEach((button,i)=>{button.textContent=words[i+2];button.setAttribute('aria-label',words[i+2]);});
+ document.querySelectorAll('.hero-presets button').forEach((button,i)=>{button.textContent=words[i+1];button.setAttribute('aria-label',words[i+1]);});
  render();
 }
 function render(){
@@ -41,7 +40,6 @@ presets.forEach((preset,i)=>{
  button.addEventListener('click',()=>{selected=i;render();});
  document.querySelector('.hero-presets').append(button);
 });
-document.querySelector('.hero-product-controls').hidden=false;
 document.querySelector('.hero-presets').hidden=false;
 new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 localize();

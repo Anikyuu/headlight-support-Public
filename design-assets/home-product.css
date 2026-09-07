@@ -28,16 +28,13 @@ section { border:0; padding:112px 32px; scroll-margin-top:68px; }
 .hero-product { width:100%; position:relative; margin-top:28px; }
 .hero-device-float { animation:productFloat 9s ease-in-out infinite; }
 .hero-device-float:has(.dragging), .hero-device-float:has(:focus-visible) { animation-play-state:paused; }
-.hero-product .device { --device-width:254px; --device-radius:39px; }
+.hero-product .device { --device-width:220px; --device-radius:34px; }
 .hero-product .device-stage { padding:0 0 24px; }
-.hero-product .device-shadow { width:200px; height:16px; bottom:0; filter:blur(14px); opacity:.4; }
+.hero-product .device-shadow { width:170px; height:16px; bottom:0; filter:blur(14px); opacity:.4; }
 #hero-phone { display:block; width:100%; height:100%; }
-.hero-product-controls { display:grid; justify-items:center; gap:8px; margin-top:22px; }
 .hero-presets { display:flex; gap:12px; padding:8px 14px; border:1px solid #0000000a; background:#fff; border-radius:30px; }
 .hero-presets button { appearance:none; width:23px; height:23px; border:1px solid #00000018; border-radius:50%; background:var(--swatch); cursor:pointer; padding:0; position:relative; }
 .hero-presets button[aria-pressed="true"]::after { content:""; position:absolute; inset:-5px; border:1.5px solid #737378; border-radius:50%; }
-.hero-interaction-hint { font-size:12px; color:var(--muted); }
-.hero-view-angle { padding:4px 10px; font:inherit; font-size:12px; border:0; background:none; color:var(--muted); cursor:pointer; }
 @keyframes productFloat { 0%,100% { transform:translateY(0) rotate(-.5deg); } 50% { transform:translateY(-7px) rotate(.5deg); } }
 .hero[data-motion-idle="true"] .hero-device-float { animation-play-state:paused; }
 .free-intro { padding:100px 32px; background:#fff; }
@@ -98,7 +95,7 @@ section { border:0; padding:112px 32px; scroll-margin-top:68px; }
 #support h2 { font-size:30px; }
 footer { background:#f5f5f7; }
 .reveal { transform:translateY(18px); transition:opacity .65s ease,transform .65s ease; }
-@media(min-width:1600px) { .hero-product .device { --device-width:290px; --device-radius:43px; } }
+@media(min-width:1600px) { .hero-product .device { --device-width:250px; --device-radius:38px; } }
 @media(max-width:760px) {
   section { padding:72px 22px; }
   .inner { gap:20px; }
@@ -113,7 +110,7 @@ footer { background:#f5f5f7; }
   .hero h1 { font-size:clamp(32px,7.8vw,50px); }
   .hero .inner { gap:15px; }
   .hero-product { margin-top:30px; }
-  .hero-product .device { --device-width:220px; --device-radius:34px; }
+  .hero-product .device { --device-width:190px; --device-radius:30px; }
   .hero .app-store-badge { width:132px; }
   .free-intro { padding:70px 24px; }
   #collection .collection-shots { gap:15px; padding:12px 0 28px; }
