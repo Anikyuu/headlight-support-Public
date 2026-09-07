@@ -175,6 +175,3 @@ footer { background:#f5f5f7; }
 .hero .hero-brand { color:#b08d57; font-size:14px; font-weight:600; line-height:1.8; letter-spacing:.55em; text-indent:.55em; white-space:nowrap; }
 .hero .hero-brand + .appicon { margin-block:4px 8px; }
 .hero .tagline { max-width:38em; }
-.hero .hero-platforms { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:0; color:#6e6e73; font-size:13px; line-height:1.5; letter-spacing:.015em; margin-top:-4px; }
-.hero-platforms span { white-space:nowrap; }
-.hero-platforms span + span::before { content:"·"; margin-inline:10px; color:#a0a0a5; }

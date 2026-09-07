@@ -46,7 +46,7 @@ Kai clarified that the upper black island was not the unwanted line. The hero ke
 
 ## Brand name and supported devices
 
-The hero shows the full hyphenated `HEAD-LIGHT` above the icon. Kai explicitly preferred the original quiet gold typography over a large bold name: 14px, weight 600, .55em tracking, #b08d57. Preserve this treatment rather than enlarging it. The approved supporting tagline is unchanged in all eight languages. The supported devices form a separate small line below the download badge, with middle-dot separators.
+The hero shows the full hyphenated `HEAD-LIGHT` above the icon. Kai explicitly preferred the original quiet gold typography over a large bold name: 14px, weight 600, .55em tracking, #b08d57. Preserve this treatment rather than enlarging it. The approved supporting tagline is unchanged in all eight languages. After Kai questioned whether the device list was needed in the hero, that line was removed. Supported devices remain in the existing FAQ.
 
 ## Dice discoverability
 
