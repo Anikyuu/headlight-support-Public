@@ -38,7 +38,7 @@ The homepage device is deliberately smaller: 220px normally, 190px on mobile, an
 
 ## Download guidance and publication
 
-Every App Store download badge on the homepage and About page has two inward-facing arrows, pulsing together. Reduced Motion keeps them static. Kai requested publication after this adjustment; delivery uses the existing GitHub Pages main branch.
+The inward-facing pulsing arrows initially requested around App Store badges were later removed after Kai felt they did not suit the design. The homepage and About page now show the badges alone. Delivery uses the existing GitHub Pages main branch.
 
 The hero frame uses scoped border-box sizing and derives its outer height from the SVG screen ratio plus rim/bezel insets (8px desktop, 5px mobile). The SVG fills the matching viewport with `xMidYMid slice` to avoid black letterbox gaps from fractional rounding.
 
