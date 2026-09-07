@@ -1,6 +1,11 @@
 # Heavy to light
 
-Current website asset: `heavy-to-light-color-v2.png`. Kai requested a redraw because the original illustration had small anatomical inconsistencies. The replacement preserves the selected colors, character and three-scene story, with simplified hands, natural grips and clearer limb connections. The original PNG remains as a versioned reference. No page copy changed.
+Current Japanese website asset: `heavy-to-light-color-v2.png`. The English edition uses `heavy-to-light-color-en.png`, with a blonde adult woman and the same story, at Kai's request for different appearances and hair across editions. Kai requested a redraw because the original illustration had small anatomical inconsistencies. The replacement preserves the selected colors, character and three-scene story, with simplified hands, natural grips and clearer limb connections. The original PNG remains as a versioned reference. No page copy changed.
+
+## English-edition prompt (built-in image generation)
+
+Create a localized character variation of this selected three-panel comic. Preserve the EXACT heavy thought burden → speaking into phone → floating with relief story, overall wide 2:1 strip, three equal panels, cheerful comic exaggeration, muted colored hand-drawn ink/watercolor style and pure white background. Change ONLY the main character consistently across all three panels to an adult white European woman with a wavy golden-blonde bob, pale sky-blue everyday shirt, charcoal trousers and simple dark shoes. Same character and clothes throughout all three panels. Keep her clearly adult, naturally expressive, relatable and not stereotyped. Left: burdened deeply bent knees, funny strained face, one hand supporting thought bundle and one hand naturally holding phone. Middle: standing upright while speaking into one naturally held front-screen phone with microphone pictogram; shrinking thought bundle gently funnels into phone. Right: delighted broad relieved grin and both feet buoyantly floating above a separated small shadow, holding one phone with a few note strokes and check pictogram. Carefully coherent anatomy, exactly two arms, two hands, five natural fingers where visible, two legs; plausible grips and phone perspective. No extra limbs, no merged fingers or objects. No words, captions, letters, numbers, logos, panels borders or new unrelated elements. Preserve the strength of the before/after emotional contrast.
+
 
 ## Redraw prompt (built-in image generation)
 

@@ -1,0 +1,18 @@
+/* Three visual beats, with the real app screens kept below the story. */
+.feature-comic { width:100%; max-width:900px; margin:8px auto 30px; }
+.feature-comic img { display:block; width:100%; height:auto; mix-blend-mode:multiply; }
+#words .inner,#journal .inner,#routines .inner { display:flex; flex-direction:column; align-items:center; text-align:center; }
+#words .inner>.eyebrow,#journal .inner>.eyebrow,#routines .inner>.eyebrow { margin-top:0; }
+#words .inner>.lead,#journal .inner>.lead,#routines .inner>.lead { max-width:760px; }
+#words .cols,#journal .cols,#routines .cols { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; width:100%; margin-top:20px; }
+#words .text,#journal .text,#routines .text { grid-column:auto; text-align:left; min-width:0; }
+#words .shots,#journal .shots,#routines .shots { grid-column:auto; grid-row:auto; width:100%; box-sizing:border-box; }
+#strong-light .strong-light-layout { display:block; }
+#strong-light .strong-light-copy { align-items:center; }
+#strong-light .strong-light-copy>h2 { text-align:center; }
+#strong-light .strong-light-copy>.feature-comic { max-width:900px; }
+@media(max-width:760px){
+ .feature-comic { width:calc(100% + 24px); max-width:none; margin:4px -12px 24px; }
+ #words .cols,#journal .cols,#routines .cols { grid-template-columns:1fr; gap:24px; }
+ #words .shots,#journal .shots,#routines .shots { padding:28px 16px; }
+}
