@@ -1,0 +1,72 @@
+/* The gallery belongs to the design chapter, below its copy. */
+.design-gallery { position:relative; height:600px; overflow:hidden; margin-top:60px; isolation:isolate; }
+.hero-design-wall {
+  --card-width: 94px;
+  --card-gap: 12px;
+  position: absolute;
+  z-index: 0;
+  inset: -72px -130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  overflow: hidden;
+  pointer-events: none;
+  transform: rotate(-9deg) scale(1.06);
+  opacity: .86;
+}
+.hero-design-row { flex: 0 0 auto; }
+.hero-design-track { display: flex; width: max-content; animation: heroDesignDrift 487s linear infinite; animation-delay: -71s; will-change: transform; animation-play-state: paused; }
+.hero-design-row:nth-child(2) .hero-design-track { animation-duration: 593s; animation-direction: reverse; animation-delay: -213s; }
+.hero-design-row:nth-child(3) .hero-design-track { animation-duration: 541s; animation-delay: -367s; }
+.hero-design-set { display: flex; flex: 0 0 auto; align-items: flex-start; gap: var(--card-gap); padding-right: var(--card-gap); }
+.hero-design-card {
+  display: block;
+  width: var(--card-width);
+  flex: 0 0 var(--card-width);
+
+  padding: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #b8b8bc;
+  box-shadow: 0 9px 20px rgba(28,27,25,.12), inset 0 0 0 1px rgba(255,255,255,.8);
+}
+.hero-design-screen { display: block; width: 100%; aspect-ratio: 420 / 913; border-radius: 13px; overflow: hidden; background-color: #fff; background-position: center; background-size: cover; }
+.hero-design-card img { display: block; width: 100%; height: auto; aspect-ratio: 420 / 913; object-fit: cover; }
+@keyframes heroDesignDrift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.hero-motion-toggle {
+  position: absolute;
+  z-index: 3;
+  right: 24px;
+  bottom: 24px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(28,27,25,.18);
+  border-radius: 50%;
+  color: #45433e;
+  background: rgba(255,255,255,.93);
+  cursor: pointer;
+}
+.hero-motion-toggle:hover { background: #fff; border-color: #45433e; }
+.hero-motion-toggle:focus-visible { outline: 3px solid #b08d57; outline-offset: 4px; }
+.hero-motion-toggle svg { width: 18px; height: 18px; }
+.hero-motion-toggle .motion-play { display: none; }
+.design-gallery[data-motion-paused="true"] .hero-motion-toggle .motion-pause { display: none; }
+.design-gallery[data-motion-paused="true"] .hero-motion-toggle .motion-play { display: block; }
+.design-gallery[data-motion-ready="true"] .hero-design-track { animation-play-state: running; }
+.design-gallery[data-motion-paused="true"] .hero-design-track,
+.design-gallery[data-motion-idle="true"] .hero-design-track { animation-play-state: paused; }
+@media (max-width: 720px) {
+  .hero-design-wall { --card-width: 80px; --card-gap: 10px; }
+  .hero-motion-toggle { right: 16px; bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-design-track { animation: none; will-change: auto; }
+  .hero-design-row:nth-child(2) .hero-design-track { transform: translateX(-174px); }
+  .hero-design-row:nth-child(3) .hero-design-track { transform: translateX(-348px); }
+  .hero-motion-toggle { display: none; }
+}
