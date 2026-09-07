@@ -1,0 +1,177 @@
+{
+  "mode": "built-in image_gen",
+  "style": "Sparse navy line illustrations with limited color, adult characters, playful objects, diverse appearances and varied compositions.",
+  "images": [
+    {
+      "key": "tidy",
+      "name": "整理アシスタント",
+      "alt": "もつれた考えが4つに分かれ、不要なひとつを笑顔で見送るイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A single witty scene about clearing mental clutter. A petite but adult-proportioned woman with warm brown skin, a simple curly bun and mint sweater gently untangles one navy scribble. Four white trays sit loosely around her, labeled ONLY by simple sprout, moon, branch and drifting-leaf pictograms. One card has little wings and flies away; she gives it a casual goodbye wave. Just four trays, four cards and one loose scribble. Clean, airy, a knowing smile rather than exaggerated happiness.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/tidy.png"
+    },
+    {
+      "key": "remember",
+      "name": "覚えておく",
+      "alt": "相手別のタブがついた薄い手帳に、大切なことを整理して残すイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: An overhead playful still life: a simple slim notebook with only three big colored tabs, pictograms of a dog, a house and a person. A tiny real cartoon dog rests its chin affectionately on its own tab. A fresh small note quietly replaces an older note, shown with one tiny curved arrow. The notebook stays very thin. Draw the notebook using a few lines, not a detailed leather binder. Quiet humor from the dog's possessiveness. No human figure.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/remember.png"
+    },
+    {
+      "key": "paper",
+      "name": "白い紙",
+      "alt": "大きな白い紙へ自由な線を描くと、小鳥の形になるイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A sparse artful scene with enormous white space: an adult woman with pale skin, short orange hair and a cobalt top draws one looping coral line on a giant mostly blank sheet. The line ends in a tiny bird that looks back at her. She leans back in gentle amused surprise. Simple adult proportions, small dot eyes, no toddler, no overalls. The line and the expanse of blank paper dominate; only one pencil.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/paper.png"
+    },
+    {
+      "key": "release",
+      "name": "手放す",
+      "alt": "吐き出したもやもやがほどけて消え、肩の力が抜ける2場面のイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: Two moments without panels: the same adult man with light skin, tousled blond hair and a loose mint shirt on the left exhales one tangled navy scribble; on the right he stands casually with hands in pockets watching the scribble unravel and disappear into a few dots. His slightly puffed cheek is the only exaggeration. Small adult-proportioned figures, huge white space. No notes saved, no containers, no paperwork. A visual sigh of relief.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/release.png"
+    },
+    {
+      "key": "todo",
+      "name": "やること",
+      "alt": "チェックをひとつ終え、小さな段差を軽やかに越えるイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: Single clever graphic scene: a giant cobalt checkmark forms a gentle stepping stone. An adult dark-brown-skinned man with close-cropped curls and coral top steps over it with a tiny grocery bag, looking pleased. Beside him a small white list has one checked box beside a simple battery pictogram and one blank box. No repeated text lines. Thin elegant adult proportions, not child or baby. No medals, scores or confetti.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/todo.png"
+    },
+    {
+      "key": "planner",
+      "name": "3日プランナー",
+      "alt": "3日分の予定を色の積み木で組み、ひとつを先へ移すイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A playful flat drawing of exactly three upright white day strips with navy outlines, each holding two or three simple colored time blocks. One small adult with tan skin and brown wavy hair gently slides one block from the first strip to an open place on the third using two hands, as if rearranging a shelf. The blocks fit with satisfying space, not a tower. No numbers or writing. Airy asymmetrical composition, nothing is discarded. A tiny resting cat occupies the deliberately empty slot on the second strip.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/planner.png"
+    },
+    {
+      "key": "timer",
+      "name": "タイマー",
+      "alt": "色の面積で残り時間が見える大きなタイマーの縁で、落ち着いて本を読むイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A single large spare circular outline with one coral quarter-wedge of time remaining, NO numbers or ticks. A relaxed adult woman with olive skin and short copper hair perches on the upper rim reading a tiny cobalt book, feet dangling; a small mint cat sleeps further along the rim. Make the person small and naturally adult-proportioned, a few graceful lines. The circular timer and generous white space dominate. Minimal witty editorial illustration.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/timer.png"
+    },
+    {
+      "key": "mood",
+      "name": "今日の調子",
+      "alt": "沈む日も高ぶる日も、7つの表情を同じように大切に残すイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A poetic simple object illustration: seven little rounded pebble-like face tokens arranged in a shallow gently winding path above a compact blank calendar with colored dots. From sleepy/downcast to calm to windswept/highly energized, all faces are equally cute and accepted, NOT a bad-to-good scale. Highest-energy token has a comically surprised face rather than a huge happy smile. Seven tokens exactly, dot eyes and tiny lines only. No human characters, no metrics or scores. Restrained color and ample whitespace.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/mood.png"
+    },
+    {
+      "key": "reflect",
+      "name": "よかったこと・夜の振り返り",
+      "alt": "夜に見つけた小さな星を、手帳へひとつそっと残すイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A gentle humorous evening vignette: a small adult woman with dark brown skin and simple rounded hair puffs in mint pajamas, resting against a very sleepy cobalt crescent moon like a pillow. She puts a single tiny yellow star into a mostly empty open notebook. The moon has only two closed eyes and a tiny sleepy mouth. No more stars, no dark sky, no sparkles, no scenery. Very sparse on white, soft quiet humor.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/reflect.png"
+    },
+    {
+      "key": "meditation",
+      "name": "瞑想",
+      "alt": "呼吸の輪の中でひと息つく人と、頭の上で一緒に休む小鳥のイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: One calm witty scene: a simple adult light-skinned man with short brown hair and a coral shirt sits cross-legged inside one thin broad mint breathing circle. A tiny yellow bird sitting on his head has copied his closed eyes and relaxed posture. One tiny outlined bell beside him. Lots of white, no mystical symbols, no concentric rings, no glows. Adult proportions and very minimal line work.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/meditation.png"
+    },
+    {
+      "key": "workout",
+      "name": "筋トレ",
+      "alt": "運動と休憩を交互に進める、元気でユーモラスな2場面のイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: Two opposing moments without panel frames: the SAME adult athletic woman with dark brown skin, short natural curls, cobalt shirt and coral shorts performs a squat with two modest dumbbells on the left, then lounges on a simple floor cushion catching her breath on the right. Three small yellow, coral and mint timer dots bridge the gap. Charming humorous contrast between focus and very comfortable rest. Adult proportions, natural limbs, no exaggerated muscles or baby heads. No scores.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/workout.png"
+    },
+    {
+      "key": "medicine",
+      "name": "薬アシスタント",
+      "alt": "薬を飲んだ記録をカレンダーへひとつ置き、あとで見返せるイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: One reassuring graphic still life: a plain closed medication box with a tiny capsule pictogram, a glass of water, and a small white calendar bearing a few mint dots. An adult hand with pale skin simply adds a dot with a pencil. A folded calendar record nearby is ready to share. No people, no faces on pills, no swallowing, no dose, no claim of cure. Minimal contours, thoughtful whitespace and a slightly jaunty pencil.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/medicine.png"
+    },
+    {
+      "key": "meal",
+      "name": "食事アシスタント",
+      "alt": "食事の写真から、栄養の目安を色の量として見渡すイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A lively top-down lunch plate with three recognizable simple food shapes: fish, tomato, bread. A hand with brown skin holds a plain navy outlined phone to photograph it. Three tiny open measurement cups nearby have different colored fill levels, a visual metaphor for nutritional estimates. A fork has impatient little feet and seems about to walk toward the plate; one subtle comic detail. No text, no numbers, no fake interface, no weighing scale or dieting judgement. Very simple flat appetizing shapes.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/meal.png"
+    },
+    {
+      "key": "expense",
+      "name": "経費アシスタント",
+      "alt": "長くくるくるしたレシートを、小さく整った記録へまとめるイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A long curving blank receipt acts like a soft slide: one adult light-skinned woman with an auburn bob in a cobalt top rolls it into a tidy compact stack, with an amused expression. One small phone camera and a coffee cup are the only supporting objects. Receipt has just a few neutral dots, no fake writing. Adult proportions, not a baby. Let the graceful receipt curve form the composition, not a heap of papers. No tax certification badges.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/expense.png"
+    },
+    {
+      "key": "daily",
+      "name": "音を残す・まいにちのチェック・サブスク管理",
+      "alt": "録音のカセット、毎日のチェック、定期支払いのカレンダーを並べたイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: Three charming objects arranged as an airy editorial still life, no boxes or panels: a simple cobalt cassette recorder with coral record button, a cream habit card bearing two mint checks and one blank box, and a compact blank calendar with a small recurring-arrow pictogram and one coin. A single thin ribbon of sound loops gently from the cassette past the other objects. The cassette sits at a jaunty angle. No human, no tiny extra decorations, no text or numbers.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/daily.png"
+    },
+    {
+      "key": "folder",
+      "name": "フォルダ",
+      "alt": "散らばった言葉のカードが、それぞれのフォルダへ収まるイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: Three simple outlined folders in coral, cobalt and mint open invitingly like little houses. Five blank note cards, each with a single music, leaf or bird pictogram, lightly drift into the matching folder. One little yellow bird perches sideways on a tab, watching with one raised eyebrow. Nothing else. Bold clear silhouettes but delicate outlines, white space, no storm of paper, no faces on the folders.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/folder.png"
+    },
+    {
+      "key": "widget",
+      "name": "ウィジェット・Apple Watch",
+      "alt": "手首から話した言葉が届き、好きな道具がホーム画面に並ぶイラスト。",
+      "prompt": "Use the attached illustration as the exact STYLE REFERENCE only. Create a NEW Head-Light tool illustration with the same airy restrained independent-stationery aesthetic: pure white background, elegant spare dark navy outlines, a few flat coral/cobalt/mint/yellow accents, expressive tiny facial details and witty poses. Keep it clean and stylish, not babyish, chibi, preschool clipart, stock corporate vectors, shiny 3D or realistic. No painting texture, gradients, hatching, shadows, excessive tiny objects, lettering, words or numbers. Landscape 3:2. Do not copy the records from the reference unless the brief asks. All important shapes inside generous margins. Scene: A simple two-part connected vignette without frames: a close view of a tan wrist with a rounded smartwatch gives off one tiny speech ripple; a few dots lead to an upright smartphone showing ONLY three very simple blocks (landscape picture, plant, circular timer). No writing or fake detailed UI. A petite adult blond woman in a coral top leans casually on the phone as if waiting for a thought to arrive, one foot idly raised. Two hands maximum on each figure. Lots of clean white space.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/widget.png"
+    },
+    {
+      "key": "jar",
+      "name": "アイデアの瓶",
+      "alt": "ひらめきを色の玉にして、大きな瓶へ楽しく溜めていくイラスト。",
+      "prompt": "Create a charming, stylish, genuinely SIMPLE editorial cartoon illustration for the 'Idea Jar' feature of a personal notebook app. White background. Wide 3:2 composition. ONE witty visual gag: a tiny cute adult character with dark brown skin, a simple rounded black curly hairstyle, coral sweater and cobalt trousers, on tiptoe trying to drop one bright yellow idea-marble into an oversized clear glass jar, already holding a handful of colorful round idea marbles; one marble has mischievously bounced out, and the character's tiny dot eyes follow it with surprise. The glass jar is indicated by just a few clean navy contour lines, not realistic glass. Character has a round oval head, tiny dot eyes, a small curved nose and expressive minimal mouth; naturally lovable, not ugly or grotesque. Two hands only. Sophisticated whimsical European magazine cartoon sensibility with flat screen-printed shapes, confident smooth slightly irregular navy lines, only 4 accent colors: coral, cobalt, warm yellow, mint. Large simple silhouettes, huge white negative space, visually legible at small mobile size. The humor comes from pose and scale. Absolutely NO watercolor, NO pencil texture, NO crosshatching, NO gradients, NO 3D, NO realistic anatomy or realistic facial detail, NO anime, NO manga, NO shiny AI rendering, NO excessive tiny objects, NO generic corporate vector people with tiny heads. NO text, letters, numbers, logo, panel borders or captions. A delightful small piece of graphic art, not an infographic. Do not add a phone or UI.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/jar.png"
+    },
+    {
+      "key": "routine",
+      "name": "ルーティーン",
+      "alt": "歯みがき、コーヒー、外出のレコードが、それぞれの表情で歩くイラスト。",
+      "prompt": "Use the attached image ONLY as a style reference: preserve its elegant sparse navy contour, airy white space, restrained coral/cobalt/mint/yellow colors and playful editorial sense. Make a NEW illustration of the ROUTINES tool, not the jar. One witty, stylish little scene: three translucent colored vinyl records half-peeking out of their square sleeves, the sleeves casually stepping in rhythm in a diagonal line like friends on a morning walk. The sleeves have tiny dot eyes and tiny curved mouths, very simple thin arms and legs; one carries a toothbrush, one carries a coffee mug, one has already put on its little shoes. The toothbrush sleeve is still sleepy, the coffee sleeve is happily awake, the shoes sleeve looks back impatiently. Three distinct charming personalities, not three repeated generic smiling faces. Compose them small enough to leave generous pure white margins, asymmetrical natural spacing, one elegant complete vignette. No human character. Take the quality of a carefully art-directed independent stationery brand, not preschool clipart or stock illustration. Precisely drawn clean shapes, expressive restraint, absolutely flat colors, minimal lines on records, almost no surface detail. No shading, shadows, gradients, glossy rendering, grain, fake watercolor, texture, 3D extrusion, text, captions, symbols floating around, boxes, plant pots or extra decorative objects. The humor and charm should come entirely from the three different poses and their interactions. Landscape 3:2. The image should feel effortless and designed, not busy.",
+      "width": 1536,
+      "height": 1024,
+      "file": "img/tool-stories/routine.png"
+    }
+  ]
+}
