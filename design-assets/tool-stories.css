@@ -44,3 +44,8 @@ section[id$="-group"] h2 { font-size:clamp(25px,3.2vw,36px); margin-bottom:20px;
 }
 
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+/* Let the bottle-filling and explosion read as one complete story. */
+#release .tool-story-layout { display:flex; flex-direction:column; gap:26px; }
+#release .tool-story-art { position:static; max-width:880px; margin:0 auto; }
+#release .tool-story-copy { width:100%; max-width:760px; margin:0 auto; }
