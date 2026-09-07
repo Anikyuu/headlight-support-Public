@@ -13,15 +13,18 @@ const labels={
  'zh-Hant':'擲骰子換個設計',fr:'Lancer le dé pour changer de design',
  es:'Lanzar el dado para cambiar el diseño',it:'Lancia il dado per cambiare design'
 };
+function labelDice(){
+ const label=labels[document.documentElement.lang]||labels.en;
+ dice.setAttribute('aria-label',label);dice.title=label;
+}
 let state={...defaults,...defaultFaceSettings.smile};
 let blinkTimeout;
 let diceAnimation;
 function localize(){
  const lang=document.documentElement.lang;
- const label=labels[lang]||labels.en;
  const t=key=>(copies[lang]||copies.en)[key]||copies.en[key]||key;
  deviceView.localize(t);
- dice.setAttribute('aria-label',label);dice.title=label;
+ labelDice();
  render();
 }
 function render(closed=false){
@@ -29,6 +32,7 @@ function render(closed=false){
  phone.innerHTML=createPhoneArtwork({...state,motion:!reduced.matches},{appText:key=>copies.en[key]||key,text:key=>copies.en[key]||key}).render(closed);
 }
 dice.addEventListener('click',()=>{
+ dice.classList.add('has-been-tried');
  clearTimeout(blinkTimeout);
  state=randomDesign(state);
  Object.assign(state,defaultFaceSettings[state.face]);
@@ -42,6 +46,7 @@ dice.addEventListener('click',()=>{
  ],{duration:480,easing:'cubic-bezier(.2,.7,.3,1)'});
 });
 dice.hidden=false;
+new IntersectionObserver(entries=>{dice.dataset.inView=String(entries[0].isIntersecting);}).observe(dice);
 new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 reduced.addEventListener('change',()=>{diceAnimation?.cancel();clearTimeout(blinkTimeout);render();});
 localize();

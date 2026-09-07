@@ -47,3 +47,7 @@ Kai clarified that the upper black island was not the unwanted line. The hero ke
 ## Brand name and supported devices
 
 The hero shows the full hyphenated `HEAD-LIGHT` above the icon. Kai explicitly preferred the original quiet gold typography over a large bold name: 14px, weight 600, .55em tracking, #b08d57. Preserve this treatment rather than enlarging it. The approved supporting tagline is unchanged in all eight languages. The supported devices form a separate small line below the download badge, with middle-dot separators.
+
+## Dice discoverability
+
+A tester overlooked the original 66px white die. Kai rejected visible instruction copy, so keep the button icon-only: 82px, warm gold with a raised edge. Until the first activation, the die gives a short bounce/tilt and a faint expanding outline every 4.6 seconds. Stop these cues after the first activation and pause them when the button is offscreen or the tab is hidden. Reduced Motion removes both cues. The existing eight-language accessible names and click/keyboard shuffle behavior remain. Browser checks verified the empty visible text, 82px target, initial cues and their removal after clicking, and all eight accessible labels at 390px without overflow. Whether more visitors notice it still requires a new user observation.
