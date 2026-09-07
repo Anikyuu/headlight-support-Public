@@ -175,3 +175,7 @@ footer { background:#f5f5f7; }
 .hero .hero-brand { color:#b08d57; font-size:14px; font-weight:600; line-height:1.8; letter-spacing:.55em; text-indent:.55em; white-space:nowrap; }
 .hero .hero-brand + .appicon { margin-block:4px 8px; }
 .hero .tagline { max-width:38em; }
+
+/* The voice-entry photograph belongs beside the words feature it explains. */
+#words .words-speaking-photo { width:100%; max-width:720px; margin:8px auto 24px; }
+#words .words-speaking-photo img { display:block; width:100%; height:auto; }

@@ -825,7 +825,7 @@
 <link rel="stylesheet" href="design-assets/hero-gallery.css?v=20260907-live-queue">
 <script type="module" src="design-assets/hero-gallery.js?v=20260907-live-queue"></script>
 <link rel="stylesheet" href="design-assets/device.css?v=20260907-product">
-<link rel="stylesheet" href="design-assets/home-product.css?v=20260907-voice-photo-restored">
+<link rel="stylesheet" href="design-assets/home-product.css?v=20260907-voice-photo-words">
 <link rel="stylesheet" href="design-assets/voice-story.css?v=20260907-color-comic">
 <link rel="stylesheet" href="design-assets/feature-comics.css?v=20260907-sorting-story">
 <script type="module" src="design-assets/feature-comics.js?v=20260907-editions"></script>
@@ -1017,13 +1017,7 @@
   </div>
 </section>
 
-<!-- 声で言葉を預ける体験を、序盤で見せる -->
-<section class="voice-photo-section" id="voice-photo">
-  <div class="inner reveal">
-    <img class="voice-photo" src="img/hero-voice.jpg" width="1300" height="975" loading="lazy" decoding="async"
-         data-alt-ja="iPhoneを手に持ち、Head-Lightへ話しかけているところ" data-alt-en="Holding an iPhone and speaking into Head-Light." data-alt-ko="iPhone을 손에 들고 Head-Light에 말하고 있는 모습">
-  </div>
-</section>
+
 
 
 <!-- 答え -->
@@ -1109,6 +1103,10 @@
     <div class="eyebrow"><span data-i18n="ja">言葉の手帳</span><span data-i18n="en">Your words</span><span data-i18n="ko">나의 말</span></div>
     <h2><span data-i18n="ja">話して「送信」で、すぐ残せる。</span><span data-i18n="en">Speak, say “send it”, and save it right away.</span><span data-i18n="ko">말하고 “전송”이라고 하면, 바로 남길 수 있어요.</span></h2>
     <p class="lead"><span data-i18n="ja">ふと思ったことを、その場で話すか書くだけ。言葉と写真が日付と時刻に沿って残り、あとから一日をそのままたどれます。いいねもフォロワーもない、自分のためだけの場所です。</span><span data-i18n="en">Say or write down a thought as it comes. Your words and photos stay with their date and time, so you can return to the day as it happened. No likes, no followers—just a place of your own.</span><span data-i18n="ko">문득 떠오른 생각을 그 자리에서 말하거나 적기만 하세요. 말과 사진이 날짜와 시간에 따라 남아, 나중에 그날을 그대로 되짚어 볼 수 있습니다. 좋아요도 팔로워도 없는, 오직 나를 위한 공간입니다.</span></p>
+    <figure class="words-speaking-photo" id="voice-photo">
+    <img class="voice-photo" src="img/hero-voice.jpg" width="1300" height="975" loading="lazy" decoding="async"
+         data-alt-ja="iPhoneを手に持ち、Head-Lightへ話しかけているところ" data-alt-en="Holding an iPhone and speaking into Head-Light." data-alt-ko="iPhone을 손에 들고 Head-Light에 말하고 있는 모습">
+    </figure>
     <div class="cols">
       <div class="shots">
         <div class="phone"><img src="img/shots/02_words_ja.jpg" data-shot="02_words" loading="lazy" decoding="async" data-alt-ja="言葉のタブ。話した言葉が白い紙のカードで並ぶ" data-alt-en="The Words tab: spoken words lined up as white paper cards." data-alt-ko="말 탭. 말한 것이 흰 종이 카드로 늘어서 있다" alt="言葉のタブ。話した言葉が白い紙のカードで並ぶ"></div>
@@ -1559,7 +1557,7 @@
       var footer = document.querySelector("footer");
       if (!footer) return;
       [
-        "free-intro", "voice-photo", "collection", "words", "journal", "routines", "tools",
+        "free-intro", "collection", "words", "journal", "routines", "tools",
         "design-customization", "design-preview", "ai-sorting", "tidy-assistant",
         "ai-handoff", "strong-light", "pricing", "final-download", "support",
         "free-download"
