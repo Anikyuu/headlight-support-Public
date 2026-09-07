@@ -22,3 +22,7 @@ There are Japanese and English editions for each of the twelve sections. Both ed
 The current exact filenames, dimensions and full prompts are in `generation-manifest.json`; corrected assets may carry a version suffix. All assets were created with the built-in image-generation tool using the selected opening comic as their visual reference. Selected PNGs are copied unchanged into this repository. Anatomy and app-screen details were reviewed and corrected where necessary.
 
 `feature-comics.js` changes a single image element's source when the page language changes. Images use explicit dimensions, asynchronous decoding and lazy loading. `feature-comics.css` keeps all three panels visible without cropping and gently blends their white background into the existing page. The real app screenshots remain alongside the existing feature explanations. No visible captions or repeated explanatory copy were added.
+
+## 2026-09-07 掲載構成の見直し
+
+Kaiのフィードバックにより、各機能での3コマの繰り返しが実画面から注意を奪うため、機能紹介12項目の漫画をページから外した。漫画は冒頭の日英各1本だけを表示し、以降は実際のスクリーンショットを主役とする。生成画像は素材として保持する。
