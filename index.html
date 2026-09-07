@@ -825,7 +825,7 @@
 <link rel="stylesheet" href="design-assets/hero-gallery.css?v=20260907-live-queue">
 <script type="module" src="design-assets/hero-gallery.js?v=20260907-live-queue"></script>
 <link rel="stylesheet" href="design-assets/device.css?v=20260907-product">
-<link rel="stylesheet" href="design-assets/home-product.css?v=20260907-quiet-hero">
+<link rel="stylesheet" href="design-assets/home-product.css?v=20260907-voice-photo-restored">
 <link rel="stylesheet" href="design-assets/voice-story.css?v=20260907-color-comic">
 <link rel="stylesheet" href="design-assets/feature-comics.css?v=20260907-sorting-story">
 <script type="module" src="design-assets/feature-comics.js?v=20260907-editions"></script>
@@ -1020,7 +1020,7 @@
 <!-- 声で言葉を預ける体験を、序盤で見せる -->
 <section class="voice-photo-section" id="voice-photo">
   <div class="inner reveal">
-    <img class="voice-photo" src="img/hero-voice.jpg" loading="lazy"
+    <img class="voice-photo" src="img/hero-voice.jpg" width="1300" height="975" loading="lazy" decoding="async"
          data-alt-ja="iPhoneを手に持ち、Head-Lightへ話しかけているところ" data-alt-en="Holding an iPhone and speaking into Head-Light." data-alt-ko="iPhone을 손에 들고 Head-Light에 말하고 있는 모습">
   </div>
 </section>
@@ -1559,10 +1559,10 @@
       var footer = document.querySelector("footer");
       if (!footer) return;
       [
-        "free-intro", "collection", "words", "journal", "routines", "tools",
+        "free-intro", "voice-photo", "collection", "words", "journal", "routines", "tools",
         "design-customization", "design-preview", "ai-sorting", "tidy-assistant",
         "ai-handoff", "strong-light", "pricing", "final-download", "support",
-        "voice-photo", "free-download"
+        "free-download"
       ].forEach(function (id) {
         var section = document.getElementById(id);
         if (section) footer.before(section);
