@@ -149,3 +149,12 @@ footer { background:#f5f5f7; }
 .research-details { margin-top:30px; }
 .research-details p { margin-top:20px; }
 @media(max-width:760px) { .strong-light-layout { grid-template-columns:1fr; gap:26px; } .strong-light-layout>img { width:180px; margin:auto; } }
+/* Kai: keep the app icon prominent and offer only the two main modes here. */
+.hero .appicon { width:112px; border-radius:25%; box-shadow:0 12px 28px #00000020; }
+.hero .inner { gap:22px; }
+.hero-presets { width:max-content; max-width:100%; box-sizing:border-box; margin:0 auto 30px; gap:3px; padding:5px; background:#eaeaec; border:0; border-radius:30px; }
+.hero-presets button { width:auto; height:auto; min-height:42px; padding:8px 24px; border:0; border-radius:24px; background:transparent; color:#616168; font:inherit; font-size:14px; font-weight:600; cursor:pointer; }
+.hero-presets button[aria-pressed="true"] { background:#fff; color:#1d1d1f; box-shadow:0 2px 7px #00000012; }
+.hero-presets button[aria-pressed="true"]::after { display:none; }
+.hero-presets button:focus-visible { outline:2px solid #886b40; outline-offset:2px; }
+@media(max-width:760px){.hero .appicon{width:96px}.hero .inner{gap:20px}.hero-presets button{padding-inline:22px}.hero{padding-top:32px}}

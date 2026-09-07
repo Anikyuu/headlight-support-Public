@@ -1,0 +1,18 @@
+/* The same direct destinations stay visible on desktop and on a phone. */
+.product-nav { position:sticky; top:0; z-index:60; min-height:64px; height:auto; box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 max(28px,calc((100vw - 1120px)/2)); border-bottom:1px solid #0000000d; background:#ffffffed; backdrop-filter:blur(18px); }
+.product-wordmark { color:#1d1d1f; text-decoration:none; font-size:22px; font-weight:700; letter-spacing:-.04em; white-space:nowrap; display:flex; align-items:center; min-height:44px; }
+.product-nav-links { display:flex; align-items:center; justify-content:center; gap:24px; margin:0 0 0 auto; }
+.product-nav-links a { display:flex; align-items:center; min-height:44px; color:#48484d; font-size:13px; text-decoration:none; white-space:nowrap; border-bottom:2px solid transparent; box-sizing:border-box; }
+.product-nav-links a:hover,.product-nav-links a[aria-current="page"] { color:#1d1d1f; border-bottom-color:#a18a65; }
+.product-nav .langtabs { position:static; display:flex; margin:0; padding:0; background:none; border:0; }
+.product-nav .langtabs select { max-width:114px; min-height:44px; font:inherit; font-size:12px; padding:6px 8px; color:#48484d; border:0; background:transparent; border-radius:8px; cursor:pointer; }
+.product-nav a:focus-visible,.product-nav select:focus-visible { outline:2px solid #886b40; outline-offset:3px; border-radius:4px; }
+@media(max-width:760px){
+ .product-nav { display:grid; grid-template-columns:1fr auto; gap:0; padding:0 20px; }
+ .product-wordmark { grid-column:1; grid-row:1; font-size:21px; }
+ .product-nav .langtabs { grid-column:2; grid-row:1; justify-content:flex-end; }
+ .product-nav-links { grid-column:1 / -1; grid-row:2; justify-content:space-between; width:100%; gap:12px; margin:0; }
+ .product-nav-links a,.product-nav-links a:nth-child(n+2) { display:flex; font-size:12px; min-height:42px; }
+ section { scroll-margin-top:100px; }
+}
+@media(max-width:360px){.product-nav{padding-inline:14px}.product-nav-links{gap:8px}.product-nav-links a{font-size:11px}}

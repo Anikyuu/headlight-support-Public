@@ -1,6 +1,6 @@
 # Homepage product presentation
 
-The homepage uses the same `phone-artwork.js` renderer and `device.js` rotation controls as the existing design studio. It does not execute the app itself. The homepage has five curated looks; the full studio remains at `design.html`.
+The homepage uses the same `phone-artwork.js` renderer and `device.js` rotation controls as the existing design studio. It does not execute the app itself. The homepage offers only Simple and Illustrated modes, both with the white body. The full studio remains at `design.html`. The app icon is prominently displayed at 112px on desktop and 96px on mobile.
 
 ## Gallery
 
@@ -25,3 +25,11 @@ The original hidden hand image remains only to preserve the source-image invento
 - Browser: Japanese desktop and 390px mobile layouts, all eight language selections without horizontal overflow, look selection, arrow-key device rotation, pause/resume of all three lanes, image loading.
 - Local preview only. No production deployment performed for this revision.
 - Follow-up after Kai’s screenshot: replaced the fixed repeated strips with offscreen slot replacement. Browser samples confirmed different first/last designs over time, 42 mounted designs / 42 unique designs at the preview width, and no repeated photo/paper families.
+
+## Direct navigation and About page
+
+The top menu links directly to `about.html`, `design.html`, and `tools.html`. `site-nav.js` supplies eight-language labels; `site-nav.css` keeps every destination visible in a second row on mobile. Both the homepage and About page use it.
+
+`about.html` introduces the existing approved copy through the collection, words, journal and the thinking behind Head-Light, reusing actual screenshots and the existing introduction illustration. `about.js` uses the same keyed translations and saved language as the homepage. The app icon was moved unchanged from the inline base64 image to `img/app-icon.png` so both pages can share it.
+
+Browser verification: two mode controls, Simple removes the illustrated eyes, 112/96px icon CSS, direct navigation to the existing design and tools pages, About page in all eight languages at 390px without horizontal overflow, all three mobile menu links visible. This follow-up is still a local preview.

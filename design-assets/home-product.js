@@ -7,32 +7,28 @@ const phone=document.querySelector('#hero-phone');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const deviceView=setupDevice(device,document.querySelector('.hero-view-angle'),reduced);
 const labels={
- ja:['見どころ','デザイン','AI Pro','ドラッグで回す · 色を選んで着せ替え','ホワイト','ブルー','イエロー','シンプル','レトロ'],
- en:['Explore','Design','AI Pro','Drag to rotate · Pick a look','White','Blue','Yellow','Simple','Retro'],
- ko:['주요 기능','디자인','AI Pro','드래그하여 회전 · 디자인 선택','화이트','블루','옐로','심플','레트로'],
- de:['Entdecken','Design','AI Pro','Zum Drehen ziehen · Design wählen','Weiß','Blau','Gelb','Schlicht','Retro'],
- 'zh-Hant':['亮點','設計','AI Pro','拖曳旋轉 · 選擇外觀','白色','藍色','黃色','簡約','復古'],
- fr:['Découvrir','Design','AI Pro','Glissez pour tourner · Choisissez un style','Blanc','Bleu','Jaune','Simple','Rétro'],
- es:['Descubrir','Diseño','AI Pro','Arrastra para girar · Elige un estilo','Blanco','Azul','Amarillo','Simple','Retro'],
- it:['Scopri','Design','AI Pro','Trascina per ruotare · Scegli uno stile','Bianco','Blu','Giallo','Semplice','Rétro']
+ ja:['表示モード','ドラッグして回せます','シンプル','イラスト'],
+ en:['Display mode','Drag to rotate','Simple','Illustrated'],
+ ko:['표시 모드','드래그하여 돌려 보세요','심플','일러스트'],
+ de:['Anzeigemodus','Zum Drehen ziehen','Schlicht','Illustriert'],
+ 'zh-Hant':['顯示模式','拖曳即可旋轉','簡約','插畫'],
+ fr:['Mode d’affichage','Glissez pour tourner','Simple','Illustré'],
+ es:['Modo de visualización','Arrastra para girar','Simple','Ilustrado'],
+ it:['Modalità di visualizzazione','Trascina per ruotare','Semplice','Illustrato']
 };
 const presets=[
- {body:'classic',face:'smile',color:'#faf9f6'},
- {body:'vividBlue',face:'smile',color:'#447eda'},
- {body:'vividYellow',face:'smile',color:'#f9da54'},
- {body:'classic',style:'simple',color:'linear-gradient(90deg,#fafafa 50%,#bfc4c8 50%)'},
- {body:'classic',retro:true,retroPalette:'lcdGreen',color:'#adba88'}
+ {body:'classic',face:'smile',style:'simple'},
+ {body:'classic',face:'smile',style:'illustration'}
 ];
-let selected=0;
+let selected=1;
 function localize(){
  const lang=document.documentElement.lang;
  const words=labels[lang]||labels.en;
  const t=key=>(copies[lang]||copies.en)[key]||copies.en[key]||key;
  deviceView.localize(t);
- document.querySelector('.hero-interaction-hint').textContent=words[3];
- document.querySelector('.hero-presets').setAttribute('aria-label',words[1]);
- document.querySelectorAll('.hero-presets button').forEach((button,i)=>{button.setAttribute('aria-label',words[i+4]);button.title=words[i+4];});
- document.querySelector('.product-nav-links').replaceChildren(...['collection','design-customization','pricing'].map((id,i)=>{const a=document.createElement('a');a.href='#'+id;a.textContent=words[i];return a;}));
+ document.querySelector('.hero-interaction-hint').textContent=words[1];
+ document.querySelector('.hero-presets').setAttribute('aria-label',words[0]);
+ document.querySelectorAll('.hero-presets button').forEach((button,i)=>{button.textContent=words[i+2];button.setAttribute('aria-label',words[i+2]);});
  render();
 }
 function render(){
@@ -41,11 +37,12 @@ function render(){
  document.querySelectorAll('.hero-presets button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===selected)));
 }
 presets.forEach((preset,i)=>{
- const button=document.createElement('button');button.type='button';button.style.setProperty('--swatch',preset.color);
+ const button=document.createElement('button');button.type='button';
  button.addEventListener('click',()=>{selected=i;render();});
  document.querySelector('.hero-presets').append(button);
 });
 document.querySelector('.hero-product-controls').hidden=false;
+document.querySelector('.hero-presets').hidden=false;
 new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 localize();
 let visible=true;
