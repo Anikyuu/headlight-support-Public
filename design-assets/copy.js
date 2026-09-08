@@ -1,8 +1,8 @@
 const ja = {
- language:'言語',eyebrow:'デザインで、気分を変える。',title:'あなたなら、どんな顔？',intro:'色を選んだり、顔を変えたり。新しいHead-Lightを、少しお試し。',preview:'ホーム画面のプレビュー',choose:'好きな組み合わせに。',reset:'最初に戻す',style:'スタイル',simple:'シンプル',illustration:'イラスト',background:'背景',accent:'アクセント',face:'顔あそび',size:'大きさ',spacing:'間隔',height:'高さ',motion:'まばたき',retro:'レトロモード',note:'デザインの一部を試せる体験版です。入力・録音などはできません。',release:'新しいデザインは、次のアップデートでお届けします。',back:'← Head-Lightについて',white:'白',black:'黒',charcoal:'チャコール',navy:'夜ふけ',cream:'クリーム',paper:'紙',mono:'モノクロ',sumi:'墨',blue:'ブルー',lime:'ライム',orange:'オレンジ',pink:'ピンク',lilac:'藤',mint:'ミント',lcdGreen:'液晶グリーン',amber:'アンバー',sky:'スカイ',rose:'ローズ',smoke:'スモーク',lavender:'ラベンダー',smile:'にっこり',kira:'きらきら',tare:'たれ目',sleepy:'ねむい',round:'まんまる',tojime:'ぎゅっと',ring:'びっくり',home:'ホーム',words:'言葉',collection:'コレクション',journal:'手帳',ai:'AIに渡す'
+ language:'言語',eyebrow:'デザインで、気分を変える。',title:'あなたなら、どんな顔？',intro:'色を選んだり、顔を変えたり。新しいHead-Lightを、少しお試し。',preview:'ホーム画面のプレビュー',choose:'好きな組み合わせに。',reset:'最初に戻す',style:'スタイル',simple:'シンプル',illustration:'イラスト',background:'背景',accent:'アクセント',face:'顔あそび',size:'大きさ',spacing:'間隔',height:'高さ',motion:'まばたき',retro:'レトロモード',note:'デザインの一部を試せる体験版です。入力・録音などはできません。',back:'← Head-Lightについて',white:'白',black:'黒',charcoal:'チャコール',navy:'夜ふけ',cream:'クリーム',paper:'紙',mono:'モノクロ',sumi:'墨',blue:'ブルー',lime:'ライム',orange:'オレンジ',pink:'ピンク',lilac:'藤',mint:'ミント',lcdGreen:'液晶グリーン',amber:'アンバー',sky:'スカイ',rose:'ローズ',smoke:'スモーク',lavender:'ラベンダー',smile:'にっこり',kira:'きらきら',tare:'たれ目',sleepy:'ねむい',round:'まんまる',tojime:'ぎゅっと',ring:'びっくり',home:'ホーム',words:'言葉',collection:'コレクション',journal:'手帳',ai:'AIに渡す'
 };
 const en = {
- language:'Language',eyebrow:'A little change of mood.',title:'What’s your kind of face?',intro:'Pick a color. Try a different face. Make yourself at home in the new Head-Light.',preview:'Home screen preview',choose:'Make it your own.',reset:'Reset',style:'Style',simple:'Simple',illustration:'Illustration',background:'Background',accent:'Accent',face:'Face play',size:'Size',spacing:'Spacing',height:'Height',motion:'Blinking',retro:'Retro mode',note:'A small taste of the design options. Typing and recording are not available in this preview.',release:'The new design is coming in the next app update.',back:'← About Head-Light',white:'White',black:'Black',charcoal:'Charcoal',navy:'Midnight',cream:'Cream',paper:'Paper',mono:'Monochrome',sumi:'Ink',blue:'Blue',lime:'Lime',orange:'Orange',pink:'Pink',lilac:'Lilac',mint:'Mint',lcdGreen:'LCD green',amber:'Amber',sky:'Sky',rose:'Rose',smoke:'Smoke',lavender:'Lavender',smile:'Smile',kira:'Sparkle',tare:'Soft eyes',sleepy:'Sleepy',round:'Round',tojime:'Squeeze',ring:'Surprise',home:'Home',words:'Words',collection:'Collection',journal:'Journal',ai:'For AI'
+ language:'Language',eyebrow:'A little change of mood.',title:'What’s your kind of face?',intro:'Pick a color. Try a different face. Make yourself at home in the new Head-Light.',preview:'Home screen preview',choose:'Make it your own.',reset:'Reset',style:'Style',simple:'Simple',illustration:'Illustration',background:'Background',accent:'Accent',face:'Face play',size:'Size',spacing:'Spacing',height:'Height',motion:'Blinking',retro:'Retro mode',note:'A small taste of the design options. Typing and recording are not available in this preview.',back:'← About Head-Light',white:'White',black:'Black',charcoal:'Charcoal',navy:'Midnight',cream:'Cream',paper:'Paper',mono:'Monochrome',sumi:'Ink',blue:'Blue',lime:'Lime',orange:'Orange',pink:'Pink',lilac:'Lilac',mint:'Mint',lcdGreen:'LCD green',amber:'Amber',sky:'Sky',rose:'Rose',smoke:'Smoke',lavender:'Lavender',smile:'Smile',kira:'Sparkle',tare:'Soft eyes',sleepy:'Sleepy',round:'Round',tojime:'Squeeze',ring:'Surprise',home:'Home',words:'Words',collection:'Collection',journal:'Journal',ai:'For AI'
 };
 
 const ko = {
@@ -25,7 +25,6 @@ const ko = {
   "motion": "눈 깜빡임",
   "retro": "레트로 모드",
   "note": "디자인의 일부를 체험할 수 있어요. 이 미리보기에서는 입력과 녹음을 할 수 없어요.",
-  "release": "새 디자인은 다음 앱 업데이트에서 만나실 수 있어요.",
   "back": "← Head-Light 소개",
   "white": "흰색",
   "black": "검정",
@@ -80,7 +79,6 @@ const de = {
   "motion": "Blinzeln",
   "retro": "Retro-Modus",
   "note": "Hier kannst du einige Designoptionen ausprobieren. Texteingabe und Aufnahme sind in dieser Vorschau nicht verfügbar.",
-  "release": "Das neue Design kommt mit dem nächsten App-Update.",
   "back": "← Über Head-Light",
   "white": "Weiß",
   "black": "Schwarz",
@@ -135,7 +133,6 @@ const zhHant = {
   "motion": "眨眼",
   "retro": "復古模式",
   "note": "這裡可以體驗部分設計選項。預覽不支援輸入或錄音。",
-  "release": "全新設計將於下一次 App 更新推出。",
   "back": "← 關於 Head-Light",
   "white": "白",
   "black": "黑",
@@ -190,7 +187,6 @@ const fr = {
   "motion": "Clignement",
   "retro": "Mode rétro",
   "note": "Essayez une partie des options de design. La saisie et l’enregistrement ne sont pas disponibles dans cet aperçu.",
-  "release": "Le nouveau design arrive avec la prochaine mise à jour de l’app.",
   "back": "← À propos de Head-Light",
   "white": "Blanc",
   "black": "Noir",
@@ -245,7 +241,6 @@ const es = {
   "motion": "Parpadeo",
   "retro": "Modo retro",
   "note": "Prueba algunas opciones de diseño. Esta vista previa no permite escribir ni grabar.",
-  "release": "El nuevo diseño llegará con la próxima actualización de la app.",
   "back": "← Acerca de Head-Light",
   "white": "Blanco",
   "black": "Negro",
@@ -300,7 +295,6 @@ const it = {
   "motion": "Battito di ciglia",
   "retro": "Modalità rétro",
   "note": "Prova alcune opzioni di design. In questa anteprima non puoi scrivere o registrare.",
-  "release": "Il nuovo design arriverà con il prossimo aggiornamento dell’app.",
   "back": "← Informazioni su Head-Light",
   "white": "Bianco",
   "black": "Nero",
