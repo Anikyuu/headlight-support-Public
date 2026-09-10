@@ -340,6 +340,53 @@
     font-size: 15px;
     line-height: 1.7;
   }
+  .store-qr-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+    padding: 10px 16px 10px 10px;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-decoration: none;
+    text-align: left;
+    box-shadow: 0 8px 24px rgba(28, 27, 25, 0.06);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .store-qr-link:hover,
+  .store-qr-link:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(28, 27, 25, 0.10);
+  }
+  .store-qr-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+  .store-qr-code {
+    display: block;
+    width: 108px;
+    height: 108px;
+    image-rendering: pixelated;
+  }
+  .store-qr-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 10.5em;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .store-qr-copy strong {
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 650;
+  }
+  @media (max-width: 720px) {
+    .store-qr-link { display: none; }
+  }
   .pro-badge {
     display: inline-block;
     margin-left: 8px;
@@ -929,6 +976,13 @@
         <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
       </a>
       <span class="store-download-note"><span data-i18n="ja">iPhone・iPadで今すぐ始められます。</span><span data-i18n="en">Start now on iPhone and iPad.</span><span data-i18n="ko">iPhone과 iPad에서 지금 시작할 수 있어요.</span></span>
+      <a class="store-qr-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
+        <img class="store-qr-code" src="img/app-store-qr.png" width="108" height="108" alt="">
+        <span class="store-qr-copy">
+          <strong><span data-i18n="ja" data-static-localized>スマホで読み取る</span><span data-i18n="en" data-static-localized>Scan with your phone</span><span data-i18n="ko" data-static-localized>휴대폰으로 스캔</span><span data-i18n="de" data-static-localized>Mit dem Smartphone scannen</span><span data-i18n="zh-Hant" data-static-localized>用手機掃描</span><span data-i18n="fr" data-static-localized>Scannez avec votre téléphone</span><span data-i18n="es" data-static-localized>Escanea con tu móvil</span><span data-i18n="it" data-static-localized>Scansiona con il telefono</span></strong>
+          <span><span data-i18n="ja" data-static-localized>App Storeを開きます</span><span data-i18n="en" data-static-localized>Opens the App Store</span><span data-i18n="ko" data-static-localized>App Store로 이동합니다</span><span data-i18n="de" data-static-localized>Öffnet den App Store</span><span data-i18n="zh-Hant" data-static-localized>開啟 App Store</span><span data-i18n="fr" data-static-localized>Ouvre l’App Store</span><span data-i18n="es" data-static-localized>Abre el App Store</span><span data-i18n="it" data-static-localized>Apre l’App Store</span></span>
+        </span>
+      </a>
     </div>
   </div>
   <div class="hero-product">
