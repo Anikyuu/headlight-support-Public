@@ -593,6 +593,54 @@
     align-items: start;
   }
   .collection-shots .phone.small { width: auto; }
+  .collection-video-feature {
+    width: 100%;
+    margin: clamp(18px, 3vw, 34px) 0 0;
+    text-align: center;
+  }
+  .collection-video-copy {
+    width: min(660px, 100%);
+    margin: 0 auto 22px;
+  }
+  .collection-video-copy h3 {
+    margin: 0 0 8px;
+    font-family: var(--serif);
+    font-size: clamp(24px, 3.4vw, 32px);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+  }
+  .collection-video-copy p {
+    max-width: none;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .collection-video-frame {
+    width: min(860px, 100%);
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgba(28,27,25,0.10);
+    border-radius: 20px;
+    background: #111;
+    box-shadow: 0 18px 46px rgba(28,27,25,0.14);
+  }
+  .collection-demo-video {
+    display: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #111;
+  }
+  html[data-lang="ja"] .collection-demo-video[data-video-lang="ja"],
+  html:not([data-lang]) .collection-demo-video[data-video-lang="ja"],
+  html[data-lang="en"] .collection-demo-video[data-video-lang="en"],
+  html[data-lang="ko"] .collection-demo-video[data-video-lang="en"],
+  html[data-lang="de"] .collection-demo-video[data-video-lang="en"],
+  html[data-lang="zh-Hant"] .collection-demo-video[data-video-lang="en"],
+  html[data-lang="fr"] .collection-demo-video[data-video-lang="en"],
+  html[data-lang="es"] .collection-demo-video[data-video-lang="en"],
+  html[data-lang="it"] .collection-demo-video[data-video-lang="en"] { display: block; }
   @media (max-width: 560px) {
     .cols .shots.collection-shots {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -610,6 +658,7 @@
     }
     .routine-shots .phone img { border-radius: 18px; }
     .routine-shots .phone:first-child { margin-top: 24px; }
+    .collection-video-frame { border-radius: 14px; }
   }
 
   /* 好きなものと自分に沿う目標の研究を、静かな読み物として置く。 */
@@ -902,6 +951,9 @@
     var html = document.documentElement;
     var select = document.getElementById("languageSelect");
     function apply(lang) {
+      document.querySelectorAll(".collection-demo-video").forEach(function (video) {
+        video.pause();
+      });
       html.setAttribute("lang", lang);
       html.dataset.lang = lang;
       select.value = lang;
@@ -1192,6 +1244,38 @@
         <div class="phone small"><img src="img/shots/collection-records-hp.webp" loading="lazy" decoding="async" data-alt-ja="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面" data-alt-en="A record collection where music links appear as square album sleeves." data-alt-ko="음악 링크가 정사각형 레코드 재킷으로 나열된 컬렉션 화면" alt="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面"></div>
       </div>
     </div>
+    <figure class="collection-video-feature">
+      <figcaption class="collection-video-copy">
+        <h3>
+          <span data-i18n="ja" data-static-localized>音楽の棚を、動画で見る。</span>
+          <span data-i18n="en" data-static-localized>See the music shelf in action.</span>
+          <span data-i18n="ko" data-static-localized>음악 선반을 영상으로 만나보세요.</span>
+          <span data-i18n="de" data-static-localized>Das Musikregal im Video entdecken.</span>
+          <span data-i18n="zh-Hant" data-static-localized>用影片看看音樂收藏架。</span>
+          <span data-i18n="fr" data-static-localized>Découvrez l’étagère musicale en vidéo.</span>
+          <span data-i18n="es" data-static-localized>Descubre la estantería musical en vídeo.</span>
+          <span data-i18n="it" data-static-localized>Scopri lo scaffale musicale in video.</span>
+        </h3>
+        <p>
+          <span data-i18n="ja" data-static-localized>ジャケットを並べて眺め、カバーフローで探し、そのまま音楽を再生できます。</span>
+          <span data-i18n="en" data-static-localized>Browse your album covers in a grid or Cover Flow, then play music right from your shelf.</span>
+          <span data-i18n="ko" data-static-localized>앨범 재킷을 그리드나 Cover Flow로 둘러보고, 선반에서 바로 음악을 재생할 수 있어요.</span>
+          <span data-i18n="de" data-static-localized>Durchsuche deine Cover im Raster oder Cover Flow und spiele die Musik direkt aus deinem Regal ab.</span>
+          <span data-i18n="zh-Hant" data-static-localized>用格狀或 Cover Flow 瀏覽專輯封面，直接從收藏架播放音樂。</span>
+          <span data-i18n="fr" data-static-localized>Parcourez vos pochettes en grille ou en Cover Flow, puis lancez la musique depuis votre étagère.</span>
+          <span data-i18n="es" data-static-localized>Explora tus carátulas en cuadrícula o Cover Flow y reproduce la música desde tu estantería.</span>
+          <span data-i18n="it" data-static-localized>Sfoglia le copertine nella griglia o in Cover Flow e avvia la musica direttamente dallo scaffale.</span>
+        </p>
+      </figcaption>
+      <div class="collection-video-frame">
+        <video class="collection-demo-video" data-video-lang="ja" controls playsinline preload="metadata" poster="img/video-posters/collection-music-ja.jpg" aria-label="Head-Lightの音楽コレクションの使い方（日本語版）">
+          <source src="video/collection-music-ja.mp4" type="video/mp4">
+        </video>
+        <video class="collection-demo-video" data-video-lang="en" controls playsinline preload="metadata" poster="img/video-posters/collection-music-en.jpg" aria-label="How to use music collections in Head-Light (English version)">
+          <source src="video/collection-music-en.mp4" type="video/mp4">
+        </video>
+      </div>
+    </figure>
   </div>
 </section>
 
