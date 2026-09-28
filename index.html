@@ -40,9 +40,6 @@
   }
 }
 </script>
-<script src="site-localizations.js?v=words-and-links-20260907"></script>
-<script src="design-assets/home-localizations.js?v=20260907-product"></script>
-<script src="design-assets/home-static-localizations.js?v=20260907-product"></script>
 <style>
   :root {
     /* 【2026-07-27 Kai】黒から白へ。「あなたを軽くする」に合う軽い印象にする。 */
@@ -920,6 +917,8 @@
 <script type="module" src="design-assets/home-product.js?v=20260928-creator-inventory"></script>
 <link rel="stylesheet" href="design-assets/site-nav.css?v=20260907-direct">
 <script type="module" src="design-assets/site-nav.js?v=20260907-direct"></script>
+<link rel="stylesheet" href="design-assets/home-creator.css?v=20260928-creator">
+<script type="module" src="design-assets/home-creator.js?v=20260928-creator"></script>
 </head>
 <body id="top">
 <nav class="product-nav" aria-label="Head-Light"><a class="product-wordmark" href="#top">Head-Light</a><div class="product-nav-links"><a href="./about.html">Head-Lightとは</a><a href="./design.html">デザイン</a><a href="./tools.html">道具の使い方</a></div>
@@ -939,7 +938,7 @@
 </nav>
 <script>
   (function () {
-    HeadlightSiteLocalizations.install("index");
+    var TITLES = {"ja":"Head-Light: あなたを軽くする手帳","en":"Head-Light: Lighten your load","ko":"Head-Light: 마음이 가벼워지는 다이어리","de":"Head-Light: Leichter leben","zh-Hant":"Head-Light: 讓心變輕的手帳","fr":"Head-Light: Vivre plus léger","es":"Head-Light: Vive más ligero","it":"Head-Light: Vivi più leggero"};
     var KEY = "headlightLang";
     var LANGS = ["ja", "en", "ko", "de", "zh-Hant", "fr", "es", "it"];
     var html = document.documentElement;
@@ -953,7 +952,7 @@
       select.value = lang;
       var titleEl = document.querySelector("title");
       if (titleEl) {
-        titleEl.textContent = HeadlightSiteLocalizations.titles.index[lang];
+        titleEl.textContent = TITLES[lang] || TITLES.en;
       }
       document.querySelectorAll("img[data-alt-ja]").forEach(function (img) {
         img.alt = img.getAttribute("data-alt-" + lang.toLowerCase())
@@ -992,9 +991,6 @@
       localStorage.setItem(KEY, lang);
       apply(lang);
     });
-    window.addEventListener("headlight-site-localizations-ready", function () {
-      apply(html.dataset.lang || "en");
-    });
   })();
 </script>
 
@@ -1026,7 +1022,7 @@
     <div class="store-download">
       <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
       <span class="store-download-cue"><span data-i18n="ja" data-static-localized>ここからダウンロード</span><span data-i18n="en" data-static-localized>Download here</span><span data-i18n="ko" data-static-localized>여기에서 다운로드</span><span data-i18n="de" data-static-localized>Hier herunterladen</span><span data-i18n="zh-Hant" data-static-localized>從這裡下載</span><span data-i18n="fr" data-static-localized>Télécharger ici</span><span data-i18n="es" data-static-localized>Descarga aquí</span><span data-i18n="it" data-static-localized>Scarica qui</span><svg class="store-download-arrow" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v17M5 13l7 7 7-7"/></svg></span>
-        <span class="sr-only"><span data-i18n="ja">App Storeから無料でダウンロード</span><span data-i18n="en">Download free on the App Store</span><span data-i18n="ko">App Store에서 무료로 다운로드</span></span>
+        <span class="sr-only"><span data-i18n="ja" data-static-localized>App Storeから無料でダウンロード</span><span data-i18n="en" data-static-localized>Download free on the App Store</span><span data-i18n="ko" data-static-localized>App Store에서 무료로 다운로드</span><span data-i18n="de" data-static-localized>Kostenlos im App Store laden</span><span data-i18n="zh-Hant" data-static-localized>在 App Store 免費下載</span><span data-i18n="fr" data-static-localized>Télécharger gratuitement sur l’App Store</span><span data-i18n="es" data-static-localized>Descargar gratis en el App Store</span><span data-i18n="it" data-static-localized>Scarica gratis dall’App Store</span></span>
         <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
         <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
         <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
@@ -1036,7 +1032,7 @@
         <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
         <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
       </a>
-      <span class="store-download-note"><span data-i18n="ja">iPhone・iPadで今すぐ始められます。</span><span data-i18n="en">Start now on iPhone and iPad.</span><span data-i18n="ko">iPhone과 iPad에서 지금 시작할 수 있어요.</span></span>
+      <span class="store-download-note"><span data-i18n="ja" data-static-localized>iPhone・iPadで今すぐ始められます。</span><span data-i18n="en" data-static-localized>Start now on iPhone and iPad.</span><span data-i18n="ko" data-static-localized>iPhone과 iPad에서 지금 시작할 수 있어요.</span><span data-i18n="de" data-static-localized>Jetzt auf iPhone und iPad starten.</span><span data-i18n="zh-Hant" data-static-localized>立即在 iPhone 與 iPad 開始使用。</span><span data-i18n="fr" data-static-localized>Commencez dès maintenant sur iPhone et iPad.</span><span data-i18n="es" data-static-localized>Empieza ahora en iPhone y iPad.</span><span data-i18n="it" data-static-localized>Inizia ora su iPhone e iPad.</span></span>
     </div>
   </div>
   <div class="hero-product">
@@ -1057,489 +1053,162 @@
 
 </section>
 
+<div class="hx-progress" aria-hidden="true"></div>
+<main class="hx">
 
-
-
-
-<!-- 答え -->
-<section id="ai-sorting">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">High Beamでできること</span><span data-i18n="en">With High Beam</span><span data-i18n="ko">High Beam로 할 수 있는 것</span></div>
-    <h2><span data-i18n="ja">話したまま、<br>整理まで任せられる。</span><span data-i18n="en">Speak freely.<br>Let AI sort the rest.</span><span data-i18n="ko">말한 그대로,<br>정리까지 맡길 수 있어요.</span></h2>
-    <p class="lead"><span data-i18n="ja">声でも文字でも。思いついたまま入れると、AIが予定・やること・アイデアに分けます。</span><span data-i18n="en">Speak or type as thoughts come. AI separates them into plans, to-dos and ideas.</span><span data-i18n="ko">말로도 글로도. 떠오르는 대로 넣으면 AI가 일정·할 일·아이디어로 나눠요.</span></p>
-    <div class="cols">
-      <div class="text">
-        <p class="bubble"><span data-i18n="ja">「えーと、来週の水曜たしか3時から歯医者で、あと帰りに電池買わないと。そういえば新曲のサビ、転調したら面白いかも」</span><span data-i18n="en">"Um, next Wednesday I think it&#39;s the dentist at 3, and I need to grab batteries on the way home. Oh — the chorus of that new song might actually work better modulated."</span><span data-i18n="ko">「음, 다음 주 수요일 아마 3시부터 치과였고, 돌아오는 길에 배터리도 사야 해. 아 맞다, 새 곡 후렴구 전조하면 재밌을 것 같은데」</span></p>
-        <div class="dests">
-          <div class="dest"><span class="dico">📅</span><div><b><span data-i18n="ja">歯医者 水曜 15:00</span><span data-i18n="en">Dentist, Wed 15:00</span><span data-i18n="ko">치과 수요일 15:00</span></b><span><span data-i18n="ja">「カレンダーに入れる?」と一度だけ聞いてくれる</span><span data-i18n="en">Asks once, &ldquo;Add to calendar?&rdquo;</span><span data-i18n="ko">「캘린더에 추가할까요?」라고 한 번만 물어봐요</span></span></div></div>
-          <div class="dest"><span class="dico">✓</span><div><b><span data-i18n="ja">電池を買う</span><span data-i18n="en">Buy batteries</span><span data-i18n="ko">배터리 사기</span></b><span><span data-i18n="ja">やることへ</span><span data-i18n="en">Goes to your to-dos</span><span data-i18n="ko">할 일로</span></span></div></div>
-          <div class="dest"><span class="dico">💡</span><div><b><span data-i18n="ja">新曲のサビを転調してみる</span><span data-i18n="en">Try modulating the new song's chorus</span><span data-i18n="ko">새 곡 후렴구 전조해보기</span></b><span><span data-i18n="ja">アイデアの瓶へ、玉になって溜まる</span><span data-i18n="en">Goes to the Ideas Jar, as a little bead</span><span data-i18n="ko">아이디어의 병으로, 구슬이 되어 쌓여요</span></span></div></div>
-        </div>
-        <p class="sub"><span data-i18n="ja">まとまっていなくて大丈夫。整理はAIに任せられます。</span><span data-i18n="en">It doesn’t have to be tidy. Leave the organizing to AI.</span><span data-i18n="ko">정리되지 않은 채로 말해도 괜찮아요. 정리는 AI에게 맡길 수 있어요.</span></p>
-      </div>
-      <div class="shots">
-        <div class="phone"><img src="img/shots/smile-black-20260907.png" loading="lazy" decoding="async" data-alt-ja="にっこりしたイラストの顔が表示されたホーム画面" data-alt-en="The Home screen with a smiling illustrated face" data-alt-ko="환하게 웃는 일러스트 얼굴이 표시된 홈 화면" alt="にっこりしたイラストの顔が表示されたホーム画面"></div>
-      </div>
-    </div>
-  </div>
-
-    <p class="paid-note" hidden><a href="#pricing"><span data-i18n="ja">20を超える道具は無料。High Beamの年額プランは7日間無料。</span><span data-i18n="en">More than 20 tools are free. Try the annual High Beam plan free for 7 days.</span><span data-i18n="ko">20개가 넘는 도구는 무료. High Beam 연간 플랜은 7일 무료.</span></a></p>
-
-</section>
-
-
-<!-- 整理アシスタント -->
-<section id="tidy-assistant">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span><span class="pro-badge">High Beam</span></div>
-    <div class="tidy-problem cols">
-      <div class="text">
-        <h2><span data-i18n="ja">頭の中は、<br>いつもいっぱい。</span><span data-i18n="en">Your head is<br>always full.</span><span data-i18n="ko">머릿속은,<br>언제나 가득해요.</span></h2>
-        <p class="lead"><span data-i18n="ja">やること、予定、思いつき、好きなもの。覚えておこうとするほど、頭は重くなります。</span><span data-i18n="en">To-dos, plans, ideas, things you love. The more you try to hold on to, the heavier your head feels.</span><span data-i18n="ko">할 일, 일정, 아이디어, 좋아하는 것. 기억하려 할수록 머릿속은 무거워져요.</span></p>
-        <p class="sub"><span data-i18n="ja">必要だったのは、全部を安心して置ける場所でした。</span><span data-i18n="en">What you needed was one safe place to put it all.</span><span data-i18n="ko">필요했던 건, 모든 것을 안심하고 둘 수 있는 한 곳이었어요.</span></p>
-      </div>
-      <img class="illust reveal" style="width: min(300px, 70vw);" src="img/illust-full-head.jpg" loading="lazy"
-           data-alt-ja="頭の中に線が渦を巻き、そのまわりをカレンダー・買い物・ひらめき・時計・音楽が取り囲む線画"
-           data-alt-en="A line drawing of a head full of swirling lines, circled by a calendar, shopping, an idea, a clock, and music."
-           data-alt-ko="머릿속에 선이 소용돌이치고, 그 주위를 캘린더・쇼핑・아이디어・시계・음악이 둘러싼 선화"
-           alt="頭の中に線が渦を巻き、そのまわりをカレンダー・買い物・ひらめき・時計・音楽が取り囲む線画">
-    </div>
-    <h2><span data-i18n="ja">今日はこれだけで、十分です。</span><span data-i18n="en">This is enough for today.</span><span data-i18n="ko">오늘은 이것만으로, 충분해요.</span></h2>
-    <p class="lead"><span data-i18n="ja">頭にあることを話すだけ。AIが「いま」「あとで」「育てる」「手放す」に分けます。</span><span data-i18n="en">Say what’s on your mind. AI sorts it into now, later, grow and let go.</span><span data-i18n="ko">머릿속에 있는 것을 말하기만 하면 돼요. AI가 ‘지금’, ‘나중’, ‘키우기’, ‘놓기’로 나눠요.</span></p>
-
-    <p class="sub" hidden><span data-i18n="ja">4象限マトリクス(クアドラントチャート)は、ものごとを2つの軸で4つに分けて、一目で全体を見る図です。仕事の優先順位づけでよく使われます。Head-Lightでは<strong>「急ぎかどうか」</strong>と<strong>「いま答えを出せるかどうか」</strong>で分けます。分ける作業はAIがやるので、あなたは話すだけです。</span><span data-i18n="en">A four-quadrant matrix splits things along two axes so you can take in the whole picture at a glance — the same shape often used for prioritising work. Head-Light splits by <strong>how urgent it is</strong> and <strong>whether you can settle it yet</strong>. AI does the splitting; you just talk.</span><span data-i18n="ko">4사분면 매트릭스(쿼드런트 차트)는 두 개의 축으로 넷으로 나눠, 전체를 한눈에 보는 그림이에요. 업무 우선순위를 정할 때 자주 쓰여요. Head-Light에서는 <strong>「급한지 아닌지」</strong>와 <strong>「지금 답을 낼 수 있는지」</strong>로 나눠요. 나누는 일은 AI가 하니, 당신은 말하기만 하면 돼요.</span></p>
-
-    <div class="tidy-real-visuals" id="tidy-real-visuals">
-      <figure class="tidy-detail">
-        <img src="img/shots/tidy-assistant-detail-ja.jpg" data-shot="tidy-assistant-detail" loading="lazy" decoding="async"
-             data-alt-ja="整理アシスタントが実際に分けた4枚の拡大表示" data-alt-en="A close-up of the four actual cards sorted by Tidy Assistant" data-alt-ko="정리 어시스턴트가 실제로 나눈 네 장의 확대 화면" data-alt-de="Nahaufnahme der vier tatsächlich vom Sortierassistenten sortierten Karten" data-alt-zh-hant="整理助手實際分出的四張卡片放大畫面" data-alt-fr="Gros plan sur les quatre cartes réellement triées par l’assistant de rangement" data-alt-es="Primer plano de las cuatro tarjetas realmente ordenadas por el asistente" data-alt-it="Primo piano delle quattro schede realmente ordinate dall’assistente" alt="整理アシスタントが実際に分けた4枚の拡大表示">
-        <figcaption><span data-i18n="ja" data-static-localized>実際に分けられた4枚</span><span data-i18n="en" data-static-localized>The four actual sorted cards</span><span data-i18n="ko" data-static-localized>실제로 나뉜 네 장</span><span data-i18n="de" data-static-localized>Die vier tatsächlich sortierten Karten</span><span data-i18n="zh-Hant" data-static-localized>實際分出的四張卡片</span><span data-i18n="fr" data-static-localized>Les quatre cartes réellement triées</span><span data-i18n="es" data-static-localized>Las cuatro tarjetas realmente ordenadas</span><span data-i18n="it" data-static-localized>Le quattro schede realmente ordinate</span></figcaption>
-      </figure>
-      <figure>
-        <div class="phone"><img src="img/shots/tidy-assistant-ja.jpg" data-shot="tidy-assistant" loading="lazy" decoding="async"
-             data-alt-ja="整理アシスタントの実際の全画面" data-alt-en="The actual full Tidy Assistant screen" data-alt-ko="정리 어시스턴트의 실제 전체 화면" data-alt-de="Der tatsächliche vollständige Bildschirm des Sortierassistenten" data-alt-zh-hant="整理助手的實際完整畫面" data-alt-fr="L’écran complet réel de l’assistant de rangement" data-alt-es="La pantalla completa real del asistente" data-alt-it="La schermata completa reale dell’assistente" alt="整理アシスタントの実際の全画面"></div>
-        <figcaption><span data-i18n="ja" data-static-localized>実際のアプリ画面</span><span data-i18n="en" data-static-localized>The actual app screen</span><span data-i18n="ko" data-static-localized>실제 앱 화면</span><span data-i18n="de" data-static-localized>Der tatsächliche App-Bildschirm</span><span data-i18n="zh-Hant" data-static-localized>實際的 App 畫面</span><span data-i18n="fr" data-static-localized>L’écran réel de l’app</span><span data-i18n="es" data-static-localized>La pantalla real de la app</span><span data-i18n="it" data-static-localized>La schermata reale dell’app</span></figcaption>
-      </figure>
-    </div>
-
-    <p class="sub"><span data-i18n="ja">やることを増やすためではなく、減らすためのAIです。</span><span data-i18n="en">AI that helps shorten the list, not lengthen it.</span><span data-i18n="ko">할 일을 늘리는 것이 아니라, 줄여 주는 AI예요.</span></p>
-  </div>
-</section>
-
-<!-- 言葉 -->
-<section id="words">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja" data-static-localized>声でひらめきを捕まえる</span><span data-i18n="en" data-static-localized>Speak &amp; Capture</span><span data-i18n="ko" data-static-localized>말로 영감을 붙잡기</span><span data-i18n="de" data-static-localized>Sprechen &amp; festhalten</span><span data-i18n="zh-Hant" data-static-localized>說出並捕捉靈感</span><span data-i18n="fr" data-static-localized>Dire et saisir</span><span data-i18n="es" data-static-localized>Hablar y capturar</span><span data-i18n="it" data-static-localized>Parlare e catturare</span></div>
-    <h2><span data-i18n="ja" data-static-localized>ひらめいたら、話すだけ。</span><span data-i18n="en" data-static-localized>Just talk to save an idea.</span><span data-i18n="ko" data-static-localized>아이디어가 떠오르면 말하기만 하세요.</span><span data-i18n="de" data-static-localized>Einfach sprechen und eine Idee festhalten.</span><span data-i18n="zh-Hant" data-static-localized>靈感一來，說出來就好。</span><span data-i18n="fr" data-static-localized>Parlez simplement pour garder une idée.</span><span data-i18n="es" data-static-localized>Solo habla para guardar una idea.</span><span data-i18n="it" data-static-localized>Basta parlare per salvare un’idea.</span></h2>
-    <p class="lead"><span data-i18n="ja" data-static-localized>ひらめきを捕まえる最速の方法は、声。だからアプリを開いた最初の画面に、見逃せない大きなマイクを置きました。一度押して話し、最後に「送信」と言えば保存。文字でも入力できます。</span><span data-i18n="en" data-static-localized>When an idea hits, voice is the fastest way to catch it. That’s why there is a big microphone on the very first screen. Tap it, talk, and say “send it” at the end to save. Typing works too.</span><span data-i18n="ko" data-static-localized>아이디어가 떠오를 때 가장 빠른 방법은 목소리예요. 그래서 앱을 열자마자 보이는 첫 화면에 큰 마이크를 두었습니다. 한 번 누르고 말한 뒤 마지막에 “전송”이라고 하면 저장됩니다. 글로 입력해도 돼요.</span><span data-i18n="de" data-static-localized>Wenn eine Idee kommt, hältst du sie am schnellsten mit der Stimme fest. Deshalb wartet gleich auf dem ersten Bildschirm ein großes Mikrofon. Antippen, sprechen und am Ende „Senden“ sagen. Tippen geht auch.</span><span data-i18n="zh-Hant" data-static-localized>靈感出現時，聲音是最快的捕捉方式。因此 App 的第一個畫面就放了一個醒目的大麥克風。點一下、說出來，最後說「傳送」即可儲存，也能用文字輸入。</span><span data-i18n="fr" data-static-localized>Quand une idée surgit, la voix est le moyen le plus rapide de la saisir. C’est pourquoi un grand micro vous attend dès le premier écran. Touchez-le, parlez, puis dites « envoi » pour enregistrer. Vous pouvez aussi écrire.</span><span data-i18n="es" data-static-localized>Cuando surge una idea, la voz es la forma más rápida de capturarla. Por eso hay un gran micrófono en la primera pantalla. Tócalo, habla y di «envíalo» al final para guardar. También puedes escribir.</span><span data-i18n="it" data-static-localized>Quando arriva un’idea, la voce è il modo più rapido per catturarla. Per questo nella prima schermata trovi un grande microfono. Toccalo, parla e di’ «invia» alla fine per salvare. Puoi anche scrivere.</span></p>
-    <figure class="words-speaking-photo" id="voice-photo">
-    <img class="voice-photo" src="img/hero-voice.jpg" width="1300" height="975" loading="lazy" decoding="async"
-         data-alt-ja="iPhoneを手に持ち、Head-Lightへ話しかけているところ" data-alt-en="Holding an iPhone and speaking into Head-Light." data-alt-ko="iPhone을 손에 들고 Head-Light에 말하고 있는 모습">
-    </figure>
-    <div class="cols">
-      <div class="shots">
-        <div class="phone"><img src="img/shots/02_words_ja.jpg" data-shot="02_words" loading="lazy" decoding="async" data-alt-ja="言葉のタブ。話した言葉が白い紙のカードで並ぶ" data-alt-en="The Words tab: spoken words lined up as white paper cards." data-alt-ko="말 탭. 말한 것이 흰 종이 카드로 늘어서 있다" alt="言葉のタブ。話した言葉が白い紙のカードで並ぶ"></div>
-      </div>
-      <div class="text">
-        <details class="feature-details">
-          <summary class="feature-details-summary"><span data-i18n="ja" data-static-localized>詳しい機能を見る</span><span data-i18n="en" data-static-localized>Explore the details</span><span data-i18n="ko" data-static-localized>자세한 기능 보기</span><span data-i18n="de" data-static-localized>Details entdecken</span><span data-i18n="zh-Hant" data-static-localized>查看詳細功能</span><span data-i18n="fr" data-static-localized>Voir les détails</span><span data-i18n="es" data-static-localized>Ver los detalles</span><span data-i18n="it" data-static-localized>Scopri i dettagli</span></summary>
-        <ul class="points">
-          <li><span data-i18n="ja">マイクを一度押して話し、最後に「送信」と言えば保存。止めるために、もう一度ボタンを押す必要はありません。</span><span data-i18n="en">Tap the microphone once, speak, and say “send it” to save. There is no need to tap again to stop.</span><span data-i18n="ko">마이크를 한 번 누르고 말한 뒤 “전송”이라고 하면 저장됩니다. 멈추려고 다시 누를 필요가 없어요.</span></li>
-          <li hidden><span data-i18n="ja">ホームで話した言葉も、整理アシスタントで切り分けた言葉も、<strong>ここに集まる</strong>。</span><span data-i18n="en">Words captured from Home and words separated by the Tidy Assistant <strong>all gather here</strong>.</span><span data-i18n="ko">홈에서 말한 내용과 정리 어시스턴트가 나눈 말이 <strong>모두 여기에 모여요</strong>.</span></li>
-          <li><span data-i18n="ja" data-static-localized>日付と時刻を含む言葉は、確認してからカレンダーへ追加できます。</span><span data-i18n="en" data-static-localized>If a note includes a date and time, Head-Light offers to add it to the calendar.</span><span data-i18n="ko" data-static-localized>메모에 날짜와 시간이 있으면 확인 후 캘린더에 추가할 수 있어요.</span><span data-i18n="de" data-static-localized>Enthält eine Notiz Datum und Uhrzeit, bietet Head-Light an, sie zum Kalender hinzuzufügen.</span><span data-i18n="zh-Hant" data-static-localized>文字中若包含日期與時間，Head-Light 會先詢問，再加入行事曆。</span><span data-i18n="fr" data-static-localized>Si une note contient une date et une heure, Head-Light propose de l’ajouter au calendrier.</span><span data-i18n="es" data-static-localized>Si una nota incluye fecha y hora, Head-Light ofrece añadirla al calendario.</span><span data-i18n="it" data-static-localized>Se una nota contiene data e ora, Head-Light propone di aggiungerla al calendario.</span></li>
-          <li><span data-i18n="ja">日付、フォルダ、キーワードから、読み返したい言葉をすぐに見つけられる。</span><span data-i18n="en">Find any word again by date, folder or keyword.</span><span data-i18n="ko">날짜·폴더·키워드로 다시 읽고 싶은 말을 바로 찾을 수 있습니다.</span></li>
-          <li><span data-i18n="ja">記録は端末の中だけ。削除しても30日間は元に戻せます。</span><span data-i18n="en">Your records stay on your device and can be protected with Face ID. Restore anything you delete for up to 30 days.</span><span data-i18n="ko">기록은 내 기기 안에만 보관됩니다. 삭제해도 30일 동안 되돌릴 수 있습니다.</span></li>
-        </ul>
-        </details>
-      </div>
+<!-- 1. ピッチ: スクロールで文字が灯る -->
+<section class="hx-pitch" aria-labelledby="hx-pitch-title">
+  <div class="hx-wrap">
+    <span class="hx-eyebrow" data-t="pitchEye">クリエイターのためのインベントリ・アプリ</span>
+    <h2 class="hx-pitch-lines" id="hx-pitch-title"><span data-t="pitch1">響いたものを、あつめて。</span><span data-t="pitch2">ひらめきを、声にする。</span></h2>
+    <div class="hx-pitch-sub">
+      <p data-reveal data-t="pitchSub">動画も音楽も、リンクもファイルも、ひと目で見渡せる棚に。思いついたら、話すだけ。</p>
+      <a class="hx-scrollcue" href="#hx-collection" aria-label="Scroll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- コレクション -->
-<section id="collection">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">コレクション</span><span data-i18n="en">Collection</span><span data-i18n="ko">컬렉션</span></div>
-    <h2><span data-i18n="ja" data-static-localized>リンクもファイルも、<br>表紙のあるカードへ。</span><span data-i18n="en" data-static-localized>Turn links and files<br>into cards on a shelf.</span><span data-i18n="ko" data-static-localized>링크와 파일을<br>표지가 있는 카드로.</span><span data-i18n="de" data-static-localized>Links und Dateien werden<br>zu Karten im Regal.</span><span data-i18n="zh-Hant" data-static-localized>連結與檔案，<br>都變成架上的封面卡片。</span><span data-i18n="fr" data-static-localized>Liens et fichiers deviennent<br>des cartes sur une étagère.</span><span data-i18n="es" data-static-localized>Convierte enlaces y archivos<br>en tarjetas sobre una estantería.</span><span data-i18n="it" data-static-localized>Trasforma link e file<br>in schede su uno scaffale.</span></h2>
-    <p class="lead"><span data-i18n="ja" data-static-localized>動画、SNSの投稿、アルバム、プレイリスト、Webリンク。写真、PDF、テキスト、Word、音声ファイルも、ひとつの棚へ。表紙を眺めながら、必要なものを手で選べます。</span><span data-i18n="en" data-static-localized>Videos, social posts, albums, playlists, and web links. Photos, PDFs, text, Word documents, and audio files can live on the same shelf, ready to browse by cover and choose by hand.</span><span data-i18n="ko" data-static-localized>영상, SNS 게시물, 앨범, 플레이리스트, 웹 링크. 사진, PDF, 텍스트, Word, 오디오 파일도 같은 선반에 놓고 표지를 보며 직접 고를 수 있어요.</span><span data-i18n="de" data-static-localized>Videos, Social Posts, Alben, Playlists und Weblinks. Auch Fotos, PDFs, Text-, Word- und Audiodateien liegen im selben Regal und lassen sich über ihre Cover durchblättern.</span><span data-i18n="zh-Hant" data-static-localized>影片、社群貼文、專輯、播放清單與網頁連結，還有照片、PDF、文字、Word 與音訊檔案，都能放在同一個架上，依封面瀏覽與挑選。</span><span data-i18n="fr" data-static-localized>Vidéos, publications, albums, playlists et liens web. Photos, PDF, textes, documents Word et fichiers audio peuvent partager la même étagère, à parcourir par leurs couvertures.</span><span data-i18n="es" data-static-localized>Vídeos, publicaciones, álbumes, playlists y enlaces web. Fotos, PDF, textos, documentos Word y archivos de audio caben en la misma estantería para explorarlos por sus portadas.</span><span data-i18n="it" data-static-localized>Video, post, album, playlist e link web. Foto, PDF, testi, documenti Word e file audio possono stare sullo stesso scaffale, da sfogliare attraverso le copertine.</span></p>
-    <p class="collection-beyond-pin"><strong>Not just pin. Make from it.</strong><span data-i18n="ja" data-static-localized>集めたものを見返し、そこから生まれたひらめきを、次の創作へ。</span><span data-i18n="en" data-static-localized>Return to what inspires you, then turn it into what you make next.</span><span data-i18n="ko" data-static-localized>모으는 데서 끝나지 않고, 다시 보고 말로 남겨 다음 창작으로 이어 가세요.</span><span data-i18n="de" data-static-localized>Sammle, was dich inspiriert, kehre dazu zurück und mach daraus dein nächstes Werk.</span><span data-i18n="zh-Hant" data-static-localized>不只收藏；再次翻看、說出想法，再讓它成為下一個創作。</span><span data-i18n="fr" data-static-localized>Rassemblez ce qui vous inspire, retrouvez-le et transformez-le en votre prochaine création.</span><span data-i18n="es" data-static-localized>Reúne lo que te inspira, vuelve a ello y conviértelo en tu próxima creación.</span><span data-i18n="it" data-static-localized>Raccogli ciò che ti ispira, ritrovalo e trasformalo nella tua prossima creazione.</span></p>
-    <div class="cols">
-      <div class="text">
-        <details class="feature-details">
-          <summary class="feature-details-summary"><span data-i18n="ja" data-static-localized>詳しい機能を見る</span><span data-i18n="en" data-static-localized>Explore the details</span><span data-i18n="ko" data-static-localized>자세한 기능 보기</span><span data-i18n="de" data-static-localized>Details entdecken</span><span data-i18n="zh-Hant" data-static-localized>查看詳細功能</span><span data-i18n="fr" data-static-localized>Voir les détails</span><span data-i18n="es" data-static-localized>Ver los detalles</span><span data-i18n="it" data-static-localized>Scopri i dettagli</span></summary>
-        <ul class="points">
-          <li><span data-i18n="ja">リンクを貼るだけで、サムネイル付きのカードになる。</span><span data-i18n="en">Paste a link and it becomes a card with its thumbnail.</span><span data-i18n="ko">링크를 붙여넣기만 하면 썸네일이 있는 카드가 돼요.</span></li>
-          <li><span data-i18n="ja">カードからリンクを開く。音楽なら、その場で再生できる。</span><span data-i18n="en">Open the link from its card. Music can play right there.</span><span data-i18n="ko">카드에서 링크를 열어요. 음악은 그 자리에서 재생할 수 있어요.</span></li>
-          <li><span data-i18n="ja">本はバーコード、音楽はライブラリからまとめて登録。感想もカードに残せる。</span><span data-i18n="en">Add books by barcode and music from your library. Keep your thoughts on each card.</span><span data-i18n="ko">책은 바코드로, 음악은 라이브러리에서 한꺼번에 등록해요. 감상도 카드에 남길 수 있어요.</span></li>
-          <li><span data-i18n="ja" data-static-localized>すべての棚を横断して検索。対応するPDFや画像の中の文字も見つけられる。</span><span data-i18n="en" data-static-localized>Search every shelf at once, including text inside supported PDFs and images.</span><span data-i18n="ko" data-static-localized>모든 선반을 한 번에 검색하고, 지원되는 PDF와 이미지 안의 글자도 찾을 수 있어요.</span><span data-i18n="de" data-static-localized>Durchsuche alle Regale zugleich – auch Text in unterstützten PDFs und Bildern.</span><span data-i18n="zh-Hant" data-static-localized>一次搜尋所有收藏架，也能找到支援的 PDF 與圖片中的文字。</span><span data-i18n="fr" data-static-localized>Recherchez dans toutes les étagères, y compris le texte des PDF et images pris en charge.</span><span data-i18n="es" data-static-localized>Busca en todas las estanterías, incluido el texto de los PDF e imágenes compatibles.</span><span data-i18n="it" data-static-localized>Cerca in tutti gli scaffali, incluso il testo nei PDF e nelle immagini supportati.</span></li>
-          <li><span data-i18n="ja" data-static-localized>カードを別の棚へコピー・移動してすぐ使える。SiriとSpotlightからも保存したカードへ。</span><span data-i18n="en" data-static-localized>Copy or move cards to another shelf and put them straight to work. Siri and Spotlight lead to saved cards too.</span><span data-i18n="ko" data-static-localized>카드를 다른 선반으로 복사하거나 이동해 바로 활용하세요. Siri와 Spotlight에서도 저장한 카드로 이동할 수 있어요.</span><span data-i18n="de" data-static-localized>Karten lassen sich in ein anderes Regal kopieren oder verschieben und sofort nutzen. Auch Siri und Spotlight führen zu gespeicherten Karten.</span><span data-i18n="zh-Hant" data-static-localized>把卡片複製或移動到其他收藏架，立即派上用場；Siri 與 Spotlight 也能帶你找到已儲存的卡片。</span><span data-i18n="fr" data-static-localized>Copiez ou déplacez des cartes vers une autre étagère pour les utiliser tout de suite. Siri et Spotlight retrouvent aussi vos cartes.</span><span data-i18n="es" data-static-localized>Copia o mueve tarjetas a otra estantería y úsalas de inmediato. Siri y Spotlight también encuentran tus tarjetas guardadas.</span><span data-i18n="it" data-static-localized>Copia o sposta le schede su un altro scaffale e usale subito. Anche Siri e Spotlight portano alle schede salvate.</span></li>
-          <li><span data-i18n="ja" data-static-localized>棚ごとリンク1つで共有。受け取る人はアプリなしでブラウザーから開けます。共有されるのは棚の名前とリンクカードの情報だけで、個人のメモや写真は含まれません。</span><span data-i18n="en" data-static-localized>Share a whole shelf with one link. Anyone can open it in a browser without the app. Only the shelf name and link-card information are shared—never personal notes or photos.</span><span data-i18n="ko" data-static-localized>선반 전체를 링크 하나로 공유하세요. 받는 사람은 앱 없이 브라우저에서 열 수 있어요. 공유되는 것은 선반 이름과 링크 카드 정보뿐이며 개인 메모나 사진은 포함되지 않습니다.</span><span data-i18n="de" data-static-localized>Teile ein ganzes Regal mit einem Link. Andere öffnen es ohne App im Browser. Geteilt werden nur der Regalname und die Informationen der Link-Karten, niemals persönliche Notizen oder Fotos.</span><span data-i18n="zh-Hant" data-static-localized>用一個連結分享整個收藏架，對方不必安裝 App，也能在瀏覽器開啟。只會分享架名與連結卡片資訊，不會分享個人筆記或照片。</span><span data-i18n="fr" data-static-localized>Partagez une étagère entière avec un lien. Elle s’ouvre dans un navigateur, sans l’app. Seuls le nom de l’étagère et les informations des cartes de liens sont partagés, jamais les notes ou photos personnelles.</span><span data-i18n="es" data-static-localized>Comparte una estantería completa con un enlace. Se abre en el navegador sin la app. Solo se comparten el nombre de la estantería y la información de las tarjetas de enlace, nunca notas ni fotos personales.</span><span data-i18n="it" data-static-localized>Condividi un intero scaffale con un link. Si apre nel browser senza l’app. Vengono condivisi solo il nome dello scaffale e le informazioni delle schede-link, mai note o foto personali.</span></li>
-          <li><span data-i18n="ja" data-static-localized>対応する音楽サービスでは、アルバムを裏返し、A面またはB面から再生。対応する曲は棚をまたいでシャッフルできます。音楽サービス側のライブラリは変更しません。</span><span data-i18n="en" data-static-localized>With supported music services, flip an album and play from Side A or Side B. Supported songs saved on shelves can also be shuffled together. Head-Light never changes your music-service library.</span><span data-i18n="ko" data-static-localized>지원되는 음악 서비스에서는 앨범을 뒤집어 A면이나 B면부터 재생할 수 있어요. 선반에 저장한 지원 곡을 함께 셔플할 수도 있습니다. 음악 서비스의 라이브러리는 변경하지 않습니다.</span><span data-i18n="de" data-static-localized>Bei unterstützten Musikdiensten kannst du ein Album wenden und auf Seite A oder B starten. Unterstützte Titel aus deinen Regalen lassen sich auch gemeinsam mischen. Deine Mediathek bleibt unverändert.</span><span data-i18n="zh-Hant" data-static-localized>支援的音樂服務可翻轉專輯，從 A 面或 B 面開始播放；架上支援的歌曲也能一起隨機播放。音樂服務中的資料庫不會被更動。</span><span data-i18n="fr" data-static-localized>Avec les services compatibles, retournez un album et lancez la face A ou B. Les morceaux compatibles de vos étagères peuvent aussi être lus ensemble en mode aléatoire. Votre bibliothèque musicale n’est jamais modifiée.</span><span data-i18n="es" data-static-localized>Con servicios compatibles, gira un álbum y empieza por la cara A o B. También puedes mezclar juntas las canciones compatibles guardadas en tus estanterías. Tu biblioteca musical no se modifica.</span><span data-i18n="it" data-static-localized>Con i servizi supportati, gira un album e parti dal lato A o B. Puoi anche riprodurre in ordine casuale i brani supportati salvati sugli scaffali. La libreria del servizio musicale non viene modificata.</span></li>
-          <li hidden><span data-i18n="ja">本は<strong>バーコード</strong>で登録。音楽は<strong>ライブラリからまとめて取り込み</strong>。</span><span data-i18n="en">Add books by <strong>barcode</strong>. Bring in music <strong>straight from your library</strong>.</span><span data-i18n="ko">책은 <strong>바코드</strong>로 등록. 음악은 <strong>라이브러리에서 한꺼번에 가져오기</strong>.</span></li>
-          <li hidden><span data-i18n="ja">棚は1枚の画像にして、SNSに貼れる。</span><span data-i18n="en">Turn your shelf into a single image and share it.</span><span data-i18n="ko">선반은 이미지 한 장으로 만들어서, SNS에 올릴 수 있어요.</span></li>
-        </ul>
-        <p class="sub"><span data-i18n="ja" data-static-localized>しまい込む場所ではなく、見つけ直して、すぐ使うための棚です。</span><span data-i18n="en" data-static-localized>A shelf for finding things again and putting them to use—not locking them away.</span><span data-i18n="ko" data-static-localized>가둬 두는 곳이 아니라, 다시 찾아 바로 쓰기 위한 선반이에요.</span><span data-i18n="de" data-static-localized>Ein Regal zum Wiederfinden und Weiterverwenden, nicht zum Wegschließen.</span><span data-i18n="zh-Hant" data-static-localized>這不是把喜愛封存起來的地方，而是再次找到並立刻使用的架子。</span><span data-i18n="fr" data-static-localized>Une étagère pour retrouver et utiliser, pas pour enfermer.</span><span data-i18n="es" data-static-localized>Una estantería para volver a encontrar y usar, no para guardar bajo llave.</span><span data-i18n="it" data-static-localized>Uno scaffale per ritrovare e usare, non per chiudere tutto via.</span></p>
-        </details>
-      </div>
-      <div class="shots collection-shots">
-        <div class="phone small"><img src="img/shots/03_collections_ja.jpg" data-shot="03_collections" loading="lazy" decoding="async" data-alt-ja="コレクションの棚。自分の名前を付けたボードが並ぶ" data-alt-en="The collection shelf, with boards you have named lined up." data-alt-ko="컬렉션 선반. 직접 이름 붙인 보드가 늘어서 있다" alt="コレクションの棚。自分の名前を付けたボードが並ぶ"></div>
-        <div class="phone small"><img src="img/shots/collection-films-hp.webp" loading="lazy" decoding="async" alt="映画とドラマのリンクが、縦長のポスターカードとして並ぶコレクション画面"></div>
-        <div class="phone small"><img src="img/shots/collection-records-hp.webp" loading="lazy" decoding="async" data-alt-ja="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面" data-alt-en="A record collection where music links appear as square album sleeves." data-alt-ko="음악 링크가 정사각형 레코드 재킷으로 나열된 컬렉션 화면" alt="音楽のリンクが、正方形のレコードジャケットとして並ぶコレクション画面"></div>
-      </div>
-    </div>
-    <figure class="collection-video-feature">
-      <figcaption class="collection-video-copy">
-        <h3>
-          <span data-i18n="ja" data-static-localized>音楽の棚を、動画で見る。</span>
-          <span data-i18n="en" data-static-localized>See the music shelf in action.</span>
-          <span data-i18n="ko" data-static-localized>음악 선반을 영상으로 만나보세요.</span>
-          <span data-i18n="de" data-static-localized>Das Musikregal im Video entdecken.</span>
-          <span data-i18n="zh-Hant" data-static-localized>用影片看看音樂收藏架。</span>
-          <span data-i18n="fr" data-static-localized>Découvrez l’étagère musicale en vidéo.</span>
-          <span data-i18n="es" data-static-localized>Descubre la estantería musical en vídeo.</span>
-          <span data-i18n="it" data-static-localized>Scopri lo scaffale musicale in video.</span>
-        </h3>
-        <p>
-          <span data-i18n="ja" data-static-localized>ジャケットを並べて眺め、カバーフローで探し、そのまま音楽を再生できます。</span>
-          <span data-i18n="en" data-static-localized>Browse your album covers in a grid or Cover Flow, then play music right from your shelf.</span>
-          <span data-i18n="ko" data-static-localized>앨범 재킷을 그리드나 Cover Flow로 둘러보고, 선반에서 바로 음악을 재생할 수 있어요.</span>
-          <span data-i18n="de" data-static-localized>Durchsuche deine Cover im Raster oder Cover Flow und spiele die Musik direkt aus deinem Regal ab.</span>
-          <span data-i18n="zh-Hant" data-static-localized>用格狀或 Cover Flow 瀏覽專輯封面，直接從收藏架播放音樂。</span>
-          <span data-i18n="fr" data-static-localized>Parcourez vos pochettes en grille ou en Cover Flow, puis lancez la musique depuis votre étagère.</span>
-          <span data-i18n="es" data-static-localized>Explora tus carátulas en cuadrícula o Cover Flow y reproduce la música desde tu estantería.</span>
-          <span data-i18n="it" data-static-localized>Sfoglia le copertine nella griglia o in Cover Flow e avvia la musica direttamente dallo scaffale.</span>
-        </p>
-      </figcaption>
-      <div class="collection-video-frame">
-        <video class="collection-demo-video" data-video-lang="ja" controls playsinline preload="metadata" poster="img/video-posters/collection-music-ja.jpg" aria-label="Head-Lightの音楽コレクションの使い方（日本語版）">
-          <source src="video/collection-music-ja.mp4" type="video/mp4">
-        </video>
-        <video class="collection-demo-video" data-video-lang="en" controls playsinline preload="metadata" poster="img/video-posters/collection-music-en.jpg" aria-label="How to use music collections in Head-Light (English version)">
-          <source src="video/collection-music-en.mp4" type="video/mp4">
-        </video>
-      </div>
-    </figure>
-  </div>
-</section>
-
-<!-- 名前に込めた、頭を軽くして次へ進むという意味。 -->
-<section class="strong-light-section" id="strong-light">
-  <div class="inner reveal">
-    <div class="strong-light-layout">
-      <div class="strong-light-copy">
-        <div class="brand-signature">
-          <img src="img/app-icon.png" width="96" height="96" loading="lazy" decoding="async" alt="">
-          <div class="brand-signature-name">Head-Light</div>
-          <div class="brand-signature-reading"><span data-i18n="ja" data-static-localized>ヘッドライト</span></div>
-        </div>
-        <h2>
-          <span data-i18n="ja" data-static-localized>頭を軽く。<br>進む先に、光を。</span>
-          <span data-i18n="en" data-static-localized>A lighter head.<br>A light on the road ahead.</span>
-          <span data-i18n="ko" data-static-localized>머리는 가볍게.<br>앞으로 갈 길에는 빛을.</span>
-          <span data-i18n="de" data-static-localized>Ein leichterer Kopf.<br>Ein Licht auf dem Weg vor dir.</span>
-          <span data-i18n="zh-Hant" data-static-localized>讓腦袋輕一點。<br>為前方的路點一盞光。</span>
-          <span data-i18n="fr" data-static-localized>La tête plus légère.<br>Une lumière sur le chemin.</span>
-          <span data-i18n="es" data-static-localized>Una mente más ligera.<br>Una luz en el camino.</span>
-          <span data-i18n="it" data-static-localized>La testa più leggera.<br>Una luce sulla strada.</span>
-        </h2>
-        <p>
-          <span data-i18n="ja" data-static-localized>Head-Lightは、大切なものをしまい込む場所ではありません。もう一度見つけて、そこからすぐ何かをつくるための場所です。頭を軽く。進む先に光を。迷わず次の一歩へ進めるように、<strong>Head-Light</strong>と名づけました。</span>
-          <span data-i18n="en" data-static-localized>Head-Light isn't a place to lock away the things you love. It's a place to find them again, and make something from them right away. A lighter head. A light on the road ahead. So you can take the next step without hesitation. That's why I named it <strong>Head-Light</strong>.</span>
-          <span data-i18n="ko" data-static-localized>흩어진 것을 다시 찾을 수 있는 곳에 모으고, 떠오른 순간 목소리로 남겨 망설임 없이 다음 걸음을 내딛도록. 그 두 가지 바람을 <strong>Head-Light</strong>라는 이름에 담았습니다.</span>
-          <span data-i18n="de" data-static-localized>Verstreutes wiederfinden, Ideen im Moment ihres Entstehens per Stimme festhalten und ohne Zögern den nächsten Schritt gehen: Diese beiden Gedanken stecken im Namen <strong>Head-Light</strong>.</span>
-          <span data-i18n="zh-Hant" data-static-localized>把散落的事物集中到能再次找到的地方，在靈感出現的瞬間用聲音留下，然後毫不猶豫地跨出下一步。這兩個願望，就是 <strong>Head-Light</strong> 這個名字的由來。</span>
-          <span data-i18n="fr" data-static-localized>Rassembler ce qui s’était dispersé, saisir une idée par la voix dès qu’elle arrive et avancer sans hésiter : ces deux intentions ont donné le nom <strong>Head-Light</strong>.</span>
-          <span data-i18n="es" data-static-localized>Reunir lo disperso, capturar una idea con la voz en cuanto aparece y dar el siguiente paso sin dudar: esas dos ideas dieron nombre a <strong>Head-Light</strong>.</span>
-          <span data-i18n="it" data-static-localized>Riunire ciò che era sparso, catturare un’idea con la voce appena arriva e fare il passo successivo senza esitazione: da qui nasce il nome <strong>Head-Light</strong>.</span>
-        </p>
-        <p class="closing-copy">
-          <span data-i18n="ja" data-static-localized><strong>響いたものを、あつめて。ひらめきを、声にする。</strong></span>
-          <span data-i18n="en" data-static-localized><strong>Save what inspires you. Say what you'll make.</strong></span>
-          <span data-i18n="ko" data-static-localized><strong>마음을 움직인 것을 모으고, 만들 것을 말해 보세요.</strong></span>
-          <span data-i18n="de" data-static-localized><strong>Bewahre, was dich inspiriert. Sprich aus, was du erschaffen wirst.</strong></span>
-          <span data-i18n="zh-Hant" data-static-localized><strong>收藏打動你的事物，說出你要創作的東西。</strong></span>
-          <span data-i18n="fr" data-static-localized><strong>Gardez ce qui vous inspire. Dites ce que vous allez créer.</strong></span>
-          <span data-i18n="es" data-static-localized><strong>Guarda lo que te inspira. Di lo que vas a crear.</strong></span>
-          <span data-i18n="it" data-static-localized><strong>Conserva ciò che ti ispira. Di cosa creerai.</strong></span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 開発した理由と、大切な記録を預かる上での約束。 -->
-<section class="creator-trust" id="creator-trust">
-  <div class="inner reveal">
-    <div class="eyebrow">
-      <span data-i18n="ja" data-static-localized>つくった理由と約束</span><span data-i18n="en" data-static-localized>WHY IT EXISTS</span><span data-i18n="ko" data-static-localized>만든 이유와 약속</span><span data-i18n="de" data-static-localized>WARUM ES HEAD-LIGHT GIBT</span><span data-i18n="zh-Hant" data-static-localized>開發的理由與承諾</span><span data-i18n="fr" data-static-localized>POURQUOI HEAD-LIGHT EXISTE</span><span data-i18n="es" data-static-localized>POR QUÉ EXISTE</span><span data-i18n="it" data-static-localized>PERCHÉ ESISTE</span>
-    </div>
-    <h2>
-      <span data-i18n="ja" data-static-localized>散らかったアイデアを、<br>使える場所へ。</span>
-      <span data-i18n="en" data-static-localized>A home for ideas<br>that used to scatter.</span>
-      <span data-i18n="ko" data-static-localized>흩어지던 아이디어를<br>다시 쓸 수 있는 곳으로.</span>
-      <span data-i18n="de" data-static-localized>Ein Ort für Ideen,<br>die sich früher verstreuten.</span>
-      <span data-i18n="zh-Hant" data-static-localized>給曾經四處散落的靈感，<br>一個能真正派上用場的家。</span>
-      <span data-i18n="fr" data-static-localized>Un lieu pour les idées<br>qui s’éparpillaient.</span>
-      <span data-i18n="es" data-static-localized>Un hogar para las ideas<br>que antes se dispersaban.</span>
-      <span data-i18n="it" data-static-localized>Una casa per le idee<br>che prima si disperdevano.</span>
-    </h2>
-    <div class="trust-grid">
-      <article class="trust-card creator-card">
-        <span class="trust-mark" aria-hidden="true">K</span>
-        <h3><span data-i18n="ja" data-static-localized>見つけたものを、すぐ形にしてきた。</span><span data-i18n="en" data-static-localized>Built by making from what moved me.</span><span data-i18n="ko" data-static-localized>직접 겪은 경험에서 만들었습니다.</span><span data-i18n="de" data-static-localized>Aus eigener Erfahrung entstanden.</span><span data-i18n="zh-Hant" data-static-localized>來自真實經驗的製作。</span><span data-i18n="fr" data-static-localized>Créé à partir d’une expérience vécue.</span><span data-i18n="es" data-static-localized>Creado desde la experiencia real.</span><span data-i18n="it" data-static-localized>Nato dall’esperienza diretta.</span></h3>
-        <p><span data-i18n="ja" data-static-localized>開発者Kaiは、クライアントのYouTubeチャンネルに出演し、企画から編集まで担いながら登録者100万人への成長に携わりました。毎日スマートフォンでコンテンツの海に飛び込み、創作の種を探す。心が動いたら、すぐ形にする。それが結果につながったのだと思います。けれど、保存したいものも、身近に置きたいものも増え続けました。ADHDの当事者として、必要な瞬間に必要なものを見つけるのは簡単ではなく、気づけば大切なものがあちこちに散らばっていました。そこで思い出したのが、レコード会社でレコードを店へ届けていた頃のこと。ジャケットを並べ、眺め、手に取って選ぶ楽しさをスマートフォンへ持ち込み、見渡して使える棚としてHead-Lightをつくりました。</span><span data-i18n="en" data-static-localized>Kai appeared on a client’s YouTube channel while handling everything from planning to editing, helping it grow to one million subscribers. Every day, he searched a sea of content on his phone for the seeds of new ideas, then made something real as soon as it moved him. But favorites and essentials kept piling up. Living with ADHD made finding the right thing at the right moment difficult, and before long those references were scattered everywhere. Remembering his record-label days—lining up covers, browsing them, and picking one out by hand—he built Head-Light as a shelf you can see, browse, and use.</span><span data-i18n="ko" data-static-localized>개발자 Kai는 클라이언트의 YouTube 채널이 구독자 100만 명까지 성장하는 일에 참여한 영상 크리에이터입니다. ADHD를 직접 겪으며, 자료와 영감이 흩어져 사라지던 불편에서 Head-Light를 만들었습니다.</span><span data-i18n="de" data-static-localized>Kai ist Videocreator und half dabei, den YouTube-Kanal eines Kunden auf eine Million Abonnenten zu bringen. Aus seiner Erfahrung mit ADHS entwickelte er Head-Light für Referenzen und Ideen, die sonst verstreut waren.</span><span data-i18n="zh-Hant" data-static-localized>開發者 Kai 是影片創作者，曾協助客戶的 YouTube 頻道成長到一百萬訂閱者。作為 ADHD 當事人，他因資料散落、靈感還沒用上就消失的不便，開發了 Head-Light。</span><span data-i18n="fr" data-static-localized>Kai est créateur vidéo et a contribué à faire passer la chaîne YouTube d’un client à un million d’abonnés. Vivant avec un TDAH, il a créé Head-Light pour les références et les idées qui se dispersaient avant d’être utilisées.</span><span data-i18n="es" data-static-localized>Kai es creador de vídeo y ayudó a llevar el canal de YouTube de un cliente hasta un millón de suscriptores. Al vivir con TDAH, creó Head-Light para reunir referencias e ideas que se dispersaban antes de poder usarlas.</span><span data-i18n="it" data-static-localized>Kai è un video creator e ha contribuito a far crescere il canale YouTube di un cliente fino a un milione di iscritti. Convivendo con l’ADHD, ha creato Head-Light per raccogliere riferimenti e idee che si disperdevano prima di poterli usare.</span></p>
-      </article>
-      <article class="trust-card privacy-card">
-        <span class="trust-mark" aria-hidden="true">◎</span>
-        <h3><span data-i18n="ja" data-static-localized>広告なし。行動追跡なし。</span><span data-i18n="en" data-static-localized>No ads. No tracking.</span><span data-i18n="ko" data-static-localized>광고 없음. 행동 추적 없음.</span><span data-i18n="de" data-static-localized>Keine Werbung. Kein Tracking.</span><span data-i18n="zh-Hant" data-static-localized>無廣告。無行為追蹤。</span><span data-i18n="fr" data-static-localized>Sans publicité. Sans suivi.</span><span data-i18n="es" data-static-localized>Sin anuncios. Sin seguimiento.</span><span data-i18n="it" data-static-localized>Niente pubblicità. Nessun tracciamento.</span></h3>
-        <p class="privacy-lead"><span data-i18n="ja" data-static-localized>記録は端末内に保存され、Face IDで守れます。</span><span data-i18n="en" data-static-localized>Your records stay on your device and can be protected with Face ID.</span><span data-i18n="ko" data-static-localized>기록은 사용 중인 기기에 저장됩니다.</span><span data-i18n="de" data-static-localized>Deine Aufzeichnungen bleiben auf deinem Gerät.</span><span data-i18n="zh-Hant" data-static-localized>你的記錄會留在使用中的裝置上。</span><span data-i18n="fr" data-static-localized>Vos données restent sur votre appareil.</span><span data-i18n="es" data-static-localized>Tus registros permanecen en tu dispositivo.</span><span data-i18n="it" data-static-localized>I tuoi contenuti restano sul dispositivo.</span></p>
-        <p><span data-i18n="ja" data-static-localized>クラウドAI機能や棚の共有を自分で選んだときだけ、事前に表示された範囲の内容が外へ送られます。送らないことを選んでも、そのまま使い続けられます。クラウドAIに送った内容は、AIの学習に使われません。</span><span data-i18n="en" data-static-localized>Before anything leaves the device for a cloud AI feature or shelf sharing, Head-Light shows what will be sent and where. You can say no and keep using the app. Content sent to cloud AI is not used to train AI.</span><span data-i18n="ko" data-static-localized>클라우드 AI 기능이나 선반 공유를 스스로 선택한 경우에만, 확인한 범위의 내용이 기기 밖으로 전송됩니다. 클라우드 AI로 보낸 내용은 AI 학습에 사용되지 않습니다.</span><span data-i18n="de" data-static-localized>Inhalte verlassen das Gerät nur, wenn du eine Cloud-KI-Funktion oder das Teilen eines Regals auswählst, und nur in dem von dir bestätigten Umfang. An die Cloud-KI gesendete Inhalte werden nicht zum Training verwendet.</span><span data-i18n="zh-Hant" data-static-localized>只有在你主動選擇雲端 AI 功能或分享收藏架時，經你確認的內容才會離開裝置。傳給雲端 AI 的內容不會用於 AI 訓練。</span><span data-i18n="fr" data-static-localized>Le contenu ne quitte l’appareil que si vous choisissez une fonction d’IA cloud ou le partage d’une étagère, et uniquement dans la limite que vous confirmez. Le contenu envoyé à l’IA cloud ne sert pas à l’entraînement.</span><span data-i18n="es" data-static-localized>El contenido solo sale del dispositivo cuando eliges una función de IA en la nube o compartes una estantería, y solo dentro del alcance que confirmas. El contenido enviado a la IA no se usa para entrenarla.</span><span data-i18n="it" data-static-localized>I contenuti lasciano il dispositivo solo quando scegli una funzione AI cloud o condividi uno scaffale, e solo entro i limiti che confermi. I contenuti inviati all’AI cloud non vengono usati per l’addestramento.</span></p>
-        <a class="trust-link" href="./privacy.html"><span data-i18n="ja" data-static-localized>プライバシーポリシーを読む</span><span data-i18n="en" data-static-localized>Read the Privacy Policy</span><span data-i18n="ko" data-static-localized>개인정보 처리방침 보기</span><span data-i18n="de" data-static-localized>Datenschutzrichtlinie lesen</span><span data-i18n="zh-Hant" data-static-localized>閱讀隱私權政策</span><span data-i18n="fr" data-static-localized>Lire la politique de confidentialité</span><span data-i18n="es" data-static-localized>Leer la Política de privacidad</span><span data-i18n="it" data-static-localized>Leggi l’Informativa sulla privacy</span> →</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<div class="store-download-band reveal" id="free-download">
-  <div class="store-download">
-    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
-      <span class="store-download-cue"><span data-i18n="ja" data-static-localized>ここからダウンロード</span><span data-i18n="en" data-static-localized>Download here</span><span data-i18n="ko" data-static-localized>여기에서 다운로드</span><span data-i18n="de" data-static-localized>Hier herunterladen</span><span data-i18n="zh-Hant" data-static-localized>從這裡下載</span><span data-i18n="fr" data-static-localized>Télécharger ici</span><span data-i18n="es" data-static-localized>Descarga aquí</span><span data-i18n="it" data-static-localized>Scarica qui</span><svg class="store-download-arrow" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v17M5 13l7 7 7-7"/></svg></span>
-      <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
-      <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
-      <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
-      <img class="app-store-badge" data-store-lang="de" src="img/app-store-badges/de.svg" alt="Laden im App Store">
-      <img class="app-store-badge" data-store-lang="zh-Hant" src="img/app-store-badges/zh-Hant.svg" alt="在 App Store 下載">
-      <img class="app-store-badge" data-store-lang="fr" src="img/app-store-badges/fr.svg" alt="Télécharger dans l’App Store">
-      <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
-      <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
-    </a>
-    <a class="store-qr-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
-      <img class="store-qr-code" src="img/app-store-qr.png" width="92" height="92" alt="">
-      <span class="store-qr-copy">
-        <strong><span data-i18n="ja" data-static-localized>スマホで読み取る</span><span data-i18n="en" data-static-localized>Scan with your phone</span><span data-i18n="ko" data-static-localized>휴대폰으로 스캔</span><span data-i18n="de" data-static-localized>Mit dem Smartphone scannen</span><span data-i18n="zh-Hant" data-static-localized>用手機掃描</span><span data-i18n="fr" data-static-localized>Scannez avec votre téléphone</span><span data-i18n="es" data-static-localized>Escanea con tu móvil</span><span data-i18n="it" data-static-localized>Scansiona con il telefono</span></strong>
-        <span><span data-i18n="ja" data-static-localized>App Store</span><span data-i18n="en" data-static-localized>App Store</span><span data-i18n="ko" data-static-localized>App Store</span><span data-i18n="de" data-static-localized>App Store</span><span data-i18n="zh-Hant" data-static-localized>App Store</span><span data-i18n="fr" data-static-localized>App Store</span><span data-i18n="es" data-static-localized>App Store</span><span data-i18n="it" data-static-localized>App Store</span></span>
-      </span>
-    </a>
-  </div>
+<!-- 2. マーキー -->
+<div class="hx-marquee" aria-hidden="true">
+  <div class="hx-mrow"><span>VIDEOS<i></i></span><span>MUSIC<i></i></span><span>POSTS<i></i></span><span>PLAYLISTS<i></i></span><span>PHOTOS<i></i></span><span>PDF<i></i></span><span>LINKS<i></i></span><span>AUDIO<i></i></span></div>
+  <div class="hx-mrow small"><span>NOT JUST PIN.</span><span>MAKE FROM IT.</span><span>NOT JUST PIN.</span><span>MAKE FROM IT.</span><span>NOT JUST PIN.</span><span>MAKE FROM IT.</span></div>
 </div>
 
-<!-- ルーティーン（1.0.5） -->
-<section class="routine-section" id="routines">
-  <div class="inner reveal">
-    <div class="eyebrow">
-      <span data-i18n="ja">新機能・ルーティーン</span>
-      <span data-i18n="en" data-static-localized>New · Routines</span>
-      <span data-i18n="ko">새 기능 · 루틴</span>
-      <span data-i18n="de">Neu · Routinen</span>
-      <span data-i18n="zh-Hant">新功能・例行流程</span>
-      <span data-i18n="fr">Nouveau · Routines</span>
-      <span data-i18n="es">Novedad · Rutinas</span>
-      <span data-i18n="it">Novità · Routine</span>
+<!-- 3. コレクション: 散らばった表紙が、棚に整う -->
+<section class="hx-shelf" id="hx-collection" aria-labelledby="hx-col-title">
+  <div class="hx-shelf-stage">
+    <div class="hx-shelf-copy">
+      <span class="hx-eyebrow"><b>01</b>&nbsp;<span data-t="colEye">コレクション</span></span>
+      <h2 class="hx-h" id="hx-col-title" data-t="colH">リンクもファイルも、<br>表紙のあるカードへ。</h2>
+      <p class="hx-lead" data-t="colP">動画、SNSの投稿、アルバム、プレイリスト、Webリンク。写真、PDF、テキスト、Word、音声ファイルも、ひとつの棚へ。表紙を眺めながら、必要なものを手で選べます。</p>
     </div>
-    <h2>
-      <span data-i18n="ja">プレイリストを作るように、<br>ルーティーンを組む。</span>
-      <span data-i18n="en" data-static-localized>Build a routine<br>like a playlist.</span>
-      <span data-i18n="ko">플레이리스트를 만들 듯,<br>루틴을 짜 보세요.</span>
-      <span data-i18n="de">Stell deine Routine zusammen<br>wie eine Playlist.</span>
-      <span data-i18n="zh-Hant">像製作播放清單一樣，<br>編排你的例行流程。</span>
-      <span data-i18n="fr">Composez votre routine<br>comme une playlist.</span>
-      <span data-i18n="es">Crea tu rutina<br>como una playlist.</span>
-      <span data-i18n="it">Componi la tua routine<br>come una playlist.</span>
-    </h2>
-    <p class="lead">
-      <span data-i18n="ja">朝の支度も、集中のスイッチも。やることを好きな順に並べて、ひとつずつ進められます。</span>
-      <span data-i18n="en" data-static-localized>Morning prep or a focus ritual. Put each step in your favorite order and move through them one by one.</span>
-      <span data-i18n="ko">아침 준비도, 집중을 켜는 시간도. 할 일을 원하는 순서로 놓고 하나씩 이어 갈 수 있어요.</span>
-      <span data-i18n="de">Ob Morgenroutine oder Fokusritual: Ordne alles nach deinen Wünschen und gehe Schritt für Schritt vor.</span>
-      <span data-i18n="zh-Hant">無論晨間準備或進入專注狀態，都能依喜歡的順序排好，再逐項完成。</span>
-      <span data-i18n="fr">Préparation du matin ou rituel de concentration : organisez chaque étape à votre façon et avancez pas à pas.</span>
-      <span data-i18n="es">Prepararte por la mañana o entrar en modo concentración: ordena cada paso a tu manera y avanza uno a uno.</span>
-      <span data-i18n="it">Prepararti al mattino o trovare la concentrazione: ordina ogni gesto come preferisci e procedi un passo alla volta.</span>
-    </p>
-    <div class="cols">
-      <div class="text">
-        <ul class="points">
-          <li>
-            <span data-i18n="ja">絵文字・名前・時間を決めるだけ。</span>
-            <span data-i18n="en" data-static-localized>Just choose an emoji, a name and a time.</span>
-            <span data-i18n="ko">이모지와 이름, 시간만 정하면 돼요.</span>
-            <span data-i18n="de">Wähle einfach Emoji, Namen und Dauer.</span>
-            <span data-i18n="zh-Hant">只要選好表情符號、名稱與時間。</span>
-            <span data-i18n="fr">Choisissez simplement un emoji, un nom et une durée.</span>
-            <span data-i18n="es">Solo tienes que elegir un emoji, un nombre y una duración.</span>
-            <span data-i18n="it">Basta scegliere un’emoji, un nome e una durata.</span>
-          </li>
-          <li>
-            <span data-i18n="ja">声と円形タイマーが、次にやることを案内する。</span>
-            <span data-i18n="en" data-static-localized>Voice guidance and a circular timer show you what comes next.</span>
-            <span data-i18n="ko">음성과 원형 타이머가 다음 할 일을 안내해요.</span>
-            <span data-i18n="de">Stimme und Kreis-Timer zeigen dir, was als Nächstes kommt.</span>
-            <span data-i18n="zh-Hant">語音與圓形計時器會引導你完成下一步。</span>
-            <span data-i18n="fr">La voix et le minuteur circulaire vous indiquent la prochaine étape.</span>
-            <span data-i18n="es">La voz y el temporizador circular te indican qué viene después.</span>
-            <span data-i18n="it">La voce e il timer circolare indicano cosa fare dopo.</span>
-          </li>
-          <li>
-            <span data-i18n="ja">写真・音楽・YouTubeも一緒に置ける。終えた記録は手帳に残り、続けるほど植物が育つ。</span>
-            <span data-i18n="en" data-static-localized>Add photos, music or YouTube. Each completion stays in your journal, and your plant grows as you keep going.</span>
-            <span data-i18n="ko">사진·음악·YouTube도 함께 둘 수 있어요. 마친 기록은 수첩에 남고, 이어 갈수록 식물이 자라요.</span>
-            <span data-i18n="de">Füge Fotos, Musik oder YouTube hinzu. Jeder Abschluss bleibt im Tagebuch und mit der Zeit wächst deine Pflanze.</span>
-            <span data-i18n="zh-Hant">也能加入照片、音樂與 YouTube。完成記錄會留在手帳中，持續下去，植物也會成長。</span>
-            <span data-i18n="fr">Ajoutez des photos, de la musique ou YouTube. Chaque réussite reste dans votre journal et votre plante grandit au fil du temps.</span>
-            <span data-i18n="es">Añade fotos, música o YouTube. Cada logro queda en tu diario y tu planta crece a medida que continúas.</span>
-            <span data-i18n="it">Aggiungi foto, musica o YouTube. Ogni traguardo resta nel diario e la tua pianta cresce mentre continui.</span>
-          </li>
-        </ul>
+    <span class="hx-shelf-hint" data-t="shelfHint">スクロールして棚に並べる</span>
+  </div>
+</section>
+
+<section class="hx-collection-more">
+  <div class="hx-wrap">
+    <div class="hx-points">
+      <div class="hx-point" data-reveal><span class="n">01</span><h3 data-t="pt1h">貼るだけで、表紙が付く。</h3><p data-t="pt1p">リンクを貼ると、サムネイルやジャケットを自動で取ってきて、棚に並びます。</p></div>
+      <div class="hx-point" data-reveal style="--d:.1s"><span class="n">02</span><h3 data-t="pt2h">めくって、そのまま再生。</h3><p data-t="pt2p">カードを上にスワイプで開く。アルバムは下にスワイプでB面から再生。</p></div>
+      <div class="hx-point" data-reveal style="--d:.2s"><span class="n">03</span><h3 data-t="pt3h">棚ごと、リンクひとつで。</h3><p data-t="pt3p">集めた棚は、短いリンクで共有できます。受け取った人はブラウザでも見られます。</p></div>
+    </div>
+  </div>
+  <div class="hx-make">
+    <div class="hx-wrap">
+      <p class="big" data-reveal>NOT JUST PIN.<br><em>MAKE FROM IT.</em></p>
+      <p data-reveal style="--d:.1s" data-t="makeP">集めたものを見返し、そこから生まれたひらめきを、次の創作へ。</p>
+    </div>
+  </div>
+  <div class="hx-video">
+    <div class="hx-wrap hx-video-grid">
+      <div data-reveal>
+        <h3 data-t="vidH">音楽の棚を、動画で見る。</h3>
+        <p data-t="vidP">ジャケットを並べて眺め、カバーフローで探し、そのまま音楽を再生できます。</p>
       </div>
-      <div class="shots routine-shots">
-        <div class="phone small"><img src="img/shots/routine-list-ja.webp" data-shot="routine-list" data-shot-ext="webp" data-static-localized loading="lazy" decoding="async" data-alt-ja="透明な色付きレコードが覗く、小さなジャケットが並ぶルーティーン一覧" data-alt-en="A routine shelf with small sleeves and translucent records peeking out." data-alt-ko="작은 재킷 옆으로 투명한 컬러 레코드가 보이는 루틴 목록" data-alt-de="Eine Routinenliste mit kleinen Hüllen und hervorlugenden transparenten Schallplatten." data-alt-zh-hant="小型封套排列成列，旁邊露出透明彩色唱片的例行流程清單。" data-alt-fr="Une liste de routines avec de petites pochettes et des disques translucides qui dépassent." data-alt-es="Una lista de rutinas con pequeñas carátulas y discos translúcidos asomando." data-alt-it="Un elenco di routine con piccole copertine e dischi traslucidi che spuntano di lato." alt="透明な色付きレコードが覗く、小さなジャケットが並ぶルーティーン一覧"></div>
-        <div class="phone small"><img src="img/shots/routine-timer-ja.webp" data-shot="routine-timer" data-shot-ext="webp" data-static-localized loading="lazy" decoding="async" data-alt-ja="グラデーションの円形タイマーと、大きなチェックボタンがあるルーティーン再生画面" data-alt-en="A routine player with a gradient circular timer and a large check button." data-alt-ko="그라데이션 원형 타이머와 큰 체크 버튼이 있는 루틴 재생 화면" data-alt-de="Der Routinenplayer mit Kreis-Timer im Farbverlauf und großer Häkchentaste." data-alt-zh-hant="帶有漸層圓形計時器與大型勾選按鈕的例行流程播放畫面。" data-alt-fr="L’écran de lecture d’une routine avec minuteur circulaire en dégradé et grand bouton de validation." data-alt-es="El reproductor de rutinas con temporizador circular degradado y un gran botón de confirmación." data-alt-it="Il player della routine con timer circolare sfumato e un grande pulsante di conferma." alt="グラデーションの円形タイマーと、大きなチェックボタンがあるルーティーン再生画面"></div>
+      <div class="hx-video-box" data-reveal style="--d:.1s">
+        <div class="hx-video-glow" aria-hidden="true"></div>
+        <div class="hx-video-frame">
+          <video controls playsinline preload="metadata" poster="img/video-posters/collection-music-ja.jpg" src="video/collection-music-ja.mp4" data-v="ja" aria-label="Head-Lightの音楽コレクションの使い方" data-t-aria="vidAria"></video>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- カレンダー(日記) -->
-<section id="journal">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">カレンダー</span><span data-i18n="en">Calendar</span><span data-i18n="ko">캘린더</span></div>
-    <h2><span data-i18n="ja">自分だけのタイムライン。</span><span data-i18n="en">Your own timeline.</span><span data-i18n="ko">나만의 타임라인.</span></h2>
-    <div class="cols">
-      <div class="shots">
-        <div class="phone small"><img src="img/shots/05_calendar_ja.jpg" data-shot="05_calendar" loading="lazy" decoding="async" data-alt-ja="白い紙のカレンダー。記録のある日に印がついている" data-alt-en="A paper calendar. Days with a record carry a small mark." data-alt-ko="종이 같은 캘린더. 기록이 있는 날에 표시가 있어요." alt="白い紙のカレンダー。記録のある日に印がついている"></div>
-        <div class="phone small"><img src="img/shots/06_journal_cat_ja.webp" data-shot="06_journal_cat" data-shot-ext="webp" loading="lazy" decoding="async" data-alt-ja="手帳の1日のページ。言葉や予定と一緒に、朝の光の中にいる猫の写真が時間順に残っている" data-alt-en="A day's journal page where words, plans, and a photo of a cat in the morning light appear in time order." data-alt-ko="말과 일정, 아침 햇살 속 고양이 사진이 시간순으로 남아 있는 하루의 수첩 화면" alt="手帳の1日のページ。言葉や予定と一緒に猫の写真が時間順に残っている"></div>
-      </div>
-      <div class="text">
-        <details class="feature-details">
-          <summary class="feature-details-summary"><span data-i18n="ja" data-static-localized>詳しい機能を見る</span><span data-i18n="en" data-static-localized>Explore the details</span><span data-i18n="ko" data-static-localized>자세한 기능 보기</span><span data-i18n="de" data-static-localized>Details entdecken</span><span data-i18n="zh-Hant" data-static-localized>查看詳細功能</span><span data-i18n="fr" data-static-localized>Voir les détails</span><span data-i18n="es" data-static-localized>Ver los detalles</span><span data-i18n="it" data-static-localized>Scopri i dettagli</span></summary>
-        <ul class="points">
-          <li><span data-i18n="ja">話した言葉、写真、できたことが、<strong>実際の時刻</strong>に並ぶ。</span><span data-i18n="en">Words, photos and things you completed appear at <strong>the time they actually happened</strong>.</span><span data-i18n="ko">말과 사진, 해낸 일이 <strong>실제 시각</strong>에 맞춰 나란히 놓여요.</span></li>
-          <li hidden>
-            <span data-i18n="ja">完了したルーティーンや、できた「やること」も、作った時刻ではなく<strong>実際にできた時刻</strong>で手帳に残る。</span>
-            <span data-i18n="en" data-static-localized>Finished routines and completed to-dos stay in your journal at <strong>the time you actually did them</strong>, not when you created them.</span>
-            <span data-i18n="ko">완료한 루틴과 끝낸 할 일도 만든 시각이 아니라 <strong>실제로 해낸 시각</strong>으로 수첩에 남아요.</span>
-            <span data-i18n="de">Abgeschlossene Routinen und erledigte Aufgaben erscheinen im Tagebuch zu <strong>dem Zeitpunkt, an dem du sie wirklich geschafft hast</strong> – nicht zur Erstellzeit.</span>
-            <span data-i18n="zh-Hant">完成的例行流程與待辦事項，會以<strong>實際做到的時間</strong>留在手帳中，而不是建立時間。</span>
-            <span data-i18n="fr">Les routines et tâches terminées restent dans le journal à <strong>l’heure où vous les avez réellement accomplies</strong>, et non à leur création.</span>
-            <span data-i18n="es">Las rutinas y tareas terminadas quedan en el diario a <strong>la hora en que realmente las hiciste</strong>, no cuando las creaste.</span>
-            <span data-i18n="it">Le routine e le attività completate restano nel diario all’<strong>ora in cui le hai svolte davvero</strong>, non quando le hai create.</span>
-          </li>
-          <li><span data-i18n="ja">使っているだけで<strong>日記が育つ</strong>。書こうと頑張らなくていい。</span><span data-i18n="en">Your <strong>journal grows</strong> just by using the app. No need to force yourself to write.</span><span data-i18n="ko">앱을 쓰기만 해도 <strong>일기가 자라요</strong>. 애써 쓰려고 하지 않아도 돼요.</span></li>
-          <li><span data-i18n="ja">先の日には、予定やメモを書いてリマインダーを付けられる。</span><span data-i18n="en">Add plans or notes to a future day and set a reminder.</span><span data-i18n="ko">앞으로의 날짜에는 일정이나 메모를 적고 알림을 붙일 수 있어요.</span></li>
-          <li hidden><span data-i18n="ja">「来週水曜3時に歯医者」と話せば、iPhoneのカレンダーへの登録も一度だけ誘ってくれる。<span class="note">勝手には登録しません。あなたの予定を読む権限も持ちません。</span></span><span data-i18n="en">Say &ldquo;dentist next Wednesday at 3&rdquo; and it offers, once, to add it to your iPhone calendar. <span class="note">It never adds anything on its own, and it never reads your existing plans.</span></span><span data-i18n="ko">「다음 주 수요일 3시에 치과」라고 말하면, iPhone 캘린더 등록도 한 번만 물어봐요. <span class="note">멋대로 등록하지 않아요. 당신의 일정을 읽을 권한도 갖지 않아요.</span></span></li>
-        </ul>
-        </details>
+<!-- 4. 声 -->
+<section class="hx-voice" id="hx-voice" aria-labelledby="hx-voice-title">
+  <div class="hx-wrap hx-voice-grid">
+    <div>
+      <span class="hx-eyebrow" data-reveal><b>02</b>&nbsp;<span data-t="voiceEye">声</span></span>
+      <h2 class="hx-h" id="hx-voice-title" data-reveal data-t="voiceH">ひらめいたら、<br>話すだけ。</h2>
+      <p class="hx-lead" data-reveal style="--d:.1s" data-t="voiceP">ひらめきを捕まえる最速の方法は、声。だからアプリを開いた最初の画面に、見逃せない大きなマイクを置きました。一度押して話し、最後に「送信」と言えば保存。文字でも入力できます。</p>
+    </div>
+    <div class="hx-voice-stage" data-reveal style="--d:.15s">
+      <img src="img/hero-voice.jpg" width="1300" height="975" loading="lazy" decoding="async" alt="Head-Lightを開いたiPhoneに向かって話す人" data-t-alt="voiceAlt">
+      <div class="hx-waves" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="hx-transcript" aria-hidden="true">
+        <div class="hx-tx-head"><span class="dot"></span><span class="hx-tx-label">聞いています</span><span class="hx-tx-bars"><b></b><b></b><b></b><b></b><b></b></span></div>
+        <div class="hx-tx-body"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AIに渡す -->
-<section id="ai-handoff">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">AIに渡す</span><span data-i18n="en">Hand to AI</span><span data-i18n="ko">AI로 보내기</span><span class="free-badge"><span data-i18n="ja" data-static-localized>無料</span><span data-i18n="en" data-static-localized>Free</span><span data-i18n="ko" data-static-localized>무료</span><span data-i18n="de" data-static-localized>Kostenlos</span><span data-i18n="zh-Hant" data-static-localized>免費</span><span data-i18n="fr" data-static-localized>Gratuit</span><span data-i18n="es" data-static-localized>Gratis</span><span data-i18n="it" data-static-localized>Gratis</span></span></div>
-    <h2><span data-i18n="ja">ためた言葉を、AIに渡す。</span><span data-i18n="en">Hand your words to AI.</span><span data-i18n="ko">모아둔 말을, AI에게.</span></h2>
-    <p class="lead" hidden><span data-i18n="ja">ChatGPTに悩みを相談したことがあれば、わかるはずです。返ってくるのは、誰にでも当てはまる正論。あなたの今週を知らないのだから、当然です。</span><span data-i18n="en">If you've ever asked ChatGPT for advice, you know the feeling. What comes back is generic — advice that fits anyone. Of course it does. It doesn't know your week.</span><span data-i18n="ko">ChatGPT에게 고민을 상담해본 적이 있다면, 아실 거예요. 돌아오는 건 누구에게나 맞는 뻔한 답. 당신의 이번 주를 모르니, 당연하죠.</span></p>
-    <p class="lead"><span data-i18n="ja">今週の言葉をまとめて、いつものAIへ。あなたの状況を知った答えに変わります。</span><span data-i18n="en">Bring this week’s words to the AI you already use, and get an answer grounded in your life.</span><span data-i18n="ko">이번 주의 말을 모아 평소 쓰는 AI로. 내 상황을 아는 답으로 달라져요.</span></p>
-    <div class="compare">
-      <div class="reply generic">
-        <span class="tag"><span data-i18n="ja">そのまま聞くと</span><span data-i18n="en">Ask it plain</span><span data-i18n="ko">그냥 물어보면</span></span>
-        <p><span data-i18n="ja">「何から手をつければいい?」</span><span data-i18n="en">&ldquo;Where should I even start?&rdquo;</span><span data-i18n="ko">「뭐부터 시작하면 좋을까요?」</span></p>
-        <p class="ans"><span data-i18n="ja">「まずはタスクをすべて書き出し、重要度と緊急度で分類して、優先順位をつけましょう。」</span><span data-i18n="en">&ldquo;First, write down every task, then sort by importance and urgency, and set your priorities.&rdquo;</span><span data-i18n="ko">「먼저 할 일을 모두 적고, 중요도와 긴급도로 분류해서, 우선순위를 정해보세요.」</span></p>
-        <span class="verdict"><span data-i18n="ja">…どこかで聞いた答え。</span><span data-i18n="en">&hellip;an answer you&#39;ve heard before.</span><span data-i18n="ko">…어디선가 들어본 답.</span></span>
+<!-- 5. High Beam: 話したまま整理 -->
+<section class="hx-sort" id="hx-sort" aria-labelledby="hx-sort-title">
+  <div class="hx-wrap">
+    <span class="hx-eyebrow" data-reveal><b>03</b>&nbsp;High Beam</span>
+    <h2 class="hx-h" id="hx-sort-title" data-reveal data-t="sortH">話したまま、<br>整理まで任せられる。</h2>
+    <p class="hx-lead" data-reveal style="--d:.1s" data-t="sortP">声でも文字でも。思いついたまま入れると、AIが予定・やること・アイデアに分けます。</p>
+    <div class="hx-sort-panel" data-reveal>
+      <p class="hx-quote" data-t="quote">「えーと、<mark class="m1">来週の水曜たしか3時から歯医者で</mark>、あと<mark class="m2">帰りに電池買わないと</mark>。そういえば<mark class="m3">新曲のサビ、転調したら面白いかも</mark>」</p>
+      <div class="hx-dests">
+        <div class="hx-dest"><span class="ico" aria-hidden="true">📅</span><span class="tag" data-t="c1Tag">予定</span><h3 data-t="c1T">歯医者 水曜 15:00</h3><p data-t="c1S">「カレンダーに入れる?」と一度だけ聞く</p></div>
+        <div class="hx-dest"><span class="ico" aria-hidden="true">✅</span><span class="tag" data-t="c2Tag">やること</span><h3 data-t="c2T">電池を買う</h3><p data-t="c2S">やることリストへ</p></div>
+        <div class="hx-dest"><span class="ico" aria-hidden="true">💡</span><span class="tag" data-t="c3Tag">アイデア</span><h3 data-t="c3T">新曲のサビを転調してみる</h3><p data-t="c3S">アイデアの瓶へ、玉になって溜まる</p></div>
       </div>
-      <div class="reply knows">
-        <span class="tag"><span data-i18n="ja">言葉を貼ってから聞くと</span><span data-i18n="en">Ask it after pasting your words</span><span data-i18n="ko">말을 붙여넣고 물어보면</span></span>
-        <p><span data-i18n="ja">「何から手をつければいい?」</span><span data-i18n="en">&ldquo;Where should I even start?&rdquo;</span><span data-i18n="ko">「뭐부터 시작하면 좋을까요?」</span></p>
-        <p class="ans"><span data-i18n="ja">「歯医者は水曜だから今日は動かなくていい。電池はその帰りに。いちばん気になっているのは新曲のサビでしょう?今日はそこから始めよう。」</span><span data-i18n="en">&ldquo;The dentist is Wednesday, so you don&#39;t need to move on that today. Grab batteries on the way back. The thing really on your mind is that new song&#39;s chorus, isn&#39;t it? Start there today.&rdquo;</span><span data-i18n="ko">「치과는 수요일이니까 오늘은 움직이지 않아도 돼요. 배터리는 그날 돌아오는 길에. 제일 신경 쓰이는 건 새 곡 후렴구죠? 오늘은 거기서부터 시작해봐요.」</span></p>
-        <span class="verdict"><span data-i18n="ja">あなたの答え。</span><span data-i18n="en">Your answer.</span><span data-i18n="ko">당신의 답.</span></span>
-      </div>
-    </div>
-    <div class="cols">
-      <div class="text">
-        <ul class="points">
-          <li><span data-i18n="ja">渡す内容を確認し、フォルダやキーワードで選べる。</span><span data-i18n="en">See exactly what you’re sharing and choose by folder or keyword.</span><span data-i18n="ko">보낼 내용을 확인하고 폴더나 키워드로 고를 수 있어요.</span></li>
-          <li hidden><span data-i18n="ja">「自分」ページに置いた目標や傾向も、一緒に渡る。</span><span data-i18n="en">Goals and tendencies you've saved on the &ldquo;You&rdquo; page go along too.</span><span data-i18n="ko">「나에 대해」 페이지에 둔 목표나 경향도, 함께 전달돼요.</span></li>
-          <li><span data-i18n="ja">ChatGPT・Gemini・Claudeなど、いつものAIにそのまま貼れる。</span><span data-i18n="en">Paste it straight into ChatGPT, Gemini, Claude or the AI you already use.</span><span data-i18n="ko">ChatGPT·Gemini·Claude 등 평소 쓰는 AI에 그대로 붙일 수 있어요.</span></li>
-          <li><span data-i18n="ja">返ってきた答えは、また自分の記録へ持ち帰れる。</span><span data-i18n="en">Bring the answer back into your own records.</span><span data-i18n="ko">돌아온 답은 다시 내 기록으로 가져올 수 있어요.</span></li>
-        </ul>
-      </div>
-      <div class="shots">
-        <div class="phone"><img src="img/shots/08_send_to_ai_ja.jpg" data-shot="08_send_to_ai" loading="lazy" decoding="async" data-alt-ja="AIに渡す画面。切手の貼られた封筒に、渡す言葉が入っている" data-alt-en="The Hand to AI screen: a stamped envelope holding the words about to be sent." data-alt-ko="AI로 보내기 화면. 우표가 붙은 봉투에, 보낼 말이 담겨 있다" alt="AIに渡す画面。切手の貼られた封筒に、渡す言葉が入っている"></div>
-      </div>
+      <p class="hx-sort-note" data-t="sortNote">まとまっていなくて大丈夫。整理はAIに任せられます。</p>
     </div>
   </div>
 </section>
 
-<!-- 道具たち -->
-<section id="tools">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">道具</span><span data-i18n="en">Tools</span><span data-i18n="ko">도구</span></div>
-    <h2><span data-i18n="ja">今日を進める、<br class="brmob">20を超える道具。</span><span data-i18n="en">More than 20 tools<br class="brmob">to move your day forward.</span><span data-i18n="ko">오늘을 앞으로,<br class="brmob">20개가 넘는 도구.</span></h2>
-    <p class="lead"><span data-i18n="ja">書く、読む、手帳、カレンダー、ルーティーン、タイマー。今の自分に必要な道具だけを、ホームの棚へ置けます。</span><span data-i18n="en">Writing, reading, journal, calendar, routines and timers. Keep only the tools you need right now on your Home shelf.</span><span data-i18n="ko">쓰기, 읽기, 수첩, 캘린더, 루틴, 타이머. 지금 나에게 필요한 도구만 홈 선반에 둘 수 있어요.</span></p>
-
-    <div class="toolgroups">
-      <div class="tgroup">
-        <h3>🧠 <span data-i18n="ja">頭を軽くする</span><span data-i18n="en">Clear your head</span><span data-i18n="ko">머리를 가볍게</span></h3>
-        <ul>
-          <li><span class="ticon"><img src="img/tools/tidy.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗂'))"></span><div><b><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span></b><span data-i18n="ja">話した内容をAIが切り分けて、4つに振り分ける</span><span data-i18n="en">AI splits what you said into four groups</span><span data-i18n="ko">말한 내용을 AI가 나눠, 네 곳으로 분류해요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/remember.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🧠'))"></span><div><b><span data-i18n="ja">覚えておく</span><span data-i18n="en">Remember</span><span data-i18n="ko">기억해 두기</span></b><span data-i18n="ja">相手ごとにページを作り、大切なこと・やること・記録をまとめる</span><span data-i18n="en">A page per person: key facts, to-dos and a log</span><span data-i18n="ko">대상마다 페이지를 만들어, 중요한 것・할 일・기록을 모아요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/paper.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📄'))"></span><div><b><span data-i18n="ja">白い紙</span><span data-i18n="en">Blank paper</span><span data-i18n="ko">흰 종이</span></b><span data-i18n="ja">AIを通さず、そのまま書いて残せるメモ</span><span data-i18n="en">A plain note that never goes through AI</span><span data-i18n="ko">AI를 거치지 않고, 그대로 써서 남기는 메모</span></div></li>
-          <li><span class="ticon"><img src="img/tools/jar.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('💡'))"></span><div><b><span data-i18n="ja">アイデアの瓶</span><span data-i18n="en">Idea jar</span><span data-i18n="ko">아이디어 병</span></b><span data-i18n="ja">思いつきを瓶に溜めて、実現したら達成の棚へ移す</span><span data-i18n="en">Ideas collect in a jar; realised ones move to a shelf</span><span data-i18n="ko">떠오른 것을 병에 모으고, 실현되면 달성의 선반으로</span></div></li>
-          <li><span class="ticon"><img src="img/tools/release.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🌪'))"></span><div><b><span data-i18n="ja">手放す</span><span data-i18n="en">Let go</span><span data-i18n="ko">놓아주기</span></b><span data-i18n="ja">話した言葉を、保存せずに消す</span><span data-i18n="en">Say it, and it is discarded without being saved</span><span data-i18n="ko">말한 것을, 저장하지 않고 지워요</span></div></li>
-        </ul>
-      </div>
-
-      <div class="tgroup">
-        <h3>✅ <span data-i18n="ja">今日を進める</span><span data-i18n="en">Move today along</span><span data-i18n="ko">오늘을 나아가게</span></h3>
-        <ul>
-          <li><span class="ticon"><img src="img/tools/todo.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('✅'))"></span><div><b><span data-i18n="ja">やること</span><span data-i18n="en">To do</span><span data-i18n="ko">할 일</span></b><span data-i18n="ja">話した言葉からAIが抜き出して、チェックリストにする</span><span data-i18n="en">AI pulls tasks out of what you said into a checklist</span><span data-i18n="ko">말한 것에서 AI가 뽑아내, 체크리스트로 만들어요</span></div></li>
-          <li><span class="ticon" aria-hidden="true">☀️</span><div><b><span data-i18n="ja">ルーティーン</span><span data-i18n="en" data-static-localized>Routines</span><span data-i18n="ko">루틴</span><span data-i18n="de">Routinen</span><span data-i18n="zh-Hant">例行流程</span><span data-i18n="fr">Routines</span><span data-i18n="es">Rutinas</span><span data-i18n="it">Routine</span></b><span data-i18n="ja">やることをプレイリストのように並べ、声とタイマーでひとつずつ再生</span><span data-i18n="en" data-static-localized>Arrange actions like a playlist, then play them one by one with voice and a timer</span><span data-i18n="ko">할 일을 플레이리스트처럼 놓고, 음성과 타이머로 하나씩 재생</span><span data-i18n="de">Schritte wie eine Playlist ordnen und mit Stimme und Timer abspielen</span><span data-i18n="zh-Hant">像播放清單一樣排列步驟，再由語音與計時器逐項播放</span><span data-i18n="fr">Ordonnez les gestes comme une playlist, puis lancez-les avec la voix et le minuteur</span><span data-i18n="es">Ordena los pasos como una playlist y reprodúcelos con voz y temporizador</span><span data-i18n="it">Ordina i passaggi come una playlist e riproducili con voce e timer</span></div></li>
-          <li><span class="ticon"><img src="img/tools/planner.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🗓'))"></span><div><b><span data-i18n="ja">3日プランナー</span><span data-i18n="en">3-day planner</span><span data-i18n="ko">3일 플래너</span></b><span data-i18n="ja">今日からの3日を、30分単位で組み立てる</span><span data-i18n="en">Lay out the next three days in 30-minute blocks</span><span data-i18n="ko">오늘부터 3일을, 30분 단위로 짜요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/timer.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⏱'))"></span><div><b><span data-i18n="ja">タイマー</span><span data-i18n="en">Timer</span><span data-i18n="ko">타이머</span></b><span data-i18n="ja">10秒〜1時間。ストップウォッチ・ポモドーロ・瞑想・筋トレも</span><span data-i18n="en">10 seconds to an hour, plus stopwatch, pomodoro, meditation and workouts</span><span data-i18n="ko">10초~1시간. 스톱워치・포모도로・명상・근력 운동도</span></div></li>
-        </ul>
-      </div>
-
-      <div class="tgroup">
-        <h3>🌿 <span data-i18n="ja">自分を整える</span><span data-i18n="en">Look after yourself</span><span data-i18n="ko">자신을 돌보기</span></h3>
-        <ul>
-          <li><span class="ticon"><img src="img/tools/mood.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📈'))"></span><div><b><span data-i18n="ja">今日の調子</span><span data-i18n="en">How you&#39;re doing</span><span data-i18n="ko">오늘의 컨디션</span></b><span data-i18n="ja">7段階のスライドで記録し、カレンダーで見返せる</span><span data-i18n="en">Record on a seven-step slider and review it on a calendar</span><span data-i18n="ko">7단계 슬라이드로 기록하고, 캘린더로 되돌아볼 수 있어요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/reflect.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🌙'))"></span><div><b><span data-i18n="ja">よかったこと・夜の振り返り</span><span data-i18n="en">Good moments &amp; night notes</span><span data-i18n="ko">좋았던 일・밤의 되돌아보기</span></b><span data-i18n="ja">その日のよかったことと、夜の振り返りを1行ずつ残す</span><span data-i18n="en">One line for something good, one for the night&rsquo;s reflection</span><span data-i18n="ko">그날 좋았던 일과, 밤의 되돌아보기를 한 줄씩</span></div></li>
-          <li><span class="ticon"><img src="img/tools/meditation.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🍃'))"></span><div><b><span data-i18n="ja">瞑想</span><span data-i18n="en">Meditation</span><span data-i18n="ko">명상</span></b><span data-i18n="ja">1〜10分。呼吸に合わせて円が伸び縮みする</span><span data-i18n="en">1 to 10 minutes, with a circle that breathes with you</span><span data-i18n="ko">1~10분. 호흡에 맞춰 원이 늘었다 줄었다 해요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/workout.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🏋️'))"></span><div><b><span data-i18n="ja">筋トレ</span><span data-i18n="en">Workout</span><span data-i18n="ko">근력 운동</span></b><span data-i18n="ja">インターバル・セット休憩・TABATA・EMOM・ラウンドの5種類</span><span data-i18n="en">Five kinds: interval, set rest, TABATA, EMOM and rounds</span><span data-i18n="ko">인터벌・세트 휴식・TABATA・EMOM・라운드 다섯 가지</span></div></li>
-        </ul>
-      </div>
-
-      <div class="tgroup">
-        <h3>🏠 <span data-i18n="ja">暮らしを支える</span><span data-i18n="en">Support daily life</span><span data-i18n="ko">생활을 뒷받침하기</span></h3>
-        <ul>
-          <li><span class="ticon"><img src="img/tools/medicine.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('💊'))"></span><div><b><span data-i18n="ja">薬</span><span data-i18n="en">Medicine</span><span data-i18n="ko">약</span></b><span data-i18n="ja">飲んだら押すだけ。カレンダーに残り、書き出して医師に渡せる</span><span data-i18n="en">Press when you take it; it lands on a calendar you can export for your doctor</span><span data-i18n="ko">먹으면 누르기만. 캘린더에 남고, 내보내서 의사에게 전할 수 있어요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/meal.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🍽'))"></span><div><b><span data-i18n="ja">食事</span><span data-i18n="en">Meals</span><span data-i18n="ko">식사</span></b><span data-i18n="ja">写真からカロリーとP/F/Cを見立て、目標との差を出す</span><span data-i18n="en">Estimates calories and macros from a photo, and the gap to your goal</span><span data-i18n="ko">사진에서 칼로리와 P/F/C를 추정하고, 목표와의 차이를 내요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/expense.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('🧾'))"></span><div><b><span data-i18n="ja">経費</span><span data-i18n="en">Expenses</span><span data-i18n="ko">경비</span></b><span data-i18n="ja">レシートを撮ると、AIが金額と勘定科目の候補まで作る</span><span data-i18n="en">Photograph a receipt and AI works out the amount and a suggested account</span><span data-i18n="ko">영수증을 찍으면, AI가 금액과 계정과목 후보까지 만들어요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/daily.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📼'))"></span><div><b><span data-i18n="ja">音を残す・まいにちのチェック・サブスク管理</span><span data-i18n="en">Voice notes, daily checks, subscriptions</span><span data-i18n="ko">소리 남기기・매일 체크・구독 관리</span></b><span data-i18n="ja">録音・習慣のチェック・サブスクの管理</span><span data-i18n="en">Voice recording, habit checks and subscription tracking</span><span data-i18n="ko">녹음・습관 체크・구독 관리</span></div></li>
-        </ul>
-      </div>
-
-      <div class="tgroup">
-        <h3>📁 <span data-i18n="ja">しまっておく</span><span data-i18n="en">Put away</span><span data-i18n="ko">보관하기</span></h3>
-        <ul>
-          <li><span class="ticon"><img src="img/tools/folder.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('📁'))"></span><div><b><span data-i18n="ja">フォルダ</span><span data-i18n="en">Folders</span><span data-i18n="ko">폴더</span></b><span data-i18n="ja">言葉をフォルダに分けて保存。分け方はAIが提案する</span><span data-i18n="en">File your words into folders; AI suggests how to split them</span><span data-i18n="ko">말을 폴더로 나눠 저장. 나누는 방법은 AI가 제안해요</span></div></li>
-          <li><span class="ticon"><img src="img/tools/widget.png" alt="" loading="lazy" onerror="this.replaceWith(document.createTextNode('⌚️'))"></span><div><b><span data-i18n="ja">ウィジェット・Apple Watch</span><span data-i18n="en">Widgets &amp; Apple Watch</span><span data-i18n="ko">위젯・Apple Watch</span></b><span data-i18n="ja">ホーム画面のウィジェットと、Apple Watchからの音声入力</span><span data-i18n="en">Home screen widgets, and voice capture from Apple Watch</span><span data-i18n="ko">홈 화면 위젯과, Apple Watch에서의 음성 입력</span><br><span data-i18n="ja">選んだルーティーンを、ホーム画面や手首からすぐ再生</span><span data-i18n="en" data-static-localized>Start a chosen routine straight from your Home Screen or wrist</span><span data-i18n="ko">선택한 루틴을 홈 화면이나 손목에서 바로 재생</span><span data-i18n="de">Eine gewählte Routine direkt vom Home-Bildschirm oder Handgelenk starten</span><span data-i18n="zh-Hant">從主畫面或手腕立即播放選定的例行流程</span><span data-i18n="fr">Lancez une routine choisie depuis l’écran d’accueil ou votre poignet</span><span data-i18n="es">Inicia una rutina elegida desde la pantalla de inicio o tu muñeca</span><span data-i18n="it">Avvia una routine scelta dalla schermata Home o dal polso</span></div></li>
-        </ul>
-      </div>
+<!-- 6. 道具 -->
+<section class="hx-tools" id="hx-tools" aria-labelledby="hx-tools-title">
+  <div class="hx-wrap">
+    <span class="hx-eyebrow" data-reveal><b>04</b>&nbsp;<span data-t="toolsEye">毎日の道具</span></span>
+    <h2 class="hx-h" id="hx-tools-title" data-reveal data-t="toolsH">今日を進める、<br>20を超える道具。</h2>
+    <p class="hx-lead" data-reveal style="--d:.1s" data-t="toolsP">書く、読む、手帳、カレンダー、ルーティーン、タイマー。今の自分に必要な道具だけを、ホームの棚へ置けます。</p>
+    <div class="hx-bento">
+      <article class="hx-card c-journal" data-reveal>
+        <div class="top"><span class="kind" data-t="jT">カレンダー・手帳</span><span class="hx-badge" data-t="free">無料</span></div>
+        <h3 data-t="jH">自分だけのタイムライン。</h3>
+        <p data-t="jP">話した言葉と撮った写真が、その日のページに並んで、日記が勝手に育つ。</p>
+        <div class="shots"><div class="hx-phone"><img src="img/shots/06_journal_cat_ja.webp" data-shot="06_journal_cat" data-shot-ext="webp" loading="lazy" decoding="async" alt="手帳の1日のページ。言葉と猫の写真が並ぶ" data-t-alt="journalAlt"></div></div>
+      </article>
+      <article class="hx-card c-routine" data-reveal style="--d:.08s">
+        <div class="top"><span class="kind" data-t="rT">ルーティーン</span><span class="hx-badge" data-t="free">無料</span></div>
+        <h3 data-t="rH">プレイリストを作るように、ルーティーンを組む。</h3>
+        <p data-t="rP">声と円形タイマーが、次にやることを案内する。続けるほど、植物が育つ。</p>
+        <div class="shots"><div class="hx-phone"><img src="img/shots/routine-list-ja.webp" data-shot="routine-list" data-shot-ext="webp" loading="lazy" decoding="async" alt="レコードのように並ぶルーティーン" data-t-alt="routineAlt"></div><div class="hx-phone"><img src="img/shots/routine-timer-ja.webp" data-shot="routine-timer" data-shot-ext="webp" loading="lazy" decoding="async" alt="円形タイマーで進むルーティーン" data-t-alt="routineAlt"></div></div>
+      </article>
+      <article class="hx-card c-tidy" data-reveal>
+        <div class="top"><span class="kind" data-t="tT">整理アシスタント</span><span class="hx-badge hb">High Beam</span></div>
+        <h3 data-t="tH">今日はこれだけで、十分です。</h3>
+        <p data-t="tP">頭にあることを話すだけ。AIが「いま」「あとで」「育てる」「手放す」に分けます。</p>
+        <div class="shots"><div class="hx-phone"><img src="img/shots/tidy-assistant-ja.jpg" data-shot="tidy-assistant" loading="lazy" decoding="async" alt="話した言葉を4つに分ける整理アシスタント" data-t-alt="tidyAlt"></div></div>
+      </article>
+      <article class="hx-card c-hand" data-reveal style="--d:.08s">
+        <div class="top"><span class="kind" data-t="hT">AIに渡す</span><span class="hx-badge" data-t="free">無料</span></div>
+        <h3 data-t="hH">ためた言葉を、いつものAIへ。</h3>
+        <div class="hx-compare">
+          <div class="hx-chat"><span class="lbl" data-t="a1L">そのまま聞くと</span><p class="q" data-t="q">「何から手をつければいい?」</p><p class="a" data-t="a1">まずはタスクをすべて書き出し、重要度と緊急度で分類しましょう。</p><p class="n" data-t="a1n">…どこかで聞いた答え。</p></div>
+          <div class="hx-chat yours"><span class="lbl" data-t="a2L">言葉を貼ってから聞くと</span><p class="q" data-t="q">「何から手をつければいい?」</p><p class="a" data-t="a2">歯医者は水曜だから今日は動かなくていい。電池はその帰りに。いちばん気になっているのは新曲のサビでしょう? 今日はそこから。</p><p class="n" data-t="a2n">あなたの答え。</p></div>
+        </div>
+        <p data-t="hP">ChatGPT・Gemini・Claudeなど、いつものAIにそのまま貼れる。渡す内容は事前に確認できます。</p>
+      </article>
+      <article class="hx-card c-list" data-reveal>
+        <div class="top"><span class="kind">20+ TOOLS</span></div>
+        <div class="hx-chips" aria-label="道具の一覧">
+          <div class="hx-chiprow"><span class="hx-chip"><span>✅</span><span data-t="chip1">やること</span></span><span class="hx-chip"><span>🗓</span><span data-t="chip2">3日プランナー</span></span><span class="hx-chip"><span>⏱</span><span data-t="chip3">タイマー</span></span><span class="hx-chip"><span>🍃</span><span data-t="chip4">瞑想</span></span><span class="hx-chip"><span>🏋️</span><span data-t="chip5">筋トレ</span></span><span class="hx-chip"><span>🌙</span><span data-t="chip6">睡眠</span></span><span class="hx-chip"><span>📈</span><span data-t="chip7">今日の調子</span></span><span class="hx-chip"><span>💊</span><span data-t="chip8">薬</span></span></div>
+          <div class="hx-chiprow rev"><span class="hx-chip"><span>🍽</span><span data-t="chip9">食事</span></span><span class="hx-chip"><span>🧾</span><span data-t="chip10">経費</span></span><span class="hx-chip"><span>💡</span><span data-t="chip11">アイデアの瓶</span></span><span class="hx-chip"><span>📄</span><span data-t="chip12">白い紙</span></span><span class="hx-chip"><span>🌪</span><span data-t="chip13">手放す</span></span><span class="hx-chip"><span>🧠</span><span data-t="chip14">覚えておく</span></span><span class="hx-chip"><span>📁</span><span data-t="chip15">フォルダ</span></span><span class="hx-chip"><span>⌚️</span><span data-t="chip16">ウィジェット</span></span></div>
+        </div>
+        <a class="hx-more" href="./tools.html"><span data-t="toolsLink">道具の説明を、ぜんぶ見る</span><span aria-hidden="true">→</span></a>
+      </article>
     </div>
-
-    <p style="text-align:center; margin: 26px 0 6px;"><a class="beta-badge" href="./tools.html"><span data-i18n="ja">道具の説明を、ぜんぶ見る</span><span data-i18n="en">Read about every tool</span><span data-i18n="ko">도구 설명을 전부 보기</span></a></p>
   </div>
 </section>
 
-<!-- 自分で選べるデザイン。アプリの価値を理解した後に、体験への入口を置く。 -->
-<section id="design-customization">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja" data-static-localized>自分で選べるデザイン</span><span data-i18n="en" data-static-localized>Make it feel like yours</span><span data-i18n="ko" data-static-localized>내 취향대로 고르는 디자인</span><span data-i18n="de" data-static-localized>Gestalte es nach deinem Geschmack</span><span data-i18n="zh-Hant" data-static-localized>打造屬於自己的樣子</span><span data-i18n="fr" data-static-localized>Une apparence qui vous ressemble</span><span data-i18n="es" data-static-localized>Haz que se sienta tuya</span><span data-i18n="it" data-static-localized>Falla sentire davvero tua</span></div>
-    <h2><span data-i18n="ja" data-static-localized><span class="nb">シンプルにも、</span><span class="nb">遊び心いっぱいにも。</span></span><span data-i18n="en" data-static-localized>Keep it simple—or make it playful.</span><span data-i18n="ko" data-static-localized>심플하게도, 개성 넘치게도.</span><span data-i18n="de" data-static-localized>Schlicht oder voller Persönlichkeit.</span><span data-i18n="zh-Hant" data-static-localized>可以簡約，也可以充滿個性。</span><span data-i18n="fr" data-static-localized>Minimaliste ou pleine de fantaisie.</span><span data-i18n="es" data-static-localized>Minimalista o llena de personalidad.</span><span data-i18n="it" data-static-localized>Semplice oppure piena di personalità.</span></h2>
-    <p class="lead"><span data-i18n="ja" data-static-localized>イラストをなくした静かなSimpleモードも選べます。ボディ、配色、背景、アクセント、アプリアイコン、レトロな表現まで組み合わせて、毎日開きたくなる居心地に。</span><span data-i18n="en" data-static-localized>Choose the calm Simple mode, or build a more expressive look. Mix the body, colors, background, accent, app icon and retro styling into a place you will want to open every day.</span><span data-i18n="ko" data-static-localized>차분한 심플 모드를 고르거나 더 풍부한 분위기를 만들 수 있어요. 바디, 색 조합, 배경, 포인트 색, 앱 아이콘과 레트로 표현을 조합해 매일 열고 싶은 공간으로 꾸며 보세요.</span><span data-i18n="de" data-static-localized>Wähle den ruhigen Simple-Modus oder einen ausdrucksstärkeren Look. Kombiniere Gehäuse, Farben, Hintergrund, Akzent, App-Symbol und Retro-Stil zu einem Ort, den du jeden Tag gern öffnest.</span><span data-i18n="zh-Hant" data-static-localized>可選擇安靜的 Simple 模式，也能打造更有個性的外觀。自由組合機身、配色、背景、強調色、App 圖示與復古風格，變成每天都想打開的空間。</span><span data-i18n="fr" data-static-localized>Choisissez le calme du mode Simple ou une apparence plus expressive. Combinez le boîtier, les couleurs, l’arrière-plan, l’accent, l’icône et le style rétro pour créer un espace que vous aurez envie d’ouvrir chaque jour.</span><span data-i18n="es" data-static-localized>Elige la calma del modo Simple o crea un aspecto más expresivo. Combina el cuerpo, los colores, el fondo, el acento, el icono y el estilo retro para crear un espacio que quieras abrir cada día.</span><span data-i18n="it" data-static-localized>Scegli la calma della modalità Simple oppure crea un aspetto più espressivo. Combina corpo, colori, sfondo, accento, icona e stile rétro in uno spazio che vorrai aprire ogni giorno.</span></p>
-    <div class="cols"><div class="shots"><div class="phone small"><img src="img/shots/playful-black-20260907.png" loading="lazy" decoding="async" data-alt-ja="きらきらした目のイラストモードのホーム画面" data-alt-en="The Home screen with sparkling illustrated eyes" alt="きらきらした目のイラストモードのホーム画面"></div><div class="phone small"><img src="img/shots/simple-mode-ja.jpg?v=20260907" loading="lazy" decoding="async" data-alt-ja="顔のイラストがないSimpleモードのホーム画面" data-alt-en="The Home screen in calm Simple mode, without the illustrated face" alt="顔のイラストがないSimpleモードのホーム画面"></div></div><div class="text"><ul class="points"><li><span data-i18n="ja" data-static-localized>基本は静かなSimpleモード。顔のイラストもいつでも選べる。</span><span data-i18n="en" data-static-localized>Simple mode stays calm by default, with the illustrated face ready whenever you want it.</span><span data-i18n="ko" data-static-localized>기본은 차분한 심플 모드지만, 원할 때 언제든 얼굴 일러스트를 고를 수 있어요.</span></li><li><span data-i18n="ja" data-static-localized>ボディ、背景、色を別々に選んで組み合わせられる。</span><span data-i18n="en" data-static-localized>Choose and combine the body, background and colors separately.</span><span data-i18n="ko" data-static-localized>바디, 배경과 색을 각각 골라 조합할 수 있어요.</span></li><li><span data-i18n="ja" data-static-localized>ホーム画面のアプリアイコンや、レトロな文字・質感も選べる。</span><span data-i18n="en" data-static-localized>Pick a Home Screen icon, retro type and texture too.</span><span data-i18n="ko" data-static-localized>홈 화면 앱 아이콘과 레트로 글꼴·질감도 고를 수 있어요.</span></li></ul></div></div>
+<!-- 7. デザイン -->
+<section class="hx-design" id="hx-design" aria-labelledby="hx-design-title">
+  <div class="hx-wrap">
+    <span class="hx-eyebrow" data-reveal><b>05</b>&nbsp;<span data-t="designEye">デザイン</span></span>
+    <h2 class="hx-h" id="hx-design-title" data-reveal data-t="designH">シンプルにも、<br>遊び心いっぱいにも。</h2>
+    <p class="hx-lead" data-reveal style="--d:.1s" data-t="designP">イラストをなくした静かなSimpleモードも選べます。ボディ、配色、背景、アクセント、アプリアイコン、レトロな表現まで組み合わせて、毎日開きたくなる居心地に。</p>
+    <div class="hx-cta-row" data-reveal style="--d:.15s">
+      <a class="hx-btn" href="./design.html"><span data-t="designCta">デザインを試してみる</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <button class="hx-link-quiet hx-to-top" type="button" data-t="diceHint">いちばん上のサイコロでも、着せ替えられます</button>
+    </div>
   </div>
 <div class="design-gallery">
   <!-- hero-designs:start -->
@@ -1556,164 +1225,118 @@
   </button>
 </div>
 </section>
-<div class="design-cta-wrap" id="design-preview"><a class="design-cta" href="./design.html"><span class="design-cta-thumb-pair" aria-hidden="true"><img src="img/shots/playful-black-20260907.png" alt="" loading="lazy" decoding="async"><img src="img/shots/simple-mode-ja.jpg?v=20260907" alt="" loading="lazy" decoding="async"></span><span class="design-cta-copy"><span class="design-cta-kicker"><span data-i18n="ja" data-static-localized>デザイン画面</span><span data-i18n="en" data-static-localized>DESIGN STUDIO</span><span data-i18n="ko" data-static-localized>디자인 스튜디오</span></span><span class="design-cta-title"><span data-i18n="ja" data-static-localized>デザインを、ここで試す</span><span data-i18n="en" data-static-localized>Try your own look</span><span data-i18n="ko" data-static-localized>나만의 디자인을 골라 보세요</span></span><span class="design-cta-note"><span data-i18n="ja" data-static-localized>ボディ・色・背景を組み合わせる</span><span data-i18n="en" data-static-localized>Mix the body, colors and background</span><span data-i18n="ko" data-static-localized>바디·색·배경을 조합해 보세요</span></span></span><span class="design-cta-arrow" aria-hidden="true">↗</span></a></div>
 
-<!-- 無料とHigh Beam -->
-<section id="pricing">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja" data-static-localized>High Beamで、もっと軽く</span><span data-i18n="en" data-static-localized>Lighten your load with High Beam</span><span data-i18n="ko" data-static-localized>High Beam로 더 가볍게</span><span data-i18n="de" data-static-localized>Mehr Leichtigkeit mit High Beam</span><span data-i18n="zh-Hant" data-static-localized>用 High Beam，輕鬆一點</span><span data-i18n="fr" data-static-localized>Plus de légèreté avec High Beam</span><span data-i18n="es" data-static-localized>Más ligereza con High Beam</span><span data-i18n="it" data-static-localized>Più leggerezza con High Beam</span></div>
-    <h2><span data-i18n="ja" data-static-localized>整理する手間を、AIに。</span><span data-i18n="en" data-static-localized>Let AI do the organizing.</span><span data-i18n="ko" data-static-localized>정리하는 수고는 AI에게.</span><span data-i18n="de" data-static-localized>Überlass das Ordnen der KI.</span><span data-i18n="zh-Hant" data-static-localized>把整理交給 AI。</span><span data-i18n="fr" data-static-localized>Confiez le tri à l’IA.</span><span data-i18n="es" data-static-localized>Deja que la IA organice.</span><span data-i18n="it" data-static-localized>Lascia organizzare all’IA.</span></h2>
-    <p class="lead"><span data-i18n="ja" data-static-localized>話した言葉を予定ややることに仕分ける。レシートから経費を、食事の写真から栄養の目安を読み取る。High Beamが、毎日の整理や入力を手伝います。</span><span data-i18n="en" data-static-localized>Turn spoken thoughts into plans and to-dos. Read expenses from receipts and estimate nutrition from meal photos. High Beam helps with everyday organizing and data entry.</span><span data-i18n="ko" data-static-localized>말한 내용을 일정과 할 일로 분류하고, 영수증에서 경비를 읽고, 식사 사진으로 영양을 추정해요. High Beam가 매일의 정리와 입력을 도와줘요.</span><span data-i18n="de" data-static-localized>Gesprochene Gedanken in Pläne und Aufgaben sortieren, Ausgaben aus Belegen lesen und Nährwerte aus Essensfotos schätzen. High Beam hilft beim täglichen Ordnen und Erfassen.</span><span data-i18n="zh-Hant" data-static-localized>將說出的想法分成行程與待辦，從收據讀取支出，從餐點照片估算營養。High Beam 協助每天的整理與輸入。</span><span data-i18n="fr" data-static-localized>Triez vos paroles en projets et tâches, lisez les dépenses sur les reçus et estimez les apports des repas en photo. High Beam vous aide à organiser et à saisir au quotidien.</span><span data-i18n="es" data-static-localized>Clasifica tus palabras en planes y tareas, lee gastos de recibos y estima nutrientes con fotos de comidas. High Beam te ayuda a organizar e introducir información cada día.</span><span data-i18n="it" data-static-localized>Ordina i pensieri detti a voce in programmi e attività, leggi le spese dagli scontrini e stima i nutrienti dalle foto dei pasti. High Beam aiuta a organizzare e inserire informazioni ogni giorno.</span></p>
-    <div class="plans">
-      <div class="plan">
-        <div class="name">Head-Light</div>
-        <div class="price"><span data-i18n="ja">ずっと無料</span><span data-i18n="en">Free forever</span><span data-i18n="ko">계속 무료</span></div>
-        <ul>
-          <li><span data-i18n="ja">言葉・手帳・カレンダー・コレクション</span><span data-i18n="en">Words, journal, calendar, and collections</span><span data-i18n="ko">말・수첩・캘린더・컬렉션</span></li>
-          <li><span data-i18n="ja">20を超える道具</span><span data-i18n="en">More than 20 tools</span><span data-i18n="ko">20개가 넘는 도구</span></li>
-          <li><span data-i18n="ja">広告なし。データを売らない</span><span data-i18n="en">No ads. We never sell your data</span><span data-i18n="ko">광고 없음. 데이터를 팔지 않음</span></li>
-          <li><span data-i18n="ja">コレクションの棚は3枚まで</span><span data-i18n="en">Up to 3 collection shelves</span><span data-i18n="ko">컬렉션 선반은 3개까지</span></li>
-          <li><span data-i18n="ja">記録は、ずっとあなたのもの</span><span data-i18n="en">Your records stay yours, always</span><span data-i18n="ko">기록은, 계속 당신의 것</span></li>
-        </ul>
-      </div>
-      <div class="plan plus">
-        <div class="name">High Beam</div>
-        <div class="price"><span data-i18n="ja">年額プランは7日間無料</span><span data-i18n="en">Annual plan: 7 days free</span><span data-i18n="ko">연간 플랜은 7일 무료</span></div>
-        <ul>
-          <li><span data-i18n="ja">話した言葉のAI仕分け</span><span data-i18n="en">AI sorting for the words you speak</span><span data-i18n="ko">말한 내용을 AI로 분류</span></li>
-          <li><span data-i18n="ja">AIチャット・写真の言語化</span><span data-i18n="en">AI chat and photo-to-words</span><span data-i18n="ko">AI 채팅・사진 언어화</span></li>
-          <li><span data-i18n="ja" data-static-localized>契約中は、棚を好きなだけ作成</span><span data-i18n="en" data-static-localized>Create unlimited shelves while subscribed</span><span data-i18n="ko" data-static-localized>구독 중에는 선반을 무제한으로 만들기</span><span data-i18n="de" data-static-localized>Während des Abos unbegrenzt viele Regale erstellen</span><span data-i18n="zh-Hant" data-static-localized>訂閱期間可建立不限數量的收藏架</span><span data-i18n="fr" data-static-localized>Créez autant d’étagères que vous le souhaitez pendant l’abonnement</span><span data-i18n="es" data-static-localized>Crea estanterías ilimitadas durante la suscripción</span><span data-i18n="it" data-static-localized>Crea scaffali illimitati durante l’abbonamento</span></li>
-          <li><span data-i18n="ja" data-static-localized>Xの投稿を、投稿した日の手帳へ</span><span data-i18n="en" data-static-localized>Import your X posts into the journal for the day you posted</span><span data-i18n="ko" data-static-localized>X 게시물을 게시한 날의 다이어리로 가져오기</span><span data-i18n="de" data-static-localized>X-Posts ins Tagebuch des Veröffentlichungstags übernehmen</span><span data-i18n="zh-Hant" data-static-localized>將 X 貼文匯入發文當天的手帳</span><span data-i18n="fr" data-static-localized>Importer vos posts X dans le journal du jour de publication</span><span data-i18n="es" data-static-localized>Importar tus posts de X al diario del día en que publicaste</span><span data-i18n="it" data-static-localized>Importare i post X nel diario del giorno di pubblicazione</span></li>
-          <li><span data-i18n="ja">整理・覚えておく・経費・食事・夜の振り返りなど</span><span data-i18n="en">Tidy, remember, expenses, meals, night reflection, and more</span><span data-i18n="ko">정리・기억해 두기・경비・식사・밤의 되돌아보기 등</span></li>
-        </ul>
-      </div>
-      <div class="plan">
-        <div class="name"><span data-i18n="ja">棚をふやす</span><span data-i18n="en">Add more shelves</span><span data-i18n="ko">선반 늘리기</span></div>
-        <div class="price"><span data-i18n="ja">一度きり</span><span data-i18n="en">One-time purchase</span><span data-i18n="ko">한 번만 구매</span></div>
-        <ul>
-          <li><span data-i18n="ja">無料で棚3枚</span><span data-i18n="en">3 shelves included for free</span><span data-i18n="ko">선반 3개는 무료</span></li>
-          <li><span data-i18n="ja">一度の購入で棚を10枚追加</span><span data-i18n="en">Add 10 shelves with one purchase</span><span data-i18n="ko">한 번 구매하면 선반 10개 추가</span></li>
-          <li><span data-i18n="ja">地域ごとの価格はアプリ内に表示</span><span data-i18n="en">Your local price is shown in the app</span><span data-i18n="ko">지역별 가격은 앱 내에 표시</span></li>
-        </ul>
-      </div>
-    </div>
-    <p class="promise"><span hidden><b><span data-i18n="ja">広告なし。データを売らない。</span><span data-i18n="en">No ads. We never sell your data.</span><span data-i18n="ko">광고 없음. 데이터를 팔지 않아요.</span></b> <span data-i18n="ja">記録と20を超える道具は無料のまま。棚は3枚まで含まれ、必要な人だけ一度きりの購入で買い足せます。AI機能はHigh Beamです。</span><span data-i18n="en">Your records and more than 20 tools stay free. Three shelves are included, and you can add more with a one-time purchase only if you need them. AI features are part of High Beam.</span><span data-i18n="ko">기록과 20개가 넘는 도구는 계속 무료예요. 선반은 3개까지 포함되며, 필요한 사람만 한 번 구매해 늘릴 수 있어요. AI 기능은 High Beam에 포함됩니다.</span></span>
-    <span class="sub"><span data-i18n="ja">※ High Beamの年額プランは7日間の無料期間後に自動更新されます。更新前にいつでも解約できます。High Beamと棚の追加の正確な価格は、お使いの地域に合わせてアプリ内に表示されます。</span><span data-i18n="en">* The annual High Beam plan renews automatically after the 7-day free trial. Cancel anytime before renewal. Exact prices for High Beam and shelf expansion are shown in the app for your region.</span><span data-i18n="ko">※ High Beam 연간 플랜은 7일 무료 체험 후 자동 갱신됩니다. 갱신 전에 언제든지 해지할 수 있어요. High Beam와 선반 추가의 정확한 가격은 사용 지역에 맞게 앱 내에 표시됩니다.</span></span><br>
-    <a class="sub" href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en" data-static-localized>Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a></p>
+<!-- 8. 名前と、つくった理由 -->
+<section class="hx-name" id="hx-name" aria-labelledby="hx-name-title">
+  <div class="hx-wrap">
+    <div class="hx-ring" data-reveal aria-hidden="true"></div>
+    <span class="hx-kana">HEAD-LIGHT<span class="hx-ja-only"> · ヘッドライト</span></span>
+    <h2 class="hx-h" id="hx-name-title" data-reveal data-t="nameH">頭を軽く。<br>進む先に、光を。</h2>
+    <p class="hx-lead" data-reveal style="--d:.1s" data-t="nameP">Head-Lightは、大切なものをしまい込む場所ではありません。もう一度見つけて、そこからすぐ何かをつくるための場所です。頭を軽く。進む先に光を。迷わず次の一歩へ進めるように、Head-Lightと名づけました。</p>
   </div>
 </section>
 
-<div class="store-download-band reveal" id="final-download">
-  <div class="store-download">
-    <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
-      <span class="store-download-cue"><span data-i18n="ja" data-static-localized>ここからダウンロード</span><span data-i18n="en" data-static-localized>Download here</span><span data-i18n="ko" data-static-localized>여기에서 다운로드</span><span data-i18n="de" data-static-localized>Hier herunterladen</span><span data-i18n="zh-Hant" data-static-localized>從這裡下載</span><span data-i18n="fr" data-static-localized>Télécharger ici</span><span data-i18n="es" data-static-localized>Descarga aquí</span><span data-i18n="it" data-static-localized>Scarica qui</span><svg class="store-download-arrow" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v17M5 13l7 7 7-7"/></svg></span>
-      <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
-      <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
-      <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
-      <img class="app-store-badge" data-store-lang="de" src="img/app-store-badges/de.svg" alt="Laden im App Store">
-      <img class="app-store-badge" data-store-lang="zh-Hant" src="img/app-store-badges/zh-Hant.svg" alt="在 App Store 下載">
-      <img class="app-store-badge" data-store-lang="fr" src="img/app-store-badges/fr.svg" alt="Télécharger dans l’App Store">
-      <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
-      <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
-    </a>
-    <a class="store-qr-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
-      <img class="store-qr-code" src="img/app-store-qr.png" width="92" height="92" alt="">
-      <span class="store-qr-copy">
-        <strong><span data-i18n="ja" data-static-localized>スマホで読み取る</span><span data-i18n="en" data-static-localized>Scan with your phone</span><span data-i18n="ko" data-static-localized>휴대폰으로 스캔</span><span data-i18n="de" data-static-localized>Mit dem Smartphone scannen</span><span data-i18n="zh-Hant" data-static-localized>用手機掃描</span><span data-i18n="fr" data-static-localized>Scannez avec votre téléphone</span><span data-i18n="es" data-static-localized>Escanea con tu móvil</span><span data-i18n="it" data-static-localized>Scansiona con il telefono</span></strong>
-        <span><span data-i18n="ja" data-static-localized>App Store</span><span data-i18n="en" data-static-localized>App Store</span><span data-i18n="ko" data-static-localized>App Store</span><span data-i18n="de" data-static-localized>App Store</span><span data-i18n="zh-Hant" data-static-localized>App Store</span><span data-i18n="fr" data-static-localized>App Store</span><span data-i18n="es" data-static-localized>App Store</span><span data-i18n="it" data-static-localized>App Store</span></span>
-      </span>
-    </a>
-  </div>
-</div>
-
-<!-- サポート -->
-<section id="support" style="border-bottom: none;">
-  <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">サポート</span><span data-i18n="en">Support</span><span data-i18n="ko">지원</span></div>
-    <h2><span data-i18n="ja">困ったときは、気軽にどうぞ。</span><span data-i18n="en">Something wrong? Just reach out.</span><span data-i18n="ko">곤란할 때는, 편하게 연락 주세요.</span></h2>
-    <div class="card">
-      <p><span data-i18n="ja">ご質問・不具合のご報告・ご要望は、Xのリプライか、Instagram・TikTokのDM、メールでお気軽にどうぞ。</span><span data-i18n="en">Questions, bug reports, requests — reply on X, DM us on Instagram or TikTok, or send an email.</span><span data-i18n="ko">질문・오류 신고・제안은, X 답글이나 Instagram・TikTok DM, 이메일로 편하게 보내주세요.</span></p>
-      <p><b>X:</b> <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">@HeadLight_app</a></p>
-      <p><b>Instagram:</b> <a href="https://instagram.com/headlight__app" target="_blank" rel="noopener">@headlight__app</a></p>
-      <p><b>TikTok:</b> <a href="https://tiktok.com/@headlight_app" target="_blank" rel="noopener">@headlight_app</a></p>
-      <p><b><span data-i18n="ja">メール:</span><span data-i18n="en">Email:</span><span data-i18n="ko">이메일:</span></b> <a href="mailto:headlight.app.jp@gmail.com">headlight.app.jp@gmail.com</a></p>
-      <p class="sub"><span data-i18n="ja">返信に数日いただくことがあります。</span><span data-i18n="en">Replies may take a few days.</span><span data-i18n="ko">답장에 며칠 걸릴 수 있어요.</span></p>
+<section class="hx-story" id="hx-story" aria-labelledby="hx-story-title">
+  <div class="hx-wrap hx-story-grid">
+    <div class="stick">
+      <span class="hx-eyebrow" data-reveal data-t="storyEye">つくった理由</span>
+      <h2 class="hx-h" id="hx-story-title" data-reveal data-t="storyH">散らかったアイデアを、<br>使える場所へ。</h2>
+      <div class="hx-avatar" data-reveal><b>K</b><span>Kai<small data-t="storyRole">開発者 / 映像クリエイター</small></span></div>
     </div>
-    <div class="card faq">
-      <p><b><span data-i18n="ja">Q. 対応している端末は?</span><span data-i18n="en">Q. Which devices are supported?</span><span data-i18n="ko">Q. 지원하는 기기는?</span></b><br>
-      <span data-i18n="ja">iPhone・iPad(iOS 17以上)、Apple Watch(watchOS 11以上)、Mac(Appleシリコン)。High Beamでは、Apple Intelligence対応かどうかに関係なく、どの機種でもクラウドAIが動きます。記録・手帳・カレンダー・コレクションと20を超える道具は、どの端末でも無料です。</span><span data-i18n="en">iPhone and iPad (iOS 17+), Apple Watch (watchOS 11+), and Mac (Apple silicon). With High Beam, cloud AI works on any supported device, whether or not it supports Apple Intelligence. Your records, journal, calendar, collections, and more than 20 tools are free on every device.</span><span data-i18n="ko">iPhone・iPad(iOS 17 이상), Apple Watch(watchOS 11 이상), Mac(Apple 실리콘). High Beam에서는 Apple Intelligence 지원 여부와 관계없이 모든 지원 기종에서 클라우드 AI가 작동해요. 기록・수첩・캡린더・컬렉션과 20개가 넘는 도구는 모든 기기에서 무료예요.</span></p>
-      <p style="margin-top: 14px;"><b><span data-i18n="ja">Q. データはどこに保存されますか?</span><span data-i18n="en">Q. Where is my data stored?</span><span data-i18n="ko">Q. 데이터는 어디에 저장되나요?</span></b><br>
-      <span data-i18n="ja">記録はお使いの端末に保存されます。AI機能を選んだときだけ、処理に必要な言葉や写真がクラウドAIへ送信されます。開発者が記録の内容を閲覧・販売することはありません。</span><span data-i18n="en">Your records are stored on your device. Only when you choose an AI feature are the words or photos needed for that task sent to cloud AI. The developer does not view or sell the contents of your records.</span><span data-i18n="ko">기록은 사용 중인 기기에 저장돼요. AI 기능을 선택했을 때만 처리에 필요한 말이나 사진이 클라우드 AI로 전송됩니다. 개발자는 기록 내용을 열람하거나 판매하지 않아요.</span></p>
-      <p style="margin-top: 14px;"><b><span data-i18n="ja">Q. AIの整理機能はどう動いていますか?</span><span data-i18n="en">Q. How does the AI sorting work?</span><span data-i18n="ko">Q. AI 정리 기능은 어떻게 작동하나요?</span></b><br>
-      <span data-i18n="ja">High Beamでは、クラウドAIが仕分けやAI機能に必要な情報を処理します。送られた内容はその処理のためにだけ使われ、AIの学習には使われません。AI機能・「AIに渡す」・共有など、外へ送る操作は本人が選んだときだけ行います。</span><span data-i18n="en">With High Beam, cloud AI processes the information needed for sorting and other AI features. The content sent is used only to perform that task, never to train AI. AI features, Hand to AI, and sharing send information outside the device only when you choose those actions.</span><span data-i18n="ko">High Beam에서는 클라우드 AI가 분류와 AI 기능에 필요한 정보를 처리해요. 전송된 내용은 해당 처리에만 사용되고 AI 학습에는 사용되지 않아요. AI 기능, 「AI로 보내기」, 공유처럼 밖으로 보내는 동작은 사용자가 선택했을 때만 이루어져요.</span></p>
-      <p style="margin-top: 14px;"><b><span data-i18n="ja">Q. バックアップはできますか?</span><span data-i18n="en">Q. Can I back up my data?</span><span data-i18n="ko">Q. 백업은 가능한가요?</span></b><br>
-      <span data-i18n="ja">設定画面から、写真を含む完全バックアップ(JSON)を書き出せます。iCloud DriveやNASへのMarkdown同期(Head-Light保管庫)もあります。</span><span data-i18n="en">From Settings, you can export a full backup (JSON) including photos. Markdown sync to iCloud Drive or a NAS (the Head-Light Vault) is also available.</span><span data-i18n="ko">설정 화면에서, 사진을 포함한 전체 백업(JSON)을 내보낼 수 있어요. iCloud Drive나 NAS로의 Markdown 동기화(Head-Light 보관함)도 있어요.</span></p>
+    <div class="hx-story-text" data-reveal style="--d:.1s">
+      <h3 data-t="storyLead">見つけたものを、すぐ形にしてきた。</h3>
+      <p data-t="storyP">開発者Kaiは、クライアントのYouTubeチャンネルに出演し、企画から編集まで担いながら登録者100万人への成長に携わりました。毎日スマートフォンでコンテンツの海に飛び込み、創作の種を探す。心が動いたら、すぐ形にする。それが結果につながったのだと思います。けれど、保存したいものも、身近に置きたいものも増え続けました。ADHDの当事者として、必要な瞬間に必要なものを見つけるのは簡単ではなく、気づけば大切なものがあちこちに散らばっていました。そこで思い出したのが、レコード会社でレコードを店へ届けていた頃のこと。ジャケットを並べ、眺め、手に取って選ぶ楽しさをスマートフォンへ持ち込み、見渡して使える棚としてHead-Lightをつくりました。</p>
     </div>
   </div>
 </section>
 
-<div class="footer-qr reveal" id="footer-qr">
-  <a class="store-qr-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
-    <img class="store-qr-code" src="img/app-store-qr.png" width="92" height="92" alt="">
-    <span class="store-qr-copy">
-      <strong><span data-i18n="ja" data-static-localized>スマホで読み取る</span><span data-i18n="en" data-static-localized>Scan with your phone</span><span data-i18n="ko" data-static-localized>휴대폰으로 스캔</span><span data-i18n="de" data-static-localized>Mit dem Smartphone scannen</span><span data-i18n="zh-Hant" data-static-localized>用手機掃描</span><span data-i18n="fr" data-static-localized>Scannez avec votre téléphone</span><span data-i18n="es" data-static-localized>Escanea con tu móvil</span><span data-i18n="it" data-static-localized>Scansiona con il telefono</span></strong>
-      <span><span data-i18n="ja" data-static-localized>App Store</span><span data-i18n="en" data-static-localized>App Store</span><span data-i18n="ko" data-static-localized>App Store</span><span data-i18n="de" data-static-localized>App Store</span><span data-i18n="zh-Hant" data-static-localized>App Store</span><span data-i18n="fr" data-static-localized>App Store</span><span data-i18n="es" data-static-localized>App Store</span><span data-i18n="it" data-static-localized>App Store</span></span>
-    </span>
-  </a>
-</div>
+<!-- 9. 約束 -->
+<section class="hx-promise" id="hx-promise" aria-labelledby="hx-promise-title">
+  <div class="hx-wrap">
+    <span class="hx-eyebrow" data-reveal data-t="promiseEye">約束</span>
+    <h2 class="hx-h" id="hx-promise-title" data-reveal data-t="promiseH">あなたを、商品にしない。</h2>
+    <div class="hx-promise-grid">
+      <div class="hx-prom" data-reveal><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="18" rx="4"/><path d="M5 25L27 7"/></svg><h3 data-t="p1">広告なし</h3><p data-t="p1s">画面にあるのは、あなたのものだけ。</p></div>
+      <div class="hx-prom" data-reveal style="--d:.08s"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16s4.5-8 12-8 12 8 12 8-4.5 8-12 8S4 16 4 16z"/><circle cx="16" cy="16" r="3.5"/><path d="M6 26L26 6"/></svg><h3 data-t="p2">行動追跡なし</h3><p data-t="p2s">データを売りません。</p></div>
+      <div class="hx-prom" data-reveal style="--d:.16s"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="3" width="14" height="26" rx="3.5"/><path d="M13.5 17.5l2 2 3.5-4"/></svg><h3 data-t="p3">記録は端末の中</h3><p data-t="p3s">Face IDで守れます。</p></div>
+      <div class="hx-prom" data-reveal style="--d:.24s"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15l24-10-7 23-5-9z"/><path d="M16 19l12-14"/></svg><h3 data-t="p4">送る前に、必ず確認</h3><p data-t="p4s">クラウドAIや棚の共有を選んだときだけ、表示された範囲が送られます。AIの学習には使われません。</p></div>
+    </div>
+    <a class="hx-more" href="./privacy.html" data-reveal><span data-t="privacyLink">プライバシーポリシーを読む</span><span aria-hidden="true">→</span></a>
+  </div>
+</section>
 
-<footer>
-  <a href="./privacy.html"><span data-i18n="ja">プライバシーポリシー</span><span data-i18n="en">Privacy Policy</span><span data-i18n="ko">개인정보 처리방침</span></a> ・ <a href="./terms.html"><span data-i18n="ja">利用規約</span><span data-i18n="en">Terms</span><span data-i18n="ko">이용약관</span></a> ・ <a href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en" data-static-localized>Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a> ・ <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">X @HeadLight_app</a> ・ © 2026 Ani-Q
+<!-- 10. 料金 -->
+<section class="hx-pricing" aria-labelledby="hx-pricing-title">
+  <span class="hx-anchor" id="pricing"></span>
+  <div class="hx-wrap">
+    <span class="hx-eyebrow" data-reveal data-t="prEye">料金</span>
+    <h2 class="hx-h" id="hx-pricing-title" data-reveal data-t="prH">ずっと無料。<br>整理する手間は、High Beamに。</h2>
+    <p class="hx-lead" data-reveal style="--d:.1s" data-t="prP">話した言葉を予定ややることに仕分ける。レシートから経費を、食事の写真から栄養の目安を読み取る。High Beamが、毎日の整理や入力を手伝います。</p>
+    <div class="hx-plans">
+      <div class="hx-plan" data-reveal><h3>Head-Light</h3><span class="tag" data-t="freeTag">ずっと無料</span>
+        <ul><li data-t="f1">言葉・手帳・カレンダー・コレクション</li><li data-t="f2">20を超える道具</li><li data-t="f3">広告なし。データを売らない</li><li data-t="f4">コレクションの棚は3枚まで</li><li data-t="f5">記録は、ずっとあなたのもの</li></ul></div>
+      <div class="hx-plan hb" data-reveal style="--d:.08s"><span class="glow" aria-hidden="true"></span><h3>High Beam</h3><span class="tag" data-t="hbTag">年額プランは7日間無料</span>
+        <ul><li data-t="h1">話した言葉のAI仕分け</li><li data-t="h2">AIチャット・写真の言語化</li><li data-t="h3">契約中は、棚を好きなだけ作成</li><li data-t="h4">Xの投稿を、投稿した日の手帳へ</li><li data-t="h5">整理・覚えておく・経費・食事・夜の振り返りなど</li></ul></div>
+      <div class="hx-plan" data-reveal style="--d:.16s"><h3 data-t="sName">棚をふやす</h3><span class="tag" data-t="sTag">一度きり</span>
+        <ul><li data-t="s1">無料で棚3枚</li><li data-t="s2">一度の購入で棚を10枚追加</li><li data-t="s3">地域ごとの価格はアプリ内に表示</li></ul></div>
+    </div>
+    <p class="hx-price-note"><span data-t="prNote">※ High Beamの年額プランは7日間の無料期間後に自動更新されます。更新前にいつでも解約できます。High Beamと棚の追加の正確な価格は、お使いの地域に合わせてアプリ内に表示されます。</span> <a href="./commercial-transactions.html" data-t="legal">特定商取引法に基づく表記</a></p>
+  </div>
+</section>
+
+<!-- 11. サポート -->
+<section class="hx-support" aria-labelledby="hx-support-title">
+  <span class="hx-anchor" id="support"></span>
+  <div class="hx-wrap hx-support-grid">
+    <div>
+      <span class="hx-eyebrow" data-reveal data-t="supEye">サポート</span>
+      <h2 class="hx-h" id="hx-support-title" data-reveal data-t="supH">困ったときは、<br>気軽にどうぞ。</h2>
+      <p class="hx-lead" data-reveal data-t="supP">ご質問・不具合のご報告・ご要望は、Xのリプライか、Instagram・TikTokのDM、メールでお気軽にどうぞ。返信に数日いただくことがあります。</p>
+      <div class="hx-contacts" data-reveal>
+        <a href="https://x.com/HeadLight_app" target="_blank" rel="noopener"><span>X</span><span>@HeadLight_app</span></a>
+        <a href="https://instagram.com/headlight__app" target="_blank" rel="noopener"><span>Instagram</span><span>@headlight__app</span></a>
+        <a href="https://tiktok.com/@headlight_app" target="_blank" rel="noopener"><span>TikTok</span><span>@headlight_app</span></a>
+        <a href="mailto:headlight.app.jp@gmail.com"><span data-t="mail">メール</span><span>headlight.app.jp@gmail.com</span></a>
+      </div>
+    </div>
+    <div class="hx-faq" data-reveal style="--d:.1s">
+      <details><summary data-t="q1">対応している端末は?</summary><p data-t="a1f">iPhone・iPad(iOS 17以上)、Apple Watch(watchOS 11以上)、Mac(Appleシリコン)。High Beamでは、Apple Intelligence対応かどうかに関係なく、どの機種でもクラウドAIが動きます。記録・手帳・カレンダー・コレクションと20を超える道具は、どの端末でも無料です。</p></details>
+      <details><summary data-t="q2">データはどこに保存されますか?</summary><p data-t="a2f">記録はお使いの端末に保存されます。AI機能を選んだときだけ、処理に必要な言葉や写真がクラウドAIへ送信されます。開発者が記録の内容を閲覧・販売することはありません。</p></details>
+      <details><summary data-t="q3">AIの整理機能はどう動いていますか?</summary><p data-t="a3f">High Beamでは、クラウドAIが仕分けやAI機能に必要な情報を処理します。送られた内容はその処理のためにだけ使われ、AIの学習には使われません。AI機能・「AIに渡す」・共有など、外へ送る操作は本人が選んだときだけ行います。</p></details>
+      <details><summary data-t="q4">バックアップはできますか?</summary><p data-t="a4f">設定画面から、写真を含む完全バックアップ(JSON)を書き出せます。iCloud DriveやNASへのMarkdown同期(Head-Light保管庫)もあります。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 12. 最後のひとこと -->
+<section class="hx-final" aria-labelledby="hx-final-title">
+  <div class="hx-wrap">
+    <img class="icon" src="img/app-icon.png" width="88" height="88" alt="" data-reveal>
+    <h2 class="big" id="hx-final-title" data-reveal><span data-t="pitch1">響いたものを、あつめて。</span><span data-t="pitch2">ひらめきを、声にする。</span></h2>
+    <p class="sub" data-reveal style="--d:.1s" data-t="endP">今日から、無料で。</p>
+    <div class="hx-final-cta" data-reveal style="--d:.15s">
+      <a class="app-store-link" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener">
+        <img class="app-store-badge" data-store-lang="ja" src="img/app-store-badges/ja.svg" alt="App Storeからダウンロード">
+        <img class="app-store-badge" data-store-lang="en" src="img/app-store-badges/en.svg" alt="Download on the App Store">
+        <img class="app-store-badge" data-store-lang="ko" src="img/app-store-badges/ko.svg" alt="App Store에서 다운로드하기">
+        <img class="app-store-badge" data-store-lang="de" src="img/app-store-badges/de.svg" alt="Laden im App Store">
+        <img class="app-store-badge" data-store-lang="zh-Hant" src="img/app-store-badges/zh-Hant.svg" alt="在 App Store 下載">
+        <img class="app-store-badge" data-store-lang="fr" src="img/app-store-badges/fr.svg" alt="Télécharger dans l’App Store">
+        <img class="app-store-badge" data-store-lang="es" src="img/app-store-badges/es.svg" alt="Descargar en el App Store">
+        <img class="app-store-badge" data-store-lang="it" src="img/app-store-badges/it.svg" alt="Scarica su App Store">
+      </a>
+      <div class="hx-qr"><img src="img/app-store-qr.png" width="76" height="76" alt="" loading="lazy"><span data-t="qr">iPhoneのカメラで<br>読み取る</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="hx-footer">
+  <div class="hx-wrap">
+    <nav aria-label="Footer"><a href="./privacy.html" data-t="privacy">プライバシーポリシー</a><a href="./terms.html" data-t="terms">利用規約</a><a href="./commercial-transactions.html" data-t="legal">特定商取引法に基づく表記</a><a href="https://x.com/HeadLight_app" target="_blank" rel="noopener">X @HeadLight_app</a></nav>
+    <span>© 2026 Ani-Q</span>
+  </div>
 </footer>
 
-<script>
-  /* 翻訳を入れ終えてから、無料の中心価値→任意のAI機能の順に並べる。 */
-  (function () {
-    var arranged = false;
-    function arrangeHomepage() {
-      if (arranged) return;
-      var footer = document.querySelector("footer");
-      if (!footer) return;
-      [
-        "collection", "words", "journal", "routines", "tools",
-        "design-customization", "design-preview", "ai-sorting", "tidy-assistant",
-        "ai-handoff", "strong-light", "creator-trust", "free-download", "pricing", "final-download", "support", "footer-qr"
-      ].forEach(function (id) {
-        var section = document.getElementById(id);
-        if (section) footer.before(section);
-      });
-      arranged = true;
-      if (window.location.hash) {
-        var target = document.querySelector(window.location.hash);
-        if (target) {
-          var restoreHashPosition = function () { target.scrollIntoView(); };
-          requestAnimationFrame(restoreHashPosition);
-          window.addEventListener("load", restoreHashPosition, { once: true });
-        }
-      }
-    }
-    window.addEventListener("headlight-site-localizations-ready", arrangeHomepage, { once: true });
-    document.addEventListener("DOMContentLoaded", arrangeHomepage, { once: true });
-  })();
-</script>
-
-<script>
-  function sweep() {
-    document.querySelectorAll(".reveal:not(.on)").forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.9 && r.bottom > 0) {
-        // 同じセクションの中では、少しずつ遅れて現れる(ろうそくを順に灯すように)
-        const section = el.closest("section") || document.body;
-        const already = section.querySelectorAll(".reveal.on").length;
-        el.style.transitionDelay = Math.min(already * 0.12, 0.36) + "s";
-        el.classList.add("on");
-      }
-    });
-  }
-  addEventListener("scroll", sweep, { passive: true });
-  addEventListener("resize", sweep);
-  setInterval(sweep, 600);
-  sweep();
-</script>
 </body>
 </html>
