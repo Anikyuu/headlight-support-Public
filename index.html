@@ -923,7 +923,7 @@
 <link rel="stylesheet" href="design-assets/hero-gallery.css?v=20260907-live-queue">
 <script type="module" src="design-assets/hero-gallery.js?v=20260907-live-queue"></script>
 <link rel="stylesheet" href="design-assets/device.css?v=20260907-product">
-<link rel="stylesheet" href="design-assets/home-product.css?v=20260928-creator-inventory">
+<link rel="stylesheet" href="design-assets/home-product.css?v=20260928-creator-inventory-v3">
 <link rel="stylesheet" href="design-assets/voice-story.css?v=20260907-color-comic">
 <link rel="stylesheet" href="design-assets/feature-comics.css?v=20260907-sorting-story">
 <script type="module" src="design-assets/feature-comics.js?v=20260907-asian-editions"></script>
@@ -955,7 +955,7 @@
     var html = document.documentElement;
     var select = document.getElementById("languageSelect");
     function apply(lang) {
-      document.querySelectorAll(".collection-demo-video, .hero-touch-video").forEach(function (video) {
+      document.querySelectorAll(".collection-demo-video").forEach(function (video) {
         video.pause();
       });
       html.setAttribute("lang", lang);
@@ -978,13 +978,6 @@
         img.src = "img/shots/" + img.dataset.shot + separator + suffix + "." + extension
           + "?v=20260906-white";
       });
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        requestAnimationFrame(function () {
-          var videoLang = lang === "ja" ? "ja" : "en";
-          var heroVideo = document.querySelector('.hero-touch-video[data-video-lang="' + videoLang + '"]');
-          if (heroVideo) heroVideo.play().catch(function () {});
-        });
-      }
     }
     var saved = localStorage.getItem(KEY);
     if (LANGS.indexOf(saved) !== -1) {
@@ -1022,17 +1015,17 @@
     <div class="hero-brand" aria-label="Head-Light">HEAD-LIGHT</div>
     <img class="appicon" data-alt-ja="Head-Lightのアプリアイコン。黒地にあたたかい白い光の輪" data-alt-en="The Head-Light app icon: a warm white ring of light on black." data-alt-ko="Head-Light의 앱 아이콘. 검은 배경에 따뜻한 흰빛 고리" src="img/app-icon.png" alt="Head-Lightのアプリアイコン。黒地にあたたかい白い光の輪">
     <h1>
-      <span data-i18n="ja" data-static-localized>Head-Light: <span class="nb">あなたを軽くする手帳</span></span>
-      <span data-i18n="en" data-static-localized>Head-Light: <span class="nb">Lighten your load</span></span>
-      <span data-i18n="ko" data-static-localized>Head-Light: <span class="nb">당신을 가볍게 하는 수첩</span></span>
-      <span data-i18n="de" data-static-localized>Head-Light: <span class="nb">Mach dir das Leben leichter</span></span>
-      <span data-i18n="zh-Hant" data-static-localized>Head-Light: <span class="nb">讓你更輕鬆的手帳</span></span>
-      <span data-i18n="fr" data-static-localized>Head-Light : <span class="nb">Allégez votre quotidien</span></span>
-      <span data-i18n="es" data-static-localized>Head-Light: <span class="nb">Aligera tu día a día</span></span>
-      <span data-i18n="it" data-static-localized>Head-Light: <span class="nb">Alleggerisci le tue giornate</span></span>
+      <span data-i18n="ja" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">あなたを軽くする手帳</span></span>
+      <span data-i18n="en" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">Lighten your load</span></span>
+      <span data-i18n="ko" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">당신을 가볍게 하는 수첩</span></span>
+      <span data-i18n="de" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">Mach dir das Leben leichter</span></span>
+      <span data-i18n="zh-Hant" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">讓你更輕鬆的手帳</span></span>
+      <span data-i18n="fr" data-static-localized><span class="hero-title-brand">Head-Light :</span> <span class="nb">Allégez votre quotidien</span></span>
+      <span data-i18n="es" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">Aligera tu día a día</span></span>
+      <span data-i18n="it" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">Alleggerisci le tue giornate</span></span>
     </h1>
     <p class="hero-positioning">
-      <span data-i18n="ja" data-static-localized>クリエイターのためのインベントリ・アプリ。</span>
+      <span data-i18n="ja" data-static-localized>クリエイターのための<span class="nb">インベントリ・アプリ。</span></span>
       <span data-i18n="en" data-static-localized>An inventory app for creators.</span>
       <span data-i18n="ko" data-static-localized>크리에이터를 위한 인벤토리 앱.</span>
       <span data-i18n="de" data-static-localized>Eine Inventar-App für Kreative.</span>
@@ -1043,7 +1036,7 @@
     </p>
     <p class="tagline">
       <span data-i18n="ja" data-static-localized>動画も音楽もリンクもファイルも、ひと目で見渡せる棚に。<br>響いたものを、あつめて。ひらめきを、声にする。</span>
-      <span data-i18n="en" data-static-localized>Collect videos, music, links, and files on shelves you can see at a glance. Save what inspires you. Say what you'll make, out loud.</span>
+      <span data-i18n="en" data-static-localized>Collect videos, music, links, and files on shelves you can see at a glance.<br>Save what inspires you. Say what you'll make, out loud.</span>
       <span data-i18n="ko" data-static-localized>영상, 음악, 링크, 파일을 한눈에 보이는 선반에 모아 두세요. 마음을 움직인 것을 저장하고, 만들고 싶은 것을 소리 내어 말하세요.</span>
       <span data-i18n="de" data-static-localized>Sammle Videos, Musik, Links und Dateien in Regalen, die du auf einen Blick übersiehst. Bewahre auf, was dich inspiriert. Sprich laut aus, was du erschaffen willst.</span>
       <span data-i18n="zh-Hant" data-static-localized>將影片、音樂、連結與檔案收進一眼就能看懂的收藏架。留下打動你的事物，把想創作的東西說出來。</span>
@@ -1086,35 +1079,10 @@
 
 </section>
 
-<!-- 実写の操作感は、アプリの顔とデザインを見せた直後に置く。 -->
-<section class="tactile-demo" id="tactile-demo">
-  <div class="inner reveal">
-    <figure class="hero-touch-demo">
-      <div class="hero-touch-frame">
-        <video class="hero-touch-video" data-video-lang="ja" autoplay muted loop playsinline preload="metadata" poster="img/video-posters/hero-shelf-touch-ja.jpg" aria-label="指で音楽の棚をめくり、カバーフローを操作するHead-Lightの実写映像">
-          <source src="video/hero-shelf-touch-ja.mp4" type="video/mp4">
-        </video>
-        <video class="hero-touch-video" data-video-lang="en" autoplay muted loop playsinline preload="metadata" poster="img/video-posters/hero-shelf-touch-en.jpg" aria-label="Hands browsing a music shelf and using Cover Flow in Head-Light">
-          <source src="video/hero-shelf-touch-en.mp4" type="video/mp4">
-        </video>
-      </div>
-      <figcaption>
-        <span data-i18n="ja" data-static-localized>ジャケットを指でめくり、グリッドからカバーフローへ。</span>
-        <span data-i18n="en" data-static-localized>Flip through covers, then move from the grid into Cover Flow.</span>
-        <span data-i18n="ko" data-static-localized>재킷을 손가락으로 넘기고, 그리드에서 Cover Flow로 이어집니다.</span>
-        <span data-i18n="de" data-static-localized>Blättere durch Cover und wechsle vom Raster in den Cover Flow.</span>
-        <span data-i18n="zh-Hant" data-static-localized>用手指翻過封面，再從格狀檢視進入 Cover Flow。</span>
-        <span data-i18n="fr" data-static-localized>Faites défiler les pochettes, puis passez de la grille au Cover Flow.</span>
-        <span data-i18n="es" data-static-localized>Hojea las portadas y pasa de la cuadrícula al Cover Flow.</span>
-        <span data-i18n="it" data-static-localized>Sfoglia le copertine e passa dalla griglia al Cover Flow.</span>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
 <!-- あつめる→声にする→形にする。機能ではなく、創作の流れで伝える。 -->
 <section class="core-flow" id="core-flow">
   <div class="inner reveal">
+    <p class="core-flow-manifesto">Not just pin.</p>
     <div class="eyebrow">
       <span data-i18n="ja" data-static-localized>3つのステップ</span><span data-i18n="en" data-static-localized>THREE STEPS</span><span data-i18n="ko" data-static-localized>3가지 단계</span><span data-i18n="de" data-static-localized>DREI SCHRITTE</span><span data-i18n="zh-Hant" data-static-localized>三個步驟</span><span data-i18n="fr" data-static-localized>TROIS ÉTAPES</span><span data-i18n="es" data-static-localized>TRES PASOS</span><span data-i18n="it" data-static-localized>TRE PASSI</span>
     </div>
@@ -1131,6 +1099,7 @@
     <div class="core-flow-grid">
       <a class="core-step" href="#collection">
         <span class="core-step-number">01</span>
+        <img class="core-step-art" src="img/core-flow/collect-shelf.webp" width="900" height="900" loading="lazy" decoding="async" data-alt-ja="Head-Lightのコレクション画面へ、新しいカードを加えるクリエイターのイラスト" data-alt-en="An illustration of a creator adding a new card to a collection inside the Head-Light app." alt="Head-Lightのコレクション画面へ、新しいカードを加えるクリエイターのイラスト">
         <h3>Collect &amp; Shelf</h3>
         <strong><span data-i18n="ja" data-static-localized>あつめる・見渡す</span><span data-i18n="en" data-static-localized>Collect and see</span><span data-i18n="ko" data-static-localized>모으고 한눈에 보기</span><span data-i18n="de" data-static-localized>Sammeln und überblicken</span><span data-i18n="zh-Hant" data-static-localized>收集・瀏覽</span><span data-i18n="fr" data-static-localized>Rassembler et parcourir</span><span data-i18n="es" data-static-localized>Reunir y explorar</span><span data-i18n="it" data-static-localized>Raccogliere e vedere</span></strong>
         <p><span data-i18n="ja" data-static-localized>動画、音楽、リンク、手元のファイルをひとつの棚へ。レコード棚のように並べて、すぐ見つけられます。</span><span data-i18n="en" data-static-localized>Bring videos, music, links, and local files onto one shelf. Browse them like a record collection and find what you need at a glance.</span><span data-i18n="ko" data-static-localized>영상, 음악, 링크, 기기의 파일을 하나의 선반으로. 레코드 장처럼 둘러보고 바로 찾을 수 있어요.</span><span data-i18n="de" data-static-localized>Videos, Musik, Links und lokale Dateien kommen in ein Regal. Wie in einer Plattensammlung findest du alles auf einen Blick.</span><span data-i18n="zh-Hant" data-static-localized>影片、音樂、連結和手邊檔案都收進同一個收藏架。像瀏覽黑膠唱片一樣，一眼找到所需。</span><span data-i18n="fr" data-static-localized>Réunissez vidéos, musiques, liens et fichiers locaux sur une même étagère. Parcourez-les comme une collection de disques.</span><span data-i18n="es" data-static-localized>Reúne vídeos, música, enlaces y archivos locales en una sola estantería. Explóralos como una colección de discos.</span><span data-i18n="it" data-static-localized>Riunisci video, musica, link e file locali su un solo scaffale. Sfogliali come una collezione di dischi.</span></p>
@@ -1138,6 +1107,7 @@
       </a>
       <a class="core-step" href="#words">
         <span class="core-step-number">02</span>
+        <img class="core-step-art" src="img/core-flow/speak-capture.webp" width="900" height="900" loading="lazy" decoding="async" data-alt-ja="Head-Lightの大きなマイクへ話し、ひらめきをカードとして残すクリエイターのイラスト" data-alt-en="An illustration of a creator speaking into Head-Light’s large microphone and saving an idea as a card." alt="Head-Lightの大きなマイクへ話し、ひらめきをカードとして残すクリエイターのイラスト">
         <h3>Speak &amp; Capture</h3>
         <strong><span data-i18n="ja" data-static-localized>声にする・残す</span><span data-i18n="en" data-static-localized>Speak and capture</span><span data-i18n="ko" data-static-localized>말하고 남기기</span><span data-i18n="de" data-static-localized>Sprechen und festhalten</span><span data-i18n="zh-Hant" data-static-localized>說出・留下</span><span data-i18n="fr" data-static-localized>Dire et saisir</span><span data-i18n="es" data-static-localized>Decir y capturar</span><span data-i18n="it" data-static-localized>Dire e catturare</span></strong>
         <p><span data-i18n="ja" data-static-localized>開いた瞬間の大きなマイクへ。ひらめきが逃げる前に話して「送信」と言えば、すぐ残せます。</span><span data-i18n="en" data-static-localized>Open the app to a large microphone. Speak before the idea slips away, say “send it,” and it is saved.</span><span data-i18n="ko" data-static-localized>앱을 열면 큰 마이크가 바로 보입니다. 아이디어가 사라지기 전에 말하고 “전송”이라고 하면 바로 저장돼요.</span><span data-i18n="de" data-static-localized>Beim Öffnen wartet ein großes Mikrofon. Sprich, bevor der Gedanke entwischt, sage „Senden“ und er ist gespeichert.</span><span data-i18n="zh-Hant" data-static-localized>一打開就看見大麥克風。趁靈感溜走前說出來，再說「傳送」就能馬上留下。</span><span data-i18n="fr" data-static-localized>Un grand micro vous attend dès l’ouverture. Parlez avant que l’idée ne s’échappe, dites « envoyer », et elle est gardée.</span><span data-i18n="es" data-static-localized>Al abrir aparece un gran micrófono. Habla antes de que se escape la idea, di «Enviar» y quedará guardada.</span><span data-i18n="it" data-static-localized>All’apertura trovi un grande microfono. Parla prima che l’idea svanisca, di’ «Invia» e verrà salvata.</span></p>
@@ -1145,6 +1115,7 @@
       </a>
       <a class="core-step" href="#ai-handoff">
         <span class="core-step-number">03</span>
+        <img class="core-step-art" src="img/core-flow/make-share.webp" width="900" height="900" loading="lazy" decoding="async" data-alt-ja="Head-Lightから言葉をAIや仲間へ渡し、作品にするクリエイターのイラスト" data-alt-en="An illustration of a creator sending ideas from Head-Light to AI and a collaborator, then making a finished piece." alt="Head-Lightから言葉をAIや仲間へ渡し、作品にするクリエイターのイラスト">
         <h3>Make &amp; Share</h3>
         <strong><span data-i18n="ja" data-static-localized>形にする・渡す</span><span data-i18n="en" data-static-localized>Make and share</span><span data-i18n="ko" data-static-localized>만들고 나누기</span><span data-i18n="de" data-static-localized>Machen und teilen</span><span data-i18n="zh-Hant" data-static-localized>實現・分享</span><span data-i18n="fr" data-static-localized>Créer et partager</span><span data-i18n="es" data-static-localized>Crear y compartir</span><span data-i18n="it" data-static-localized>Creare e condividere</span></strong>
         <p><span data-i18n="ja" data-static-localized>棚をリンク1つで共有。普段のAIへまとめてコピーし、20を超える道具で作る次の一歩へ進めます。</span><span data-i18n="en" data-static-localized>Share a shelf with one link. Copy a whole set into the AI you already use, then move forward with more than 20 tools.</span><span data-i18n="ko" data-static-localized>링크 하나로 선반을 공유하세요. 항상 쓰는 AI에 한번에 복사하고, 20개가 넘는 도구로 다음 단계를 시작하세요.</span><span data-i18n="de" data-static-localized>Teile ein Regal mit einem Link. Kopiere alles gesammelt in deine gewohnte KI und gehe mit mehr als 20 Werkzeugen den nächsten Schritt.</span><span data-i18n="zh-Hant" data-static-localized>用一個連結分享整個收藏架。一次複製到你常用的 AI，再用 20 種以上工具跨出下一步。</span><span data-i18n="fr" data-static-localized>Partagez une étagère avec un seul lien. Copiez l’ensemble vers l’IA que vous utilisez déjà, puis avancez avec plus de 20 outils.</span><span data-i18n="es" data-static-localized>Comparte una estantería con un solo enlace. Copia todo a la IA que ya usas y da el siguiente paso con más de 20 herramientas.</span><span data-i18n="it" data-static-localized>Condividi uno scaffale con un solo link. Copia tutto nell’AI che usi già e fai il passo successivo con più di 20 strumenti.</span></p>
@@ -1472,7 +1443,7 @@
       <article class="trust-card creator-card">
         <span class="trust-mark" aria-hidden="true">K</span>
         <h3><span data-i18n="ja" data-static-localized>実体験からつくりました。</span><span data-i18n="en" data-static-localized>Built from lived experience.</span><span data-i18n="ko" data-static-localized>직접 겪은 경험에서 만들었습니다.</span><span data-i18n="de" data-static-localized>Aus eigener Erfahrung entstanden.</span><span data-i18n="zh-Hant" data-static-localized>來自真實經驗的製作。</span><span data-i18n="fr" data-static-localized>Créé à partir d’une expérience vécue.</span><span data-i18n="es" data-static-localized>Creado desde la experiencia real.</span><span data-i18n="it" data-static-localized>Nato dall’esperienza diretta.</span></h3>
-        <p><span data-i18n="ja" data-static-localized>開発者Kaiは、クライアントのYouTubeチャンネルを登録者100万人まで育てた動画クリエイターです。ADHDの当事者として、情報が散らかり、ひらめきを逃してしまう不便からHead-Lightをつくりました。</span><span data-i18n="en" data-static-localized>Kai is a video creator who helped grow a client’s YouTube channel to one million subscribers. Living with ADHD, he built Head-Light for the references and ideas that used to scatter before he could use them.</span><span data-i18n="ko" data-static-localized>개발자 Kai는 클라이언트의 YouTube 채널을 구독자 100만 명까지 성장시킨 영상 크리에이터입니다. ADHD를 직접 겪으며, 자료와 영감이 흩어져 사라지던 불편에서 Head-Light를 만들었습니다.</span><span data-i18n="de" data-static-localized>Kai ist Videocreator und half dabei, den YouTube-Kanal eines Kunden auf eine Million Abonnenten zu bringen. Aus seiner Erfahrung mit ADHS entwickelte er Head-Light für Referenzen und Ideen, die sonst verstreut waren.</span><span data-i18n="zh-Hant" data-static-localized>開發者 Kai 是影片創作者，曾協助客戶的 YouTube 頻道成長到一百萬訂閱者。作為 ADHD 當事人，他因資料散落、靈感還沒用上就消失的不便，開發了 Head-Light。</span><span data-i18n="fr" data-static-localized>Kai est créateur vidéo et a contribué à faire passer la chaîne YouTube d’un client à un million d’abonnés. Vivant avec un TDAH, il a créé Head-Light pour les références et les idées qui se dispersaient avant d’être utilisées.</span><span data-i18n="es" data-static-localized>Kai es creador de vídeo y ayudó a llevar el canal de YouTube de un cliente hasta un millón de suscriptores. Al vivir con TDAH, creó Head-Light para las referencias e ideas que antes se dispersaban antes de poder usarlas.</span><span data-i18n="it" data-static-localized>Kai è un video creator e ha contribuito a far crescere il canale YouTube di un cliente fino a un milione di iscritti. Convivendo con l’ADHD, ha creato Head-Light per i riferimenti e le idee che prima si disperdevano prima di poterli usare.</span></p>
+        <p><span data-i18n="ja" data-static-localized>開発者Kaiは、クライアントのYouTubeチャンネルを登録者100万人まで育てる仕事に携わった動画クリエイターです。ADHDの当事者として、情報が散らかり、ひらめきを逃してしまう不便からHead-Lightをつくりました。</span><span data-i18n="en" data-static-localized>Kai is a video creator who helped grow a client’s YouTube channel to one million subscribers. Living with ADHD, he built Head-Light for the references and ideas that used to scatter before he could use them.</span><span data-i18n="ko" data-static-localized>개발자 Kai는 클라이언트의 YouTube 채널이 구독자 100만 명까지 성장하는 일에 참여한 영상 크리에이터입니다. ADHD를 직접 겪으며, 자료와 영감이 흩어져 사라지던 불편에서 Head-Light를 만들었습니다.</span><span data-i18n="de" data-static-localized>Kai ist Videocreator und half dabei, den YouTube-Kanal eines Kunden auf eine Million Abonnenten zu bringen. Aus seiner Erfahrung mit ADHS entwickelte er Head-Light für Referenzen und Ideen, die sonst verstreut waren.</span><span data-i18n="zh-Hant" data-static-localized>開發者 Kai 是影片創作者，曾協助客戶的 YouTube 頻道成長到一百萬訂閱者。作為 ADHD 當事人，他因資料散落、靈感還沒用上就消失的不便，開發了 Head-Light。</span><span data-i18n="fr" data-static-localized>Kai est créateur vidéo et a contribué à faire passer la chaîne YouTube d’un client à un million d’abonnés. Vivant avec un TDAH, il a créé Head-Light pour les références et les idées qui se dispersaient avant d’être utilisées.</span><span data-i18n="es" data-static-localized>Kai es creador de vídeo y ayudó a llevar el canal de YouTube de un cliente hasta un millón de suscriptores. Al vivir con TDAH, creó Head-Light para reunir referencias e ideas que se dispersaban antes de poder usarlas.</span><span data-i18n="it" data-static-localized>Kai è un video creator e ha contribuito a far crescere il canale YouTube di un cliente fino a un milione di iscritti. Convivendo con l’ADHD, ha creato Head-Light per raccogliere riferimenti e idee che si disperdevano prima di poterli usare.</span></p>
       </article>
       <article class="trust-card privacy-card">
         <span class="trust-mark" aria-hidden="true">◎</span>
@@ -1856,7 +1827,7 @@
       var footer = document.querySelector("footer");
       if (!footer) return;
       [
-        "tactile-demo", "core-flow", "free-intro", "collection", "words", "journal", "routines", "tools",
+        "core-flow", "free-intro", "collection", "words", "journal", "routines", "tools",
         "design-customization", "design-preview", "ai-sorting", "tidy-assistant",
         "ai-handoff", "strong-light", "creator-trust", "free-download", "pricing", "final-download", "support", "footer-qr"
       ].forEach(function (id) {
