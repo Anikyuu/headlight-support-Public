@@ -71,17 +71,7 @@ function refineDetails(){
   [...link.childNodes].forEach(node=>summary.append(node.cloneNode(true)));
   list.before(details);details.append(summary,list);
  }
- const copy=document.querySelector('.strong-light-copy');
- if(copy&&!copy.querySelector('details')){
-  const details=document.createElement('details');details.className='product-details research-details';
-  const summary=document.createElement('summary');
-  const captions={ja:'この考え方について',en:'Behind this idea',ko:'이 생각의 배경',de:'Der Gedanke dahinter','zh-Hant':'關於這個想法',fr:'L’idée derrière tout cela',es:'La idea detrás',it:'Il pensiero alla base'};
-  for(const [lang,label] of Object.entries(captions)){const span=document.createElement('span');span.dataset.i18n=lang;span.dataset.staticLocalized='';span.textContent=label;summary.append(span);}
-  details.append(summary);
-  const paragraphs=[...copy.querySelectorAll(':scope > p')];
-  paragraphs.filter((p,i)=>i>1&&!p.classList.contains('closing-copy')).forEach(p=>details.append(p));
-  copy.append(details);
- }
+
 }
 if(document.documentElement.dataset.siteI18nInstalled)refineDetails();
 else window.addEventListener('headlight-site-localizations-ready',refineDetails,{once:true});

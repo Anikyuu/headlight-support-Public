@@ -717,13 +717,6 @@
     .strong-light-layout { grid-template-columns: 1fr; gap: 38px; }
     .strong-light-figure { width: min(330px, 82vw); margin-inline: auto; }
   }
-  /* この原稿は今回指定された日英のみ。ほかの言語では空の面を残さない。 */
-  html[data-lang="ko"] .strong-light-section,
-  html[data-lang="de"] .strong-light-section,
-  html[data-lang="zh-Hant"] .strong-light-section,
-  html[data-lang="fr"] .strong-light-section,
-  html[data-lang="es"] .strong-light-section,
-  html[data-lang="it"] .strong-light-section { display: none; }
 
   /* ---- イラスト ---- */
   .illust {
@@ -923,11 +916,8 @@
 <link rel="stylesheet" href="design-assets/hero-gallery.css?v=20260907-live-queue">
 <script type="module" src="design-assets/hero-gallery.js?v=20260907-live-queue"></script>
 <link rel="stylesheet" href="design-assets/device.css?v=20260907-product">
-<link rel="stylesheet" href="design-assets/home-product.css?v=20260928-creator-inventory-v3">
-<link rel="stylesheet" href="design-assets/voice-story.css?v=20260907-color-comic">
-<link rel="stylesheet" href="design-assets/feature-comics.css?v=20260907-sorting-story">
-<script type="module" src="design-assets/feature-comics.js?v=20260907-asian-editions"></script>
-<script type="module" src="design-assets/home-product.js?v=20260907-white-dice"></script>
+<link rel="stylesheet" href="design-assets/home-product.css?v=20260928-creator-inventory-white-v4">
+<script type="module" src="design-assets/home-product.js?v=20260928-creator-inventory"></script>
 <link rel="stylesheet" href="design-assets/site-nav.css?v=20260907-direct">
 <script type="module" src="design-assets/site-nav.js?v=20260907-direct"></script>
 </head>
@@ -1012,7 +1002,6 @@
 <section class="hero">
 
   <div class="inner">
-    <div class="hero-brand" aria-label="Head-Light">HEAD-LIGHT</div>
     <img class="appicon" data-alt-ja="Head-Lightのアプリアイコン。黒地にあたたかい白い光の輪" data-alt-en="The Head-Light app icon: a warm white ring of light on black." data-alt-ko="Head-Light의 앱 아이콘. 검은 배경에 따뜻한 흰빛 고리" src="img/app-icon.png" alt="Head-Lightのアプリアイコン。黒地にあたたかい白い光の輪">
     <h1>
       <span data-i18n="ja" data-static-localized><span class="hero-title-brand">Head-Light:</span> <span class="nb">あなたを軽くする手帳</span></span>
@@ -1061,6 +1050,10 @@
     </div>
   </div>
   <div class="hero-product">
+    <div class="hero-preview-stack" aria-hidden="true">
+      <img class="hero-preview hero-preview-collection" src="img/shots/03_collections_ja.jpg" data-shot="03_collections" alt="">
+      <img class="hero-preview hero-preview-records" src="img/shots/collection-records-hp.webp" alt="">
+    </div>
 
     <div class="hero-device-float hero-design-preview"><div class="device-stage">
       <div class="device-shadow"></div>
@@ -1079,52 +1072,6 @@
 
 </section>
 
-<!-- あつめる→声にする→形にする。機能ではなく、創作の流れで伝える。 -->
-<section class="core-flow" id="core-flow">
-  <div class="inner reveal">
-    <p class="core-flow-manifesto">Not just pin.</p>
-    <div class="eyebrow">
-      <span data-i18n="ja" data-static-localized>3つのステップ</span><span data-i18n="en" data-static-localized>THREE STEPS</span><span data-i18n="ko" data-static-localized>3가지 단계</span><span data-i18n="de" data-static-localized>DREI SCHRITTE</span><span data-i18n="zh-Hant" data-static-localized>三個步驟</span><span data-i18n="fr" data-static-localized>TROIS ÉTAPES</span><span data-i18n="es" data-static-localized>TRES PASOS</span><span data-i18n="it" data-static-localized>TRE PASSI</span>
-    </div>
-    <h2>
-      <span data-i18n="ja" data-static-localized>心が動いた瞬間から、<br>つくる次の一歩まで。</span>
-      <span data-i18n="en" data-static-localized>From the moment inspiration hits<br>to the next thing you make.</span>
-      <span data-i18n="ko" data-static-localized>마음이 움직인 순간에서<br>다음 창작을 향한 한 걸음까지.</span>
-      <span data-i18n="de" data-static-localized>Vom ersten Funken<br>bis zum nächsten Werk.</span>
-      <span data-i18n="zh-Hant" data-static-localized>從心被打動的瞬間，<br>到創作的下一步。</span>
-      <span data-i18n="fr" data-static-localized>De l’étincelle d’inspiration<br>à votre prochaine création.</span>
-      <span data-i18n="es" data-static-localized>Desde el instante que te inspira<br>hasta tu próxima creación.</span>
-      <span data-i18n="it" data-static-localized>Dall’istante che ti ispira<br>alla tua prossima creazione.</span>
-    </h2>
-    <div class="core-flow-grid">
-      <a class="core-step" href="#collection">
-        <span class="core-step-number">01</span>
-        <img class="core-step-art" src="img/core-flow/collect-shelf.webp" width="900" height="900" loading="lazy" decoding="async" data-alt-ja="Head-Lightのコレクション画面へ、新しいカードを加えるクリエイターのイラスト" data-alt-en="An illustration of a creator adding a new card to a collection inside the Head-Light app." alt="Head-Lightのコレクション画面へ、新しいカードを加えるクリエイターのイラスト">
-        <h3>Collect &amp; Shelf</h3>
-        <strong><span data-i18n="ja" data-static-localized>あつめる・見渡す</span><span data-i18n="en" data-static-localized>Collect and see</span><span data-i18n="ko" data-static-localized>모으고 한눈에 보기</span><span data-i18n="de" data-static-localized>Sammeln und überblicken</span><span data-i18n="zh-Hant" data-static-localized>收集・瀏覽</span><span data-i18n="fr" data-static-localized>Rassembler et parcourir</span><span data-i18n="es" data-static-localized>Reunir y explorar</span><span data-i18n="it" data-static-localized>Raccogliere e vedere</span></strong>
-        <p><span data-i18n="ja" data-static-localized>動画、音楽、リンク、手元のファイルをひとつの棚へ。レコード棚のように並べて、すぐ見つけられます。</span><span data-i18n="en" data-static-localized>Bring videos, music, links, and local files onto one shelf. Browse them like a record collection and find what you need at a glance.</span><span data-i18n="ko" data-static-localized>영상, 음악, 링크, 기기의 파일을 하나의 선반으로. 레코드 장처럼 둘러보고 바로 찾을 수 있어요.</span><span data-i18n="de" data-static-localized>Videos, Musik, Links und lokale Dateien kommen in ein Regal. Wie in einer Plattensammlung findest du alles auf einen Blick.</span><span data-i18n="zh-Hant" data-static-localized>影片、音樂、連結和手邊檔案都收進同一個收藏架。像瀏覽黑膠唱片一樣，一眼找到所需。</span><span data-i18n="fr" data-static-localized>Réunissez vidéos, musiques, liens et fichiers locaux sur une même étagère. Parcourez-les comme une collection de disques.</span><span data-i18n="es" data-static-localized>Reúne vídeos, música, enlaces y archivos locales en una sola estantería. Explóralos como una colección de discos.</span><span data-i18n="it" data-static-localized>Riunisci video, musica, link e file locali su un solo scaffale. Sfogliali come una collezione di dischi.</span></p>
-        <span class="core-step-arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="core-step" href="#words">
-        <span class="core-step-number">02</span>
-        <img class="core-step-art" src="img/core-flow/speak-capture.webp" width="900" height="900" loading="lazy" decoding="async" data-alt-ja="Head-Lightの大きなマイクへ話し、ひらめきをカードとして残すクリエイターのイラスト" data-alt-en="An illustration of a creator speaking into Head-Light’s large microphone and saving an idea as a card." alt="Head-Lightの大きなマイクへ話し、ひらめきをカードとして残すクリエイターのイラスト">
-        <h3>Speak &amp; Capture</h3>
-        <strong><span data-i18n="ja" data-static-localized>声にする・残す</span><span data-i18n="en" data-static-localized>Speak and capture</span><span data-i18n="ko" data-static-localized>말하고 남기기</span><span data-i18n="de" data-static-localized>Sprechen und festhalten</span><span data-i18n="zh-Hant" data-static-localized>說出・留下</span><span data-i18n="fr" data-static-localized>Dire et saisir</span><span data-i18n="es" data-static-localized>Decir y capturar</span><span data-i18n="it" data-static-localized>Dire e catturare</span></strong>
-        <p><span data-i18n="ja" data-static-localized>開いた瞬間の大きなマイクへ。ひらめきが逃げる前に話して「送信」と言えば、すぐ残せます。</span><span data-i18n="en" data-static-localized>Open the app to a large microphone. Speak before the idea slips away, say “send it,” and it is saved.</span><span data-i18n="ko" data-static-localized>앱을 열면 큰 마이크가 바로 보입니다. 아이디어가 사라지기 전에 말하고 “전송”이라고 하면 바로 저장돼요.</span><span data-i18n="de" data-static-localized>Beim Öffnen wartet ein großes Mikrofon. Sprich, bevor der Gedanke entwischt, sage „Senden“ und er ist gespeichert.</span><span data-i18n="zh-Hant" data-static-localized>一打開就看見大麥克風。趁靈感溜走前說出來，再說「傳送」就能馬上留下。</span><span data-i18n="fr" data-static-localized>Un grand micro vous attend dès l’ouverture. Parlez avant que l’idée ne s’échappe, dites « envoyer », et elle est gardée.</span><span data-i18n="es" data-static-localized>Al abrir aparece un gran micrófono. Habla antes de que se escape la idea, di «Enviar» y quedará guardada.</span><span data-i18n="it" data-static-localized>All’apertura trovi un grande microfono. Parla prima che l’idea svanisca, di’ «Invia» e verrà salvata.</span></p>
-        <span class="core-step-arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="core-step" href="#ai-handoff">
-        <span class="core-step-number">03</span>
-        <img class="core-step-art" src="img/core-flow/make-share.webp" width="900" height="900" loading="lazy" decoding="async" data-alt-ja="Head-Lightから言葉をAIや仲間へ渡し、作品にするクリエイターのイラスト" data-alt-en="An illustration of a creator sending ideas from Head-Light to AI and a collaborator, then making a finished piece." alt="Head-Lightから言葉をAIや仲間へ渡し、作品にするクリエイターのイラスト">
-        <h3>Make &amp; Share</h3>
-        <strong><span data-i18n="ja" data-static-localized>形にする・渡す</span><span data-i18n="en" data-static-localized>Make and share</span><span data-i18n="ko" data-static-localized>만들고 나누기</span><span data-i18n="de" data-static-localized>Machen und teilen</span><span data-i18n="zh-Hant" data-static-localized>實現・分享</span><span data-i18n="fr" data-static-localized>Créer et partager</span><span data-i18n="es" data-static-localized>Crear y compartir</span><span data-i18n="it" data-static-localized>Creare e condividere</span></strong>
-        <p><span data-i18n="ja" data-static-localized>棚をリンク1つで共有。普段のAIへまとめてコピーし、20を超える道具で作る次の一歩へ進めます。</span><span data-i18n="en" data-static-localized>Share a shelf with one link. Copy a whole set into the AI you already use, then move forward with more than 20 tools.</span><span data-i18n="ko" data-static-localized>링크 하나로 선반을 공유하세요. 항상 쓰는 AI에 한번에 복사하고, 20개가 넘는 도구로 다음 단계를 시작하세요.</span><span data-i18n="de" data-static-localized>Teile ein Regal mit einem Link. Kopiere alles gesammelt in deine gewohnte KI und gehe mit mehr als 20 Werkzeugen den nächsten Schritt.</span><span data-i18n="zh-Hant" data-static-localized>用一個連結分享整個收藏架。一次複製到你常用的 AI，再用 20 種以上工具跨出下一步。</span><span data-i18n="fr" data-static-localized>Partagez une étagère avec un seul lien. Copiez l’ensemble vers l’IA que vous utilisez déjà, puis avancez avec plus de 20 outils.</span><span data-i18n="es" data-static-localized>Comparte una estantería con un solo enlace. Copia todo a la IA que ya usas y da el siguiente paso con más de 20 herramientas.</span><span data-i18n="it" data-static-localized>Condividi uno scaffale con un solo link. Copia tutto nell’AI che usi già e fai il passo successivo con più di 20 strumenti.</span></p>
-        <span class="core-step-arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- Head-Lightの中心価値 -->
 <section class="free-intro" id="free-intro">
   <div class="inner reveal">
@@ -1139,57 +1086,25 @@
       <span data-i18n="it" data-static-localized>Scopri Head-Light</span>
     </div>
     <h2>
-      <span data-i18n="ja" data-static-localized>メモすることを、もっと気軽に。</span>
-      <span data-i18n="en" data-static-localized>Make taking notes feel effortless.</span>
-      <span data-i18n="ko" data-static-localized>메모를 더 가볍고 간편하게.</span>
-      <span data-i18n="de" data-static-localized>Notizen machen, ganz unkompliziert.</span>
-      <span data-i18n="zh-Hant" data-static-localized>讓記筆記，變得更輕鬆。</span>
-      <span data-i18n="fr" data-static-localized>Prendre des notes, tout simplement.</span>
-      <span data-i18n="es" data-static-localized>Tomar notas, sin complicaciones.</span>
-      <span data-i18n="it" data-static-localized>Prendere appunti, con semplicità.</span>
+      <span data-i18n="ja" data-static-localized>散らばった「好き」とひらめきを、<br>ひとつの場所へ。</span>
+      <span data-i18n="en" data-static-localized>One place for what moves you<br>and what it inspires.</span>
+      <span data-i18n="ko" data-static-localized>흩어진 취향과 영감을<br>한곳으로.</span>
+      <span data-i18n="de" data-static-localized>Ein Ort für alles, was dich bewegt<br>und was daraus entsteht.</span>
+      <span data-i18n="zh-Hant" data-static-localized>把散落的喜愛與靈感，<br>收進同一個地方。</span>
+      <span data-i18n="fr" data-static-localized>Un seul endroit pour ce qui vous touche<br>et ce que cela vous inspire.</span>
+      <span data-i18n="es" data-static-localized>Un lugar para lo que te mueve<br>y para lo que te inspira.</span>
+      <span data-i18n="it" data-static-localized>Un solo posto per ciò che ti emoziona<br>e per ciò che ti ispira.</span>
     </h2>
-    <figure class="voice-story">
-      <img src="img/voice-story/heavy-to-light-color-v2.png" data-comic-ja="img/voice-story/heavy-to-light-color-v2.png" data-comic-en="img/voice-story/heavy-to-light-color-en.png" width="1774" height="887" loading="lazy" decoding="async"
-           data-alt-ja="頭の荷物に押しつぶされそうな人が、スマートフォンに思いを話すと、荷物がほどけて体までふわりと浮く、コミカルな3コマのイラスト。"
-           data-alt-en="A three-panel comic: a person buckles under a huge bundle of thoughts, speaks into a phone, then floats with relief as the burden disappears."
-           data-alt-ko="커다란 생각 뭉치에 눌린 사람이 휴대폰에 생각을 말하자 짐이 풀리고 몸까지 둥실 떠오르는 코믹한 세 컷 그림."
-           data-alt-de="Ein Comic in drei Bildern: Ein Mensch wird von einem riesigen Gedankenbündel niedergedrückt, spricht ins Handy und schwebt erleichtert, als die Last verschwindet."
-           data-alt-zh-hant="幽默的三格插圖：一個人被腦袋上的巨大思緒壓彎了腰，對手機說出想法後，負擔散開，整個人輕得飄了起來。"
-           data-alt-fr="Une BD en trois cases : une personne ploie sous un énorme tas de pensées, parle à son téléphone, puis flotte de soulagement une fois le poids disparu."
-           data-alt-es="Un cómic de tres viñetas: una persona se dobla bajo un enorme montón de pensamientos, habla al teléfono y flota de alivio cuando la carga desaparece."
-           data-alt-it="Un fumetto in tre vignette: una persona cede sotto un enorme groviglio di pensieri, parla al telefono e fluttua sollevata quando il peso scompare."
-           alt="頭の荷物に押しつぶされそうな人が、スマートフォンに思いを話すと、荷物がほどけて体までふわりと浮く、コミカルな3コマのイラスト。">
-    </figure>
-    <p class="lead voice-story-copy">
-      <span data-i18n="ja" data-static-localized>大事なメモも、なんてことない思いつきも、誰にも言えない愚痴も。頭の中だけで抱えると、なかなかの重量級。ここにまとめて吐き出して、少し身軽になりましょう。</span>
-      <span data-i18n="en" data-static-localized>Important notes, random thoughts, even the rant you can’t tell anyone. Carry them all in your head and you’re entering the heavyweight division. Let them out here, and give your brain a lighter load.</span>
-      <span data-i18n="ko" data-static-localized>중요한 메모도, 별것 아닌 생각도, 누구에게도 못 할 푸념도. 머릿속에 다 들고 다니면 어느새 헤비급이죠. 여기에 털어놓고 조금 가벼워져 보세요.</span>
-      <span data-i18n="de" data-static-localized>Wichtige Notizen, beiläufige Gedanken, auch der Frust, den du niemandem erzählen magst. Alles im Kopf zu tragen ist irgendwann Schwergewichtssport. Lass es hier raus und gönn deinem Kopf weniger Gepäck.</span>
-      <span data-i18n="zh-Hant" data-static-localized>重要的筆記、隨手冒出的想法，還有不能跟任何人說的牢騷。全扛在腦袋裡，不知不覺就成了重量級選手。都倒在這裡，讓自己輕鬆一點。</span>
-      <span data-i18n="fr" data-static-localized>Les notes importantes, les idées en passant, même ce coup de gueule qu’on ne peut confier à personne. À tout porter dans sa tête, on finit dans la catégorie poids lourds. Déposez tout ici et voyagez un peu plus léger.</span>
-      <span data-i18n="es" data-static-localized>Notas importantes, ideas sueltas y hasta ese desahogo que no puedes contarle a nadie. Llevarlo todo en la cabeza acaba siendo un deporte de peso pesado. Suéltalo aquí y aligera un poco la carga.</span>
-      <span data-i18n="it" data-static-localized>Appunti importanti, pensieri di passaggio e anche quello sfogo che non puoi raccontare a nessuno. A tenere tutto in testa, si finisce nella categoria pesi massimi. Lascia tutto qui e viaggia un po’ più leggero.</span>
+    <p class="lead">
+      <span data-i18n="ja" data-static-localized>動画、音楽、投稿、リンク、手元のファイル。心が動いたものを、レコードジャケットのように見渡せる棚へ。そこから生まれた言葉も同じ場所に残し、次につくるものへつなげられます。</span>
+      <span data-i18n="en" data-static-localized>Videos, music, posts, links, and files from your device. Line up what moves you like record covers, keep the words it inspires nearby, and turn them into what you make next.</span>
+      <span data-i18n="ko" data-static-localized>영상, 음악, 게시물, 링크, 기기의 파일. 마음을 움직인 것을 레코드 재킷처럼 한눈에 보이는 선반에 놓고, 거기서 떠오른 말도 함께 남겨 다음 창작으로 이어 갈 수 있어요.</span>
+      <span data-i18n="de" data-static-localized>Videos, Musik, Beiträge, Links und Dateien vom Gerät. Ordne alles, was dich bewegt, wie Plattencover in einem Regal, halte die daraus entstehenden Gedanken fest und mach daraus dein nächstes Werk.</span>
+      <span data-i18n="zh-Hant" data-static-localized>影片、音樂、貼文、連結與裝置裡的檔案。把打動你的事物像唱片封面一樣排在架上，也把由此而生的話語留在身邊，接著創作下一件作品。</span>
+      <span data-i18n="fr" data-static-localized>Vidéos, musique, publications, liens et fichiers de l’appareil. Alignez ce qui vous touche comme des pochettes de disque, gardez près de vous les mots que cela inspire et créez la suite.</span>
+      <span data-i18n="es" data-static-localized>Vídeos, música, publicaciones, enlaces y archivos del dispositivo. Ordena lo que te mueve como portadas de discos, guarda cerca las palabras que inspira y conviértelo en tu próxima creación.</span>
+      <span data-i18n="it" data-static-localized>Video, musica, post, link e file del dispositivo. Metti in fila ciò che ti emoziona come copertine di dischi, conserva le parole che ispira e trasformalo nella tua prossima creazione.</span>
     </p>
-    <p class="voice-story-how">
-      <span data-i18n="ja" data-static-localized>マイクを一度押し、話して「送信」で保存。文字でも入力できます。</span>
-      <span data-i18n="en" data-static-localized>Tap the microphone once, speak, then say “send it” to save. You can type, too.</span>
-      <span data-i18n="ko" data-static-localized>마이크를 한 번 누르고 말한 뒤 “전송”으로 저장하세요. 글로 입력해도 돼요.</span>
-      <span data-i18n="de" data-static-localized>Einmal aufs Mikrofon tippen, sprechen und mit „absenden“ speichern. Tippen geht auch.</span>
-      <span data-i18n="zh-Hant" data-static-localized>點一下麥克風，說完後說「傳送」即可儲存。也能用文字輸入。</span>
-      <span data-i18n="fr" data-static-localized>Touchez le micro, parlez, puis dites « envoi » pour enregistrer. Vous pouvez aussi écrire.</span>
-      <span data-i18n="es" data-static-localized>Toca el micrófono, habla y di «envíalo» para guardar. También puedes escribir.</span>
-      <span data-i18n="it" data-static-localized>Tocca il microfono, parla e di’ «invia» per salvare. Puoi anche scrivere.</span>
-    </p>
-    <img class="free-intro-illustration" src="img/illust-free-intro.png" loading="lazy" decoding="async"
-         data-alt-ja="声や文字で残した思いと、動画・音楽・投稿・写真のカードが一つの棚に集まり、棚ごと共有されるイラスト"
-         data-alt-en="An illustration of voice and text notes joining video, music, post and photo cards on one shelf, then sharing the whole shelf"
-         data-alt-ko="음성과 글로 남긴 생각, 동영상·음악·게시물·사진 카드가 하나의 선반에 모여 선반째 공유되는 일러스트"
-         data-alt-de="Eine Illustration, in der Sprach- und Textnotizen mit Video-, Musik-, Beitrags- und Fotokarten in einem Regal gesammelt und gemeinsam geteilt werden"
-         data-alt-zh-hant="語音與文字想法，以及影片、音樂、貼文與照片卡片匯集在同一個收藏架，再分享整個收藏架的插圖"
-         data-alt-fr="Une illustration où notes vocales et écrites rejoignent des cartes vidéo, musique, publication et photo sur une même étagère, ensuite partagée en entier"
-         data-alt-es="Una ilustración de notas de voz y texto reunidas con tarjetas de vídeo, música, publicaciones y fotos en una estantería que se comparte entera"
-         data-alt-it="Un’illustrazione in cui note vocali e scritte si uniscono a schede di video, musica, post e foto su un unico scaffale, poi condiviso per intero"
-         alt="声や文字で残した思いと、動画・音楽・投稿・写真のカードが一つの棚に集まり、棚ごと共有されるイラスト">
   </div>
 </section>
 
@@ -1199,21 +1114,9 @@
 <!-- 答え -->
 <section id="ai-sorting">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">AI Proでできること</span><span data-i18n="en">With AI Pro</span><span data-i18n="ko">AI Pro로 할 수 있는 것</span></div>
+    <div class="eyebrow"><span data-i18n="ja">High Beamでできること</span><span data-i18n="en">With High Beam</span><span data-i18n="ko">High Beam로 할 수 있는 것</span></div>
     <h2><span data-i18n="ja">話したまま、<br>整理まで任せられる。</span><span data-i18n="en">Speak freely.<br>Let AI sort the rest.</span><span data-i18n="ko">말한 그대로,<br>정리까지 맡길 수 있어요.</span></h2>
     <p class="lead"><span data-i18n="ja">声でも文字でも。思いついたまま入れると、AIが予定・やること・アイデアに分けます。</span><span data-i18n="en">Speak or type as thoughts come. AI separates them into plans, to-dos and ideas.</span><span data-i18n="ko">말로도 글로도. 떠오르는 대로 넣으면 AI가 일정·할 일·아이디어로 나눠요.</span></p>
-    <figure class="feature-comic" data-feature-comic="sorting">
-      <img src="img/feature-comics/sorting-ja.png" data-comic-ja="img/feature-comics/sorting-ja.png" data-comic-en="img/feature-comics/sorting-en.png" width="1774" height="887" loading="lazy" decoding="async"
-           data-alt-ja="3コマ漫画：予定・やること・アイデアが頭の中で混ざり、スマホへ話すとそれぞれのカードに分かれて、ほっと笑顔になる。"
-           data-alt-en="Three-panel comic: plans, tasks and ideas are jumbled; speaking to the phone separates them into cards; the character smiles with relief."
-           data-alt-ko="세 컷 만화: 일정과 할 일, 아이디어가 뒤섞이다가 휴대폰에 말하면 각각의 카드로 나뉘고, 안도하며 웃어요."
-           data-alt-de="Drei Comicbilder: Pläne, Aufgaben und Ideen sind vermischt. Ins Handy gesprochen werden sie getrennt, und Erleichterung macht sich breit."
-           data-alt-zh-hant="三格漫畫：行程、待辦和點子混在腦中，對手機說完後分成各自的卡片，終於鬆口氣微笑。"
-           data-alt-fr="BD en trois cases : projets, tâches et idées s’emmêlent, la parole au téléphone les sépare en cartes, puis vient un sourire soulagé."
-           data-alt-es="Cómic de tres viñetas: planes, tareas e ideas se mezclan; hablar al teléfono los separa en tarjetas; aparece una sonrisa de alivio."
-           data-alt-it="Fumetto in tre vignette: programmi, attività e idee si confondono, parlando al telefono si dividono in schede e arriva un sorriso di sollievo."
-           alt="3コマ漫画：予定・やること・アイデアが頭の中で混ざり、スマホへ話すとそれぞれのカードに分かれて、ほっと笑顔になる。">
-    </figure>
     <div class="cols">
       <div class="text">
         <p class="bubble"><span data-i18n="ja">「えーと、来週の水曜たしか3時から歯医者で、あと帰りに電池買わないと。そういえば新曲のサビ、転調したら面白いかも」</span><span data-i18n="en">"Um, next Wednesday I think it&#39;s the dentist at 3, and I need to grab batteries on the way home. Oh — the chorus of that new song might actually work better modulated."</span><span data-i18n="ko">「음, 다음 주 수요일 아마 3시부터 치과였고, 돌아오는 길에 배터리도 사야 해. 아 맞다, 새 곡 후렴구 전조하면 재밌을 것 같은데」</span></p>
@@ -1230,7 +1133,7 @@
     </div>
   </div>
 
-    <p class="paid-note" hidden><a href="#pricing"><span data-i18n="ja">20を超える道具は無料。AI Proの年額プランは7日間無料。</span><span data-i18n="en">More than 20 tools are free. Try the annual AI Pro plan free for 7 days.</span><span data-i18n="ko">20개가 넘는 도구는 무료. AI Pro 연간 플랜은 7일 무료.</span></a></p>
+    <p class="paid-note" hidden><a href="#pricing"><span data-i18n="ja">20を超える道具は無料。High Beamの年額プランは7日間無料。</span><span data-i18n="en">More than 20 tools are free. Try the annual High Beam plan free for 7 days.</span><span data-i18n="ko">20개가 넘는 도구는 무료. High Beam 연간 플랜은 7일 무료.</span></a></p>
 
 </section>
 
@@ -1238,7 +1141,7 @@
 <!-- 整理アシスタント -->
 <section id="tidy-assistant">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span><span class="pro-badge">AI Pro</span></div>
+    <div class="eyebrow"><span data-i18n="ja">整理アシスタント</span><span data-i18n="en">Tidy assistant</span><span data-i18n="ko">정리 어시스턴트</span><span class="pro-badge">High Beam</span></div>
     <div class="tidy-problem cols">
       <div class="text">
         <h2><span data-i18n="ja">頭の中は、<br>いつもいっぱい。</span><span data-i18n="en">Your head is<br>always full.</span><span data-i18n="ko">머릿속은,<br>언제나 가득해요.</span></h2>
@@ -1292,7 +1195,7 @@
           <li><span data-i18n="ja">マイクを一度押して話し、最後に「送信」と言えば保存。止めるために、もう一度ボタンを押す必要はありません。</span><span data-i18n="en">Tap the microphone once, speak, and say “send it” to save. There is no need to tap again to stop.</span><span data-i18n="ko">마이크를 한 번 누르고 말한 뒤 “전송”이라고 하면 저장됩니다. 멈추려고 다시 누를 필요가 없어요.</span></li>
           <li hidden><span data-i18n="ja">ホームで話した言葉も、整理アシスタントで切り分けた言葉も、<strong>ここに集まる</strong>。</span><span data-i18n="en">Words captured from Home and words separated by the Tidy Assistant <strong>all gather here</strong>.</span><span data-i18n="ko">홈에서 말한 내용과 정리 어시스턴트가 나눈 말이 <strong>모두 여기에 모여요</strong>.</span></li>
           <li><span data-i18n="ja">日付、フォルダ、キーワードから、読み返したい言葉をすぐに見つけられる。</span><span data-i18n="en">Find any word again by date, folder or keyword.</span><span data-i18n="ko">날짜·폴더·키워드로 다시 읽고 싶은 말을 바로 찾을 수 있습니다.</span></li>
-          <li><span data-i18n="ja">記録は端末の中だけ。削除しても30日間は元に戻せます。</span><span data-i18n="en">Your records stay on your device. Restore anything you delete for up to 30 days.</span><span data-i18n="ko">기록은 내 기기 안에만 보관됩니다. 삭제해도 30일 동안 되돌릴 수 있습니다.</span></li>
+          <li><span data-i18n="ja">記録は端末の中だけ。削除しても30日間は元に戻せます。</span><span data-i18n="en">Your records stay on your device and can be protected with Face ID. Restore anything you delete for up to 30 days.</span><span data-i18n="ko">기록은 내 기기 안에만 보관됩니다. 삭제해도 30일 동안 되돌릴 수 있습니다.</span></li>
         </ul>
       </div>
     </div>
@@ -1303,19 +1206,22 @@
 <section id="collection">
   <div class="inner reveal">
     <div class="eyebrow"><span data-i18n="ja">コレクション</span><span data-i18n="en">Collection</span><span data-i18n="ko">컬렉션</span></div>
-    <h2><span data-i18n="ja">どんなリンクもカードにして保存。</span><span data-i18n="en">Save any link as a card.</span><span data-i18n="ko">어떤 링크든 카드로 저장하세요.</span></h2>
-    <p class="lead"><span data-i18n="ja">動画・音楽・XやInstagramの投稿など、あとで見返したいものをひとつの棚に。好きなものが、いつもそばに並びます。</span><span data-i18n="en">Keep videos, music, posts from X or Instagram, and anything you want to revisit on one shelf, with the things you love always close by.</span><span data-i18n="ko">영상·음악·X나 Instagram 게시물처럼 다시 보고 싶은 것을 한 선반에. 좋아하는 것을 늘 곁에 둘 수 있어요.</span></p>
+    <h2><span data-i18n="ja" data-static-localized>リンクもファイルも、<br>表紙のあるカードへ。</span><span data-i18n="en" data-static-localized>Turn links and files<br>into cards on a shelf.</span><span data-i18n="ko" data-static-localized>링크와 파일을<br>표지가 있는 카드로.</span><span data-i18n="de" data-static-localized>Links und Dateien werden<br>zu Karten im Regal.</span><span data-i18n="zh-Hant" data-static-localized>連結與檔案，<br>都變成架上的封面卡片。</span><span data-i18n="fr" data-static-localized>Liens et fichiers deviennent<br>des cartes sur une étagère.</span><span data-i18n="es" data-static-localized>Convierte enlaces y archivos<br>en tarjetas sobre una estantería.</span><span data-i18n="it" data-static-localized>Trasforma link e file<br>in schede su uno scaffale.</span></h2>
+    <p class="lead"><span data-i18n="ja" data-static-localized>動画、SNSの投稿、アルバム、プレイリスト、Webリンク。写真、PDF、テキスト、Word、音声ファイルも、ひとつの棚へ。表紙を眺めながら、必要なものを手で選べます。</span><span data-i18n="en" data-static-localized>Videos, social posts, albums, playlists, and web links. Photos, PDFs, text, Word documents, and audio files can live on the same shelf, ready to browse by cover and choose by hand.</span><span data-i18n="ko" data-static-localized>영상, SNS 게시물, 앨범, 플레이리스트, 웹 링크. 사진, PDF, 텍스트, Word, 오디오 파일도 같은 선반에 놓고 표지를 보며 직접 고를 수 있어요.</span><span data-i18n="de" data-static-localized>Videos, Social Posts, Alben, Playlists und Weblinks. Auch Fotos, PDFs, Text-, Word- und Audiodateien liegen im selben Regal und lassen sich über ihre Cover durchblättern.</span><span data-i18n="zh-Hant" data-static-localized>影片、社群貼文、專輯、播放清單與網頁連結，還有照片、PDF、文字、Word 與音訊檔案，都能放在同一個架上，依封面瀏覽與挑選。</span><span data-i18n="fr" data-static-localized>Vidéos, publications, albums, playlists et liens web. Photos, PDF, textes, documents Word et fichiers audio peuvent partager la même étagère, à parcourir par leurs couvertures.</span><span data-i18n="es" data-static-localized>Vídeos, publicaciones, álbumes, playlists y enlaces web. Fotos, PDF, textos, documentos Word y archivos de audio caben en la misma estantería para explorarlos por sus portadas.</span><span data-i18n="it" data-static-localized>Video, post, album, playlist e link web. Foto, PDF, testi, documenti Word e file audio possono stare sullo stesso scaffale, da sfogliare attraverso le copertine.</span></p>
+    <p class="collection-beyond-pin"><strong>Not just pin.</strong> <span data-i18n="ja" data-static-localized>集めて終わりではなく、見返して、声にして、次につくるものへ。</span><span data-i18n="en" data-static-localized>Collect what inspires you, return to it, and turn it into what you make next.</span><span data-i18n="ko" data-static-localized>모으는 데서 끝나지 않고, 다시 보고 말로 남겨 다음 창작으로 이어 가세요.</span><span data-i18n="de" data-static-localized>Sammle, was dich inspiriert, kehre dazu zurück und mach daraus dein nächstes Werk.</span><span data-i18n="zh-Hant" data-static-localized>不只收藏；再次翻看、說出想法，再讓它成為下一個創作。</span><span data-i18n="fr" data-static-localized>Rassemblez ce qui vous inspire, retrouvez-le et transformez-le en votre prochaine création.</span><span data-i18n="es" data-static-localized>Reúne lo que te inspira, vuelve a ello y conviértelo en tu próxima creación.</span><span data-i18n="it" data-static-localized>Raccogli ciò che ti ispira, ritrovalo e trasformalo nella tua prossima creazione.</span></p>
     <div class="cols">
       <div class="text">
         <ul class="points">
           <li><span data-i18n="ja">リンクを貼るだけで、サムネイル付きのカードになる。</span><span data-i18n="en">Paste a link and it becomes a card with its thumbnail.</span><span data-i18n="ko">링크를 붙여넣기만 하면 썸네일이 있는 카드가 돼요.</span></li>
           <li><span data-i18n="ja">カードからリンクを開く。音楽なら、その場で再生できる。</span><span data-i18n="en">Open the link from its card. Music can play right there.</span><span data-i18n="ko">카드에서 링크를 열어요. 음악은 그 자리에서 재생할 수 있어요.</span></li>
           <li><span data-i18n="ja">本はバーコード、音楽はライブラリからまとめて登録。感想もカードに残せる。</span><span data-i18n="en">Add books by barcode and music from your library. Keep your thoughts on each card.</span><span data-i18n="ko">책은 바코드로, 음악은 라이브러리에서 한꺼번에 등록해요. 감상도 카드에 남길 수 있어요.</span></li>
-          <li hidden><span data-i18n="ja">Apple Musicのアルバムは曲順も並び、<strong>下にスワイプするとB面から再生</strong>。</span><span data-i18n="en">Apple Music albums keep their track order — <strong>swipe down to play from Side B</strong>.</span><span data-i18n="ko">Apple Music 앨범은 곡 순서도 그대로, <strong>아래로 스와이프하면 B면부터 재생</strong>돼요.</span></li>
+          <li><span data-i18n="ja" data-static-localized>すべての棚を横断して検索。対応するPDFや画像の中の文字も見つけられる。</span><span data-i18n="en" data-static-localized>Search every shelf at once, including text inside supported PDFs and images.</span><span data-i18n="ko" data-static-localized>모든 선반을 한 번에 검색하고, 지원되는 PDF와 이미지 안의 글자도 찾을 수 있어요.</span><span data-i18n="de" data-static-localized>Durchsuche alle Regale zugleich – auch Text in unterstützten PDFs und Bildern.</span><span data-i18n="zh-Hant" data-static-localized>一次搜尋所有收藏架，也能找到支援的 PDF 與圖片中的文字。</span><span data-i18n="fr" data-static-localized>Recherchez dans toutes les étagères, y compris le texte des PDF et images pris en charge.</span><span data-i18n="es" data-static-localized>Busca en todas las estanterías, incluido el texto de los PDF e imágenes compatibles.</span><span data-i18n="it" data-static-localized>Cerca in tutti gli scaffali, incluso il testo nei PDF e nelle immagini supportati.</span></li>
+          <li><span data-i18n="ja" data-static-localized>棚ごとリンク1つで共有。受け取る人はアプリなしでブラウザーから開ける。</span><span data-i18n="en" data-static-localized>Share a whole shelf with one link. Anyone can open it in a browser without the app.</span><span data-i18n="ko" data-static-localized>선반 전체를 링크 하나로 공유하세요. 받는 사람은 앱 없이 브라우저에서 열 수 있어요.</span><span data-i18n="de" data-static-localized>Teile ein ganzes Regal mit einem Link. Andere öffnen es ohne App im Browser.</span><span data-i18n="zh-Hant" data-static-localized>用一個連結分享整個收藏架，對方不必安裝 App，也能在瀏覽器開啟。</span><span data-i18n="fr" data-static-localized>Partagez une étagère entière avec un lien. Elle s’ouvre dans un navigateur, sans l’app.</span><span data-i18n="es" data-static-localized>Comparte una estantería completa con un enlace. Se abre en el navegador sin la app.</span><span data-i18n="it" data-static-localized>Condividi un intero scaffale con un link. Si apre nel browser senza l’app.</span></li>
+          <li><span data-i18n="ja" data-static-localized>対応する音楽サービスでは、アルバムを裏返し、A面またはB面から再生。音楽サービス側のライブラリは変更しません。</span><span data-i18n="en" data-static-localized>With supported music services, flip an album and play from Side A or Side B. Head-Light never changes your music-service library.</span><span data-i18n="ko" data-static-localized>지원되는 음악 서비스에서는 앨범을 뒤집어 A면이나 B면부터 재생할 수 있어요. 음악 서비스의 라이브러리는 변경하지 않습니다.</span><span data-i18n="de" data-static-localized>Bei unterstützten Musikdiensten kannst du ein Album wenden und auf Seite A oder B starten. Deine Mediathek bleibt unverändert.</span><span data-i18n="zh-Hant" data-static-localized>支援的音樂服務可翻轉專輯，從 A 面或 B 面開始播放；不會更動音樂服務中的資料庫。</span><span data-i18n="fr" data-static-localized>Avec les services compatibles, retournez un album et lancez la face A ou B. Votre bibliothèque musicale n’est jamais modifiée.</span><span data-i18n="es" data-static-localized>Con servicios compatibles, gira un álbum y empieza por la cara A o B. Tu biblioteca musical no se modifica.</span><span data-i18n="it" data-static-localized>Con i servizi supportati, gira un album e parti dal lato A o B. La libreria del servizio musicale non viene modificata.</span></li>
           <li hidden><span data-i18n="ja">本は<strong>バーコード</strong>で登録。音楽は<strong>ライブラリからまとめて取り込み</strong>。</span><span data-i18n="en">Add books by <strong>barcode</strong>. Bring in music <strong>straight from your library</strong>.</span><span data-i18n="ko">책은 <strong>바코드</strong>로 등록. 음악은 <strong>라이브러리에서 한꺼번에 가져오기</strong>.</span></li>
           <li hidden><span data-i18n="ja">棚は1枚の画像にして、SNSに貼れる。</span><span data-i18n="en">Turn your shelf into a single image and share it.</span><span data-i18n="ko">선반은 이미지 한 장으로 만들어서, SNS에 올릴 수 있어요.</span></li>
         </ul>
-        <p class="sub"><span data-i18n="ja">言葉にならない「好き」も、あなたの一部です。</span><span data-i18n="en">Even the 'likes' you can't put into words are part of you.</span><span data-i18n="ko">말로 표현되지 않는 「좋아함」도, 당신의 일부예요.</span></p>
+        <p class="sub"><span data-i18n="ja" data-static-localized>しまい込む場所ではなく、見つけ直して、すぐ使うための棚です。</span><span data-i18n="en" data-static-localized>A shelf for finding things again and putting them to use—not locking them away.</span><span data-i18n="ko" data-static-localized>가둬 두는 곳이 아니라, 다시 찾아 바로 쓰기 위한 선반이에요.</span><span data-i18n="de" data-static-localized>Ein Regal zum Wiederfinden und Weiterverwenden, nicht zum Wegschließen.</span><span data-i18n="zh-Hant" data-static-localized>這不是把喜愛封存起來的地方，而是再次找到並立刻使用的架子。</span><span data-i18n="fr" data-static-localized>Une étagère pour retrouver et utiliser, pas pour enfermer.</span><span data-i18n="es" data-static-localized>Una estantería para volver a encontrar y usar, no para guardar bajo llave.</span><span data-i18n="it" data-static-localized>Uno scaffale per ritrovare e usare, non per chiudere tutto via.</span></p>
       </div>
       <div class="shots collection-shots">
         <div class="phone small"><img src="img/shots/03_collections_ja.jpg" data-shot="03_collections" loading="lazy" decoding="async" data-alt-ja="コレクションの棚。自分の名前を付けたボードが並ぶ" data-alt-en="The collection shelf, with boards you have named lined up." data-alt-ko="컬렉션 선반. 직접 이름 붙인 보드가 늘어서 있다" alt="コレクションの棚。自分の名前を付けたボードが並ぶ"></div>
@@ -1358,11 +1264,10 @@
   </div>
 </section>
 
-<!-- 好きなものと、自分に沿う目標についての研究紹介 -->
+<!-- 名前に込めた、頭を軽くして次へ進むという意味。 -->
 <section class="strong-light-section" id="strong-light">
   <div class="inner reveal">
     <div class="strong-light-layout">
-
       <div class="strong-light-copy">
         <div class="brand-signature">
           <img src="img/app-icon.png" width="96" height="96" loading="lazy" decoding="async" alt="">
@@ -1370,53 +1275,34 @@
           <div class="brand-signature-reading"><span data-i18n="ja" data-static-localized>ヘッドライト</span></div>
         </div>
         <h2>
-          <span data-i18n="ja" data-static-localized>「好き」を持つと、<br>　　心は軽くなる。</span>
-          <span data-i18n="en" data-static-localized>Hold on to what you love,<br>and your heart feels lighter.</span>
+          <span data-i18n="ja" data-static-localized>頭を軽く。<br>進む先に、光を。</span>
+          <span data-i18n="en" data-static-localized>A lighter head.<br>A light on the road ahead.</span>
+          <span data-i18n="ko" data-static-localized>머리는 가볍게.<br>앞으로 갈 길에는 빛을.</span>
+          <span data-i18n="de" data-static-localized>Ein leichterer Kopf.<br>Ein Licht auf dem Weg vor dir.</span>
+          <span data-i18n="zh-Hant" data-static-localized>讓腦袋輕一點。<br>為前方的路點一盞光。</span>
+          <span data-i18n="fr" data-static-localized>La tête plus légère.<br>Une lumière sur le chemin.</span>
+          <span data-i18n="es" data-static-localized>Una mente más ligera.<br>Una luz en el camino.</span>
+          <span data-i18n="it" data-static-localized>La testa più leggera.<br>Una luce sulla strada.</span>
         </h2>
-
         <p>
-          <span data-i18n="ja" data-static-localized>好きな音楽。心に残った映画。何度も読み返したい言葉。<br>そこには、自分が何に心を動かされ、何を大切にしているかが表れています。</span>
-          <span data-i18n="en" data-static-localized>Music you love. A film that stayed with you. Words you want to return to again and again.<br>They reveal what moves you and what matters to you.</span>
+          <span data-i18n="ja" data-static-localized>散らばったものを見つけ直せる場所へ集め、ひらめいた瞬間に声で残す。迷わず次の一歩へ進めるように。その二つの願いを、<strong>Head-Light</strong>という名前に込めました。</span>
+          <span data-i18n="en" data-static-localized>Gather what was scattered where you can find it again. Catch an idea by voice the moment it arrives, then take the next step without hesitation. Those two ideas became the name <strong>Head-Light</strong>.</span>
+          <span data-i18n="ko" data-static-localized>흩어진 것을 다시 찾을 수 있는 곳에 모으고, 떠오른 순간 목소리로 남겨 망설임 없이 다음 걸음을 내딛도록. 그 두 가지 바람을 <strong>Head-Light</strong>라는 이름에 담았습니다.</span>
+          <span data-i18n="de" data-static-localized>Verstreutes wiederfinden, Ideen im Moment ihres Entstehens per Stimme festhalten und ohne Zögern den nächsten Schritt gehen: Diese beiden Gedanken stecken im Namen <strong>Head-Light</strong>.</span>
+          <span data-i18n="zh-Hant" data-static-localized>把散落的事物集中到能再次找到的地方，在靈感出現的瞬間用聲音留下，然後毫不猶豫地跨出下一步。這兩個願望，就是 <strong>Head-Light</strong> 這個名字的由來。</span>
+          <span data-i18n="fr" data-static-localized>Rassembler ce qui s’était dispersé, saisir une idée par la voix dès qu’elle arrive et avancer sans hésiter : ces deux intentions ont donné le nom <strong>Head-Light</strong>.</span>
+          <span data-i18n="es" data-static-localized>Reunir lo disperso, capturar una idea con la voz en cuanto aparece y dar el siguiente paso sin dudar: esas dos ideas dieron nombre a <strong>Head-Light</strong>.</span>
+          <span data-i18n="it" data-static-localized>Riunire ciò che era sparso, catturare un’idea con la voce appena arriva e fare il passo successivo senza esitazione: da qui nasce il nome <strong>Head-Light</strong>.</span>
         </p>
-
-        <p>
-          <span data-i18n="ja" data-static-localized>好きなものをそばに置くことは、自分の心が向かう先を思い出す、小さなきっかけになります。</span>
-          <span data-i18n="en" data-static-localized>Keeping what you love close can be a small reminder of where your heart wants to go.</span>
-        </p>
-
-        <p class="research">
-          <span data-i18n="ja" data-static-localized>心理学には、自分の興味や価値観に合った目標を追う人ほど、取り組みを続け、達成しやすいという研究があります。SheldonとElliotは、3つの縦断データを通じて、この関係を報告しました。<a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/10101878/" target="_blank" rel="noopener noreferrer">Sheldon &amp; Elliot, 1999</a></span>
-          <span data-i18n="en" data-static-localized>Psychology research suggests that people who pursue goals aligned with their own interests and values are more likely to sustain their efforts and attain those goals. Across three longitudinal data sets, Sheldon and Elliot reported this relationship. <a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/10101878/" target="_blank" rel="noopener noreferrer">Sheldon &amp; Elliot, 1999</a></span>
-        </p>
-
-        <p class="research">
-          <span data-i18n="ja" data-static-localized>さらに、Milyavskayaらの4つの研究では、「自分がやりたい」という動機が強い目標について、達成を妨げる誘惑への引かれにくさや、障害を少なく感じることが報告されています。<a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/25984785/" target="_blank" rel="noopener noreferrer">Milyavskaya et al., 2015</a></span>
-          <span data-i18n="en" data-static-localized>In four further studies, Milyavskaya and colleagues reported that goals driven more strongly by “want-to” motivation were associated with being less drawn to goal-disrupting temptations and with experiencing fewer obstacles. <a class="citation" href="https://pubmed.ncbi.nlm.nih.gov/25984785/" target="_blank" rel="noopener noreferrer">Milyavskaya et al., 2015</a></span>
-        </p>
-
-        <p>
-          <span data-i18n="ja" data-static-localized>自分の大切なものへ、自然と力が向く。<br>進みたい方向が見えると、余計なことにも振り回されにくくなります。</span>
-          <span data-i18n="en" data-static-localized>Your energy naturally turns toward what matters to you.<br>When the way forward feels clearer, distractions have less power to pull you away.</span>
-        </p>
-
-        <p>
-          <span data-i18n="ja" data-static-localized>「好き」を持つことは、自分の軸を持つこと。だから、心に少し余白が生まれます。</span>
-          <span data-i18n="en" data-static-localized>Holding on to what you love gives you something to return to—and a little more room to breathe.</span>
-        </p>
-
-        <p>
-          <span data-i18n="ja" data-static-localized>Head-Lightでは、好きな音楽や動画、本を、自分だけの棚に置けます。心に浮かんだ言葉も、これからの予定も、同じ手帳へ。</span>
-          <span data-i18n="en" data-static-localized>With Head-Light, you can place the music, videos and books you love on a shelf that is yours alone. The words that come to mind and the plans ahead can live in the same journal.</span>
-        </p>
-
         <p class="closing-copy">
-          <span data-i18n="ja" data-static-localized>Head-Lightは、好きなものや言葉をそばに残すことで、自分の「好き」を見失わず、少し軽い心で日々を進めていくための手帳です。</span>
-          <span data-i18n="en" data-static-localized>Head-Light is a journal that keeps what you love and the words that matter close, helping you move through each day with a lighter heart without losing sight of yourself.</span>
-        </p>
-
-        <p class="research-note">
-          <span data-i18n="ja" data-static-localized>※研究結果は要約して紹介しています。上記の研究は目標への動機を扱ったもので、好きなものを表示することや、Head-Lightの利用による効果を検証したものではありません。</span>
-          <span data-i18n="en" data-static-localized>* These research findings are summarized here. The studies above examined motivation toward goals; they did not test the effects of displaying things people love or of using Head-Light.</span>
+          <span data-i18n="ja" data-static-localized><strong>響いたものを、あつめて。ひらめきを、声にする。</strong></span>
+          <span data-i18n="en" data-static-localized><strong>Save what inspires you. Say what you'll make.</strong></span>
+          <span data-i18n="ko" data-static-localized><strong>마음을 움직인 것을 모으고, 만들 것을 말해 보세요.</strong></span>
+          <span data-i18n="de" data-static-localized><strong>Bewahre, was dich inspiriert. Sprich aus, was du erschaffen wirst.</strong></span>
+          <span data-i18n="zh-Hant" data-static-localized><strong>收藏打動你的事物，說出你要創作的東西。</strong></span>
+          <span data-i18n="fr" data-static-localized><strong>Gardez ce qui vous inspire. Dites ce que vous allez créer.</strong></span>
+          <span data-i18n="es" data-static-localized><strong>Guarda lo que te inspira. Di lo que vas a crear.</strong></span>
+          <span data-i18n="it" data-static-localized><strong>Conserva ciò che ti ispira. Di cosa creerai.</strong></span>
         </p>
       </div>
     </div>
@@ -1442,14 +1328,14 @@
     <div class="trust-grid">
       <article class="trust-card creator-card">
         <span class="trust-mark" aria-hidden="true">K</span>
-        <h3><span data-i18n="ja" data-static-localized>実体験からつくりました。</span><span data-i18n="en" data-static-localized>Built from lived experience.</span><span data-i18n="ko" data-static-localized>직접 겪은 경험에서 만들었습니다.</span><span data-i18n="de" data-static-localized>Aus eigener Erfahrung entstanden.</span><span data-i18n="zh-Hant" data-static-localized>來自真實經驗的製作。</span><span data-i18n="fr" data-static-localized>Créé à partir d’une expérience vécue.</span><span data-i18n="es" data-static-localized>Creado desde la experiencia real.</span><span data-i18n="it" data-static-localized>Nato dall’esperienza diretta.</span></h3>
-        <p><span data-i18n="ja" data-static-localized>開発者Kaiは、クライアントのYouTubeチャンネルを登録者100万人まで育てる仕事に携わった動画クリエイターです。ADHDの当事者として、情報が散らかり、ひらめきを逃してしまう不便からHead-Lightをつくりました。</span><span data-i18n="en" data-static-localized>Kai is a video creator who helped grow a client’s YouTube channel to one million subscribers. Living with ADHD, he built Head-Light for the references and ideas that used to scatter before he could use them.</span><span data-i18n="ko" data-static-localized>개발자 Kai는 클라이언트의 YouTube 채널이 구독자 100만 명까지 성장하는 일에 참여한 영상 크리에이터입니다. ADHD를 직접 겪으며, 자료와 영감이 흩어져 사라지던 불편에서 Head-Light를 만들었습니다.</span><span data-i18n="de" data-static-localized>Kai ist Videocreator und half dabei, den YouTube-Kanal eines Kunden auf eine Million Abonnenten zu bringen. Aus seiner Erfahrung mit ADHS entwickelte er Head-Light für Referenzen und Ideen, die sonst verstreut waren.</span><span data-i18n="zh-Hant" data-static-localized>開發者 Kai 是影片創作者，曾協助客戶的 YouTube 頻道成長到一百萬訂閱者。作為 ADHD 當事人，他因資料散落、靈感還沒用上就消失的不便，開發了 Head-Light。</span><span data-i18n="fr" data-static-localized>Kai est créateur vidéo et a contribué à faire passer la chaîne YouTube d’un client à un million d’abonnés. Vivant avec un TDAH, il a créé Head-Light pour les références et les idées qui se dispersaient avant d’être utilisées.</span><span data-i18n="es" data-static-localized>Kai es creador de vídeo y ayudó a llevar el canal de YouTube de un cliente hasta un millón de suscriptores. Al vivir con TDAH, creó Head-Light para reunir referencias e ideas que se dispersaban antes de poder usarlas.</span><span data-i18n="it" data-static-localized>Kai è un video creator e ha contribuito a far crescere il canale YouTube di un cliente fino a un milione di iscritti. Convivendo con l’ADHD, ha creato Head-Light per raccogliere riferimenti e idee che si disperdevano prima di poterli usare.</span></p>
+        <h3><span data-i18n="ja" data-static-localized>見つけたものを、すぐ形にしてきた。</span><span data-i18n="en" data-static-localized>Built by making from what moved me.</span><span data-i18n="ko" data-static-localized>직접 겪은 경험에서 만들었습니다.</span><span data-i18n="de" data-static-localized>Aus eigener Erfahrung entstanden.</span><span data-i18n="zh-Hant" data-static-localized>來自真實經驗的製作。</span><span data-i18n="fr" data-static-localized>Créé à partir d’une expérience vécue.</span><span data-i18n="es" data-static-localized>Creado desde la experiencia real.</span><span data-i18n="it" data-static-localized>Nato dall’esperienza diretta.</span></h3>
+        <p><span data-i18n="ja" data-static-localized>開発者Kaiは、クライアントのYouTubeチャンネルに出演し、企画から編集まで担いながら登録者100万人への成長に携わりました。毎日スマートフォンで創作の種を探し、心が動いたらすぐ形にする。その一方で、ADHDの当事者として、大切な資料が散らばり、必要な瞬間に見つからない悩みも抱えていました。レコード会社でジャケットを並べて届けていた記憶から、見渡して選べる棚としてHead-Lightをつくりました。</span><span data-i18n="en" data-static-localized>Kai appeared on a client’s YouTube channel and handled everything from planning to editing, helping it grow to one million subscribers. He searched for creative seeds on his phone every day and made something as soon as it moved him. Living with ADHD also meant important references scattered before he could find them again. Remembering his record-label days, he built Head-Light as a shelf you can see, browse, and use.</span><span data-i18n="ko" data-static-localized>개발자 Kai는 클라이언트의 YouTube 채널이 구독자 100만 명까지 성장하는 일에 참여한 영상 크리에이터입니다. ADHD를 직접 겪으며, 자료와 영감이 흩어져 사라지던 불편에서 Head-Light를 만들었습니다.</span><span data-i18n="de" data-static-localized>Kai ist Videocreator und half dabei, den YouTube-Kanal eines Kunden auf eine Million Abonnenten zu bringen. Aus seiner Erfahrung mit ADHS entwickelte er Head-Light für Referenzen und Ideen, die sonst verstreut waren.</span><span data-i18n="zh-Hant" data-static-localized>開發者 Kai 是影片創作者，曾協助客戶的 YouTube 頻道成長到一百萬訂閱者。作為 ADHD 當事人，他因資料散落、靈感還沒用上就消失的不便，開發了 Head-Light。</span><span data-i18n="fr" data-static-localized>Kai est créateur vidéo et a contribué à faire passer la chaîne YouTube d’un client à un million d’abonnés. Vivant avec un TDAH, il a créé Head-Light pour les références et les idées qui se dispersaient avant d’être utilisées.</span><span data-i18n="es" data-static-localized>Kai es creador de vídeo y ayudó a llevar el canal de YouTube de un cliente hasta un millón de suscriptores. Al vivir con TDAH, creó Head-Light para reunir referencias e ideas que se dispersaban antes de poder usarlas.</span><span data-i18n="it" data-static-localized>Kai è un video creator e ha contribuito a far crescere il canale YouTube di un cliente fino a un milione di iscritti. Convivendo con l’ADHD, ha creato Head-Light per raccogliere riferimenti e idee che si disperdevano prima di poterli usare.</span></p>
       </article>
       <article class="trust-card privacy-card">
         <span class="trust-mark" aria-hidden="true">◎</span>
         <h3><span data-i18n="ja" data-static-localized>広告なし。行動追跡なし。</span><span data-i18n="en" data-static-localized>No ads. No tracking.</span><span data-i18n="ko" data-static-localized>광고 없음. 행동 추적 없음.</span><span data-i18n="de" data-static-localized>Keine Werbung. Kein Tracking.</span><span data-i18n="zh-Hant" data-static-localized>無廣告。無行為追蹤。</span><span data-i18n="fr" data-static-localized>Sans publicité. Sans suivi.</span><span data-i18n="es" data-static-localized>Sin anuncios. Sin seguimiento.</span><span data-i18n="it" data-static-localized>Niente pubblicità. Nessun tracciamento.</span></h3>
-        <p class="privacy-lead"><span data-i18n="ja" data-static-localized>記録は、お使いの端末内に保存されます。</span><span data-i18n="en" data-static-localized>Your records stay on your device.</span><span data-i18n="ko" data-static-localized>기록은 사용 중인 기기에 저장됩니다.</span><span data-i18n="de" data-static-localized>Deine Aufzeichnungen bleiben auf deinem Gerät.</span><span data-i18n="zh-Hant" data-static-localized>你的記錄會留在使用中的裝置上。</span><span data-i18n="fr" data-static-localized>Vos données restent sur votre appareil.</span><span data-i18n="es" data-static-localized>Tus registros permanecen en tu dispositivo.</span><span data-i18n="it" data-static-localized>I tuoi contenuti restano sul dispositivo.</span></p>
-        <p><span data-i18n="ja" data-static-localized>クラウドAI機能や棚の共有を自分で選んだときだけ、確認した範囲の内容が外へ送られます。クラウドAIに送った内容は、AIの学習に使われません。</span><span data-i18n="en" data-static-localized>Content leaves the device only when you choose a cloud AI feature or share a shelf, and only within the scope you confirm. Content sent to cloud AI is not used to train AI.</span><span data-i18n="ko" data-static-localized>클라우드 AI 기능이나 선반 공유를 스스로 선택한 경우에만, 확인한 범위의 내용이 기기 밖으로 전송됩니다. 클라우드 AI로 보낸 내용은 AI 학습에 사용되지 않습니다.</span><span data-i18n="de" data-static-localized>Inhalte verlassen das Gerät nur, wenn du eine Cloud-KI-Funktion oder das Teilen eines Regals auswählst, und nur in dem von dir bestätigten Umfang. An die Cloud-KI gesendete Inhalte werden nicht zum Training verwendet.</span><span data-i18n="zh-Hant" data-static-localized>只有在你主動選擇雲端 AI 功能或分享收藏架時，經你確認的內容才會離開裝置。傳給雲端 AI 的內容不會用於 AI 訓練。</span><span data-i18n="fr" data-static-localized>Le contenu ne quitte l’appareil que si vous choisissez une fonction d’IA cloud ou le partage d’une étagère, et uniquement dans la limite que vous confirmez. Le contenu envoyé à l’IA cloud ne sert pas à l’entraînement.</span><span data-i18n="es" data-static-localized>El contenido solo sale del dispositivo cuando eliges una función de IA en la nube o compartes una estantería, y solo dentro del alcance que confirmas. El contenido enviado a la IA no se usa para entrenarla.</span><span data-i18n="it" data-static-localized>I contenuti lasciano il dispositivo solo quando scegli una funzione AI cloud o condividi uno scaffale, e solo entro i limiti che confermi. I contenuti inviati all’AI cloud non vengono usati per l’addestramento.</span></p>
+        <p class="privacy-lead"><span data-i18n="ja" data-static-localized>記録は端末内に保存され、Face IDで守れます。</span><span data-i18n="en" data-static-localized>Your records stay on your device and can be protected with Face ID.</span><span data-i18n="ko" data-static-localized>기록은 사용 중인 기기에 저장됩니다.</span><span data-i18n="de" data-static-localized>Deine Aufzeichnungen bleiben auf deinem Gerät.</span><span data-i18n="zh-Hant" data-static-localized>你的記錄會留在使用中的裝置上。</span><span data-i18n="fr" data-static-localized>Vos données restent sur votre appareil.</span><span data-i18n="es" data-static-localized>Tus registros permanecen en tu dispositivo.</span><span data-i18n="it" data-static-localized>I tuoi contenuti restano sul dispositivo.</span></p>
+        <p><span data-i18n="ja" data-static-localized>クラウドAI機能や棚の共有を自分で選んだときだけ、事前に表示された範囲の内容が外へ送られます。送らないことを選んでも、そのまま使い続けられます。クラウドAIに送った内容は、AIの学習に使われません。</span><span data-i18n="en" data-static-localized>Before anything leaves the device for a cloud AI feature or shelf sharing, Head-Light shows what will be sent and where. You can say no and keep using the app. Content sent to cloud AI is not used to train AI.</span><span data-i18n="ko" data-static-localized>클라우드 AI 기능이나 선반 공유를 스스로 선택한 경우에만, 확인한 범위의 내용이 기기 밖으로 전송됩니다. 클라우드 AI로 보낸 내용은 AI 학습에 사용되지 않습니다.</span><span data-i18n="de" data-static-localized>Inhalte verlassen das Gerät nur, wenn du eine Cloud-KI-Funktion oder das Teilen eines Regals auswählst, und nur in dem von dir bestätigten Umfang. An die Cloud-KI gesendete Inhalte werden nicht zum Training verwendet.</span><span data-i18n="zh-Hant" data-static-localized>只有在你主動選擇雲端 AI 功能或分享收藏架時，經你確認的內容才會離開裝置。傳給雲端 AI 的內容不會用於 AI 訓練。</span><span data-i18n="fr" data-static-localized>Le contenu ne quitte l’appareil que si vous choisissez une fonction d’IA cloud ou le partage d’une étagère, et uniquement dans la limite que vous confirmez. Le contenu envoyé à l’IA cloud ne sert pas à l’entraînement.</span><span data-i18n="es" data-static-localized>El contenido solo sale del dispositivo cuando eliges una función de IA en la nube o compartes una estantería, y solo dentro del alcance que confirmas. El contenido enviado a la IA no se usa para entrenarla.</span><span data-i18n="it" data-static-localized>I contenuti lasciano il dispositivo solo quando scegli una funzione AI cloud o condividi uno scaffale, e solo entro i limiti che confermi. I contenuti inviati all’AI cloud non vengono usati per l’addestramento.</span></p>
         <a class="trust-link" href="./privacy.html"><span data-i18n="ja" data-static-localized>プライバシーポリシーを読む</span><span data-i18n="en" data-static-localized>Read the Privacy Policy</span><span data-i18n="ko" data-static-localized>개인정보 처리방침 보기</span><span data-i18n="de" data-static-localized>Datenschutzrichtlinie lesen</span><span data-i18n="zh-Hant" data-static-localized>閱讀隱私權政策</span><span data-i18n="fr" data-static-localized>Lire la politique de confidentialité</span><span data-i18n="es" data-static-localized>Leer la Política de privacidad</span><span data-i18n="it" data-static-localized>Leggi l’Informativa sulla privacy</span> →</a>
       </article>
     </div>
@@ -1563,7 +1449,7 @@
     <div class="cols">
       <div class="shots">
         <div class="phone small"><img src="img/shots/05_calendar_ja.jpg" data-shot="05_calendar" loading="lazy" decoding="async" data-alt-ja="白い紙のカレンダー。記録のある日に印がついている" data-alt-en="A paper calendar. Days with a record carry a small mark." data-alt-ko="종이 같은 캘린더. 기록이 있는 날에 표시가 있어요." alt="白い紙のカレンダー。記録のある日に印がついている"></div>
-        <div class="phone small"><img src="img/shots/06_journal_ja.jpg" data-shot="06_journal" loading="lazy" decoding="async" data-alt-ja="手帳の1日のページ。声や文字で残した5つの言葉が時間順に並んでいる" data-alt-en="A day's page in the journal, with five captured words arranged in time order." data-alt-ko="저널의 하루 페이지. 남겨 둔 다섯 개의 말이 시간순으로 늘어서 있어요." alt="手帳の1日のページ。残した言葉が時間順に並んでいる"></div>
+        <div class="phone small"><img src="img/shots/06_journal_cat_ja.webp" data-shot="06_journal_cat" data-shot-ext="webp" loading="lazy" decoding="async" data-alt-ja="手帳の1日のページ。言葉や予定と一緒に、朝の光の中にいる猫の写真が時間順に残っている" data-alt-en="A day's journal page where words, plans, and a photo of a cat in the morning light appear in time order." data-alt-ko="말과 일정, 아침 햇살 속 고양이 사진이 시간순으로 남아 있는 하루의 수첩 화면" alt="手帳の1日のページ。言葉や予定と一緒に猫の写真が時間順に残っている"></div>
       </div>
       <div class="text">
         <ul class="points">
@@ -1711,12 +1597,12 @@
 </section>
 <div class="design-cta-wrap" id="design-preview"><a class="design-cta" href="./design.html"><span class="design-cta-thumb-pair" aria-hidden="true"><img src="img/shots/playful-black-20260907.png" alt="" loading="lazy" decoding="async"><img src="img/shots/simple-mode-ja.jpg?v=20260907" alt="" loading="lazy" decoding="async"></span><span class="design-cta-copy"><span class="design-cta-kicker"><span data-i18n="ja" data-static-localized>デザイン画面</span><span data-i18n="en" data-static-localized>DESIGN STUDIO</span><span data-i18n="ko" data-static-localized>디자인 스튜디오</span></span><span class="design-cta-title"><span data-i18n="ja" data-static-localized>デザインを、ここで試す</span><span data-i18n="en" data-static-localized>Try your own look</span><span data-i18n="ko" data-static-localized>나만의 디자인을 골라 보세요</span></span><span class="design-cta-note"><span data-i18n="ja" data-static-localized>ボディ・色・背景を組み合わせる</span><span data-i18n="en" data-static-localized>Mix the body, colors and background</span><span data-i18n="ko" data-static-localized>바디·색·배경을 조합해 보세요</span></span></span><span class="design-cta-arrow" aria-hidden="true">↗</span></a></div>
 
-<!-- 無料とAI Pro -->
+<!-- 無料とHigh Beam -->
 <section id="pricing">
   <div class="inner reveal">
-    <div class="eyebrow"><span data-i18n="ja" data-static-localized>AI Proで、もっと軽く</span><span data-i18n="en" data-static-localized>Lighten your load with AI Pro</span><span data-i18n="ko" data-static-localized>AI Pro로 더 가볍게</span><span data-i18n="de" data-static-localized>Mehr Leichtigkeit mit AI Pro</span><span data-i18n="zh-Hant" data-static-localized>用 AI Pro，輕鬆一點</span><span data-i18n="fr" data-static-localized>Plus de légèreté avec AI Pro</span><span data-i18n="es" data-static-localized>Más ligereza con AI Pro</span><span data-i18n="it" data-static-localized>Più leggerezza con AI Pro</span></div>
+    <div class="eyebrow"><span data-i18n="ja" data-static-localized>High Beamで、もっと軽く</span><span data-i18n="en" data-static-localized>Lighten your load with High Beam</span><span data-i18n="ko" data-static-localized>High Beam로 더 가볍게</span><span data-i18n="de" data-static-localized>Mehr Leichtigkeit mit High Beam</span><span data-i18n="zh-Hant" data-static-localized>用 High Beam，輕鬆一點</span><span data-i18n="fr" data-static-localized>Plus de légèreté avec High Beam</span><span data-i18n="es" data-static-localized>Más ligereza con High Beam</span><span data-i18n="it" data-static-localized>Più leggerezza con High Beam</span></div>
     <h2><span data-i18n="ja" data-static-localized>整理する手間を、AIに。</span><span data-i18n="en" data-static-localized>Let AI do the organizing.</span><span data-i18n="ko" data-static-localized>정리하는 수고는 AI에게.</span><span data-i18n="de" data-static-localized>Überlass das Ordnen der KI.</span><span data-i18n="zh-Hant" data-static-localized>把整理交給 AI。</span><span data-i18n="fr" data-static-localized>Confiez le tri à l’IA.</span><span data-i18n="es" data-static-localized>Deja que la IA organice.</span><span data-i18n="it" data-static-localized>Lascia organizzare all’IA.</span></h2>
-    <p class="lead"><span data-i18n="ja" data-static-localized>話した言葉を予定ややることに仕分ける。レシートから経費を、食事の写真から栄養の目安を読み取る。AI Proが、毎日の整理や入力を手伝います。</span><span data-i18n="en" data-static-localized>Turn spoken thoughts into plans and to-dos. Read expenses from receipts and estimate nutrition from meal photos. AI Pro helps with everyday organizing and data entry.</span><span data-i18n="ko" data-static-localized>말한 내용을 일정과 할 일로 분류하고, 영수증에서 경비를 읽고, 식사 사진으로 영양을 추정해요. AI Pro가 매일의 정리와 입력을 도와줘요.</span><span data-i18n="de" data-static-localized>Gesprochene Gedanken in Pläne und Aufgaben sortieren, Ausgaben aus Belegen lesen und Nährwerte aus Essensfotos schätzen. AI Pro hilft beim täglichen Ordnen und Erfassen.</span><span data-i18n="zh-Hant" data-static-localized>將說出的想法分成行程與待辦，從收據讀取支出，從餐點照片估算營養。AI Pro 協助每天的整理與輸入。</span><span data-i18n="fr" data-static-localized>Triez vos paroles en projets et tâches, lisez les dépenses sur les reçus et estimez les apports des repas en photo. AI Pro vous aide à organiser et à saisir au quotidien.</span><span data-i18n="es" data-static-localized>Clasifica tus palabras en planes y tareas, lee gastos de recibos y estima nutrientes con fotos de comidas. AI Pro te ayuda a organizar e introducir información cada día.</span><span data-i18n="it" data-static-localized>Ordina i pensieri detti a voce in programmi e attività, leggi le spese dagli scontrini e stima i nutrienti dalle foto dei pasti. AI Pro aiuta a organizzare e inserire informazioni ogni giorno.</span></p>
+    <p class="lead"><span data-i18n="ja" data-static-localized>話した言葉を予定ややることに仕分ける。レシートから経費を、食事の写真から栄養の目安を読み取る。High Beamが、毎日の整理や入力を手伝います。</span><span data-i18n="en" data-static-localized>Turn spoken thoughts into plans and to-dos. Read expenses from receipts and estimate nutrition from meal photos. High Beam helps with everyday organizing and data entry.</span><span data-i18n="ko" data-static-localized>말한 내용을 일정과 할 일로 분류하고, 영수증에서 경비를 읽고, 식사 사진으로 영양을 추정해요. High Beam가 매일의 정리와 입력을 도와줘요.</span><span data-i18n="de" data-static-localized>Gesprochene Gedanken in Pläne und Aufgaben sortieren, Ausgaben aus Belegen lesen und Nährwerte aus Essensfotos schätzen. High Beam hilft beim täglichen Ordnen und Erfassen.</span><span data-i18n="zh-Hant" data-static-localized>將說出的想法分成行程與待辦，從收據讀取支出，從餐點照片估算營養。High Beam 協助每天的整理與輸入。</span><span data-i18n="fr" data-static-localized>Triez vos paroles en projets et tâches, lisez les dépenses sur les reçus et estimez les apports des repas en photo. High Beam vous aide à organiser et à saisir au quotidien.</span><span data-i18n="es" data-static-localized>Clasifica tus palabras en planes y tareas, lee gastos de recibos y estima nutrientes con fotos de comidas. High Beam te ayuda a organizar e introducir información cada día.</span><span data-i18n="it" data-static-localized>Ordina i pensieri detti a voce in programmi e attività, leggi le spese dagli scontrini e stima i nutrienti dalle foto dei pasti. High Beam aiuta a organizzare e inserire informazioni ogni giorno.</span></p>
     <div class="plans">
       <div class="plan">
         <div class="name">Head-Light</div>
@@ -1730,11 +1616,12 @@
         </ul>
       </div>
       <div class="plan plus">
-        <div class="name">AI Pro</div>
+        <div class="name">High Beam</div>
         <div class="price"><span data-i18n="ja">年額プランは7日間無料</span><span data-i18n="en">Annual plan: 7 days free</span><span data-i18n="ko">연간 플랜은 7일 무료</span></div>
         <ul>
           <li><span data-i18n="ja">話した言葉のAI仕分け</span><span data-i18n="en">AI sorting for the words you speak</span><span data-i18n="ko">말한 내용을 AI로 분류</span></li>
           <li><span data-i18n="ja">AIチャット・写真の言語化</span><span data-i18n="en">AI chat and photo-to-words</span><span data-i18n="ko">AI 채팅・사진 언어화</span></li>
+          <li><span data-i18n="ja" data-static-localized>契約中は、棚を好きなだけ作成</span><span data-i18n="en" data-static-localized>Create unlimited shelves while subscribed</span><span data-i18n="ko" data-static-localized>구독 중에는 선반을 무제한으로 만들기</span><span data-i18n="de" data-static-localized>Während des Abos unbegrenzt viele Regale erstellen</span><span data-i18n="zh-Hant" data-static-localized>訂閱期間可建立不限數量的收藏架</span><span data-i18n="fr" data-static-localized>Créez autant d’étagères que vous le souhaitez pendant l’abonnement</span><span data-i18n="es" data-static-localized>Crea estanterías ilimitadas durante la suscripción</span><span data-i18n="it" data-static-localized>Crea scaffali illimitati durante l’abbonamento</span></li>
           <li><span data-i18n="ja" data-static-localized>Xの投稿を、投稿した日の手帳へ</span><span data-i18n="en" data-static-localized>Import your X posts into the journal for the day you posted</span><span data-i18n="ko" data-static-localized>X 게시물을 게시한 날의 다이어리로 가져오기</span><span data-i18n="de" data-static-localized>X-Posts ins Tagebuch des Veröffentlichungstags übernehmen</span><span data-i18n="zh-Hant" data-static-localized>將 X 貼文匯入發文當天的手帳</span><span data-i18n="fr" data-static-localized>Importer vos posts X dans le journal du jour de publication</span><span data-i18n="es" data-static-localized>Importar tus posts de X al diario del día en que publicaste</span><span data-i18n="it" data-static-localized>Importare i post X nel diario del giorno di pubblicazione</span></li>
           <li><span data-i18n="ja">整理・覚えておく・経費・食事・夜の振り返りなど</span><span data-i18n="en">Tidy, remember, expenses, meals, night reflection, and more</span><span data-i18n="ko">정리・기억해 두기・경비・식사・밤의 되돌아보기 등</span></li>
         </ul>
@@ -1749,8 +1636,8 @@
         </ul>
       </div>
     </div>
-    <p class="promise"><span hidden><b><span data-i18n="ja">広告なし。データを売らない。</span><span data-i18n="en">No ads. We never sell your data.</span><span data-i18n="ko">광고 없음. 데이터를 팔지 않아요.</span></b> <span data-i18n="ja">記録と20を超える道具は無料のまま。棚は3枚まで含まれ、必要な人だけ一度きりの購入で買い足せます。AI機能はAI Proです。</span><span data-i18n="en">Your records and more than 20 tools stay free. Three shelves are included, and you can add more with a one-time purchase only if you need them. AI features are part of AI Pro.</span><span data-i18n="ko">기록과 20개가 넘는 도구는 계속 무료예요. 선반은 3개까지 포함되며, 필요한 사람만 한 번 구매해 늘릴 수 있어요. AI 기능은 AI Pro에 포함됩니다.</span></span>
-    <span class="sub"><span data-i18n="ja">※ AI Proの年額プランは7日間の無料期間後に自動更新されます。更新前にいつでも解約できます。AI Proと棚の追加の正確な価格は、お使いの地域に合わせてアプリ内に表示されます。</span><span data-i18n="en">* The annual AI Pro plan renews automatically after the 7-day free trial. Cancel anytime before renewal. Exact prices for AI Pro and shelf expansion are shown in the app for your region.</span><span data-i18n="ko">※ AI Pro 연간 플랜은 7일 무료 체험 후 자동 갱신됩니다. 갱신 전에 언제든지 해지할 수 있어요. AI Pro와 선반 추가의 정확한 가격은 사용 지역에 맞게 앱 내에 표시됩니다.</span></span><br>
+    <p class="promise"><span hidden><b><span data-i18n="ja">広告なし。データを売らない。</span><span data-i18n="en">No ads. We never sell your data.</span><span data-i18n="ko">광고 없음. 데이터를 팔지 않아요.</span></b> <span data-i18n="ja">記録と20を超える道具は無料のまま。棚は3枚まで含まれ、必要な人だけ一度きりの購入で買い足せます。AI機能はHigh Beamです。</span><span data-i18n="en">Your records and more than 20 tools stay free. Three shelves are included, and you can add more with a one-time purchase only if you need them. AI features are part of High Beam.</span><span data-i18n="ko">기록과 20개가 넘는 도구는 계속 무료예요. 선반은 3개까지 포함되며, 필요한 사람만 한 번 구매해 늘릴 수 있어요. AI 기능은 High Beam에 포함됩니다.</span></span>
+    <span class="sub"><span data-i18n="ja">※ High Beamの年額プランは7日間の無料期間後に自動更新されます。更新前にいつでも解約できます。High Beamと棚の追加の正確な価格は、お使いの地域に合わせてアプリ内に表示されます。</span><span data-i18n="en">* The annual High Beam plan renews automatically after the 7-day free trial. Cancel anytime before renewal. Exact prices for High Beam and shelf expansion are shown in the app for your region.</span><span data-i18n="ko">※ High Beam 연간 플랜은 7일 무료 체험 후 자동 갱신됩니다. 갱신 전에 언제든지 해지할 수 있어요. High Beam와 선반 추가의 정확한 가격은 사용 지역에 맞게 앱 내에 표시됩니다.</span></span><br>
     <a class="sub" href="./commercial-transactions.html"><span data-i18n="ja">特定商取引法に基づく表記</span><span data-i18n="en" data-static-localized>Legal notice for Japan</span><span data-i18n="ko">일본 특정상거래법 표기</span><span data-i18n="de">Anbieterangaben für Japan</span><span data-i18n="zh-Hant">日本特定商業交易法標示</span><span data-i18n="fr">Mentions légales pour le Japon</span><span data-i18n="es">Aviso legal para Japón</span><span data-i18n="it">Informazioni legali per il Giappone</span></a></p>
   </div>
 </section>
@@ -1793,11 +1680,11 @@
     </div>
     <div class="card faq">
       <p><b><span data-i18n="ja">Q. 対応している端末は?</span><span data-i18n="en">Q. Which devices are supported?</span><span data-i18n="ko">Q. 지원하는 기기는?</span></b><br>
-      <span data-i18n="ja">iPhone・iPad(iOS 17以上)、Apple Watch(watchOS 11以上)、Mac(Appleシリコン)。AI Proでは、Apple Intelligence対応かどうかに関係なく、どの機種でもクラウドAIが動きます。記録・手帳・カレンダー・コレクションと20を超える道具は、どの端末でも無料です。</span><span data-i18n="en">iPhone and iPad (iOS 17+), Apple Watch (watchOS 11+), and Mac (Apple silicon). With AI Pro, cloud AI works on any supported device, whether or not it supports Apple Intelligence. Your records, journal, calendar, collections, and more than 20 tools are free on every device.</span><span data-i18n="ko">iPhone・iPad(iOS 17 이상), Apple Watch(watchOS 11 이상), Mac(Apple 실리콘). AI Pro에서는 Apple Intelligence 지원 여부와 관계없이 모든 지원 기종에서 클라우드 AI가 작동해요. 기록・수첩・캡린더・컬렉션과 20개가 넘는 도구는 모든 기기에서 무료예요.</span></p>
+      <span data-i18n="ja">iPhone・iPad(iOS 17以上)、Apple Watch(watchOS 11以上)、Mac(Appleシリコン)。High Beamでは、Apple Intelligence対応かどうかに関係なく、どの機種でもクラウドAIが動きます。記録・手帳・カレンダー・コレクションと20を超える道具は、どの端末でも無料です。</span><span data-i18n="en">iPhone and iPad (iOS 17+), Apple Watch (watchOS 11+), and Mac (Apple silicon). With High Beam, cloud AI works on any supported device, whether or not it supports Apple Intelligence. Your records, journal, calendar, collections, and more than 20 tools are free on every device.</span><span data-i18n="ko">iPhone・iPad(iOS 17 이상), Apple Watch(watchOS 11 이상), Mac(Apple 실리콘). High Beam에서는 Apple Intelligence 지원 여부와 관계없이 모든 지원 기종에서 클라우드 AI가 작동해요. 기록・수첩・캡린더・컬렉션과 20개가 넘는 도구는 모든 기기에서 무료예요.</span></p>
       <p style="margin-top: 14px;"><b><span data-i18n="ja">Q. データはどこに保存されますか?</span><span data-i18n="en">Q. Where is my data stored?</span><span data-i18n="ko">Q. 데이터는 어디에 저장되나요?</span></b><br>
       <span data-i18n="ja">記録はお使いの端末に保存されます。AI機能を選んだときだけ、処理に必要な言葉や写真がクラウドAIへ送信されます。開発者が記録の内容を閲覧・販売することはありません。</span><span data-i18n="en">Your records are stored on your device. Only when you choose an AI feature are the words or photos needed for that task sent to cloud AI. The developer does not view or sell the contents of your records.</span><span data-i18n="ko">기록은 사용 중인 기기에 저장돼요. AI 기능을 선택했을 때만 처리에 필요한 말이나 사진이 클라우드 AI로 전송됩니다. 개발자는 기록 내용을 열람하거나 판매하지 않아요.</span></p>
       <p style="margin-top: 14px;"><b><span data-i18n="ja">Q. AIの整理機能はどう動いていますか?</span><span data-i18n="en">Q. How does the AI sorting work?</span><span data-i18n="ko">Q. AI 정리 기능은 어떻게 작동하나요?</span></b><br>
-      <span data-i18n="ja">AI Proでは、クラウドAIが仕分けやAI機能に必要な情報を処理します。送られた内容はその処理のためにだけ使われ、AIの学習には使われません。AI機能・「AIに渡す」・共有など、外へ送る操作は本人が選んだときだけ行います。</span><span data-i18n="en">With AI Pro, cloud AI processes the information needed for sorting and other AI features. The content sent is used only to perform that task, never to train AI. AI features, Hand to AI, and sharing send information outside the device only when you choose those actions.</span><span data-i18n="ko">AI Pro에서는 클라우드 AI가 분류와 AI 기능에 필요한 정보를 처리해요. 전송된 내용은 해당 처리에만 사용되고 AI 학습에는 사용되지 않아요. AI 기능, 「AI로 보내기」, 공유처럼 밖으로 보내는 동작은 사용자가 선택했을 때만 이루어져요.</span></p>
+      <span data-i18n="ja">High Beamでは、クラウドAIが仕分けやAI機能に必要な情報を処理します。送られた内容はその処理のためにだけ使われ、AIの学習には使われません。AI機能・「AIに渡す」・共有など、外へ送る操作は本人が選んだときだけ行います。</span><span data-i18n="en">With High Beam, cloud AI processes the information needed for sorting and other AI features. The content sent is used only to perform that task, never to train AI. AI features, Hand to AI, and sharing send information outside the device only when you choose those actions.</span><span data-i18n="ko">High Beam에서는 클라우드 AI가 분류와 AI 기능에 필요한 정보를 처리해요. 전송된 내용은 해당 처리에만 사용되고 AI 학습에는 사용되지 않아요. AI 기능, 「AI로 보내기」, 공유처럼 밖으로 보내는 동작은 사용자가 선택했을 때만 이루어져요.</span></p>
       <p style="margin-top: 14px;"><b><span data-i18n="ja">Q. バックアップはできますか?</span><span data-i18n="en">Q. Can I back up my data?</span><span data-i18n="ko">Q. 백업은 가능한가요?</span></b><br>
       <span data-i18n="ja">設定画面から、写真を含む完全バックアップ(JSON)を書き出せます。iCloud DriveやNASへのMarkdown同期(Head-Light保管庫)もあります。</span><span data-i18n="en">From Settings, you can export a full backup (JSON) including photos. Markdown sync to iCloud Drive or a NAS (the Head-Light Vault) is also available.</span><span data-i18n="ko">설정 화면에서, 사진을 포함한 전체 백업(JSON)을 내보낼 수 있어요. iCloud Drive나 NAS로의 Markdown 동기화(Head-Light 보관함)도 있어요.</span></p>
     </div>
@@ -1827,7 +1714,7 @@
       var footer = document.querySelector("footer");
       if (!footer) return;
       [
-        "core-flow", "free-intro", "collection", "words", "journal", "routines", "tools",
+        "free-intro", "collection", "words", "journal", "routines", "tools",
         "design-customization", "design-preview", "ai-sorting", "tidy-assistant",
         "ai-handoff", "strong-light", "creator-trust", "free-download", "pricing", "final-download", "support", "footer-qr"
       ].forEach(function (id) {
