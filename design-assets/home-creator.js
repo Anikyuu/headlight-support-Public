@@ -214,9 +214,24 @@ function applyLanguage() {
  }
  const txLabel = $('.hx-tx-label');
  if (txLabel) txLabel.textContent = l === 'ja' ? '聞いています' : t('txListening', l);
+ if (l === 'ja' || l === 'zh-Hant') $$('main.hx h2:not(.hx-pitch-lines), main.hx h3, .hx-final .big > span').forEach(phrasify);
  splitPitch();
  transcript.reset();
  onScroll();
+}
+
+/* Keep Japanese/Chinese phrases whole: break only after 、。 like a printed poster. */
+function phrasify(el) {
+ const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+ const nodes = [];
+ while (walker.nextNode()) if (!walker.currentNode.parentElement.closest('.hx-ph')) nodes.push(walker.currentNode);
+ nodes.forEach(node => {
+  const parts = node.textContent.split(/(?<=[、。，！？])/);
+  if (parts.length < 2 && !/[\u3000-\u9fff]/.test(node.textContent)) return;
+  const frag = document.createDocumentFragment();
+  parts.forEach(p => { const sp = document.createElement('span'); sp.className = 'hx-ph'; sp.textContent = p; frag.append(sp); });
+  node.replaceWith(frag);
+ });
 }
 
 /* ---------- Pitch: characters light up with scroll ---------- */
@@ -235,7 +250,10 @@ function splitPitch() {
    s.className = 'hx-ch'; s.textContent = ch; s.setAttribute('aria-hidden', 'true');
    parent.append(s); pitchChars.push(s);
   });
-  if (cjk) addChars(text, frag);
+  if (cjk) text.split(/(?<=[、。，！？])/).forEach(phrase => {
+   const ph = document.createElement('span'); ph.className = 'hx-ph';
+   addChars(phrase, ph); frag.append(ph);
+  });
   else text.split(/(\s+)/).forEach(part => {
    if (/^\s+$/.test(part)) { frag.append(' '); return; }
    const w = document.createElement('span'); w.style.whiteSpace = 'nowrap'; w.style.display = 'inline-block';
