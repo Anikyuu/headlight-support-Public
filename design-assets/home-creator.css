@@ -243,11 +243,12 @@ html[lang="ja"] .hx-pitch-lines, html[lang="zh-Hant"] .hx-pitch-lines, html[lang
 
 /* ---------- 8. Name ---------- */
 .hx-name { padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px); text-align: center; }
-.hx-ring { position: relative; width: clamp(150px, 18vw, 220px); aspect-ratio: 1; margin: 0 auto; border-radius: 26%; background: #050505; box-shadow: 0 40px 80px -30px #0008; display: grid; place-items: center; overflow: hidden; }
-.hx-ring::before { content: ""; width: 56%; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 0 0 clamp(6px, .8vw, 9px) #fff6e6, 0 0 30px 8px #ffe9c2aa, inset 0 0 26px 4px #ffe9c288; animation: hxGlow 4.5s ease-in-out infinite; }
-.hx-ring::after { content: ""; position: absolute; inset: -50%; background: conic-gradient(from 0deg, transparent 0 70%, #ffffff22 80%, transparent 90%); animation: hxSpin 7s linear infinite; }
-@keyframes hxGlow { 50% { box-shadow: 0 0 0 clamp(6px, .8vw, 9px) #fff, 0 0 60px 18px #ffe9c2cc, inset 0 0 40px 8px #ffe9c2aa; } }
-@keyframes hxSpin { to { transform: rotate(1turn); } }
+.hx-ring { position: relative; width: clamp(150px, 18vw, 220px); aspect-ratio: 1; margin: 0 auto; border-radius: 22.5%; overflow: hidden; box-shadow: 0 40px 80px -30px #0008; animation: hxHalo 4.5s ease-in-out infinite; }
+.hx-ring img { display: block; width: 100%; height: 100%; }
+/* The real icon stays as is; only its light breathes. */
+.hx-ring::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, transparent 38%, #fff3dcaa 40.5%, #ffe6b855 50%, transparent 66%); mix-blend-mode: screen; opacity: 0; animation: hxBreathe 4.5s ease-in-out infinite; }
+@keyframes hxBreathe { 50% { opacity: .9; } }
+@keyframes hxHalo { 50% { box-shadow: 0 40px 80px -30px #0008, 0 0 60px 6px #ffe9c255; } }
 .hx-name .hx-h { margin-top: 52px; }
 .hx-name .hx-lead { margin-inline: auto; max-width: 34em; }
 .hx-kana { display: block; margin-top: 30px; font: 600 12px/1 var(--mono); letter-spacing: .3em; color: var(--mute); }
