@@ -547,3 +547,17 @@ html:not([lang="ja"]) #strong-light .brand-signature-reading { display:none; }
 }
 .free-intro .eyebrow { color:#6e6e73; }
 .free-intro .lead { color:#5c5c62; }
+
+/* Keep the first impression focused on the app's playful face. */
+.hero-preview-stack { display:none; }
+.hero-product::before { content:none; }
+.hero-product { min-height:560px; }
+.hero-product .hero-design-preview .device { --device-width:245px; --device-radius:38px; }
+@media(max-width:900px) {
+  .hero-product { min-height:520px; }
+  .hero-product .hero-design-preview .device { --device-width:220px; --device-radius:34px; }
+}
+@media(max-width:560px) {
+  .hero-product { min-height:470px; }
+  .hero-product .hero-design-preview .device { --device-width:205px; --device-radius:32px; }
+}
