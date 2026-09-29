@@ -241,7 +241,7 @@ function decodeCollectionPayload(payload) {
     !collection.name.trim() ||
     !Array.isArray(collection.entries) ||
     collection.entries.length < 1 ||
-    collection.entries.length > 48
+    collection.entries.length > 100
   ) {
     throw new Error("Unsupported collection.");
   }
