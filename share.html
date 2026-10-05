@@ -21,6 +21,8 @@
     .actions{display:grid;grid-template-columns:repeat(3,54px);gap:10px;justify-content:center;margin:22px 0 0}
     #shuffle{grid-column:1;grid-row:1}#play{grid-column:2;grid-row:1}#openApp{grid-column:3;grid-row:1}
     #play[hidden]~#openApp{grid-column:2}
+    .importHint{max-width:440px;margin:14px auto 0;color:var(--muted);font-size:13px;line-height:1.7;text-wrap:pretty}
+    .importHint a{color:inherit;text-underline-offset:3px}
     button,.button{appearance:none;border:1px solid var(--line);border-radius:999px;padding:12px 18px;background:var(--button);color:var(--buttonText);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
     .button.secondary{background:#fff;color:var(--ink)}
     .iconButton{display:inline-grid;place-items:center;width:54px;height:54px;padding:0;border-radius:50%}
@@ -105,10 +107,11 @@
       <button id="play" class="iconButton" aria-label="Play" title="Play">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l10-6.5z"/></svg>
       </button>
-      <a class="button secondary iconButton" id="openApp" aria-label="Add to Head-Light" title="Add to Head-Light" hidden>
+      <a class="button secondary iconButton" id="openApp" aria-label="Add to Head-Light" title="Add to Head-Light" aria-describedby="importHint" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
       </a>
     </div>
+    <p class="importHint" id="importHint" hidden><a id="installForImport" href="https://apps.apple.com/app/id6790623376" target="_blank" rel="noopener noreferrer"></a><span id="importHintText"></span></p>
   </header>
   <div id="playerWrap"><div id="player"><div id="youtubeMount"></div></div></div>
   <div class="playerMeta" id="playerMeta">
@@ -215,6 +218,20 @@
     badge.alt = copy.badge;
     document.getElementById('appStoreLink').setAttribute('aria-label', copy.badge);
     document.getElementById('independence').textContent = copy.independence;
+    const importCopy = {
+      ja: ['Head-Lightを入れて', '＋を押すと、この棚をまとめて追加できます。', 'この棚をまとめて追加'],
+      en: ['Install Head-Light', ', then tap + to add this whole collection to your own.', 'Add this whole collection'],
+      ko: ['Head-Light를 설치한 뒤', ' +를 누르면 이 컬렉션을 내 컬렉션에 한 번에 추가할 수 있어요.', '이 컬렉션 전체 추가'],
+      de: ['Installiere Head-Light', ' und tippe auf +, um diese ganze Sammlung zu deinen Sammlungen hinzuzufügen.', 'Diese ganze Sammlung hinzufügen'],
+      fr: ['Installez Head-Light', ', puis touchez + pour ajouter toute cette collection aux vôtres.', 'Ajouter toute cette collection'],
+      es: ['Instala Head-Light', ' y toca + para añadir toda esta colección a las tuyas.', 'Añadir toda esta colección'],
+      it: ['Installa Head-Light', ', poi tocca + per aggiungere tutta questa raccolta alle tue.', 'Aggiungi tutta questa raccolta'],
+      'zh-Hant': ['安裝 Head-Light', ' 後點一下＋，就能將整個收藏架加入自己的收藏。', '加入整個收藏架']
+    }[locale];
+    document.getElementById('installForImport').textContent = importCopy[0];
+    document.getElementById('importHintText').textContent = importCopy[1];
+    document.getElementById('openApp').setAttribute('aria-label', importCopy[2]);
+    document.getElementById('openApp').title = importCopy[2];
   }
 
   localizeMadeWith();
@@ -830,6 +847,7 @@
     const openApp = document.getElementById('openApp');
     openApp.href = `https://open.head-light.app/import/#collection=${payload}`;
     openApp.hidden = false;
+    document.getElementById('importHint').hidden = false;
     document.getElementById('madeWith').hidden = false;
   } catch (error) {
     document.getElementById('name').textContent = 'Collection not found';
